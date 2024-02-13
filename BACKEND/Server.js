@@ -5,6 +5,8 @@ const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 
+require("dotenv").config();
+
 const PORT = process.env.PORT || 8070;  /*when we import the web application to server we need to give a port number of a server 
 to open our application. process.env.Port allow to use available port at the time we import 
 web app to server or if we know the available ports on server we can directly give port number*/
