@@ -14,7 +14,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL || 'mongodb+srv://chamari:itp1234@chamari-cluster.2jqwij2.mongodb.net/';  //''; paste the exact url aswell here.
+const URL = process.env.MONGODB_URL || 'mongodb+srv://itpt105:T105@glamourlane.elhqqir.mongodb.net/';
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
