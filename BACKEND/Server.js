@@ -1,9 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors  = require("cors");
-const dotenv = require("dotenv");
-const app = express();
+const express = require("express");  // Express.js framework for building web applications
+const mongoose = require("mongoose");  // Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js
+const bodyParser = require("body-parser");  // Body parsing middleware for Express.js to parse incoming request bodies
+const cors = require("cors");  // Cross-Origin Resource Sharing (CORS) middleware for Express.js
+const dotenv = require("dotenv");  // Dotenv module for loading environment variables from a .env file into process.env
+const app = express();  // Create an Express application
 
 require("dotenv").config();
 
@@ -21,7 +21,7 @@ mongoose.connect(URL,{
     useUnifiedTopology: true,
 });
 
-const connection = mongoose.connection;
+const connection = mongoose.connection; // Get the default connection
 
 connection.once("open", () => {
     console.log("MongoDB connection success!");
@@ -30,3 +30,16 @@ connection.once("open", () => {
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
+
+
+//do not change the stuff above here
+//Import your router modules
+
+const salonBookingRouter = require("./routes/salonBooking")
+const studioBookingRouter = require("./routes/studioBooking")
+
+
+
+
+app.use("/SalonBooking",salonBookingRouter)
+app.use("/StudioBooking",studioBookingRouter)
