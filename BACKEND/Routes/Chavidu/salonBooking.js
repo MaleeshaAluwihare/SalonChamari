@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let SalonBooking = require("../Models/salonBookingModel");
+let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 
 // //Insert booking
 // router.route("/makebooking").post((req, res) => {

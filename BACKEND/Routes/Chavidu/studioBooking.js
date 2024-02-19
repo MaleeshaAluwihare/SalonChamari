@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let StudioBooking = require("../Models/studioBookingModel");
+let StudioBooking = require("../../Models/Chavidu/studioBookingModel");
 
 
 // Insert route
