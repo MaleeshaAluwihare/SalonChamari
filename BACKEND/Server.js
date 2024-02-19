@@ -27,6 +27,10 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
+const incomeRouter = require("./Routes/pulasthi-routes/incomes");
+
+app.use("/finance",incomeRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
