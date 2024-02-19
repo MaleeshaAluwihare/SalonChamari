@@ -1,13 +1,13 @@
 const router = require("express").Router();
-let StudioBooking = require("../models/studioBookingModel");
+let StudioBooking = require("../Models/studioBookingModel");
 
 
 // Insert route
 router.route("/makebooking").post(async (req, res) => {
-    const { name, email, sid, package, amount, photographer } = req.body;
+    const { name, email, pid, package, amount, photographer } = req.body;
 
     try {
-        const newBooking = new StudioBooking({ name,email,sid,package,amount,photographer});
+        const newBooking = new StudioBooking({ name,email,pid,package,amount,photographer});
         await newBooking.save();
         res.json("Booking Added");
     } catch (err) {
@@ -56,12 +56,12 @@ router.route("/getBooking/:id").get(async (req, res) => {
 //Update route
 router.route("/update/:id").put(async (req, res) => {
     let bookingID = req.params.id;
-    const { name, email, sid, package, amount, photographer} = req.body;
+    const { name, email, pid, package, amount, photographer} = req.body;
 
     const updateBooking = {
         name,
         email,
-        sid,
+        pid,
         package,
         amount,
         photographer

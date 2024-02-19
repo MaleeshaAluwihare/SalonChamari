@@ -35,8 +35,8 @@ app.listen(PORT, () => {
 //do not change the stuff above here
 //Import your router modules
 
-const salonBookingRouter = require("./routes/salonBooking")
-const studioBookingRouter = require("./routes/studioBooking")
+const salonBookingRouter = require("./Routes/salonBooking")
+const studioBookingRouter = require("./Routes/studioBooking")
 
 
 

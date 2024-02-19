@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let SalonBooking = require("../models/salonBookingModel");
+let SalonBooking = require("../Models/salonBookingModel");
 
 // //Insert booking
 // router.route("/makebooking").post((req, res) => {
@@ -126,3 +126,23 @@ router.route("/delete/:id").delete(async (req, res) => {
 
 module.exports = router;
 
+// // Fetch services from the backend
+// axios.get('/api/services')
+//     .then(response => {
+//         // Extract services from the response data
+//         const services = response.data.services;
+
+//         // Get the select element
+//         const selectElement = document.getElementById('services');
+
+//         // Populate the select element with services
+//         services.forEach(service => {
+//             const option = document.createElement('option');
+//             option.value = service._id; // Assuming service object has an _id field
+//             option.text = service.name; // Assuming service object has a name field
+//             selectElement.appendChild(option);
+//         });
+//     })
+//     .catch(error => {
+//         console.error('Error fetching services:', error);
+//     });
