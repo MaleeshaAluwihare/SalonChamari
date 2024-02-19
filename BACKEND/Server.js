@@ -27,7 +27,7 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
-const saloonRouter = require("./Routes/Saloon.js");
+const saloonRouter = require("./Routes/Saloon");
 
 app.use("/Saloon",saloonRouter); 
 
