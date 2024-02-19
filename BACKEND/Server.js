@@ -27,6 +27,10 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
+const studioRouter = require("./Routes/Studios"); //create studio router
+
+app.use("/Studios",studioRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
