@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const saloonSchema = new Schema({
-
+    Employee_ID:{
+        type:String,
+        required:true
+    },
+    
     Name:{
         type:String,
         required:true
@@ -20,7 +24,7 @@ const saloonSchema = new Schema({
     },
 
     Salary:{
-        type:String,
+        type:Number,
         required:true
     }
 

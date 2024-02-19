@@ -3,14 +3,16 @@ let Employee = require("../Models/models-Yasiru/saloon")
 
 //insert
 router.route("/add").post((req,res)=>{
-  
+    
+    const Employee_ID=req.body.Employee_ID
     const Name = req.body.Name;
     const Address =req.body.Address;
     const Age = Number(req.body.Age);
-    const Salary=req.body.Salary;
+    const Salary=Number(req.body.Salary);
 
     const newEmployee = new Employee({
      
+        Employee_ID,
         Name,
         Address,
         Age,
