@@ -7,15 +7,17 @@ router.route("/add").post((req,res)=>{
     const Employee_ID=req.body.Employee_ID
     const Name = req.body.Name;
     const Address =req.body.Address;
-    const Age = Number(req.body.Age);
-    const Salary=Number(req.body.Salary);
+    const Qualification = req.body.Qualification;
+    const Salary = Number(req.body.Salary);
+
+ 
 
     const newEmployee = new Employee({
      
         Employee_ID,
         Name,
         Address,
-        Age,
+        Qualification,
         Salary
     })
 
@@ -25,7 +27,9 @@ router.route("/add").post((req,res)=>{
         console.log(err);
     })
 })
-// //Read route - getting all users data
+
+
+//Read route - getting all users data
 router.route("/").get(()=>{
 
     Employee.find().then((employees)=>{
@@ -37,6 +41,6 @@ router.route("/").get(()=>{
 })
 
 
-router.route("/")
+//router.route("/")
 
 module.exports = router;

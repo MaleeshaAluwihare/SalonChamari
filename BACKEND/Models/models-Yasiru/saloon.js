@@ -18,8 +18,8 @@ const saloonSchema = new Schema({
         required:true
     },
 
-    Age:{
-        type:Number,
+    Qualification:{
+        type:String,
         required:true
     },
 
