@@ -1,35 +1,40 @@
+//the data passing from the routes to DB passing through this model
+
+//import mongoose for connect to DB and assign it to mongoose variable
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+// creating the schema
+const Schema = mongoose.Schema; 
 
-//model
+//just like creating a object from Schema (table)
 const serviceSchema = new Schema({
-  serviceName: {
-    type: String,
-    required: true
+
+  serviceName: { 
+    type: String, 
+    required: true 
   },
-  subCategories: [
-    {
-      Subname:{
-        type: String,
-        required: true
-      }, 
-      services: [
-        {
-          name: {
-            type: String,
-            required: true
-          },
-          standardPrice:{
-            type: Number,
-            required:true
-          },
-        },
-      ],
-    },
-  ],
-})
+  subCategoryName: {
+     type: String,
+     required: true 
+  },
+  itemID: { 
+    type: String, 
+    required: true, 
+    unique: true 
+  },
+  itemName: { 
+    type: String, 
+    required: true 
+  },
+  itemPrice: { 
+    type: Number, 
+    required: true,
+    min: 0
+  }
+});
 
-const Services = mongoose.model("Services",serviceSchema);
+//the first para is document(table) name and the second para is Schema
+const Service = mongoose.model('Service', serviceSchema);
 
-module.exports = Services;
+//if we dont export the Schema we cant access Schema from routes
+module.exports = Service;
