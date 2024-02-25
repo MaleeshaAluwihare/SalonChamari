@@ -3,10 +3,12 @@ let Service = require("../Models/Maleesha/Service");
 
 //INSERT DATA
  //"add" will be end url when calling from the frontend
-router.route("/itemsAdd").post( async (req,res) => {
+router.post("/itemsAdd", async (req,res) => {
+    console.log("fnvjdnvki");
 
     //getting the inserted data from req body //destructure way
     const{ serviceName, subCategoryName, itemID, itemName, itemPrice } = req.body;
+    console.log(req.body);
 
     try {
         // Check if itemID already exists
@@ -26,7 +28,7 @@ router.route("/itemsAdd").post( async (req,res) => {
         });
     
         // Save the new service object to the database
-        const savedService = await newService.save();
+        const savedService = Service.create(newService)
     
         res.json({ message: 'Service added successfully.', savedService });
 
@@ -35,7 +37,7 @@ router.route("/itemsAdd").post( async (req,res) => {
         console.error('Error adding service:', error);
         if (error.code === 11000) { 
           // MongoDB duplicate key error
-          return res.status(400).json({ message: 'ItemID must be unique.' });
+          return res.status(400).json({ message: error });
         }
         res.status(500).json({ message: 'Server error' });
       }
