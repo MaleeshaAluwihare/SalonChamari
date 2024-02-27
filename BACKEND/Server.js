@@ -14,7 +14,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL || 'mongodb+srv://itpt105:T105@glamourlane.elhqqir.mongodb.net/';
+const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
@@ -32,8 +32,8 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
 
-//import the service route
-const serviceRouter = require("./Routes/services.js");
+
+const serviceRouter = require("./Routes/servicesRoute.js");  //import the service route
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 app.use("/service",serviceRouter)
