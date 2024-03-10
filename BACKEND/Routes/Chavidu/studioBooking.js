@@ -31,12 +31,12 @@ router.route("/studiobookings").get((req, res) => {
 })
 
 //get specific booking
-router.route("/getBooking/:id").get(async (req, res) => {
-    let bookingID = req.params.id;
+router.route("/getBooking/:customId").get(async (req, res) => {
+    let customId = req.params.customId;
 
     try {
-        // Find the booking by ID
-        const booking = await StudioBooking.findById(bookingID);
+        // Find the booking by custom ID
+        const booking = await StudioBooking.findOne({ customId: customId });
 
         // Check if booking is found
         if (!booking) {
@@ -51,6 +51,7 @@ router.route("/getBooking/:id").get(async (req, res) => {
         res.status(500).send({ status: "Internal_Server_Error" });
     }
 });
+
 
 
 //Update route
@@ -100,5 +101,24 @@ router.route("/delete/:id").delete(async (req, res) => {
         res.status(500).send({ status: "Error with deleting booking", error: err.message });
     })
 })
+
+// Define a route for handling payment requests
+// app.post("/makePayment", async (req, res) => {
+//     // Extract amount and sid from the request body
+//     const { amount, sid } = req.body;
+
+//     try {
+//         // Insert the amount and sid into another table
+//         // Replace "AnotherTable" with the name of your table
+//         await AnotherTable.create({ pamount:amount, psid:sid });
+
+//         // Send a success response to the client
+//         res.status(200).send({ status: "Payment_Successful" });
+//     } catch (error) {
+//         // Handle errors
+//         console.error("Error making payment:", error);
+//         res.status(500).send({ status: "Internal_Server_Error" });
+//     }
+// });
 
 module.exports = router;

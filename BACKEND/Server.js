@@ -14,7 +14,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL  //''; paste the exact url aswell here.
+const URL = process.env.MONGODB_URL  //''; paste the exact url as well here.
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
@@ -31,9 +31,6 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
 
-
-//do not change the stuff above here
-//Import your router modules
 
 const salonBookingRouter = require("./Routes/Chavidu/salonBooking")
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking")

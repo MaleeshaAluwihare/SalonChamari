@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import axios from "axios"; // Importing axios for making HTTP requests
+// import React, { useState } from "react";
+// import axios from "axios"; // Importing axios for making HTTP requests
 
-export default function salonBookingForm() {
+// export default function salonBookingForm() {
 
-    // State variables to store form input values
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [gender, setGender] = useState("");
-    const [address, setAddress] = useState("");
+//     // State variables to store form input values
+//     const [name, setName] = useState("");
+//     const [age, setAge] = useState("");
+//     const [gender, setGender] = useState("");
+//     const [address, setAddress] = useState("");
 
-    // Function to send form data to the server
-    function sendData(e) {
-        e.preventDefault(); // Prevent default form submission behavior
+//     // Function to send form data to the server
+//     function sendData(e) {
+//         e.preventDefault(); // Prevent default form submission behavior
         
-        // Create a new student object with form input values
-        const newStudent = {
-            name,
-            age,
-            gender,
-            address
-        }
+//         // Create a new student object with form input values
+//         const newStudent = {
+//             name,
+//             age,
+//             gender,
+//             address
+//         }
 
-        // Send a POST request to the server to add the new student
-        axios.post("http://localhost:8070/student/add", newStudent).then(() => {
-            // Alert user upon successful addition of student
-            alert("Student Added");
-        }).catch((err) => {
-            // Alert user if an error occurs during the request
-            alert(err);
-        })
-    }
-
+//         // Send a POST request to the server to add the new student
+//         axios.post("http://localhost:8070/student/add", newStudent).then(() => {
+//             // Alert user upon successful addition of student
+//             alert("Student Added");
+//         }).catch((err) => {
+//             // Alert user if an error occurs during the request
+//             alert(err);
+//         })
+//     }
+const salonBookingForm = () =>{
     return (
       <div className="SForm">
         <div id="booking" class="section">
@@ -120,4 +120,5 @@ export default function salonBookingForm() {
         </div>
       </div>
     );
-}
+    }
+    export default salonBookingForm;

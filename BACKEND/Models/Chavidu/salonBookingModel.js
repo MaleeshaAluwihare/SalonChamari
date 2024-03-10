@@ -13,7 +13,8 @@ const sbookingSchema = new Schema({
     },
     sid: {
         type: String,  
-        required: true  
+        required: true
+        //unique:true 
     },
     service: {
         type: String,   
