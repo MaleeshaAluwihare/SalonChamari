@@ -1,12 +1,15 @@
-const router = require("express").Router();
-let Service = require("../Models/Maleesha/Service");
+const express = require('express')
+const app = express();
+let Service = require("../Models/Maleesha/ServiceModel");
 
 //INSERT DATA
  //"add" will be end url when calling from the frontend
-router.route("/itemsAdd").post( async (req,res) => {
+app.post("/itemsAdd", async (req,res) => {
 
     //getting the inserted data from req body //destructure way
     const{ serviceName, subCategoryName, itemID, itemName, itemPrice } = req.body;
+
+    console.log(req.body);
 
     try {
         // Check if itemID already exists
@@ -26,35 +29,38 @@ router.route("/itemsAdd").post( async (req,res) => {
         });
     
         // Save the new service object to the database
-        const savedService = await newService.save();
+        const savedService = Service.create(newService)
     
-        res.json({ message: 'Service added successfully.', savedService });
+        res.json({ message: 'Service added successfully.'});
+        console.log(newService);
 
-      } catch (error) {
-        
+    } catch (error) {
         console.error('Error adding service:', error);
         if (error.code === 11000) { 
           // MongoDB duplicate key error
-          return res.status(400).json({ message: 'ItemID must be unique.' });
+          return res.status(400).json({ message: 'Duplicate itemID detected.' });
         }
-        res.status(500).json({ message: 'Server error' });
+        res.status(500).json({ message: 'Internal server error.' });
       }
+ 
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //DISPLAY DATA
 //Retrives the items by service and subCategory name
-router.route("/itemsGet/:serviceName/:subcategoryName").get(async(req,res) => {
+app.get("/itemsGet/:serviceName/:subCategoryName", async(req,res) => {
 
     const { serviceName, subCategoryName } = req.params;
+
+    console.log(req.params);
 
     try{
         //find the items based on the service name and subCategory
         const items = await Service.find({
             serviceName: serviceName,
             subCategoryName: subCategoryName
-        }, 'itemID itemName price');
+        }).select('itemID itemName itemPrice').exec();
 
         if(items.length === 0){
             return res.status(404).json({ message: `No items found for ${serviceName} and ${subCategoryName}`});
@@ -70,7 +76,7 @@ router.route("/itemsGet/:serviceName/:subcategoryName").get(async(req,res) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //DELETE BY ID
-router.route("/itemsDelete/:itemID").delete(async(req,res) =>{
+app.delete("/itemsDelete/:itemID" , async(req,res) =>{
 
     const { itemID } = req.params;
 
@@ -92,32 +98,41 @@ router.route("/itemsDelete/:itemID").delete(async(req,res) =>{
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //UPDATE BY ID
-router.route("itemsUpdate/:itemID").put(async(req,res) => {
+app.put("/itemsUpdate/:itemID", async(req,res) => {
 
-    //getting the inserted data from req body
-    const { itemID } = req.params;
-    const { newName, newPrice } = req.body;
+    let itemID = req.params.itemID;
+    const { serviceName,subCategoryName,itemName,itemPrice } = req.body;
 
     try{
-        // Find the item by itemId and update its itemName and itemPrice
-        const updateItem = await Service.findOneAndUpdate(
-            { itemID: itemID },
-            { $set: {itemName: newName, itemPrice: newPrice }},
-            {new: true } 
-        );
 
-        if(!updateItem){
-            return res.status(404).json({ message: `Item with ID ${itemID} not found`});
+        const updateService = {
+            serviceName,
+            subCategoryName,
+            itemName,
+            itemPrice
         }
 
-        res.json({message: 'Item updated successfully',updateItem});
+        const filter = { itemID: itemID };
 
-    }catch(error){
-        console.error('Error Updating Item', error);
-        res.status(500).json({ message: `Server Error`});
+        const updatedService = await Service.findOneAndUpdate(filter,updateService,{
+            new : true
+        });
+
+        //console.log(updatedService);
+
+        if(!updatedService){
+            return res.status(404).json({message:`Service with itemID ${itemID} not found`});
+        }
+
+        await updatedService.save();
+        
+        res.json({ message: `Service updated successfully`})
+
+    } catch(error) {
+        console.error('Error updating item:', error);
+        res.status(500).json({ message: error.message });
     }
-       
 });
 
 
-module.exports = router;       
+module.exports = app;       
