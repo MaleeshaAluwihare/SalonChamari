@@ -30,5 +30,5 @@ const saloonSchema = new Schema({
 
 })
 
-const Employee = mongoose.model("Employee",saloonSchema);
+const Employee = mongoose.model("Employee",saloonSchema);//Database name
 module.exports=Employee;
