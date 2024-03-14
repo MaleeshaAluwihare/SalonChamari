@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express.Router();
-let Service = require("../Models/Maleesha/ServiceModel");
+let Service = require("../../Models/Maleesha/ServiceModel");
 
 // Route to handle search requests
 app.get('/search', async (req, res) => {

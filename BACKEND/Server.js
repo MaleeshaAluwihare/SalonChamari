@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-const serviceRouter = require("./Routes/servicesRoute.js");
-const searchRouter = require("./Routes/searchService.js");
+const serviceRouter = require("./Routes/Maleesha/servicesRoute");
+const searchRouter = require("./Routes/Maleesha/searchService");
 
 require("dotenv").config();
 

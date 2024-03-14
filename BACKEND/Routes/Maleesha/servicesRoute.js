@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express();
 var multer = require('multer');
-let Service = require("../Models/Maleesha/ServiceModel");
-let imgSchema = require("../Models/Maleesha/ImageUploadModel");
+let Service = require("../../Models/Maleesha/ServiceModel");
+let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 
 
 //INSERT DATA
