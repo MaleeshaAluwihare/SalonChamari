@@ -1,6 +1,6 @@
 import './App.css';
-import CounterClass from './components/ClassBaseApproch';
-import CounterFunction from './components/CounterFunction';
+import CounterClass from './components/Maleesha/ClassBaseApproch';
+import CounterFunction from './components/Maleesha/CounterFunction';
 
 function App() {
   return (
