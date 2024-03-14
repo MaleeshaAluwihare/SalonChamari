@@ -6,22 +6,70 @@ let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 
 
 //INSERT DATA
- //"add" will be end url when calling from the frontend
 app.post("/itemsAdd", async (req,res) => {
 
-    //getting the inserted data from req body //destructure way
-    const{ serviceName, subCategoryName, itemID, itemName, itemPrice } = req.body;
+    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
 
-    console.log(req.body);
+    //console.log(req.body);
 
     try {
-        // Check if itemID already exists
-        const existingItem = await Service.findOne({ itemID: itemID });
-    
-        if (existingItem) {
-          return res.status(400).json({ message: 'Item with the provided itemID already exists.' });
+    // Determine the prefix for the item ID based on the service name
+
+        let prefix = '';
+        switch(serviceName){
+
+            case 'Hair Care' : prefix = 'H';
+
+                switch(subCategoryName){
+                    case 'Hair Cut' : prefix += 'K';
+                         break;
+                    case 'Hair Coloring' : prefix += 'C'; 
+                        break;
+                    case 'Hair Treatment' : prefix += 'T';
+                        break;
+                    default: prefix += 'O'
+                }
+                break;
+
+            case 'Skin Care' : prefix = 'S';
+
+                switch(subCategoryName){
+                    case 'Facial | Cleanup' : prefix += 'F';
+                        break;
+                    default: prefix += 'O';
+                }
+                break;
+
+            case 'Nail Care' : prefix = 'N';
+
+                switch(subCategoryName){
+                    case 'Manicure | Pedicure' : prefix += 'M';
+                        break;
+                    case 'Nail Lacqer | Extentions' : prefix += 'N';
+                        break;
+                    default: prefix += 'O';
+                }
+                break;
+
+            case 'Bridal' : prefix = 'B';
+                
+                switch(subCategoryName){
+                    case 'Bride Dressing' : prefix += 'B';
+                        break;
+                    case 'Groom Dressing' : prefix += 'G';
+                        break;
+                    default: prefix += 'O';
+                }
+                break;
+
+            default: prefix = '';
+            
         }
+
+        const itemCount = await Service.countDocuments({ serviceName, subCategoryName })
     
+        const itemID = prefix + padNumber(itemCount + 1, 2);
+
         // Create a new service object
         const newService = new Service({
           serviceName,
@@ -31,11 +79,9 @@ app.post("/itemsAdd", async (req,res) => {
           itemPrice,
         });
     
-        // Save the new service object to the database
-        const savedService = Service.create(newService)
-    
+        await newService.save();
+
         res.json({ message: 'Service added successfully.'});
-        // console.log(newService);
 
     } catch (error) {
         console.error('Error adding service:', error);
@@ -47,6 +93,10 @@ app.post("/itemsAdd", async (req,res) => {
       }
  
 });
+
+function padNumber(number, width) {
+    return String(number).padStart(width, '0');
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
