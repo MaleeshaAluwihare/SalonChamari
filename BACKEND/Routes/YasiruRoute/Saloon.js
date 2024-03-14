@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Employee = require("../Models/models-Yasiru/saloon")
+let Employee = require("../../Models/models-Yasiru/saloon")
 
 //insert
 router.route("/add").post((req,res)=>{

@@ -27,7 +27,7 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
-const saloonRouter = require("./Routes/Saloon");
+const saloonRouter = require("./Routes/YasiruRoute/Saloon");
 
 app.use("/Saloon",saloonRouter); 
 app.listen(PORT, () => {
