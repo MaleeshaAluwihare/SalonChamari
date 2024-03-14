@@ -13,8 +13,14 @@ app.post("/itemsAdd", async (req,res) => {
     //console.log(req.body);
 
     try {
-    // Determine the prefix for the item ID based on the service name
 
+        const existingItem = await Service.findOne({ itemName: itemName });
+    
+        if (existingItem) {
+          return res.status(400).json({ message: 'Service with the provided service name already exists.' });
+        }
+
+         // Determine the prefix for the item ID based on the service name
         let prefix = '';
         switch(serviceName){
 
