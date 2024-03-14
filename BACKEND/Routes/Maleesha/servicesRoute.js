@@ -35,7 +35,7 @@ app.post("/itemsAdd", async (req,res) => {
         const savedService = Service.create(newService)
     
         res.json({ message: 'Service added successfully.'});
-        console.log(newService);
+        // console.log(newService);
 
     } catch (error) {
         console.error('Error adding service:', error);
