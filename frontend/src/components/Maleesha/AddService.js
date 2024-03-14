@@ -5,7 +5,6 @@ export default function AddService(){
 
     const [serviceName, setServiceName] = useState("");
     const [subCategoryName, setSubName] = useState("");
-    const [itemID, setItemID] = useState("");
     const [itemName, setItemName] = useState("");
     const [itemPrice, setItemPrice] = useState("");
 
@@ -16,7 +15,6 @@ export default function AddService(){
         const newService = {
             serviceName,
             subCategoryName,
-            itemID,
             itemName,
             itemPrice
         };
@@ -42,10 +40,6 @@ export default function AddService(){
                 <div className="mb-3">
                     <label for="age" className="form-label">Subcategory Name:</label>
                     <input type="text" className="form-control" id="age" placeholder="Enter Subcategory name.." onChange={(e) => { setSubName(e.target.value) }} />
-                </div>
-                <div className="mb-3">
-                    <label for="gender" className="form-label">Item ID:</label>
-                    <input type="text" className="form-control" id="gender" placeholder="Enter Item ID.." onChange={(e) => { setItemID(e.target.value) }} />
                 </div>
                 <div className="mb-3">
                     <label for="address" className="form-label">Item Name:</label>
