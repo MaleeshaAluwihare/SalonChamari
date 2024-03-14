@@ -1,9 +1,11 @@
-const express = require("express");  // Express.js framework for building web applications
-const mongoose = require("mongoose");  // Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js
-const bodyParser = require("body-parser");  // Body parsing middleware for Express.js to parse incoming request bodies
-const cors = require("cors");  // Cross-Origin Resource Sharing (CORS) middleware for Express.js
-const dotenv = require("dotenv");  // Dotenv module for loading environment variables from a .env file into process.env
-const app = express();  // Create an Express application
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors  = require("cors");
+const dotenv = require("dotenv");
+const app = express();
+const salonBookingRouter = require("./Routes/Chavidu/salonBooking")
+const studioBookingRouter = require("./Routes/Chavidu/studioBooking")
 
 require("dotenv").config();
 
@@ -14,14 +16,15 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL  //''; paste the exact url as well here.
+const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-const connection = mongoose.connection; // Get the default connection
+const connection = mongoose.connection;
+
 
 connection.once("open", () => {
     console.log("MongoDB connection success!");
@@ -30,11 +33,6 @@ connection.once("open", () => {
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
-
-
-const salonBookingRouter = require("./Routes/Chavidu/salonBooking")
-const studioBookingRouter = require("./Routes/Chavidu/studioBooking")
-
 
 
 
