@@ -10,23 +10,28 @@ export default function AddService(){
     const [itemPrice, setItemPrice] = useState("");
 
     function sendData(e){
+
+        e.preventDefault();
+
         const newService = {
             serviceName,
             subCategoryName,
             itemID,
             itemName,
             itemPrice
-        }
+        };
 
-        axios.post("http://localhost:8070/service/itemsAdd",newService).then(() => {
+        axios.post("/service/itemsAdd",newService).then(response =>{
 
-            alert("Service Added.")
+            alert(response.data.message);
 
-        } ).catch((err) =>{
-            
-            alert(err)
-        })
+        }).catch(err => {
+
+            alert(err.response.data.message);
+
+        });
     }
+
     return(
         <div className="container">
             <form onSubmit={sendData}>
