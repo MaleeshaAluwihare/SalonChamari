@@ -30,6 +30,13 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
+
+//url (http: //localhost:8070/faq)
+const faqRouter = require("./Routes/Dasun/faqRoute.js");
+app.use("/faq", faqRouter);
+
+
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
