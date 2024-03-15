@@ -109,27 +109,24 @@ function padNumber(number, width) {
 //DISPLAY DATA
 //Retrives the items by service and subCategory name
 app.get("/itemsGet/:itemID", async(req,res) => {
-
     const { itemID } = req.params;
 
-    //console.log(req.params);
+    try {
+        // Find items based on itemID prefix
+        const items = await Service.find({ itemID: { $regex: `^${itemID}` } });
 
-    try{
-        //find the items based on the service name and subCategory
-        const items = await Service.find({
-            itemID: itemID,
-        }).select('itemName itemPrice').exec();
-
-        if(items.length === 0){
-            return res.status(404).json({ message: `No items found for ${itemID}`});
+        if (items.length === 0) {
+            return res.status(404).json({ message: `No items found for ${itemID}` });
         }
-        res.json(items);
+        
+        res.json({ service: items[0] });
+        
+    } catch (error) {
+        console.error('Error Fetching Items', error);
+        res.status(500).json({ message: `Server Error` });
     }
-    catch(error) {
-        console.error('Error Fetching Items' , error);
-        res.status(500).json({ message: `Server Error`});
-    }    
 });
+
 
 //------------------------display hair cuts------------------------//
 app.get("/hairCut", async (req, res) => {
