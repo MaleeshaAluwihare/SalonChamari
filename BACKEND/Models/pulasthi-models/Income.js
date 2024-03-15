@@ -21,4 +21,5 @@ const IncomeSchema = new mongoose.Schema({
 
 //table name is given from below code but when table name get created in mongoDB it rename the Firstletter as simple and add 's' as last letter.
 const IncomeTable=mongoose.model("Income",IncomeSchema);
+//use this IncomeTable constant name when you save(),find()
 module.exports = IncomeTable;
