@@ -41,6 +41,7 @@ router.route("/getBudgetById/:budgetId").get(async (req, res) => {
     try {
         // Find the booking by custom ID
         //save the finding budget to budget constant
+        //curly braces athule danna ewa withrai ape exact table column names wenne 
         const budget = await BudgetTable.findOne({ budgetId: budgetId });
 
         // Check if booking is found
@@ -87,5 +88,30 @@ router.route("/update-budget/:budgetId").put(async (req, res) => {
     }
 });
 
+//Delete route
+router.route("/delete-budget/:budgetId").delete(async (req, res) => {
+    let budgetId = req.params.budgetId;
+
+    try {
+        // Find the booking by ID
+        const budget = await BudgetTable.findOne({ budgetId: budgetId });
+
+        // Check if booking exists
+        if (!budget) {
+            return res.status(404).send({ status: "Budget_Not_Found" });
+        }
+
+        // Delete the booking
+        await BudgetTable.findOneAndDelete({ budgetId: budgetId });
+
+        // Send success response
+        res.status(200).send({ status: "Budget deleted" });
+    } catch (error) {
+        // Handle errors
+        console.error("Error deleting Budget:", error);
+        res.status(500).send({ status: "Internal_Server_Error", error: error.message });
+    }
+
+});
 
 module.exports = router;
