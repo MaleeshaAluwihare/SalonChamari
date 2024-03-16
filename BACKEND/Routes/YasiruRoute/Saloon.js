@@ -41,6 +41,7 @@ router.route("/").get(()=>{
 })
 
 
-//router.route("/")
+
+//router.route("/update/:id ").put()
 
 module.exports = router;
