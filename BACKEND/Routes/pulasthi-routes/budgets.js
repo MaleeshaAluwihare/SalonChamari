@@ -57,4 +57,35 @@ router.route("/getBudgetById/:budgetId").get(async (req, res) => {
     }
 });
 
+// Update route
+router.route("/update-budget/:budgetId").put(async (req, res) => {
+    let budgetId = req.params.budgetId;
+    const { month, amount, date } = req.body;
+
+    const updateBudget = {
+        month,
+        amount,
+        date
+    };
+
+    try {
+        // Find and update the booking by ID
+        //{ new: true } option specifies that the updated document should be returned after the update operation.
+        const updatedBudget = await BudgetTable.findOneAndUpdate({ budgetId: budgetId }, updateBudget, { new: true });
+
+        // Check if booking is found and updated
+        if (!updatedBudget) {
+            return res.status(404).send({ status: "Budget_Not_Found" });
+        }
+
+        // Send the updated booking data to the frontend
+        res.status(200).send({ status: "Budget Updated", updatedBudget: updatedBudget });
+    } catch (error) {
+        // Handle errors
+        console.error("Error updating budget:", error);
+        res.status(500).send({ status: "Internal_Server_Error" });
+    }
+});
+
+
 module.exports = router;
