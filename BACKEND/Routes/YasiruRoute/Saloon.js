@@ -40,8 +40,46 @@ router.route("/").get(()=>{
 
 })
 
+//update
 
+router.route("/update/:id ").put(async(req,res)=>{
+    let Employee_ID =req.params.id;
+    const{Name, Address, Qualification, Salary} = req.body;
 
-//router.route("/update/:id ").put()
+    const updateEmployee={
+        Name,
+        Address,
+        Qualification,
+        Salary
+    }
+
+    const update =await Employee.findByIdAndUpdate(Employee_ID,updateEmployee).then(()=>{
+        res.status(200).send({status:"Employee updated", Employee:update})
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status:"Error with updating data",error:err.message});
+    })
+})
+
+router.route("/delete/:id").delete(async(req,res) =>{
+    let Employee_ID = req.params.id;
+
+    await Employee.findByIdAndDelete(Employee_ID).then(() =>{
+        res.status(200).send({status:"Employee deleted"})
+    }).catch((err) =>{
+        console.log(err.message);
+        res.status(500).send({status:"Error with delete employee",error:err.message});
+    })
+})
+
+router.route("/get/:id").get(async (req,res)=>{
+    let Employee_ID = req.params.id;
+    const user = await Employee.findById(Employee_ID).then(() =>{
+        res.status(200).send({status:"Emplpoyee fetched",Employee:Employee })
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({stus: "Error with get Employee",error:err.message});
+    })
+})
 
 module.exports = router;
