@@ -44,7 +44,7 @@ router.route("/").get((req, res)=>{
 
 router.route("/update/:Employee_ID").put(async(req,res)=>{
 
-    let Employee_ID =req.params.Employee_ID;
+    let employee_ID =req.params.Employee_ID;
 
     const{Name, Address, Qualification, Salary} = req.body;
 
@@ -56,7 +56,7 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
         Salary
     }
 
-    const filter = {Employee_ID: Employee_ID};
+    const filter = {Employee_ID: employee_ID};
 
     const updatedEmployee = await Employee.findOneAndUpdate(filter,updateEmployee,{
         new: true
@@ -68,10 +68,10 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
 
     await updatedEmployee.save();
 
-    res.json({message: Employee_details_updated})
+    res.json({message: "Employee_details_updated"})
 
     }catch(error){
-        console.log(err.message);
+        console.error(error.message);
         res.status(500).send({status:"Error with updating data"});
     }
        
