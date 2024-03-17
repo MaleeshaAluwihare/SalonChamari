@@ -11,7 +11,7 @@ const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
 const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
-
+const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
 
 
@@ -24,7 +24,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL || 'mongodb+srv://itpt105:T105@glamourlane.elhqqir.mongodb.net/';
+const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
@@ -52,5 +52,5 @@ app.use("/finance",empSalaryRouter);
 app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
 //maleesha
-
+app.use("/services",servicesRouter)
 app.use("/services",searchRouter);
