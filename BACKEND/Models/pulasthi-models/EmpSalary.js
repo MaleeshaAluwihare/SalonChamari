@@ -22,6 +22,7 @@ const EmpSalarySchema = new Schema({
         required: true,
         trim: true
     },
+    //I have to generate salary and store it in below column
     salary: {
         type:Number
     }
