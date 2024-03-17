@@ -27,7 +27,7 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
-const studioRouter = require("./Routes/routes-Anoj/studioR.js"); //create studio router
+const studioRouter = require("../BACKEND/Routes/routes-Anoj/studioR"); //create studio router
 
 //http://localhost:8070/studio
 

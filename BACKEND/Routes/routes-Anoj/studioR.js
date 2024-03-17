@@ -66,7 +66,7 @@ router.route("/update/:pid").put(async(req, res) => {
 
     const  filter = {pid: pid};
 
-    const updateStudio = await Studio.findByIdAndUpdate(filter,updateProduct, {
+    const updateStudio = await Studio.findOneAndUpdate(filter,updateProduct, {
       new : true
 
     });
@@ -104,7 +104,7 @@ router.route("/delete/:pid").delete(async(req, res) => {
         return res.status(404).json({ message: `Item with ID ${pid} not found`});
     }
 
-    res.json({ message: 'Item deleted successfully',deleteItem});
+    res.json({ message: 'Item deleted successfully',deleteProduct});
   }catch(error){
     console.error('Error Deleting Product', error);
     res.status(500).json({ message: `Server Error`});
