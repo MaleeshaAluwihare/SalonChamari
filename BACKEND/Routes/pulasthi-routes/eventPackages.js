@@ -1,29 +1,47 @@
 const EventPackageTable = require("../../Models/pulasthi-models/EventPackage");
+const ExpenseTable = require("../../Models/pulasthi-models/Expense");
+const IncomeTable = require("../../Models/pulasthi-models/Income");
 
 const router = require("express").Router();
 
 
 
-//devinda code
+
 // Insert route
-router.route("/add-eventPackages").post(async (req, res) => {
+router.route("/add-eventPackages").post(async (req, res) => { 
 
-    //below property names should match column names of EventPackageTable
     //let others know that they have to give my model column names when they destructuring to insert values to my tabels
-    //destructuring  
-    const{packageId,packageType,date} = req.body;
-
+    //destructuring 
+    const{packageId,packageType,date,profit,cost} = req.body;
 
     try {
-        
-        const newEvent = new EventPackageTable({
-            packageId:packageId,
-            packageType:packageType,
-            date:date
-        });
-        await newEvent.save();
+        //below newEvent is devinda code So remove it later
+        // const newEvent = new EventPackageTable({
+        //     packageId:packageId,
+        //     packageType:packageType,
+        //     date:date
+        // });
+        // await newEvent.save();
 
-        res.json("Event Added");
+        //add profit of eventPackage to income table
+        const newIncome = IncomeTable({
+            incomeId:packageId,
+            category:packageType,
+            date:date,
+            amount:profit,
+        })
+        await newIncome.save();
+        
+        //add cost of eventPackage to expense table
+        const newExpense = ExpenseTable({
+            expenseId:packageId,
+            category:packageType,
+            date:date,
+            amount:cost,
+        })
+        await newExpense.save();
+
+        res.json("Event,Income and Expense Added");
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
