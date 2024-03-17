@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-//import the service route
+
 const incomeRouter = require("./Routes/pulasthi-routes/incomes");
 const budgetRouter = require("./Routes/pulasthi-routes/budgets");
 const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
