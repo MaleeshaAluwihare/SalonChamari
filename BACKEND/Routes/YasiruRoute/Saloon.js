@@ -77,10 +77,10 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
        
 });
 
-router.route("/delete/:id").delete(async(req,res) =>{
-    let Employee_ID = req.params.id;
+router.route("/delete/:Employee_ID").delete(async(req,res) =>{
+    let Employee_ID = req.params.Employee_ID;
 
-    await Employee.findByIdAndDelete(Employee_ID).then(() =>{
+    await Employee.findOneAndDelete(Employee_ID).then(() =>{
         res.status(200).send({status:"Employee deleted"})
     }).catch((err) =>{
         console.log(err.message);
@@ -88,14 +88,20 @@ router.route("/delete/:id").delete(async(req,res) =>{
     })
 })
 
-router.route("/get/:id").get(async (req,res)=>{
-    let Employee_ID = req.params.id;
-    const user = await Employee.findById(Employee_ID).then(() =>{
-        res.status(200).send({status:"Emplpoyee fetched",Employee:Employee })
-    }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({stus: "Error with get Employee",error:err.message});
-    })
-})
+router.route("/get/:Employee_ID").get(async (req, res) => {
+    try {
+        const Emp_ID = req.params.Employee_ID;
+        const employee = await Employee.findOne({Employee_ID: Emp_ID});
+        
+        if (!employee) {
+            return res.status(404).send({ status: "Employee not found" });
+        }
+        
+        res.status(200).send({ status: "Employee fetched", employee: employee });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error with getting employee", error: err.message });
+    }
+});
 
 module.exports = router;
