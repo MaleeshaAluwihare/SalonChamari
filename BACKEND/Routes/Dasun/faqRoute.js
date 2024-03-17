@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-let Faq = require("../Models/Dasun/FaqModel");
+let Faq = require("../../Models/Dasun/FaqModel");
 
 
 
