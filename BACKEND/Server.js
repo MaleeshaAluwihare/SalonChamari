@@ -4,16 +4,15 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-
-
+//import the service route
 const incomeRouter = require("./Routes/pulasthi-routes/incomes");
 const budgetRouter = require("./Routes/pulasthi-routes/budgets");
 const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
 const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
-const searchRouter = require("./Routes/Maleesha/searchService");
 
+const searchRouter = require("./Routes/Maleesha/searchService");
 
 
 require("dotenv").config();
@@ -25,7 +24,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL;
+const URL = process.env.MONGODB_URL || 'mongodb+srv://itpt105:T105@glamourlane.elhqqir.mongodb.net/';
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
@@ -52,7 +51,6 @@ app.use("/finance",budgetRouter);
 app.use("/finance",empSalaryRouter);
 app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
+//maleesha
 
-//Maleesha
-app.use("/services",searchRouter)
-
+app.use("/services",searchRouter);
