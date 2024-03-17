@@ -42,10 +42,13 @@ router.route("/").get((req, res)=>{
 
 //update
 
-router.route("/update/:id ").put(async(req,res)=>{
-    let Employee_ID =req.params.id;
+router.route("/update/:Employee_ID").put(async(req,res)=>{
+
+    let Employee_ID =req.params.Employee_ID;
+
     const{Name, Address, Qualification, Salary} = req.body;
 
+    try{
     const updateEmployee={
         Name,
         Address,
@@ -53,13 +56,26 @@ router.route("/update/:id ").put(async(req,res)=>{
         Salary
     }
 
-    const update =await Employee.findByIdAndUpdate(Employee_ID,updateEmployee).then(()=>{
-        res.status(200).send({status:"Employee updated", Employee:update})
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status:"Error with updating data",error:err.message});
-    })
-})
+    const filter = {Employee_ID: Employee_ID};
+
+    const updatedEmployee = await Employee.findOneAndUpdate(filter,updateEmployee,{
+        new: true
+    });
+
+    if(!updatedEmployee){
+        return res.status(404).json({message:`Employee not found`});
+    }
+
+    await updatedEmployee.save();
+
+    res.json({message: `Employee details updated`})
+
+    }catch(error){
+        console.log(err.message);
+        res.status(500).send({status:"Error with updating data"});
+    }
+       
+});
 
 router.route("/delete/:id").delete(async(req,res) =>{
     let Employee_ID = req.params.id;
