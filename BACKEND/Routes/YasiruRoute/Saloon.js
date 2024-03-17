@@ -63,12 +63,12 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
     });
 
     if(!updatedEmployee){
-        return res.status(404).json({message:Employee not found});
+        return res.status(404).json({message:Employee ,not :found});
     }
 
     await updatedEmployee.save();
 
-    res.json({message: Employee details updated})
+    res.json({message: Employee ,details: updated})
 
     }catch(error){
         console.log(err.message);
