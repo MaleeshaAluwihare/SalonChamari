@@ -20,7 +20,7 @@ router.route("/add-budget").post(async (req, res) => {
     }
 });
 
-//Read route - get all booking data
+//Read route - get all budgets data
 router.route("/get-budgets").get((req, res) => {
 
     //from this sort code order of my retrieved budget data will based on createdAt field in descending order(-1)
@@ -30,7 +30,7 @@ router.route("/get-budgets").get((req, res) => {
     }).catch((err) => {
 
         console.log(err.message);
-        res.status(500).send({ status: "Error with get user", error: err.message });
+        res.status(500).send({ status: "Error with get budgets", error: err.message });
     })
 })
 
