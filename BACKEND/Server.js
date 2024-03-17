@@ -12,7 +12,7 @@ const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
 const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
-const servicesRouter = require("./Routes/Maleesha/servicesRoute");
+// const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
 
 
@@ -55,6 +55,6 @@ app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
 
 //Maleesha
-app.use("/services",servicesRouter)
+// app.use("/services",servicesRouter)
 app.use("/services",searchRouter)
 
