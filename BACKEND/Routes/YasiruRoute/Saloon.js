@@ -30,7 +30,7 @@ router.route("/add").post((req,res)=>{
 
 
 //Read route - getting all users data
-router.route("/").get(()=>{
+router.route("/").get((req, res)=>{
 
     Employee.find().then((employees)=>{
         res.json(employees)
