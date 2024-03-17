@@ -7,6 +7,7 @@ import ServiceDetails from './components/Maleesha/SearchService';
 function App() {
   return (
     <div className="App">
+        <h1>hello</h1>
         <AddService/> 
         <hr></hr>
         <ServiceDetails/>
