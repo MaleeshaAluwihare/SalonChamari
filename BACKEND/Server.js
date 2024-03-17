@@ -41,10 +41,11 @@ app.listen(PORT, () => {
 })
 
 
-app.use("/finance",expenseRouter);
+
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 app.use("/service",serviceRouter);
 app.use("/finance",incomeRouter);
+app.use("/finance",expenseRouter);
 app.use("/finance",budgetRouter);
 app.use("/finance",empSalaryRouter);
 app.use("/finance",inventoryItemRouter);

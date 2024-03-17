@@ -5,6 +5,31 @@ const router = require("express").Router();
 
 
 
+// Insert route
+router.route("/add-eventPackages").post(async (req, res) => {
+
+    //below property names should match column names of EventPackageTable
+    //let others know that they have to give my model column names when they destructuring to insert values to my tabels
+    //destructuring  
+    const{packageId,packageType,date} = req.body;
+
+
+    try {
+        
+        const newEvent = new EventPackageTable({
+            packageId:packageId,
+            packageType:packageType,
+            date:date
+        });
+        await newEvent.save();
+
+        res.json("Event Added");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
+
 //Read route - get all EventPackage data
 router.route("/get-invItems").get((req, res) => {
 
