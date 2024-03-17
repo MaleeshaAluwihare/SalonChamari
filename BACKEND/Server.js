@@ -9,6 +9,7 @@ const serviceRouter = require("./Routes/services.js");
 const incomeRouter = require("./Routes/pulasthi-routes/incomes");
 const budgetRouter = require("./Routes/pulasthi-routes/budgets");
 const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
+const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 
 
 require("dotenv").config();
@@ -43,3 +44,4 @@ app.use("/finance",expenseRouter);
 app.use("/service",serviceRouter);
 app.use("/finance",incomeRouter);
 app.use("/finance",budgetRouter);
+app.use("/finance",empSalaryRouter);
