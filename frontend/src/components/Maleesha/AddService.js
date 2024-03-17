@@ -19,7 +19,7 @@ export default function AddService(){
             itemPrice
         };
 
-        axios.post("/service/itemsAdd",newService).then(response =>{
+        axios.post("/services/itemsAdd",newService).then(response =>{
 
             alert(response.data.message);
 
@@ -31,22 +31,22 @@ export default function AddService(){
     }
 
     return(
-        <div className="container">
+        <div className="container">html
             <form onSubmit={sendData}>
                 <div className="mb-3">
-                    <label for="name" className="form-label">Service Name:</label>
+                    <label htmlFor="name" className="form-label">Service Name:</label>
                     <input type="text" className="form-control" id="name" placeholder="Enter Service Name.." onChange={(e) => { setServiceName(e.target.value) }} />
                 </div>
                 <div className="mb-3">
-                    <label for="age" className="form-label">Subcategory Name:</label>
+                    <label htmlFor="age" className="form-label">Subcategory Name:</label>
                     <input type="text" className="form-control" id="age" placeholder="Enter Subcategory name.." onChange={(e) => { setSubName(e.target.value) }} />
                 </div>
                 <div className="mb-3">
-                    <label for="address" className="form-label">Item Name:</label>
+                    <label htmlFor="address" className="form-label">Item Name:</label>
                     <input type="text" className="form-control" id="age" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} />
                 </div>
                 <div className="mb-3">
-                    <label for="address" className="form-label">Item Price:</label>
+                    <label htmlFor="address" className="form-label">Item Price:</label>
                     <input type="number" className="form-control" id="age" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} />
                 </div>
 

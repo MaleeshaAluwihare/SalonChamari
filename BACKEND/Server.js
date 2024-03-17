@@ -14,7 +14,6 @@ const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
 
-
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8070;  /*when we import the web application to server we need to give a port number of a server 

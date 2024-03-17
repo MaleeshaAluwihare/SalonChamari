@@ -7,7 +7,7 @@ export default function ServiceDetails() {
     const [itemID, setItemID] = useState("");
 
     const getServiceDetails = () => {
-        axios.get(`/service/itemsGet/${itemID}`).then((response) => {
+        axios.get(`/services/itemsGet/${itemID}`).then((response) => {
 
             setService(response.data.service);
 
