@@ -4,14 +4,17 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-//import the service route
-const serviceRouter = require("./Routes/services.js");
+
+
 const incomeRouter = require("./Routes/pulasthi-routes/incomes");
 const budgetRouter = require("./Routes/pulasthi-routes/budgets");
 const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
 const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
+const servicesRouter = require("./Routes/Maleesha/servicesRoute");
+const searchRouter = require("./Routes/Maleesha/searchService");
+
 
 
 require("dotenv").config();
@@ -23,7 +26,7 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors());
 app.use(bodyParser.json());  //json format mean the key value pairs
 
-const URL = process.env.MONGODB_URL || 'mongodb+srv://itpt105:T105@glamourlane.elhqqir.mongodb.net/';
+const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
     useNewUrlParser: true,
@@ -43,10 +46,15 @@ app.listen(PORT, () => {
 
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
-app.use("/service",serviceRouter);
+//pulasthi
 app.use("/finance",incomeRouter);
 app.use("/finance",expenseRouter);
 app.use("/finance",budgetRouter);
 app.use("/finance",empSalaryRouter);
 app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
+
+//Maleesha
+app.use("/services",servicesRouter)
+app.use("/services",searchRouter)
+
