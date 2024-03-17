@@ -16,6 +16,6 @@ const faqSchema = new Schema({
 
 })
 
-const Faq = mongoose.model("faq", faqSchema)
+const Faq = mongoose.model('faq', faqSchema)
 
 module.exports = Faq;
