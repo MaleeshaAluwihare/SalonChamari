@@ -5,14 +5,13 @@ const router = require('express').Router()
 
 router.route("/add-income").post((req,res)=>{
 
-    const bookingId = req.body.bookingId;
-    const amount = Number(req.body.amount);
-    const date = Date(req.body.date);
+    const{incomeId,amount,date,category} = req.body;
 
     const newIncome = new IncomeTable({
-        bookingId,
+        incomeId,
         amount,
-        date
+        date,
+        category
     })
 
     newIncome.save().then(()=>{

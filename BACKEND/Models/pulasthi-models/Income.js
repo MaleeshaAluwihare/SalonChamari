@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const IncomeSchema = new mongoose.Schema({
 
-    bookingId:{
+    incomeId:{
         type:String,
         required:true,
         trim:true
@@ -15,7 +15,11 @@ const IncomeSchema = new mongoose.Schema({
     date:{
         type:Date,
         required:true,
-    }
+    },
+    category:{
+        type:String,
+        trim:true
+    },
 },{timestamps:true})
 
 
