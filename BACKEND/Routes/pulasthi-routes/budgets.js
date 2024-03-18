@@ -13,7 +13,7 @@ router.route("/add-budget").post(async (req, res) => {
         const newBudget = new BudgetTable({ budgetId,month,amount,date});
         await newBudget.save();
 
-        res.json("Booking Added");
+        res.json("Budget Added");
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
