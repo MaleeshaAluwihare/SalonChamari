@@ -1,34 +1,40 @@
-const mongoose = require('mongoose');  // Importing mongoose for MongoDB object modeling
-const Schema = mongoose.Schema;  // Destructuring Schema class from mongoose
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Define the schema for the salon booking model
 const sbookingSchema = new Schema({
     name: {
-        type: String,  
-        required: true  
+        type: String,
+        required: true
     },
     email: {
-        type: String,   
-        required: true  
+        type: String,
+        required: true
     },
     sid: {
-        type: String,  
+        type: String,
         required: true
-        //unique:true 
     },
     service: {
-        type: String,   
-        required: true  
+        type: String,
+        required: true
     },
     amount: {
-        type: String,   
-        required: true 
-    } 
-    }, { timestamps: true }); 
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    time: {
+        type: String,
+        required: true
+    }
+}, { timestamps: true });
 
-// Create a model named "SalonBooking" using the studentSchema
+// Create a model named "SalonBooking" using the sbookingSchema
 const SalonBooking = mongoose.model("Salon_Booking", sbookingSchema);
-//Salon_Booking will become plural
 
-// Export the Salon_Booking model to be used elsewhere in the application
+// Export the SalonBooking model to be used elsewhere in the application
 module.exports = SalonBooking;

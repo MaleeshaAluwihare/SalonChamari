@@ -1,7 +1,6 @@
 const router = require("express").Router();
 let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
-let Studio = require('../../Models/Chavidu/Studio');
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 
 // //Insert booking
@@ -30,21 +29,38 @@ const nodemailer = require("nodemailer");
 // })
 
 
-// Insert route
+// // Insert route
+// router.route("/makebooking").post(async (req, res) => {
+//     const { name, email, sid, service, amount } = req.body;
+
+//     try {
+//         const newBooking = new SalonBooking({ name,email,sid,service,amount });
+//         await newBooking.save();
+
+//         // const newTable = new Studio({ 
+//         //     id: sid,
+//         //     price: amount
+//         // });
+//         // await newTable.save();
+
+//         // email
+//         // await sendConfirmationEmail(email, { name, service, amount });
+
+//         res.json("Booking Added");
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send("Server Error");
+//     }
+// });
+
 router.route("/makebooking").post(async (req, res) => {
-    const { name, email, sid, service, amount } = req.body;
+    const { name, email, sid, service, amount, date, time } = req.body;
 
     try {
-        const newBooking = new SalonBooking({ name,email,sid,service,amount });
+        const newBooking = new SalonBooking({ name, email, sid, service, amount, date, time });
         await newBooking.save();
 
-        const newTable = new Studio({ 
-            id: sid,
-            price: amount
-        });
-        await newTable.save();
-
-        // email
+        // Send confirmation email
         // await sendConfirmationEmail(email, { name, service, amount });
 
         res.json("Booking Added");
@@ -53,6 +69,7 @@ router.route("/makebooking").post(async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+
 
 
 //Read route - get all booking data
