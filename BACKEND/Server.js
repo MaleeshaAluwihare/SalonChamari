@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-const serviceRouter = require("./Routes/Maleesha/servicesRoute");
-const searchRouter = require("./Routes/Maleesha/searchService");
+
 const salonBookingRouter = require("./Routes/Chavidu/salonBooking")
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking")
 
@@ -39,7 +38,6 @@ app.listen(PORT, () => {
 
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
-app.use("/service",serviceRouter)
-app.use("/service",searchRouter)
+
 app.use("/SalonBooking",salonBookingRouter)
 app.use("/StudioBooking",studioBookingRouter)
