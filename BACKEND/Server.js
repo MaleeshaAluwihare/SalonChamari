@@ -13,6 +13,7 @@ const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js"
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
+// const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 
 require("dotenv").config();
 
@@ -54,3 +55,4 @@ app.use("/finance",eventPackageRouter);
 //maleesha
 app.use("/services",servicesRouter)
 app.use("/services",searchRouter);
+// app.use("/mail",sendMailRouter);
