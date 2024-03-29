@@ -13,8 +13,8 @@ const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js"
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
-const salonBookingRouter = require("./Routes/Chavidu/salonBooking");
-const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
+const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
+const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
 require("dotenv").config();

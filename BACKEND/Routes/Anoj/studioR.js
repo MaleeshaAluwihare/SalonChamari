@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Studio = require("../../Models/models-Anoj/studioM");
+let Studio = require("../../Models/Anoj/studioM");
 
 
 //INSERT DATA
