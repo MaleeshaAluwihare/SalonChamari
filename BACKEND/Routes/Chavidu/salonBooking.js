@@ -1,6 +1,6 @@
 const router = require("express").Router();
-let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
-let Studio = require('../../Models/Chavidu/Studio');
+let SalonBooking = require('../../Models/Chavidu/salonBookingModel')
+let Studio = require('../../Models/Chavidu/studioBookingModel');
 const nodemailer = require("nodemailer");
 
 

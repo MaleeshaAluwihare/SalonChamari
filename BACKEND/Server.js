@@ -13,8 +13,9 @@ const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js"
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
-const salonBookingRouter = require("./Routes/Chavidu/salonBooking")
-const studioBookingRouter = require("./Routes/Chavidu/studioBooking")
+const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
+const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
+const salonRouter = require("./Routes/Yasiru/Saloon.js");
 
 require("dotenv").config();
 
@@ -38,13 +39,10 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 
-const saloonRouter = require("./Routes/YasiruRoute/Saloon.js");
 
-app.use("/Saloon",saloonRouter); 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
-
 
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
@@ -58,10 +56,13 @@ app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
 
 //maleesha
-app.use("/services",servicesRouter)
+app.use("/services",servicesRouter);
 app.use("/services",searchRouter);
 
 //chavidu
-app.use("/SalonBooking",salonBookingRouter)
-app.use("/StudioBooking",studioBookingRouter)
+app.use("/SalonBooking",salonBookingRouter);
+app.use("/StudioBooking",studioBookingRouter);
+
+//yasiru
+app.use("/SalonEmp",salonRouter);
 
