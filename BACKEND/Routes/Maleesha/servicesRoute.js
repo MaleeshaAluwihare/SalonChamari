@@ -6,22 +6,76 @@ let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 
 
 //INSERT DATA
- //"add" will be end url when calling from the frontend
 app.post("/itemsAdd", async (req,res) => {
 
-    //getting the inserted data from req body //destructure way
-    const{ serviceName, subCategoryName, itemID, itemName, itemPrice } = req.body;
+    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
 
-    console.log(req.body);
+    //console.log(req.body);
 
     try {
-        // Check if itemID already exists
-        const existingItem = await Service.findOne({ itemID: itemID });
+
+        const existingItem = await Service.findOne({ itemName: itemName });
     
         if (existingItem) {
-          return res.status(400).json({ message: 'Item with the provided itemID already exists.' });
+          return res.status(400).json({ message: 'Service with the provided service name already exists.' });
         }
+
+         // Determine the prefix for the item ID based on the service name
+        let prefix = '';
+        switch(serviceName){
+
+            case 'Hair Care' : prefix = 'H';
+
+                switch(subCategoryName){
+                    case 'Hair Cut' : prefix += 'K';
+                         break;
+                    case 'Hair Coloring' : prefix += 'C'; 
+                        break;
+                    case 'Hair Treatment' : prefix += 'T';
+                        break;
+                    default: prefix += 'HN'
+                }
+                break;
+
+            case 'Skin Care' : prefix = 'S';
+
+                switch(subCategoryName){
+                    case 'Facial | Cleanup' : prefix += 'F';
+                        break;
+                    default: prefix += 'SN';
+                }
+                break;
+
+            case 'Nail Care' : prefix = 'N';
+
+                switch(subCategoryName){
+                    case 'Manicure | Pedicure' : prefix += 'M';
+                        break;
+                    case 'Nail Lacqer | Extentions' : prefix += 'N';
+                        break;
+                    default: prefix += 'NN';
+                }
+                break;
+
+            case 'Bridal' : prefix = 'B';
+                
+                switch(subCategoryName){
+                    case 'Bride Dressing' : prefix += 'B';
+                        break;
+                    case 'Groom Dressing' : prefix += 'G';
+                        break;
+                    default: prefix += 'BN';
+                }
+                break;
+
+            default: prefix = '';
+            
+        }
+
+        const itemCount = await Service.countDocuments({ serviceName, subCategoryName })
     
+        const itemID = prefix + padNumber(itemCount + 1, 2);
+
         // Create a new service object
         const newService = new Service({
           serviceName,
@@ -31,11 +85,9 @@ app.post("/itemsAdd", async (req,res) => {
           itemPrice,
         });
     
-        // Save the new service object to the database
-        const savedService = Service.create(newService)
-    
+        await newService.save();
+
         res.json({ message: 'Service added successfully.'});
-        console.log(newService);
 
     } catch (error) {
         console.error('Error adding service:', error);
@@ -48,33 +100,165 @@ app.post("/itemsAdd", async (req,res) => {
  
 });
 
+function padNumber(number, width) {
+    return String(number).padStart(width, '0');
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //DISPLAY DATA
 //Retrives the items by service and subCategory name
-app.get("/itemsGet/:serviceName/:subCategoryName", async(req,res) => {
+app.get("/itemsGet/:itemID", async(req,res) => {
+    const { itemID } = req.params;
 
-    const { serviceName, subCategoryName } = req.params;
+    try {
+        // Find items based on itemID prefix
+        const items = await Service.find({ itemID: { $regex: `^${itemID}` } });
 
-    console.log(req.params);
-
-    try{
-        //find the items based on the service name and subCategory
-        const items = await Service.find({
-            serviceName: serviceName,
-            subCategoryName: subCategoryName
-        }).select('itemID itemName itemPrice').exec();
-
-        if(items.length === 0){
-            return res.status(404).json({ message: `No items found for ${serviceName} and ${subCategoryName}`});
+        if (items.length === 0) {
+            return res.status(404).json({ message: `No items found for ${itemID}` });
         }
-        res.json(items);
+        
+        res.json({ service: items[0] });
+        
+    } catch (error) {
+        console.error('Error Fetching Items', error);
+        res.status(500).json({ message: `Server Error` });
     }
-    catch(error) {
-        console.error('Error Fetching Items' , error);
-        res.status(500).json({ message: `Server Error`});
-    }    
 });
+
+
+//------------------------display hair cuts------------------------//
+app.get("/hairCut", async (req, res) => {
+    try {
+        // Retrieve services with item IDs starting with 'HK'
+        const hairServices = await Service.find({ itemID: /^HK/ }); // Using a regular expression to match the prefix
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving hair services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display hair color------------------------//
+app.get("/hairColor", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^HC/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving hair services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display hair treatments------------------------//
+app.get("/hairTreatment", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^HT/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving hair services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+
+//------------------------display Skin treatments------------------------//
+app.get("/skinTreatment", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^SF/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving skin services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display Nail manicure------------------------//
+app.get("/nailManicure", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^NM/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving nail services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display Nail lacqer------------------------//
+app.get("/nailLacqer", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^NN/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving nail services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display bridal bride------------------------//
+app.get("/bridalBride", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^BB/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving bridal services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+//------------------------display bridal groom------------------------//
+app.get("/bridalGroom", async (req, res) => {
+    try {
+        const hairServices = await Service.find({ itemID: /^BG/ });
+
+        if(hairServices.length === 0){
+            return res.status(404).json({ message: `No items found`});
+        }
+        res.json(hairServices);
+
+    } catch (error) {
+        console.error('Error retrieving bridal services:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
