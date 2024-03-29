@@ -1,11 +1,16 @@
 import './App.css';
-import InventoryDash from './pages/Anoj/inventoryDash'; // Adjust the import statement to match the component name
+import AddService from './components/Maleesha/AddService';
+import ServiceDetails from './components/Maleesha/SearchService';
+// import CounterClass from './components/Maleesha/ClassBaseApproch';
+// import CounterFunction from './components/Maleesha/CounterFunction';
 
 function App() {
   return (
     <div className="App">
         <h1>hello</h1>
-        <InventoryDash />
+        <AddService/> 
+        <hr></hr>
+        <ServiceDetails/>
     </div>
   );
 }
