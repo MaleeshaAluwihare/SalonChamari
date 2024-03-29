@@ -14,6 +14,9 @@ const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
 const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
+const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
+const salonRouter = require("./Routes/Yasiru/Saloon.js");
+// const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
@@ -45,7 +48,6 @@ app.listen(PORT, () => {
 })
 
 
-
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 
 //pulasthi
@@ -59,6 +61,7 @@ app.use("/finance",eventPackageRouter);
 //maleesha
 app.use("/services",servicesRouter)
 app.use("/services",searchRouter);
+// app.use("/mail",sendMailRouter);
 
 //chavidu
 app.use("/SalonBooking",salonBookingRouter);
@@ -66,4 +69,7 @@ app.use("/StudioBooking",studioBookingRouter);
 
 //anoj
 app.use("/StudioInventory",studioInventory);
+
+//yasiru
+app.use("/SalonEmp",salonRouter);
 
