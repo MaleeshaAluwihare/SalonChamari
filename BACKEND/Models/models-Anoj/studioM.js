@@ -19,7 +19,7 @@ const inventorySchema = new Schema({
     quantity: {
       type: Number,
       required: true  
-     },
+    },
  })
 
  const Studio = mongoose.model("Studio", inventorySchema);
