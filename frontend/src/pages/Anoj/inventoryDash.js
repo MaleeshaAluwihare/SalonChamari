@@ -1,39 +1,29 @@
-import React from "react";
-import Table from 'react-bootstrap/Table';
+import React  from "react";
 
 
-export default function inventoryDash() {
+
+export default function InventoryDash() {
   return (
-    <div>
-        <Table striped bordered hover>
+    <div class="container">
+    <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
+          <td>Hair Dryers</td>
+          <td>10</td>
+          <td>Rs. 500</td>
         </tr>
       </tbody>
-    </Table>
-    </div>
+    </table>
+  </div>
+
   )
 }
