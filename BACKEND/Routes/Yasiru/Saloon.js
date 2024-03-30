@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Employee = require("../../Models/Yasiru/saloon");
+let Employee = require("../../Models/Yasiru/saloon")
 
 //insert
 router.route("/add").post((req,res)=>{
@@ -13,7 +13,6 @@ router.route("/add").post((req,res)=>{
  
 
     const newEmployee = new Employee({
-     
         Employee_ID,
         Name,
         Address,

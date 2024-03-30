@@ -17,7 +17,6 @@ const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
 const salonRouter = require("./Routes/Yasiru/Saloon.js");
 // const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
-const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
 require("dotenv").config();
