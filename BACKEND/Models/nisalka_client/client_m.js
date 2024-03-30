@@ -10,7 +10,7 @@ const CaccountSchema = new mongoose.Schema({
     minlength: 10,
     maxlength: 15,
   },
-    name: {
+    Full_name: {
     type: String,
     required: true,
     minlength: 3,
