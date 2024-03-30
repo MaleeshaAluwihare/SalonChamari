@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
         <h1>hello</h1>
-        <AddService/> 
+        {/* <AddService/> 
         <hr></hr>
-        <ServiceDetails/>
+        <ServiceDetails/> */}
     </div>
   );
 }
