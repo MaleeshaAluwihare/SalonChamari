@@ -8,6 +8,9 @@ const router = require("express").Router();
 
 
 // Insert route
+//me route eka finace dashboard eke event package form ekata denna onne
+//devinda doesn't enter cost and profit but finance manager does
+//methanin dn eventPackage ekata data yanne na
 router.route("/add-eventPackages").post(async (req, res) => { 
 
     //let others know that they have to give my model column names when they destructuring to insert values to my tabels

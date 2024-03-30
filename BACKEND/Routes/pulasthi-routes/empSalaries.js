@@ -20,6 +20,6 @@ router.route("/get-empSalary").get((req, res) => {
     })
 })
 
-
+//emp salaray eka hadila methanin tma expense table ekata data yanna onne
 
 module.exports = router;

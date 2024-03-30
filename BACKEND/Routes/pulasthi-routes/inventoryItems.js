@@ -20,6 +20,6 @@ router.route("/get-invItems").get((req, res) => {
     })
 })
 
-
+//items price eka hadila methanin tma expense table ekata data yanna onne
 
 module.exports = router;
