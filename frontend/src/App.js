@@ -1,5 +1,6 @@
 import './App.css';
 import AddService from './components/Maleesha/AddService';
+import Header from './components/Maleesha/Header';
 import ServiceDetails from './components/Maleesha/SearchService';
 import SaloonEmployeetable from './components/pages/Yasiru/SaloonEmployeetable';
 // import CounterClass from './components/Maleesha/ClassBaseApproch';
@@ -13,6 +14,7 @@ function App() {
         <hr></hr>
         <ServiceDetails/>
         <SaloonEmployeetable/>
+        <Header/>
     </div>
   );
 }
