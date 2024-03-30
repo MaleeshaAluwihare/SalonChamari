@@ -8,7 +8,7 @@ let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 //INSERT DATA
 app.post("/itemsAdd", async (req,res) => {
 
-    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
+    const{ serviceName, subCategoryName, itemName, itemPrice, serviceTime } = req.body;
 
     //console.log(req.body);
 
@@ -83,6 +83,7 @@ app.post("/itemsAdd", async (req,res) => {
           itemID,
           itemName,
           itemPrice,
+          serviceTime,
         });
     
         await newService.save();
@@ -288,7 +289,7 @@ app.delete("/itemsDelete/:itemID" , async(req,res) =>{
 app.put("/itemsUpdate/:itemID", async(req,res) => {
 
     let itemID = req.params.itemID;
-    const { serviceName,subCategoryName,itemName,itemPrice } = req.body;
+    const { serviceName,subCategoryName,itemName,itemPrice,serviceTime } = req.body;
 
     try{
 
@@ -296,7 +297,8 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
             serviceName,
             subCategoryName,
             itemName,
-            itemPrice
+            itemPrice,
+            serviceTime,
         }
 
         const filter = { itemID: itemID };
