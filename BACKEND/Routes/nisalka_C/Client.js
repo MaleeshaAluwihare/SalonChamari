@@ -35,8 +35,8 @@ router.route("/add").post((req,res)=> {
 //get all clients from the database
 router.route('/').get((req, res)=>{
 
-    Client.find().then((clientaccount)=>{
-        res.json(clientaccount)
+    Client.find().then((Clientaccount)=>{
+        res.json(Clientaccount)
     }).catch((err)=>{
         console.log(err);
     });
