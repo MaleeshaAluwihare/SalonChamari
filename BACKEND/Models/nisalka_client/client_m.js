@@ -13,8 +13,8 @@ const CaccountSchema = new mongoose.Schema({
     Full_name: {
     type: String,
     required: true,
-    minlength: 10,
-    maxlength: 50,
+    minlength: 5,
+    maxlength: 60,
   },
   Email: {
     type: String,
@@ -43,7 +43,7 @@ const CaccountSchema = new mongoose.Schema({
   Gender: {
     type: String,
     required: true,
-    minlength: 7,
+    minlength: 3,
     maxlength: 20,
   },
 
