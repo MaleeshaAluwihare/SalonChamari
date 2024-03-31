@@ -2,20 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
-  Client_ID: {
+
+  Email: {
     type: String,
-    required: false,
+    required: true,
+    unique: true, // Enforces unique email addresses
   },
   Full_name: {
     type: String,
     required: true,
 
-  },
-  Email: {
-    type: String,
-    required: true,
-    unique: true, // Enforces unique email addresses
-    lowercase: true // Ensures email is always lowercase for case-insensitive matching
   },
   Password: {
     type: String,
@@ -35,6 +31,6 @@ const accountSchema = new Schema({
   },
 });
 
-const Client = mongoose.model('Client', accountSchema);
+const ClientAcc = mongoose.model('ClientAcc', accountSchema);
 
-module.exports = Client;
+module.exports = ClientAcc;
