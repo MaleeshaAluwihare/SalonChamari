@@ -28,7 +28,7 @@ connection.once("open", () => {
 })
 const clientRouter=require("./Routes/nisalka_C/Client.js");
 
-app.use("/client", clientRouter);
+app.use("/Client", clientRouter);
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
