@@ -20,13 +20,13 @@ const CaccountSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 5,
-    maxlength: 255,
+    maxlength: 100,
   },
   Password: {
     type: String,
     required: true,
     minlength: 8,
-    maxlength: 1024,
+    maxlength: 50,
   },
   Phone: {
     type: String,
