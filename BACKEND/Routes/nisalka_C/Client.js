@@ -7,7 +7,7 @@ router.route("/add").post((req,res)=> {
     const Full_name =req.body.Full_name;
     const Email =req.body.Email;
     const Password =req.body.Password;
-    const Phone =Number(req.body.Phone);
+    const Phone =req.body.Phone;
     const Age =Number(req.body.Age) ;
     const Gender =req.body.Gender;
 
@@ -40,7 +40,7 @@ router.route('/').get((req, res)=>{
     }).catch((err)=>{
         console.log(err);
     });
-    
+
 })
 
 module.exports=router;
