@@ -29,7 +29,7 @@ const CaccountSchema = new mongoose.Schema({
     maxlength: 1024,
   },
   Phone: {
-    type: Number,
+    type: String,
     required: true,
     minlength: 10,
     maxlength: 15,
