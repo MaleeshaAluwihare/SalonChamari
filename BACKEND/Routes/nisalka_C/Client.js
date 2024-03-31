@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let Client = require("../../Models/nisalka_client/client_m");
 
+
 router.route("/add").post((req,res)=> {
 
     const Client_ID =req.body.Client_ID;
@@ -28,6 +29,7 @@ router.route("/add").post((req,res)=> {
         res.json("New client added")
     }).catch((err)=>{
         console.log(err);
+        res.status(500).json({ error: "Failed to add client" })
     })
 
 })
@@ -35,12 +37,12 @@ router.route("/add").post((req,res)=> {
 //get all clients from the database
 router.route('/').get((req, res)=>{
 
-    Client.find().then((client_account)=>{
-        res.json(client_account)
+    Client.find().then((Client)=>{
+        res.json(Client)
     }).catch((err)=>{
         console.log(err);
     });
 
 })
 
-module.exports=router;
+module.exports=router; 
