@@ -26,7 +26,9 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
+const clientRouter=require("./Routes/nisalka_C/Client.js");
 
+app.use("/client", clientRouter);
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
