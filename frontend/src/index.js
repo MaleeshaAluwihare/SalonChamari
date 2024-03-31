@@ -6,9 +6,8 @@ import { GlobalStyle } from './css/Pulasthi/GlobalStyle';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
-    <App />
     <GlobalStyle/>
+    <App />
   </React.StrictMode>
 );
 

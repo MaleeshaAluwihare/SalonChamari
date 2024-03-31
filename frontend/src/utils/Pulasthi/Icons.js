@@ -1,0 +1,7 @@
+export const dashboard = <i class="fa-solid fa-house"></i>
+export const budget= <i class="fa-solid fa-scale-balanced"></i>
+export const income = <i class="fa-solid fa-money-bill-trend-up"></i>
+export const expenses = <i className="fa-solid fa-money-bill-transfer"></i>
+export const employeeSalary = <i class="fa-solid fa-wallet"></i>
+export const inventoryItems = <i class="fa-solid fa-warehouse"></i>
+export const eventPackages = <i class="fa-solid fa-calendar-plus"></i>
