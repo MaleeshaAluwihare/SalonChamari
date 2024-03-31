@@ -2,14 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
-  Client_ID: {
-    type: String,
-    required: true,
-    unique: true,
-    minlength: 3,
-    maxlength: 15,
-    trim: true // Ensures leading/trailing whitespace is removed
-  },
+
   Full_name: {
     type: String,
     required: true,
