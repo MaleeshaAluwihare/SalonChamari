@@ -49,6 +49,6 @@ const CaccountSchema = new mongoose.Schema({
 
 });
 
-const Clientaccount = mongoose.model('clientaccount', CaccountSchema);
+const Clientacc = mongoose.model('client_account', CaccountSchema);
 
-module.exports = Clientaccount;
+module.exports = Clientacc;
