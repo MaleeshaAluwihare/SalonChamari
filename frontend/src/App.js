@@ -1,11 +1,16 @@
 import './App.css';
-import InventoryDash from './pages/Anoj/inventoryDash'; // Adjust the import statement to match the component name
+import InventoryDash from './pages/Anoj/inventoryDash';
+import AddInventory from './pages/Anoj/addInventory';
+import DeleteInventory from './pages/Anoj/deleteInventory';
+import ReorderInventory from './pages/Anoj/reorderInventory';
 
 function App() {
   return (
     <div className="App">
-        <h1>hello</h1>
-        <InventoryDash />
+        <InventoryDash/>
+        <AddInventory/>
+        <DeleteInventory/>
+        <ReorderInventory/>
     </div>
   );
 }
