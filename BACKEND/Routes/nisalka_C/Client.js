@@ -1,13 +1,12 @@
 const router = require("express").Router();
 let Client = require("../../Models/nisalka_client/client_m");
 
-http://localhost:8070/Client/add
+http://localhost:8070/ClientAcc/add
 
 router.route("/add").post((req,res)=> {
 
-    const Client_ID =req.body.Client_ID;
-    const Full_name =req.body.Full_name;
     const Email =req.body.Email;
+    const Full_name =req.body.Full_name;
     const Password =req.body.Password;
     const Phone =req.body.Phone;
     const Age =Number(req.body.Age) ;
@@ -16,9 +15,8 @@ router.route("/add").post((req,res)=> {
 
     const newClient = new Client({
 
-        Client_ID, 
-        Full_name, 
-        Email,  
+        Email,
+        Full_name,   
         Password,  
         Phone, 
         Age, 
@@ -38,15 +36,15 @@ router.route("/add").post((req,res)=> {
 //get all clients from the database
 router.route('/').get((req, res)=>{
 
-    Client.find().then((Client)=>{
-        res.json(Client)
+    Client.find().then((ClientAcc)=>{
+        res.json(ClientAcc)
     }).catch((err)=>{
         console.log(err);
     });
 
 })
 
-http://localhost:8070/Client/update
+http://localhost:8070/ClientAcc/update
 
 router.route("/")
 
