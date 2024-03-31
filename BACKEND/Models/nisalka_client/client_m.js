@@ -43,8 +43,8 @@ const CaccountSchema = new mongoose.Schema({
   Gender: {
     type: String,
     required: true,
-    minlength: 10,
-    maxlength: 255,
+    minlength: 7,
+    maxlength: 20,
   },
 
 });
