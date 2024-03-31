@@ -7,13 +7,13 @@ const CaccountSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: 10,
+    minlength: 3,
     maxlength: 15,
   },
     Full_name: {
     type: String,
     required: true,
-    minlength: 3,
+    minlength: 10,
     maxlength: 50,
   },
   Email: {
