@@ -5,6 +5,7 @@ http://localhost:8070/Client/add
 
 router.route("/add").post((req,res)=> {
 
+    const Client_ID =req.body.Client_ID;
     const Full_name =req.body.Full_name;
     const Email =req.body.Email;
     const Password =req.body.Password;
@@ -15,6 +16,7 @@ router.route("/add").post((req,res)=> {
 
     const newClient = new Client({
 
+        Client_ID, 
         Full_name, 
         Email,  
         Password,  
