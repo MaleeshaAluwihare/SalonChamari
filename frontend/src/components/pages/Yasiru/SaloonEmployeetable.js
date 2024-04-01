@@ -1,13 +1,28 @@
-import React,{useState} from "react";
-import Table from 'react-bootstrap/Table';
+import React,{useState,useEffect} from "react";
+import axios from "axios";
+
+export default function SaloonEmployeetable(){
+
+  const [employee, setEmployee] = useState([]);
+
+  useEffect(() => {
+
+    function getEmployee() {
+        axios.get("/SalonEmp/").then((res) => {
+            setEmployee(res.data)
+        }).catch((err) => {
+            alert(err.message);
+        })
+    }
+    getEmployee();
+}, [])
 
 
 
-function SaloonEmployeetable() {
     return (
         <div>
             <h3>Saloon Employee Table</h3>
-    <Table>
+    <table class="table">
       <thead>
         <tr>
           <th>Employee_ID</th>
@@ -15,26 +30,21 @@ function SaloonEmployeetable() {
           <th>Address</th>
           <th>Qualification</th>
           <th>Daily Salary</th>
-          <th>Attendance</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>E01</td>
-          <td>Kamal</td>
-          <td>Kandy</td>
-          <td>NVQ6</td>
-          <td>RS.1000</td>
-          <th>21</th>
-
-        </tr>
-
-     
-     
+      {employee.map((Employee) => (
+                        <tr>
+                            <td>{Employee.Employee_ID}</td>
+                            <td>{Employee.Name}</td>
+                            <td>{Employee.Address}</td>
+                            <td>{Employee.Qualification}</td>
+                            <td>{Employee.Salary}</td>
+                        </tr>
+                    ))}
       </tbody>
-    </Table>
+    </table>
         </div>
     )
 }
 
-export default SaloonEmployeetable;
