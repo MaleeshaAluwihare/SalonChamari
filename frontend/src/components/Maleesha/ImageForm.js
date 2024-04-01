@@ -45,7 +45,8 @@ export default function ImageForme(){
                         height={700}
                         width={1100}/>
                     )
-            })}
+                })
+            }
         </div>
     );
 }
