@@ -62,16 +62,17 @@
     padding: 0 20px; /* Add some padding to the left and right sides for spacing */
     transform: translateY(-50%); /* Center the overlay vertically */
   }
-  
-  .text-overlay h3 {
-    color: whitesmoke;
-    font-size: 50px;
-    font-family: 'brush script mt', cursive;
-    padding-bottom: 10px;
-    /* white-space: pre-line; Preserve line breaks */
-    line-height: 1.2; /* Adjust line height */
-    margin: 0; /* Remove default margin */
-  }
+
+    
+ .text-overlay h3 {
+  color: whitesmoke;
+  font-size: 50px;
+  font-family: 'brush script mt', cursive;
+  padding-bottom: 10px;
+  /* white-space: pre-line; Preserve line breaks */
+  line-height: 1.2; /* Adjust line height */
+  margin: 0; /* Remove default margin */
+}
   
  .text-overlay h2 {
   color: whitesmoke;

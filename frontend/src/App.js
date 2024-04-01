@@ -1,4 +1,5 @@
 import './App.css';
+
 // import AddService from './components/Maleesha/AddService';
 // import ServiceDetails from './components/Maleesha/SearchService';
 // import CounterClass from './components/Maleesha/ClassBaseApproch';
@@ -7,8 +8,8 @@ import './App.css';
 // import MainPage from './pages/Maleesha/MainPage';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import HairServices from './pages/Maleesha/HairService';
-import ImageForme from './components/Maleesha/ImageForm';
-
+// import ImageForme from './components/Maleesha/ImageForm';
+import LandingPage from './pages/Maleesha/LandingPage';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
-        <ImageForme/>
+        {/* <ImageForme/> */}
+        <LandingPage/>
     </div>
   );
 }
