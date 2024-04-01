@@ -1,8 +1,6 @@
 const express = require('express')
 const app = express();
-var multer = require('multer');
 let Service = require("../../Models/Maleesha/ServiceModel");
-let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 
 
 //INSERT DATA
@@ -323,53 +321,5 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
     }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//image upload
-const fs = require('fs');
-const path = require('path');
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "uploads/");
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now();
-        cb(null,uniqueSuffix + file.originalname);
-    },
-});
-
-var upload = multer({ storage: storage });
-
-app.get('/', (req, res) => {
-
-    imgSchema.find({})
-    .then((data) => {
-        res.render('imagepage', { items: data });
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-    });
-});
-
-app.post('/imageUpload', upload.single('image'), (req, res) => {
-
-    var obj = {
-        imgId: req.body.imageId,
-        name: req.body.name,
-        image: {
-            data: fs.readFileSync(path.join(__dirname, '/uploads/', req.file.filename)),
-            contentType: 'image/png'
-        }
-    };
-    imgSchema.create(obj)
-    .then((item) => {
-        res.redirect('/');
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-    });
-});
 
 module.exports = app;       

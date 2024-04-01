@@ -13,6 +13,7 @@ const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js"
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const searchRouter = require("./Routes/Maleesha/searchService");
+const imageUpload = require("./Routes/Maleesha/imageUploadRoute.js");
 const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
 const salonRouter = require("./Routes/Yasiru/Saloon.js");
@@ -59,6 +60,7 @@ app.use("/finance",eventPackageRouter);
 //maleesha
 app.use("/services",servicesRouter)
 app.use("/services",searchRouter);
+app.use("/imageUpload",imageUpload);
 // app.use("/mail",sendMailRouter);
 
 //chavidu

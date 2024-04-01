@@ -6,7 +6,8 @@ import './App.css';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
 // import ServiceList from './components/Maleesha/ServiceList';
-import HairServices from './pages/Maleesha/HairService';
+// import HairServices from './pages/Maleesha/HairService';
+import ImageForme from './components/Maleesha/ImageForm';
 
 
 
@@ -21,7 +22,8 @@ function App() {
         {/* <Header/> */}
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
-        <HairServices/>
+        {/* <HairServices/> */}
+        <ImageForme/>
     </div>
   );
 }
