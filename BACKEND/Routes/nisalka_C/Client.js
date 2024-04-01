@@ -1,7 +1,9 @@
 const router = require("express").Router();
-let Client = require("../../Models/nisalka_client/client_m");
+let ClientAcc = require("../../Models/nisalka_client/client_m");
 
 http://localhost:8070/ClientAcc/add
+
+//Insert or create
 
 router.route("/add").post((req,res)=> {
 
@@ -32,20 +34,19 @@ router.route("/add").post((req,res)=> {
     })
 
 })
+//Read route - get all booking data
+router.route("/ClientAcc").get((req, res) => {
 
-//get all clients from the database
-router.route('/').get((req, res)=>{
-
-    Client.find().then((ClientAcc)=>{
+    ClientAcc.find().then((ClientAcc) => {
         res.json(ClientAcc)
-    }).catch((err)=>{
-        console.log(err);
-    });
 
+    }).catch((err) => {
+
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get user", error: err.message });
+    })
 })
 
-http://localhost:8070/ClientAcc/update
 
-router.route("/")
 
 module.exports=router; 
