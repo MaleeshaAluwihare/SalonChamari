@@ -1,0 +1,43 @@
+.ServiceRec {
+    background-color: plum;
+    height: 300px;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center;
+  }
+  
+  .ServiceRec h2 {
+    margin: 40px 0; /* Adjust top and bottom margin */
+  }
+  
+  .ServiceCircles {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    width: 100%;
+    padding: 0 20px; /* Add padding to create space between the circles and the rectangle's edge */
+
+  }
+  
+  .ServicesButton {
+    background-color: #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex; /* Add display flex */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    text-decoration: none; /* Remove underline */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .ServicesButton:hover {
+    background-color: black;
+    color: #FFCF00;
+  }
+  
+  

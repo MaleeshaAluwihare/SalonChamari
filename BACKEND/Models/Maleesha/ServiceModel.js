@@ -31,7 +31,14 @@ const serviceSchema = new Schema({
     required: true,
     min: 0,
     default: 0
+  },
+  serviceTime: {
+    type:Number,
+    required: true,
+    default:0,
+    min:0,
   }
+  
 });
 
 //the first para is document(table) name and the second para is Schema
