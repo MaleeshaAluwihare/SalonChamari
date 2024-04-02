@@ -15,7 +15,7 @@ router.route("/add").post((req,res)=> {
     const Gender =req.body.Gender;
 
 
-    const newClient = new Client({
+    const newClient = new ClientAcc({
 
         Email,
         Full_name,   
@@ -34,8 +34,11 @@ router.route("/add").post((req,res)=> {
     })
 
 })
-//Read route - get all booking data
-router.route("/ClientAcc").get((req, res) => {
+
+http://localhost:8070/ClientAcc/display
+
+// get all user data
+router.route("/display").get((req, res) => {
 
     ClientAcc.find().then((ClientAcc) => {
         res.json(ClientAcc)
@@ -47,6 +50,65 @@ router.route("/ClientAcc").get((req, res) => {
     })
 })
 
+http://localhost:8070/ClientAcc/get/
+
+//get user by id
+
+router.route("/get/:id").get(async(req,res)=>{
+    let userId = req.params.id;
+
+    const user = await ClientAcc.findById(userId)
+    .then((ClientAcc)=>{
+        res.status(200).send({status:"user fetched",ClientAcc})
+    }).catch((error)=>{
+        console.log(error);
+        res.status(500).send({ststud:"error with get user",error:error.message});
+    })
+})
+
+http://localhost:8070/ClientAcc/update/
+
+//Update by ID
+
+
+router.route("/update/:id").put(async(req,res)=>{
+
+    let userId = req.params.id;
+    const{Email,Full_name,Password,Phone,Age,Gender} = req.body;
+
+    const updateUser = {
+        Email,
+        Full_name,
+        Password,
+        Phone,
+        Age,
+        Gender
+    }
+
+    const update = await ClientAcc.findByIdAndUpdate (userId,updateUser)
+    .then(() =>{
+        res.status(200).send({status:"User updated"})
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send({status:"error with updating data"});
+    })
+})
+
+http://localhost:8070/ClientAcc/delete/
+
+//delete by ID
+
+router.route("/delete/:id").delete(async(req,res)=>{
+    let userId = req.params.id;
+
+    await ClientAcc.findByIdAndDelete(userId)
+    .then(()=>{
+        res.status(200).send({status:"user deleted"});
+    }).catch((error)=>{
+        console.log(error);
+        res.status(500).send({status:"error with deleting",error:error.message});
+    })
+})
 
 
 module.exports=router; 
