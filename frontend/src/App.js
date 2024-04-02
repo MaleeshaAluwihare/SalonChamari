@@ -9,7 +9,8 @@ import './App.css';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
-import LandingPage from './pages/Maleesha/LandingPage';
+// import LandingPage from './pages/Maleesha/LandingPage';
+import QuotationPage from './pages/Maleesha/QuotationPage';
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
         {/* <ImageForme/> */}
-        <LandingPage/>
+        {/* <LandingPage/> */}
+        <QuotationPage/>
     </div>
   );
 }

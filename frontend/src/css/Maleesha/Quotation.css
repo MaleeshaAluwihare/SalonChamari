@@ -1,0 +1,114 @@
+.mainContainer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    padding: 20px;
+}
+
+.contentContainer {
+    margin-top: 10px;
+    text-align: center; /* Center-align the content within the container */
+    color: white;
+}
+
+.headingContainer {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    line-height: 0.8;
+}
+
+.dropdownContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Center-align the dropdowns horizontally */
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    margin-bottom: 20px; /* Add space between dropdowns */
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+}
+
+select:focus {
+    outline: none;
+}
+
+
+.addServiceBtn{
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.serviceTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.serviceTable th, .serviceTable td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.serviceTable th {
+    background-color: #7d7d7d;
+    color: black;
+}
+
+.serviceTable tbody tr:nth-child(odd) {
+    background-color: #FFCF00;
+    color: black;
+}
+
+.serviceTable tbody tr:nth-child(even) {
+    background-color: #ffffff;
+    color:black;
+}
+
+/* Quotation.css */
+.quantityCell {
+    text-align: center;
+}
+
+.quantityButton {
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+
+h4{
+    margin-top: 40px;
+}
+
+.totalAmountContainer{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 35px;
+}
