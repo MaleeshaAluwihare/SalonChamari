@@ -4,6 +4,17 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function EditEmployeeDetails(){
+   /*const [EmployeeID,setEmployee_ID]=useState("");
+    const [Employee,setEmployee]=useState(null);
+
+    const[Name,setName]=useState("");
+    const[Address,setAddress]=useState("");
+    const[Qualification,setQualification]=useState("");
+    const[Salary,setSalary]=useState("");
+
+    const getEmployeeDetails =() =>{
+        axios.get
+    }*/
     return(
         
         <div>

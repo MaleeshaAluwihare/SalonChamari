@@ -8,7 +8,7 @@ import EditEmployeeDetails from './components/pages/Yasiru/EditEmployeeDetails';
 import StudioEmployeeDetails from './components/pages/Yasiru/StudioEmployeeDetails';
 import Employeereservation from './components/pages/Yasiru/Employeereservation';
 import EmployeeProfile from './components/pages/Yasiru/EmployeeProfile';
-
+import DeleteEmployeedatials from './components/pages/Yasiru/DeleteEmployeedetails';
 function App() {
   return (
     <div className="App">
@@ -21,7 +21,10 @@ function App() {
         <EditEmployeeDetails/>
         <StudioEmployeeDetails/>
         <Employeereservation/> 
-        <EmployeeProfile/>       
+        <EmployeeProfile/>  
+       <DeleteEmployeedatials/>
+       
+             
     </div>
   );
 }
