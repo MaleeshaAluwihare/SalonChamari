@@ -9,13 +9,13 @@ let Faq = require("../../Models/Dasun/FaqModel");
 //http: //localhost:8070/FaqModel/add
 router.route("/add").post((req, res) => {
 
-    const faq_id = req.body.faqId;
+    const faqId = req.body.faqId;
     const question = req.body.question;
     const answer = req.body.answer;
 
     const newFaq = new Faq({
 
-        faq_id,
+        faqId,
         question,
         answer
 
@@ -59,9 +59,9 @@ router.route("/").get((req, res) => {
 
 //UPDATE
 //http: //localhost:8070/FaqModel/update/:faqid
-router.route("/update/:faq_id").put(async (req, res) => {
+router.route("/update/:faqId").put(async (req, res) => {
 
-    let faqId = req.params.faq_id;
+    let faqId = req.params.faqId;
     const {question, answer} = req.body;
 
     try{
@@ -70,7 +70,7 @@ router.route("/update/:faq_id").put(async (req, res) => {
             answer
         }
 
-        const filter = {faq_id : faqId};
+        const filter = {faqId : faqId};
 
         const update = await Faq.findOneIdAndUpdate(filter, updateFaq,{
             new: true
@@ -99,9 +99,9 @@ router.route("/update/:faq_id").put(async (req, res) => {
 
 //DELETE
 //http: //localhost:8070/FaqModel/delete/:faqid
-router.route("/delete/:faq_id").delete(async (req, res) => {
+router.route("/delete/:faqId").delete(async (req, res) => {
 
-    let faqId = req.params.faq_id;
+    let faqId = req.params.faqId;
 
     await Faq.findByIdAndDelete(faqId).then(() => {
 
@@ -123,13 +123,13 @@ router.route("/delete/:faq_id").delete(async (req, res) => {
 
 //GetOnlyOne
 //http: //localhost:8070/FaqModel/get/:faqid
-router.route("/get/:faq_id").get(async (req, res) => {
+router.route("/get/:faqId").get(async (req, res) => {
 
     try{
 
-        const faqId = req.params.faq_id;
+        const faqId = req.params.faqId;
 
-        const faq = await Faq.findOne({faq_id: faqId});
+        const faq = await Faq.findOne({faqId: faqId});
 
         if(!faq){
             return res.status(404).send({status: "Faq not found"});
@@ -145,8 +145,6 @@ router.route("/get/:faq_id").get(async (req, res) => {
     }
 
 });
-
-
 
 
 
