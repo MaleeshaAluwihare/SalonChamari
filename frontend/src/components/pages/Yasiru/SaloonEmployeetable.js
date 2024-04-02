@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SaloonEmployeetable() {
   const [employee, setEmployee] = useState([]);
   const [EmployeeID, setEmployee_ID] = useState("");
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     function getEmployee() {
@@ -47,14 +50,14 @@ export default function SaloonEmployeetable() {
               <td>{Employee.Qualification}</td>
               <td>{Employee.Salary}</td>
               <td>
-                <button className='text-decoration-none btn btn-sm btn btn-success'>update</button>
+                <button className='text-decoration-none btn btn-sm btn btn-success' onClick={()=>navigate('/Edit')} >update</button>
                 <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.Employee_ID)}>Delete</button>
-                <button className="text-decoration-none btn btn-sm btn btn-success">Add</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <button className="text-decoration-none btn btn-sm btn btn-success" onClick={()=>navigate('/Add')}>Add Employee</button>
     </div>
   );
 }
