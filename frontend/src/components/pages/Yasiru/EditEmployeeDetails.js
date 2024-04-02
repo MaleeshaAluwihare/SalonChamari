@@ -23,7 +23,7 @@ export default function EditEmployeeDetails(){
             setSalary(res.data.Employee.Salary);
 
         }).catch((err)=>{
-            alert("Studentnotfound");
+            alert("Employee Notfound");
         });
     };
 
