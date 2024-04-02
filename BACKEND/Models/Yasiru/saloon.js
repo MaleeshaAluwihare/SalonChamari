@@ -27,7 +27,13 @@ const saloonSchema = new Schema({
     Salary:{
         type:Number,
         required:true
+    },
+
+    Attendance:{
+        type:Number,
+        required:true
     }
+    
 
 })
 

@@ -12,6 +12,7 @@ import Employeereservation from './components/pages/Yasiru/Employeereservation';
 import EmployeeProfile from './components/pages/Yasiru/EmployeeProfile';
 import DeleteEmployeedatials from './components/pages/Yasiru/DeleteEmployeedetails';
 import NavBars from './components/Yasiru/Navbar';
+import ProfileLoging from './components/pages/Yasiru/Profileloging';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path ='/Reservation' element ={<Employeereservation/>} />
         <Route path ='/profile' element ={<EmployeeProfile/>} />
         <Route path ='/Deletesaloon' element ={<DeleteEmployeedatials/>} />
+        <Route path ='/Profilloging' element ={<ProfileLoging/>} />
         
 
         

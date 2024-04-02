@@ -9,6 +9,7 @@ router.route("/add").post((req,res)=>{
     const Address =req.body.Address;
     const Qualification = req.body.Qualification;
     const Salary = Number(req.body.Salary);
+    const Attendance = Number(req.body.Attendance);
 
  
 
@@ -17,7 +18,8 @@ router.route("/add").post((req,res)=>{
         Name,
         Address,
         Qualification,
-        Salary
+        Salary,
+        Attendance
     })
 
     newEmployee.save().then(()=>{
@@ -52,7 +54,8 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
         Name,
         Address,
         Qualification,
-        Salary
+        Salary,
+        Attendance
     }
 
     const filter = {Employee_ID: employee_ID};

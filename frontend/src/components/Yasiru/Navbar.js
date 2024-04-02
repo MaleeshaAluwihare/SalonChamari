@@ -19,6 +19,9 @@ export default function NavBars () {
           <Nav.Link href="/SaloonTable">Saloon Employee</Nav.Link>
           <Nav.Link href="/Add">Saloon add</Nav.Link>
           <Nav.Link href="/profile">profile</Nav.Link>
+          <Nav.Link href="/Profilloging">Profile_loging</Nav.Link>
+           
+
         </Nav>
       </Container>
     </Navbar>
