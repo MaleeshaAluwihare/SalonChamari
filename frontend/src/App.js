@@ -12,6 +12,10 @@ import './App.css';
 // import LandingPage from './pages/Maleesha/LandingPage';
 import QuotationPage from './pages/Maleesha/QuotationPage';
 
+// import InventoryDash from './pages/Anoj/inventoryDash';
+// import AddInventory from './pages/Anoj/addInventory';
+// import DeleteInventory from './pages/Anoj/deleteInventory';
+// import ReorderInventory from './pages/Anoj/reorderInventory';
 
 function App() {
 
@@ -28,6 +32,12 @@ function App() {
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
         <QuotationPage/>
+        {/* <LandingPage/>
+
+      <InventoryDash/>
+       <AddInventory/>
+       <DeleteInventory/>
+     <ReorderInventory/> */}
     </div>
   );
 }
