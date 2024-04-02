@@ -9,11 +9,13 @@ let Faq = require("../../Models/Dasun/FaqModel");
 //http: //localhost:8070/FaqModel/add
 router.route("/add").post((req, res) => {
 
+    const faq_id = req.body.faqId;
     const question = req.body.question;
     const answer = req.body.answer;
 
     const newFaq = new Faq({
 
+        faq_id,
         question,
         answer
 
@@ -57,29 +59,39 @@ router.route("/").get((req, res) => {
 
 //UPDATE
 //http: //localhost:8070/FaqModel/update/:faqid
-router.route("/update/:faqid").put(async (req, res) => {
+router.route("/update/:faq_id").put(async (req, res) => {
 
-    let faqId = req.params.faqid;
+    let faqId = req.params.faq_id;
     const {question, answer} = req.body;
 
-    const updateFaq = {
-        question,
-        answer
+    try{
+        const updateFaq = {
+            question,
+            answer
+        }
+
+        const filter = {faq_id : faqId};
+
+        const update = await Faq.findOneIdAndUpdate(filter, updateFaq,{
+            new: true
+        });
+
+        if(!updateFaq){
+            return res.status(404).json({message: "Faq not found"});
+        }
+
+        await updateFaq.save();
+
+        res.json({message: "Faq updated"});
+
+    }catch(error){
+
+        console.error(error.message);
+        res.status(500).send({status: "Error with updating data"});
+
     }
 
-    const update = await Faq.findByIdAndUpdate(faqId, updateFaq).then(() => {
-
-        res.status(200).send({status : "Faq Updated"});
-
-    }).catch((err) => {
-
-        console.log(err);
-        res.status(500).send({sttus : "Error with updating data", error: err.message});
-
-    })
-
-
-})
+});
 
 
 
@@ -87,9 +99,9 @@ router.route("/update/:faqid").put(async (req, res) => {
 
 //DELETE
 //http: //localhost:8070/FaqModel/delete/:faqid
-router.route("/delete/:faqid").delete(async (req, res) => {
+router.route("/delete/:faq_id").delete(async (req, res) => {
 
-    let faqId = req.params.faqid;
+    let faqId = req.params.faq_id;
 
     await Faq.findByIdAndDelete(faqId).then(() => {
 
@@ -111,22 +123,28 @@ router.route("/delete/:faqid").delete(async (req, res) => {
 
 //GetOnlyOne
 //http: //localhost:8070/FaqModel/get/:faqid
-router.route("/get/:faqid").get(async (req, res) => {
+router.route("/get/:faq_id").get(async (req, res) => {
 
-    let faqId = req.params.faqid;
-    
-    const faq = await Faq.findById(faqId).then(() => {
+    try{
 
-        res.status(200).send({status: "Faq Fetched", faq: faq})
+        const faqId = req.params.faq_id;
 
-    }).catch(() => {
+        const faq = await Faq.findOne({faq_id: faqId});
 
-        console.log(err.message);
-        res.status(500).send({status: "Error with get faq", error:err.message});
+        if(!faq){
+            return res.status(404).send({status: "Faq not found"});
+        }
 
-    })
+        res.status(200).send({status: "Faq fetched", faq: faq});
 
-})
+    }catch(err){
+
+        console.error(err.message);
+        res.status(500).send({status: "Error with getting faq", error: err.message});
+
+    }
+
+});
 
 
 

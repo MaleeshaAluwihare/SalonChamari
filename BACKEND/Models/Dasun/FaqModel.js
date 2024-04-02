@@ -4,14 +4,20 @@ const Schema = mongoose.Schema;
 
 const faqSchema = new Schema({
 
+    faqId : {
+        type : String,
+        required : true,
+        unique : true
+    },
+
     question : {
         type : String,
-        require : true
+        required : true
     },
 
     answer : {
         type : String,
-        require : true
+        required : true
     }
 
 })
