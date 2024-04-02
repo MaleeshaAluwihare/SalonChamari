@@ -11,6 +11,10 @@ import './App.css';
 // import ImageForme from './components/Maleesha/ImageForm';
 import LandingPage from './pages/Maleesha/LandingPage';
 
+// import InventoryDash from './pages/Anoj/inventoryDash';
+// import AddInventory from './pages/Anoj/addInventory';
+// import DeleteInventory from './pages/Anoj/deleteInventory';
+// import ReorderInventory from './pages/Anoj/reorderInventory';
 
 function App() {
 
@@ -26,6 +30,11 @@ function App() {
         {/* <HairServices/> */}
         {/* <ImageForme/> */}
         <LandingPage/>
+
+//         <InventoryDash/>
+//         <AddInventory/>
+//         <DeleteInventory/>
+//         <ReorderInventory/>
     </div>
   );
 }
