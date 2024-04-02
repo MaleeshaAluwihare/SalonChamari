@@ -49,7 +49,6 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
 
     const{Name, Address, Qualification, Salary} = req.body;
 
-    try{
     const updateEmployee={
         Name,
         Address,
@@ -58,24 +57,11 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
         Attendance
     }
 
-    const filter = {Employee_ID: employee_ID};
-
-    const updatedEmployee = await Employee.findOneAndUpdate(filter,updateEmployee,{
-        new: true
-    });
-
-    if(!updatedEmployee){
-        return res.status(404).json({message: Employee_not_fonded});
-    }
-
-    await updatedEmployee.save();
-
-    res.json({message: "Employee_details_updated"})
-
-    }catch(error){
-        console.error(error.message);
-        res.status(500).send({status:"Error with updating data"});
-    }
+    await Employee.findOneAndUpdate(employee_ID,updateEmployee).then(() => {
+        res.json(200).send ({ status:"Employee Updated"})
+    }).catch(()=>{
+        res.status(500).send({ status: "Error with updating Employee" });
+    })
        
 });
 
@@ -91,19 +77,15 @@ router.route("/delete/:Employee_ID").delete(async(req,res) =>{
 })
 
 router.route("/get/:Employee_ID").get(async (req, res) => {
-    try {
-        const Emp_ID = req.params.Employee_ID;
-        const employee = await Employee.findOne({Employee_ID: Emp_ID});
-        
-        if (!employee) {
-            return res.status(404).send({ status: "Employee not found" });
-        }
-        
-        res.status(200).send({ status: "Employee fetched", employee: employee });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send({ status: "Error with getting employee", error: err.message });
-    }
+
+        let employee_ID = req.params.id;
+
+        const employee = await Employee.findOne(employee_ID).then ((employee) => {
+            res.status(200).send({ status: "Employee fetched", /*sending to frontend*/ student: student });
+
+        }).catch(() => {
+            res.status(500).send({ status: "Employee not found" });
+        })
 });
 
 module.exports = router;
