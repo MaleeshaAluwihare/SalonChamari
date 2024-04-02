@@ -9,7 +9,8 @@ import './App.css';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
-import LandingPage from './pages/Maleesha/LandingPage';
+// import LandingPage from './pages/Maleesha/LandingPage';
+import QuotationPage from './pages/Maleesha/QuotationPage';
 
 // import InventoryDash from './pages/Anoj/inventoryDash';
 // import AddInventory from './pages/Anoj/addInventory';
@@ -29,12 +30,14 @@ function App() {
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
         {/* <ImageForme/> */}
-        <LandingPage/>
+        {/* <LandingPage/> */}
+        <QuotationPage/>
+        {/* <LandingPage/>
 
-//         <InventoryDash/>
-//         <AddInventory/>
-//         <DeleteInventory/>
-//         <ReorderInventory/>
+      <InventoryDash/>
+       <AddInventory/>
+       <DeleteInventory/>
+     <ReorderInventory/> */}
     </div>
   );
 }
