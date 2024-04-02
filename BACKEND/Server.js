@@ -27,8 +27,11 @@ connection.once("open", () => {
     console.log("MongoDB connection success!");
 })
 const clientRouter=require("./Routes/nisalka_C/Client.js");
+const adminRouter=require("./Routes/nisalka_C/admin_prof.js")
 
+app.use("/AdminProfile",adminRouter);
 app.use("/ClientAcc", clientRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
