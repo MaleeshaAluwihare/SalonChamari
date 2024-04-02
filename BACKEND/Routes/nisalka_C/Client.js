@@ -62,7 +62,7 @@ router.route("/get/:id").get(async(req,res)=>{
         res.status(200).send({status:"user fetched",ClientAcc})
     }).catch((error)=>{
         console.log(error);
-        res.status(500).send({ststud:"error with get user",error:error.message});
+        res.status(500).send({status:"error with get user",error:error.message});
     })
 })
 
