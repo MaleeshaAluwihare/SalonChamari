@@ -134,7 +134,7 @@ app.get("/hairCut", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HK/ }); // Using a regular expression to match the prefix
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json([ ]);
         }
         res.json(hairServices);
 
@@ -150,7 +150,7 @@ app.get("/hairColor", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HC/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json( [ ] );
         }
         res.json(hairServices);
 
@@ -166,7 +166,7 @@ app.get("/hairTreatment", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HT/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json([ ]);
         }
         res.json(hairServices);
 
@@ -183,7 +183,7 @@ app.get("/skinTreatment", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^SF/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(404).json([ ]);
         }
         res.json(hairServices);
 
@@ -199,7 +199,7 @@ app.get("/nailManicure", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^NM/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(404).json([ ]);
         }
         res.json(hairServices);
 
@@ -215,7 +215,7 @@ app.get("/nailLacqer", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^NN/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(404).json([ ]);
         }
         res.json(hairServices);
 
@@ -231,7 +231,7 @@ app.get("/bridalBride", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^BB/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(404).json([ ]);
         }
         res.json(hairServices);
 
@@ -247,7 +247,7 @@ app.get("/bridalGroom", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^BG/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(404).json([ ]);
         }
         res.json(hairServices);
 
