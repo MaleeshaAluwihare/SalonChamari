@@ -1,17 +1,19 @@
 import './App.css';
 
+//Maleesha
 // import AddService from './components/Maleesha/AddService';
 // import ServiceDetails from './components/Maleesha/SearchService';
 // import CounterClass from './components/Maleesha/ClassBaseApproch';
 // import CounterFunction from './components/Maleesha/CounterFunction';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
-// import ServiceList from './components/Maleesha/ServiceList';
-// import HairServices from './pages/Maleesha/HairService';
+import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
-import QuotationPage from './pages/Maleesha/QuotationPage';
+// import QuotationPage from './pages/Maleesha/QuotationPage';
+// import ServiceList from './components/Maleesha/ServiceList';
 
+//Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
 // import AddInventory from './pages/Anoj/addInventory';
 // import DeleteInventory from './pages/Anoj/deleteInventory';
@@ -28,16 +30,16 @@ function App() {
         {/* <Header/> */}
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
-        {/* <HairServices/> */}
+        <HairServices/>
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
-        <QuotationPage/>
-        {/* <LandingPage/>
+        {/* <QuotationPage/> */}
+        {/* <LandingPage/>*/}
 
-      <InventoryDash/>
-       <AddInventory/>
-       <DeleteInventory/>
-     <ReorderInventory/> */}
+        {/* <InventoryDash/>
+        <AddInventory/>
+        <DeleteInventory/>
+        <ReorderInventory/> */}
     </div>
   );
 }
