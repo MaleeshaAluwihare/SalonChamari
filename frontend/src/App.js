@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import AddService from './components/Maleesha/AddService';
 // import Header from './components/Maleesha/Header';
 // import ServiceDetails from './components/Maleesha/SearchService';
-import SaloonEmployeetable from './components/pages/Yasiru/SaloonEmployeetable';
-import Addemployee from './components/pages/Yasiru/Addemployee';
-import EditEmployeeDetails from './components/pages/Yasiru/EditEmployeeDetails';
-import StudioEmployeeDetails from './components/pages/Yasiru/StudioEmployeeDetails';
-import Employeereservation from './components/pages/Yasiru/Employeereservation';
-import EmployeeProfile from './components/pages/Yasiru/EmployeeProfile';
-import DeleteEmployeedatials from './components/pages/Yasiru/DeleteEmployeedetails';
+import SaloonEmployeetable from './pages/Yasiru/SaloonEmployeetable'
+import Addemployee from './pages/Yasiru/Addemployee'
+import EditEmployeeDetails from './pages/Yasiru/Addemployee';
+import StudioEmployeeDetails from './pages/Yasiru/StudioEmployeeDetails';
+import Employeereservation from './pages/Yasiru/Employeereservation';
+import EmployeeProfile from './pages/Yasiru/EmployeeProfile'
+import DeleteEmployeedatials from './pages/Yasiru/DeleteEmployeedetails';
 import NavBars from './components/Yasiru/Navbar';
-import ProfileLoging from './components/pages/Yasiru/Profileloging';
+import ProfileLoging from './pages/Yasiru/Profileloging';
 
 function App() {
   return (
