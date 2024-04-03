@@ -36,6 +36,11 @@ const faqsRouter = require("./Routes/Dasun/faqsRoute.js");
 app.use("/Faqs", faqsRouter);
 
 
+//url (http: //localhost:8070/Feedbacks)
+const feedbackRouter = require("./Routes/Dasun/FeedbackRoute.js");
+app.use("/Feedbacks", feedbackRouter);
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
