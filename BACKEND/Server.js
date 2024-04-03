@@ -35,6 +35,10 @@ connection.once("open", () => {
 const faqRouter = require("./Routes/Dasun/faqRoute.js");
 app.use("/faq", faqRouter);
 
+//url (http: //localhost:8070/Faqs)
+const faqsRouter = require("./Routes/Dasun/faqsRoute.js");
+app.use("/Faqs", faqsRouter);
+
 
 
 app.listen(PORT, () => {

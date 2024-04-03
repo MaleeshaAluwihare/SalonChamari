@@ -6,7 +6,7 @@ let Faqs = require("../../Models/Dasun/FaqsModel");
 
 
 //ADD
-//http: localhost:8070/Faqs/add
+//http: //localhost:8070/Faqs/add
 router.route("/add").post((req,res) => {
 
     const question = req.body.Question;
