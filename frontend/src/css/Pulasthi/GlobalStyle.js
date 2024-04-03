@@ -18,6 +18,8 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey: #aaa;
         --color-accent: #F56692;
         --color-delete: #FF0000;
+        --color-lightYellow: #e5de00;
+        --color-DarkYellow: #e6b400;
     }
 
     body{

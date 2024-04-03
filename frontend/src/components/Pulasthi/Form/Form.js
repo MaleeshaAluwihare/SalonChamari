@@ -3,6 +3,8 @@ import styled from "styled-components"
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
+import Button from "../Button/Button";
+import { plus } from "../../../utils/Pulasthi/Icons";
 
 function Form() {
 
@@ -90,7 +92,15 @@ function Form() {
             />    
         </div>
         <div className="submit-btn">
-            <button>Add-Budget</button>
+            {/* import the Button component */}
+            <Button 
+                name={'Add Budget'}
+                icon={plus}
+                bPad={'.8rem 1.6rem'}
+                bRad={'30px'}
+                bg={'var(--color-lightYellow'}
+                color={'#fff'}
+            />
         </div>
     </FormStyled>
   )
@@ -137,7 +147,7 @@ const FormStyled = styled.form`
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
             &:hover{
-                background-color:yellow; //*
+                background: var(--color-DarkYellow) !important;
             }
         }
     }

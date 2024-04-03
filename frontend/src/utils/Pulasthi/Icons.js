@@ -5,3 +5,4 @@ export const expenses = <i className="fa-solid fa-money-bill-transfer"></i>
 export const employeeSalary = <i class="fa-solid fa-wallet"></i>
 export const inventoryItems = <i class="fa-solid fa-warehouse"></i>
 export const eventPackages = <i class="fa-solid fa-calendar-plus"></i>
+export const plus = <i class="fa-solid fa-square-plus"></i>
