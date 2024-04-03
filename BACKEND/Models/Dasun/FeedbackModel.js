@@ -27,11 +27,11 @@ const feedbackSchema = new schema({
     },
 
     sendDate: {
-        type: Date,
+        type: String,
         required: true
     },
 
-});
+}, {timestamps : true});
 
 const Feedbacks = mongoose.model('feedback', feedbackSchema);
 
