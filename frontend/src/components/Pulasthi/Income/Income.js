@@ -1,12 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 import { InnerLayout } from "../../../css/Pulasthi/Layouts";
+import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 
 function Income() {
+
+  const {addIncome} = useGlobalContext();
+
   return (
     <IncomeStyled>
       <InnerLayout>
-        <p>Income</p>
+        <h1>Income</h1>
       </InnerLayout>
     </IncomeStyled>
   )

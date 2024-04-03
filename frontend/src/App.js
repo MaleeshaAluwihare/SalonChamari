@@ -11,11 +11,15 @@ import EmployeeSalary from './components/Pulasthi/EmployeeSalary/EmployeeSalary'
 import InventoryItems from './components/Pulasthi/InventoryItems/InventoryItems';
 import EventPackages from './components/Pulasthi/EventPackages/EventPackages';
 import Dashboard from './components/Pulasthi/Dashboard/Dashboard';
+import { useGlobalContext } from './context/Pulasthi/globalContext';
 
 
 function App() {
 
   const [active, setActive] = useState(1)
+
+  const global=useGlobalContext()
+  console.log(global);
 
   const displayData = () => {
     switch(active){

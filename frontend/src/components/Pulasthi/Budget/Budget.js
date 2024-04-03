@@ -1,14 +1,25 @@
 import React from "react"
 import styled from "styled-components"
 import { InnerLayout } from "../../../css/Pulasthi/Layouts";
+import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
+import Form from "../Form/Form";
 
 function Budget() {
+
+  const {addBudget} = useGlobalContext();
+
   return (
-    <InnerLayout>
-      <BudgetStyled>
-        Budget
-      </BudgetStyled>
-    </InnerLayout>
+    <BudgetStyled>
+      <InnerLayout>
+        <h1>Budget</h1>
+        <div className="budget-content">
+          <div className="form-container"></div>
+          <div className="budgets">
+              <Form/>
+          </div>
+        </div>
+      </InnerLayout>
+    </BudgetStyled>
   )
 };
 
