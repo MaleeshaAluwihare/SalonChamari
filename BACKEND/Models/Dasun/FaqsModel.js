@@ -3,12 +3,12 @@ const schema = mongoose.Schema;
 
 const faqSchema = new schema({
 
-    Question: {
+    question: {
         type: String,
         required: true
     },
 
-    Answer: {
+    answer: {
         type: String,
         required: true
     },
