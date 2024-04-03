@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 
-export default function EditEmployeeDetails(){
+export default function Addemployee(){
 
     const[Employee_ID, setEmployee_ID] =useState("")
     const[Name, setName] =useState("")
@@ -13,7 +13,12 @@ export default function EditEmployeeDetails(){
     const[Salary, setsalary] =useState("")
 
     function sendData(e){
+       
      e.preventDefault();
+    
+
+     
+     
         
      const newEmployee ={
         Employee_ID,
@@ -26,11 +31,7 @@ export default function EditEmployeeDetails(){
      axios.post("/SalonEmp/add",newEmployee).then(()=>{
         alert("Employee added")
 
-        setEmployee_ID("");
-        setName("");
-        setAddress("");
-        setQualification("");
-        setsalary("")
+       
 
     }).catch((err)=>{
         alert(err)

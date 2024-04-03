@@ -19,8 +19,8 @@ export default function SaloonEmployeetable() {
     getEmployee();
   }, []);
 
-  const deleteEmployee = (employeeID) => {
-    axios.delete(`/SalonEmp/delete/${employeeID}`).then(res => {
+  const deleteEmployee = (EmployeeID) => {
+    axios.delete(`/SalonEmp/delete/${EmployeeID}`).then(res => {
       alert('Employee deleted');
       // Update the employee list after deletion if necessary
     }).catch(error => {
@@ -50,8 +50,8 @@ export default function SaloonEmployeetable() {
               <td>{Employee.Qualification}</td>
               <td>{Employee.Salary}</td>
               <td>
-                <button className='text-decoration-none btn btn-sm btn btn-success' onClick={()=>navigate('/Edit')} >update</button>
-                <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.Employee_ID)}>Delete</button>
+              <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit/${Employee.Employee_ID}`)}>Update</button>
+                <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.EmployeeID)}>Delete</button>
               </td>
             </tr>
           ))}
