@@ -13,8 +13,7 @@ import './App.css';
 // import QuotationPage from './pages/Maleesha/QuotationPage';
 import ServiceList from './components/Maleesha/ServiceList';
 
-
-//Anoj
+//Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
 // import AddInventory from './pages/Anoj/addInventory';
 // import DeleteInventory from './pages/Anoj/deleteInventory';
