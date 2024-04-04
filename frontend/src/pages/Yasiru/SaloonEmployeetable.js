@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AddEmployee from "./Addemployee";
 
 export default function SaloonEmployeetable() {
   const [employee, setEmployee] = useState([]);
-  const [EmployeeID, setEmployee_ID] = useState("");
+  const [EmployeeID, setEmployee_ID] = useState("");//update
 
   const navigate = useNavigate()
 
   useEffect(() => {
     function getEmployee() {
-      axios.get("/SalonEmp/").then((res) => {
+      axios.get("/SalonEmp/",).then((res) => {
+        console.log(res.data)
         setEmployee(res.data);
       }).catch((err) => {
         alert(err.message);
@@ -50,7 +52,7 @@ export default function SaloonEmployeetable() {
               <td>{Employee.Qualification}</td>
               <td>{Employee.Salary}</td>
               <td>
-              <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit/${Employee.Employee_ID}`)}>Update</button>
+              <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
                 <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.EmployeeID)}>Delete</button>
               </td>
             </tr>

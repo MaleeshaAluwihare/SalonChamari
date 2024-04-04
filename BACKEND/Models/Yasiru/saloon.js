@@ -29,10 +29,10 @@ const saloonSchema = new Schema({
         required:true
     },
 
-    Attendance:{
+    /*Attendance:{
         type:Number,
         required:true
-    }
+    }*/
     
 
 })

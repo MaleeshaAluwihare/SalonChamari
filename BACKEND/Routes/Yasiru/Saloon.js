@@ -9,7 +9,7 @@ router.route("/add").post((req,res)=>{
     const Address =req.body.Address;
     const Qualification = req.body.Qualification;
     const Salary = Number(req.body.Salary);
-    const Attendance = Number(req.body.Attendance);
+    //const Attendance = Number(req.body.Attendance);
 
  
 
@@ -19,7 +19,7 @@ router.route("/add").post((req,res)=>{
         Address,
         Qualification,
         Salary,
-        Attendance
+        //Attendance
     })
 
     newEmployee.save().then(()=>{

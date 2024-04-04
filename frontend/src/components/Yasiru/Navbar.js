@@ -16,10 +16,11 @@ export default function NavBars () {
       <Container>
         <Navbar.Brand href="#Dash">Dashboard</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/SaloonTable">Saloon Employee</Nav.Link>
+          <Nav.Link href="/EmployeeDetails">Saloon Employee</Nav.Link>
           <Nav.Link href="/Add">Saloon add</Nav.Link>
           <Nav.Link href="/profile">profile</Nav.Link>
           <Nav.Link href="/Profilloging">Profile_loging</Nav.Link>
+          <Nav.Link href="/Edit">update</Nav.Link>
            
 
         </Nav>
