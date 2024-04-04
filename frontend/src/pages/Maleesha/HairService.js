@@ -10,24 +10,21 @@ export default function HairServices(){
     const [ HairTreatment, setHairTreatment ] = useState ( [] );
 
     useEffect(() => {
-        axios.get("/services/hairCut")
-            .then((res) =>{
+        axios.get("/services/hairCut").then((res) =>{
                 setHairCut(res.data)
             })
             .catch((err) => {
                 alert(err.message);
             });
         
-        axios.get("/services/hairColor")
-            .then((res) =>{
+        axios.get("/services/hairColor").then((res) =>{
                 setHairColor(res.data)
             })
             .catch((err) => {
                 alert(err.message);
             });
 
-        axios.get("/services/hairTreatment")
-            .then((res) =>{
+        axios.get("/services/hairTreatment").then((res) =>{
                 setHairTreatment(res.data)
             })
             .catch((err) => {

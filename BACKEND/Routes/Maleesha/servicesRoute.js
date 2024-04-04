@@ -180,12 +180,12 @@ app.get("/hairTreatment", async (req, res) => {
 //------------------------display Skin treatments------------------------//
 app.get("/skinTreatment", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^SF/ });
+        const skinServices = await Service.find({ itemID: /^SF/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json([ ]);
+        if(skinServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(skinServices);
 
     } catch (error) {
         console.error('Error retrieving skin services:', error);
@@ -196,12 +196,12 @@ app.get("/skinTreatment", async (req, res) => {
 //------------------------display Nail manicure------------------------//
 app.get("/nailManicure", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^NM/ });
+        const nailServices = await Service.find({ itemID: /^NM/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json([ ]);
+        if(nailServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(nailServices);
 
     } catch (error) {
         console.error('Error retrieving nail services:', error);
@@ -212,12 +212,12 @@ app.get("/nailManicure", async (req, res) => {
 //------------------------display Nail lacqer------------------------//
 app.get("/nailLacqer", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^NN/ });
+        const nailServices = await Service.find({ itemID: /^NN/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json([ ]);
+        if(nailServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(nailServices);
 
     } catch (error) {
         console.error('Error retrieving nail services:', error);
@@ -228,12 +228,12 @@ app.get("/nailLacqer", async (req, res) => {
 //------------------------display bridal bride------------------------//
 app.get("/bridalBride", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^BB/ });
+        const brideServices = await Service.find({ itemID: /^BB/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json([ ]);
+        if(brideServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(brideServices);
 
     } catch (error) {
         console.error('Error retrieving bridal services:', error);
@@ -244,12 +244,12 @@ app.get("/bridalBride", async (req, res) => {
 //------------------------display bridal groom------------------------//
 app.get("/bridalGroom", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^BG/ });
+        const groomServices = await Service.find({ itemID: /^BG/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json([ ]);
+        if(groomServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(groomServices);
 
     } catch (error) {
         console.error('Error retrieving bridal services:', error);

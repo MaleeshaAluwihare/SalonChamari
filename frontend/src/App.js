@@ -7,11 +7,14 @@ import './App.css';
 // import CounterFunction from './components/Maleesha/CounterFunction';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
-import HairServices from './pages/Maleesha/HairService';
+// import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
 // import QuotationPage from './pages/Maleesha/QuotationPage';
 // import ServiceList from './components/Maleesha/ServiceList';
+// import SkinServices  from './pages/Maleesha/SkinService';
+// import NailServices from './pages/Maleesha/NailService';
+import BridalServices from './pages/Maleesha/BridalService';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -30,11 +33,14 @@ function App() {
         {/* <Header/> */}
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
-        <HairServices/>
+        {/* <HairServices/> */}
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
         {/* <QuotationPage/> */}
         {/* <LandingPage/>*/}
+        {/* <SkinServices/> */}
+        {/* <NailServices/> */}
+        <BridalServices/>
 
         {/* <InventoryDash/>
         <AddInventory/>
