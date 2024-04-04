@@ -30,6 +30,7 @@ export default function QuotationPage() {
         setAllDropdownsSelected(selectedService && selectedSubcategory && selectedServiceItem);
     }, [selectedService, selectedSubcategory, selectedServiceItem]);
 
+    //fetch subcategories when service given
     const handleServiceChange = async (event) => {
         const serviceName = event.target.value;
         setSelectedService(serviceName);
@@ -38,6 +39,7 @@ export default function QuotationPage() {
         setSubcategories(response.data);
     };
 
+    //fetch service items when subcategory name given
     const handleSubcategoryChange = async (event) => {
         const subCategoryName = event.target.value;
         setSelectedSubcategory(subCategoryName);
@@ -45,6 +47,7 @@ export default function QuotationPage() {
         setServiceItems(response.data);
     };
 
+    //Set selected item
     const handleServiceItemClick = (event) => {
         const selectedItem = event.target.value;
         const selectedItemInfo = serviceItems.find(item => item.itemName === selectedItem);
