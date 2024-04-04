@@ -14,7 +14,9 @@ import './App.css';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import SkinServices  from './pages/Maleesha/SkinService';
 // import NailServices from './pages/Maleesha/NailService';
-import BridalServices from './pages/Maleesha/BridalService';
+// import BridalServices from './pages/Maleesha/BridalService';
+// import DeleteService from './components/Maleesha/DeleteService';
+import UpdateService from './components/Maleesha/UpdateService';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -40,7 +42,9 @@ function App() {
         {/* <LandingPage/>*/}
         {/* <SkinServices/> */}
         {/* <NailServices/> */}
-        <BridalServices/>
+        {/* <BridalServices/> */}
+        {/* <DeleteService/> */}
+        <UpdateService/>
 
         {/* <InventoryDash/>
         <AddInventory/>
