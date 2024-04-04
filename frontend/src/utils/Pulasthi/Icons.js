@@ -6,3 +6,6 @@ export const employeeSalary = <i class="fa-solid fa-wallet"></i>
 export const inventoryItems = <i class="fa-solid fa-warehouse"></i>
 export const eventPackages = <i class="fa-solid fa-calendar-plus"></i>
 export const plus = <i class="fa-solid fa-square-plus"></i>
+export const dollar = <i className="fa-solid fa-dollar-sign"></i>
+export const calender = <i className="fa-solid fa-calendar"></i>
+export const trash = <i className="fa-solid fa-trash"></i>

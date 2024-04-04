@@ -8,22 +8,32 @@ const GlobalContext = React.createContext()
 //children gonna be the whole app
 export const GlobalProvider = ({children}) => {
 
+    //state is used to store the array
     const [budgets, setBudgets] = useState([])
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
-
+    //add Budget
     const addBudget = async (budget) => {
                                                                 //budget(newBudget) kiyanna object eka enne addBudget form walin
         const response = await axios.post(`${BASE_URL}add-budget`, budget)
             .catch((err) =>{
                 setError(err.response.data.message)
             })
-        // getIncomes()
+           //getIncomes()
     }
+    // get Budget
+    const getBudgets = async () => {
+        const response = await axios.get(`${BASE_URL}get-budgets`)
+        setBudgets(response.data)
+        console.log(response.data)
+    }
+
 
     return(
         <GlobalContext.Provider value={{
-            addBudget
+            addBudget,
+            getBudgets,
+            budgets
         }}>
             {children}
         </GlobalContext.Provider>
