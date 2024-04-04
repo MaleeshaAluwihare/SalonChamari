@@ -51,7 +51,7 @@ export default function DeleteService(){
 
     const handleRemoveButtonClick = async () => {
         if (!selectedServiceID) {
-            alert('Please select a service item to remove.');
+            alert('Please select a service to remove.');
             return;
         }
 
@@ -62,11 +62,11 @@ export default function DeleteService(){
             fetchServiceItems(selectedSubcategory);
             setSelectedServiceItem('');
             setSelectedServiceID('');
-            alert('Service item removed successfully.');
+            alert('Service removed successfully.');
             
         } catch (error) {
-            console.error('Error removing service item:', error);
-            alert('An error occurred while removing the service item.');
+            console.error('Error removing service:', error);
+            alert('An error occurred while removing the service.');
         }
     };
 

@@ -83,7 +83,6 @@ app.post("/itemsAdd", async (req,res) => {
           itemID,
           itemName,
           itemPrice,
-          serviceTime,
         });
     
         await newService.save();
@@ -108,7 +107,7 @@ function padNumber(number, width) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //DISPLAY DATA
-//Retrives the items by service and subCategory name
+//Retrives the Service by serviceID
 app.get("/itemsGet/:itemID", async(req,res) => {
     const { itemID } = req.params;
 
@@ -298,7 +297,6 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
             subCategoryName,
             itemName,
             itemPrice,
-            serviceTime,
         }
 
         const filter = { itemID: itemID };
