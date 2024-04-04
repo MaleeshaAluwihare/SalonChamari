@@ -25,9 +25,9 @@ app.post("/itemsAdd", async (req,res) => {
             case 'Hair Care' : prefix = 'H';
 
                 switch(subCategoryName){
-                    case 'Hair Cut' : prefix += 'K';
+                    case 'Haircut' : prefix += 'K';
                          break;
-                    case 'Hair Coloring' : prefix += 'C'; 
+                    case 'Hair Color' : prefix += 'C'; 
                         break;
                     case 'Hair Treatment' : prefix += 'T';
                         break;
@@ -61,6 +61,8 @@ app.post("/itemsAdd", async (req,res) => {
                     case 'Bride Dressing' : prefix += 'B';
                         break;
                     case 'Groom Dressing' : prefix += 'G';
+                        break;
+                    case 'Packages' : prefix += 'P';
                         break;
                     default: prefix += 'BN';
                 }
