@@ -21,10 +21,12 @@ function Budget() {
         <h1>Budget</h1>
         <div className="budget-content">
           <div className="form-container"></div>
+          {/* add budget */}
           <div className="budgets">
               <Form/>
           </div>
-          <div className="incomes">
+          {/* get budgets */}
+          <div className="budgets">
               {budgets.map((budget) => {
                   const {_id, budgetId, month, amount, date,} = budget;
                   // one functional component access another component
@@ -35,7 +37,7 @@ function Budget() {
                       month={month} 
                       amount={amount} 
                       date={date}  
-                      indicatorColor="var(--color-green)"
+                      indicatorColor="var(--color-DarkYellow)"
                       // deleteItem={deleteBudget}
                   />
               })}
@@ -47,7 +49,15 @@ function Budget() {
 };
 
 const BudgetStyled = styled.div`
-
+    display: flex;
+    overflow: auto;
+    .budget-content{
+        display: flex;
+        gap: 2rem;
+        .budgets{
+            flex:1;
+        }
+    }
 `;
 
 

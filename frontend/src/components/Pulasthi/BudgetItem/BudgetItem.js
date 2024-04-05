@@ -4,6 +4,8 @@ import { calender, dollar, trash } from "../../../utils/Pulasthi/Icons";
 import Button from "../Button/Button";
 //this component is used to display items
 function BudgetItem({
+    //me props enne Budget component eken
+    //me id eka mkkd kiyala hoya ganna
     id,
     budgetId,
     month,
@@ -11,18 +13,17 @@ function BudgetItem({
     date,
     deleteItem,
     indicatorColor,
-    type
 }) {
   return (
     <BudgetItemStyled indicator={indicatorColor}>
-      <div className="icon">
+      {/* <div className="icon">
 
-      </div>
+      </div> */}
       <div className="content">
             <h5>{month}</h5>
             <div className="inner-content">
                 <div className="text">
-                    <p>{dollar} 45</p>
+                    <p>{dollar} {amount}</p>
                     <p>{calender} {date}</p>
                     <p>
                         {budgetId}
@@ -58,7 +59,7 @@ const BudgetItemStyled = styled.div`
     gap: 1rem;
     width: 100%;
     color: #222260;
-    .icon{
+    /* .icon{
         width: 80px;
         height: 80px;
         border-radius: 20px;
@@ -70,7 +71,7 @@ const BudgetItemStyled = styled.div`
         i{
             font-size: 2.6rem;
         }
-    }
+    } */
     .content{
         flex: 1;
         display: flex;
@@ -78,6 +79,7 @@ const BudgetItemStyled = styled.div`
         gap: .2rem;
         h5{
             font-size: 1.3rem;
+            font-weight: bold;
             padding-left: 2rem;
             position: relative;
             &::before{

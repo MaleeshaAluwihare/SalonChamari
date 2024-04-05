@@ -8,7 +8,7 @@ import { plus } from "../../../utils/Pulasthi/Icons";
 
 function Form() {
 
-    const {addBudget}=useGlobalContext();
+    const {addBudget,getBudgets}=useGlobalContext();
     //ekin ekata states hadanne nathuwa okkoma column values walata eka state hadala tma me tyenne
     const [inputState, setInputState] = useState({
         budgetId: '',
@@ -29,6 +29,7 @@ function Form() {
         e.preventDefault()
         //Send Entered values
         addBudget(inputState)
+        getBudgets()
         // setInputState({
         //     title: '',
         //     amount: '',
