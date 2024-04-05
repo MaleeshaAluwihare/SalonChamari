@@ -9,7 +9,7 @@ import eventImage from '../../images/Maleesha/EventImage.jpg';
 
 export default function LandingPage() {
     const [text] = useTypewriter({
-        words: ['Saloon', 'Photography', 'Event Planing'],
+        words: ['Beauty', 'Photography', 'Event Planing'],
         loop: true,
         typeSpeed: 120,
         deleteSpeed: 50,

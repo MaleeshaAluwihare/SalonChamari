@@ -8,7 +8,7 @@ import './App.css';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
 // import HairServices from './pages/Maleesha/HairService';
-// import ImageForme from './components/Maleesha/ImageForm';
+import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
 // import QuotationPage from './pages/Maleesha/QuotationPage';
 // import ServiceList from './components/Maleesha/ServiceList';
@@ -16,7 +16,7 @@ import './App.css';
 // import NailServices from './pages/Maleesha/NailService';
 // import BridalServices from './pages/Maleesha/BridalService';
 // import DeleteService from './components/Maleesha/DeleteService';
-import UpdateService from './components/Maleesha/UpdateService';
+// import UpdateService from './components/Maleesha/UpdateService';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -36,7 +36,7 @@ function App() {
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
-        {/* <ImageForme/> */}
+        <ImageForme/>
         {/* <LandingPage/> */}
         {/* <QuotationPage/> */}
         {/* <LandingPage/>*/}
@@ -44,7 +44,7 @@ function App() {
         {/* <NailServices/> */}
         {/* <BridalServices/> */}
         {/* <DeleteService/> */}
-        <UpdateService/>
+        {/* <UpdateService/> */}
 
         {/* <InventoryDash/>
         <AddInventory/>

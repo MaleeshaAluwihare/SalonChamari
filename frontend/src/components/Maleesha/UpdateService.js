@@ -78,6 +78,7 @@ export default function UpdateService(){
             itemName,
             itemPrice
         };
+        
         try {
             await axios.put(`/services/itemsUpdate/${selectedServiceID}`, updatedService);
             alert('Service updated successfully.');

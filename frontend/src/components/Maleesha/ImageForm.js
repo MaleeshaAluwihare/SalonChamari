@@ -1,52 +1,73 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../../css/Maleesha/ImageUploadForm.css';
 
-export default function ImageForme(){
+export default function ImageUploadForm (){
 
-    const [image, setImage] = useState(null);
-    const [allImage,setAllImage] = useState(null);
+  const [category, setCategory] = useState('');
+  const [itemName, setItemName] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
+  const [image, setImage] = useState(null);
+  const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        getImages();
-    },[]);
+  const handleSubmit = async (event) => {
 
-    const submitImage = async(e) => {
-        e.preventDefault();
+    event.preventDefault();
 
-        const formData = new FormData();
-        formData.append("image", image)
+    const formData = new FormData();
+    formData.append('category', category);
+    formData.append('itemName', itemName);
+    formData.append('itemPrice', itemPrice);
+    formData.append('image', image);
 
-        axios.post("/imageUpload/upload",formData,{
-            headers: { "Content-Type": "multipart/form-data"},
-        });
-    };
+    try {
+      const response = await axios.post('/imageUpload/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
-    const onInputChange = (e) => {
-        console.log(e.target.files[0]);
-        setImage(e.target.files[0]);
+      if (response.status === 200) {
+        setMessage('Image uploaded successfully!');
+        setCategory('');
+        setItemName('');
+        setItemPrice('');
+        setImage('');
+        
+      } else {
+        setMessage('Error: ' + response.data.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An error occurred, please try again.');
     }
+  };
 
-    const getImages = async() => {
-        const result = axios.get("/imageUpload/fetch");
-        console.log(result);
-        setAllImage((await result).data.data);
-    };
-
-    return(
-        <div>
-            <form onSubmit={submitImage}>
-                <input type="file" accept="image/*" onChange={onInputChange}></input>
-                <button type="submit">Submit</button>
-            </form>
-            {allImage == null?"" :
-                allImage.map(data => {
-                    return(
-                        <img src = {require(`../../uploads/${data.image}`)}
-                        height={700}
-                        width={1100}/>
-                    )
-                })
-            }
+  return (
+    <div className="container">
+      <h2>Image Upload</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="category">Category:</label>
+          <input type="text" id="category" value={category} onChange={(e) => setCategory(e.target.value)} required />
         </div>
-    );
-}
+        <div className="form-group">
+          <label htmlFor="itemName">Item Name:</label>
+          <input type="text" id="itemName" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="itemPrice">Item Price:</label>
+          <input type="number" id="itemPrice" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="image">Choose Image:</label>
+          <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} required accept="image/*" />
+        </div>
+        <button type="submit">Upload Image</button>
+      </form>
+      {message && <div id="message" style={{ color: message.startsWith('Error') ? 'red' : 'green' }}>{message}</div>}
+    </div>
+  );
+};
+
+
