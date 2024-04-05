@@ -13,18 +13,18 @@ const storage = multer.diskStorage({
       cb(null, uniqueSuffix + file.originalname);
     }
 });
+
   
 const upload = multer({ storage: storage });
 
 // Image upload
 app.post('/upload', upload.single("image"), async (req, res) => {
-    console.log(req.body);
 
-    const { Category, itemName, itemPrice } = req.body;
+    const { category, itemName, itemPrice } = req.body;
     const imageName = req.file.filename;
 
     try {
-        await imgSchema.create({ Category, itemName, itemPrice, image: imageName });
+        await imgSchema.create({ category, itemName, itemPrice, image: imageName });
         res.json({ status: "Success" });
     } catch (error) {
         res.json({ status: error });

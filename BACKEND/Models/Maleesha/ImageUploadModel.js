@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var imageSchema = new mongoose.Schema({
 
-    Category: {
+    category: {
         type: String,
         required: true
     },
