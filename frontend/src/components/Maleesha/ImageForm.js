@@ -47,22 +47,31 @@ export default function ImageUploadForm (){
     <div className="container">
       <h2>Image Upload</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category:</label>
-          <input type="text" id="category" value={category} onChange={(e) => setCategory(e.target.value)} required />
-        </div>
+          <div className="form-group">
+            <label htmlFor="category">Category:</label>
+                <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} required>
+                  <option value="">Select a category</option>
+                  <option value="Wedding Dress">Wedding Dress</option>
+                  <option value="Bridal jewelry">Bridal Jewelry</option>
+                  <option value="Other Items">Other Items</option>
+                </select>
+          </div>
+
         <div className="form-group">
           <label htmlFor="itemName">Item Name:</label>
           <input type="text" id="itemName" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
         </div>
+
         <div className="form-group">
           <label htmlFor="itemPrice">Item Price:</label>
           <input type="number" id="itemPrice" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required />
         </div>
+
         <div className="form-group">
           <label htmlFor="image">Choose Image:</label>
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} required accept="image/*" />
         </div>
+
         <button type="submit">Upload Image</button>
       </form>
       {message && <div id="message" style={{ color: message.startsWith('Error') ? 'red' : 'green' }}>{message}</div>}

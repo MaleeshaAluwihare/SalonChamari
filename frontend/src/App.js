@@ -17,6 +17,7 @@ import ImageForme from './components/Maleesha/ImageForm';
 // import BridalServices from './pages/Maleesha/BridalService';
 // import DeleteService from './components/Maleesha/DeleteService';
 // import UpdateService from './components/Maleesha/UpdateService';
+// import AccessoriesImagePage from './pages/Maleesha/AccessoriesPage';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -45,6 +46,7 @@ function App() {
         {/* <BridalServices/> */}
         {/* <DeleteService/> */}
         {/* <UpdateService/> */}
+        {/* <AccessoriesImagePage/> */}
 
         {/* <InventoryDash/>
         <AddInventory/>

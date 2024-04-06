@@ -20,6 +20,7 @@ router.route("/add").post((req,res)=>{
         Qualification,
         Salary
     })
+    
 
     newEmployee.save().then(()=>{
         res.json("Employee added")
