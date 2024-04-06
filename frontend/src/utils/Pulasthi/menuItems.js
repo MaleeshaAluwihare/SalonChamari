@@ -3,7 +3,7 @@ import { budget, dashboard, employeeSalary, eventPackages, expenses, income, inv
 export const menuItems = [
     {
         id: 1,
-        title: 'Dashboard',
+        title: 'Finance Dashboard',
         icon: dashboard,
         link: '/dashboard'
     },
