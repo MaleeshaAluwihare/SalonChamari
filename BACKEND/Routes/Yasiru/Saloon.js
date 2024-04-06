@@ -54,7 +54,7 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
         Address,
         Qualification,
         Salary,
-        Attendance
+       // Attendance
     }
 
     await Employee.findOneAndUpdate(employee_ID,updateEmployee).then(() => {
