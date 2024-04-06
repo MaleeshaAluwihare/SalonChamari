@@ -1,6 +1,6 @@
 const router = require("express").Router();
 let Employee = require("../../Models/Yasiru/saloon")
-let EmpSalary =require("../../Models/pulasthi-models/EmpSalary")
+//let EmpSalary =require("../../Models/pulasthi-models/EmpSalary")
 
 //insert
 router.route("/add").post((req,res)=>{
@@ -30,7 +30,7 @@ router.route("/add").post((req,res)=>{
     })
 
     //route to Employee salary
-    const EmpAttendance = new EmpSalary({
+   /* const EmpAttendance = new EmpSalary({
         empId : Employee_ID,
     })
 
@@ -38,7 +38,7 @@ router.route("/add").post((req,res)=>{
         res.json("Employee Attendnace")
     }).catch((err)=>{
         console.log(err);
-    })
+    })*/
 
 })
 

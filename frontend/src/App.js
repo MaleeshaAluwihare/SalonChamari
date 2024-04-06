@@ -28,8 +28,7 @@ function App() {
         <hr></hr>
         <ServiceDetails/> */}
         
-        <Route path='/attendance'element={<attendancepage/>}/>
-
+        <Route path='/Attendance'element={<attendancepage/>}/>     
         <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
         <Route path ='/Add' element ={<AddEmployee/>} />
         <Route path ='/Edit' element ={<EditEmployeeDetails/>} />

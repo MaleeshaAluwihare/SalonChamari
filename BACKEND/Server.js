@@ -71,4 +71,4 @@ app.use("/StudioInventory",studioInventory);
 
 //yasiru
 app.use("/SalonEmp",salonRouter);
-
+//app.use("Attendance",EmpAttendance);

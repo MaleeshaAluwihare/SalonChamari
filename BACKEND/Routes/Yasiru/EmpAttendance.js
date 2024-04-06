@@ -1,9 +1,12 @@
-const router =require("express").Router();
+/*const router =require("express").Router();
 let  EmpSalary = require("../../Models/pulasthi-models/EmpSalary")
 
 router.route("/add").post((req,res)=>{
     
-    const     =req.body.empId;
+
+    const empId = req.body.empI;
+    const attendance = req.body.attendance;
+    const date = req.body.date;
     const jobRole = req.body.jobRole;
     //const Attendance = Number(req.body.Attendance);
 
@@ -27,4 +30,4 @@ router.route("/add").post((req,res)=>{
   
 
 })
-module.exports = router;
+module.exports = router;*/
