@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let Employee = require("../../Models/Yasiru/saloon")
+let EmpSalary =require("../../Models/pulasthi-models/EmpSalary")
 
 //insert
 router.route("/add").post((req,res)=>{
@@ -27,6 +28,18 @@ router.route("/add").post((req,res)=>{
     }).catch((err)=>{
         console.log(err);
     })
+
+    //route to Employee salary
+    const EmpAttendance = new EmpSalary({
+        empId : Employee_ID,
+    })
+
+    EmpAttendance.save().then(()=>{
+        res.json("Employee Attendnace")
+    }).catch((err)=>{
+        console.log(err);
+    })
+
 })
 
 
@@ -45,26 +58,37 @@ router.route("/").get((req, res)=>{
 
 router.route("/update/:Employee_ID").put(async(req,res)=>{
 
-    let employee_ID =req.params.Employee_ID;
+    let Employee_ID =req.params.Employee_ID;
 
     const{Name, Address, Qualification, Salary} = req.body;
 
-    const updateEmployee={
-        Name,
-        Address,
-        Qualification,
-        Salary,
-       // Attendance
-    }
+    try{
 
-    await Employee.findOneAndUpdate(employee_ID,updateEmployee).then(() => {
-        res.json(200).send ({ status:"Employee Updated"})
-    }).catch(()=>{
-        res.status(500).send({ status: "Error with updating Employee" });
-    })
+        const updateEmployee={
+            Name,
+            Address,
+            Qualification,
+            Salary,
+        // Attendance
+        }
+
+        const filter = {Employee_ID: Employee_ID}
+
+        const updatedEmployee = await Employee.findOneAndUpdate(filter,updateEmployee,{
+            new : true
+        });
+        await updatedEmployee.save();
+
+        res.json({message: `Update Successfull`})
+
+    }catch(error){
+    res.status(500).json({message: error.message})
+}
+
        
 });
 
+//delete
 router.route("/delete/:Employee_ID").delete(async(req,res) =>{
     let Employee_ID = req.params.Employee_ID;
 
@@ -76,16 +100,21 @@ router.route("/delete/:Employee_ID").delete(async(req,res) =>{
     })
 })
 
-router.route("/get/:Employee_ID").get(async (req, res) => {
+router.get('/get/:Employee_ID', async (req, res) => {
+    const { Employee_ID } = req.params;
 
-        let employee_ID = req.params.id;
+    try {
+        const employee = await Employee.findOne({ Employee_ID });
 
-        const employee = await Employee.findOne(employee_ID).then ((employee) => {
-            res.status(200).send({ status: "Employee fetched", /*sending to frontend*/ student: student });
+        if (!employee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
 
-        }).catch(() => {
-            res.status(500).send({ status: "Employee not found" });
-        })
+        res.status(200).json({ Employee: employee });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
 });
 
 module.exports = router;
