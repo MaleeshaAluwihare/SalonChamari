@@ -35,7 +35,7 @@ export default function ProfileLoging() {
            onChange={(e)=> setvalue({...value,Name:e.target.value})}  className='form-control-rounded-0'/>
       </div>
         <button type="submit" class="submit-btn" onClick={()=>navigate('/profile')}>Submit</button>
-
+        
     
        
       </Form>

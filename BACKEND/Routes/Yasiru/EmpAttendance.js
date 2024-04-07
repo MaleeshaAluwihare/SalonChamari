@@ -28,4 +28,4 @@ router.route("/add").post((req,res)=>{
     })
 })
 module.exports = router;
-//send to pula to attendance of 30 days
+//send to  to attendance of 30 days

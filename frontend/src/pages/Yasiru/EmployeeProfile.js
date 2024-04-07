@@ -1,9 +1,11 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function EmployeeProfile(){
+    const navigate = useNavigate()
     return(
         
         <div>
@@ -37,6 +39,7 @@ export default function EmployeeProfile(){
         </div>
 
         <button type="submit" class="button" >save</button>
+        <button type="submit" class="submit-btn" onClick={()=>navigate('/Attendacegive')}>Attendance</button>
 
     </Form>
 

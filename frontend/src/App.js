@@ -14,7 +14,7 @@ import NavBars from './components/Yasiru/Navbar';
 import ProfileLoging from './pages/Yasiru/Profileloging';
 import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
-import Attendancepage from './pages/Yasiru/attendancepage';
+import Attendancepage from './pages/Yasiru/Attendancepage';
 
 function App() {
   return (
