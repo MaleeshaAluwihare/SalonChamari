@@ -18,6 +18,8 @@ const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
 const salonRouter = require("./Routes/Yasiru/Saloon.js");
 // const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
+const EmpAttendence = require("./Routes/Yasiru/EmpAttendance.js");
+const Attendancecount = require("./Routes/Yasiru/AttendanceCount.js")
 
 require("dotenv").config();
 
@@ -71,4 +73,5 @@ app.use("/StudioInventory",studioInventory);
 
 //yasiru
 app.use("/SalonEmp",salonRouter);
-//app.use("Attendance",EmpAttendance);
+app.use("/Attendence",EmpAttendence);
+app.use("/Attendancecount",Attendancecount);

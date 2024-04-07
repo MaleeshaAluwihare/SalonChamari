@@ -1,31 +1,30 @@
 const router =require("express").Router();
-let  EmpSalary = require("../../Models/pulasthi-models/EmpSalary")
+let Attendacecount = require("../../Models/Yasiru/Attendacecount")
+
 
 router.route("/add").post((req,res)=>{
     
 
     const empId = req.body.empId;
     const attendance = req.body.attendance;
-    const date = req.body.date;
     const jobRole = req.body.jobRole;
+ 
     //const Attendance = Number(req.body.Attendance);
 
  
 
-    const newEmployee = new EmpSalary({
+    const AttendanceCount = new Attendacecount({
         empId,
         attendance,
-        date,
-        jobRole,
-        
+        jobRole
+      
         //Attendance
     })
 
-    newEmployee.save().then(()=>{
+    AttendanceCount.save().then(()=>{
         res.json("Employee added")
     }).catch((err)=>{
         console.log(err);
     })
 })
 module.exports = router;
-//send to pula to attendance of 30 days
