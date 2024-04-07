@@ -3,7 +3,7 @@ import React from "react"
 
 
 
-export default function attendancepage() {
+export default function Attendancepage() {
 
 
   return (
@@ -11,7 +11,8 @@ export default function attendancepage() {
     <h3>Enter Attendance Details</h3>
     <form >
         <div className="mb-3">
-            <label htmlFor="EmployeeID" className="form-label">empId:</label>
+        <label htmlFor="name">empId</label>
+        <input type="text" className="form-control" id="Id" placeholder="Enter Employee ID" />
           
         </div>
         <div className="mb-3">

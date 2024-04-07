@@ -14,7 +14,8 @@ import NavBars from './components/Yasiru/Navbar';
 import ProfileLoging from './pages/Yasiru/Profileloging';
 import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
-import attendancepage from './pages/Yasiru/attendancepage';
+import Attendancepage from './pages/Yasiru/attendancepage';
+
 function App() {
   return (
     <Router>
@@ -28,7 +29,7 @@ function App() {
         <hr></hr>
         <ServiceDetails/> */}
         
-        <Route path='/Attendance'element={<attendancepage/>}/>     
+        <Route path='/Attendacegive'element={<Attendancepage/>}/>
         <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
         <Route path ='/Add' element ={<AddEmployee/>} />
         <Route path ='/Edit' element ={<EditEmployeeDetails/>} />
