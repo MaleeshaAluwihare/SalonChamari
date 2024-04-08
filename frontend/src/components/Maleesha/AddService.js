@@ -37,9 +37,7 @@ export default function AddService(){
                 title: '<strong>Service Enlisted!</strong>',
                 icon: 'success',
                 html:
-                    'Your new service has been <b>successfully</b> added to the catalogue. ' +
-                    'It\'s time to shine and provide the best experience to your customers!',
-                showCloseButton: true,
+                    'New service has been <b>successfully</b> added to the catalogue. ',
                 focusConfirm: false,
                 confirmButtonText:
                     '<i class="fa fa-thumbs-up"></i> Great!',
@@ -51,15 +49,12 @@ export default function AddService(){
                 title: '<strong>Uh-oh...</strong>',
                 icon: 'error',
                 html:
-                    'We encountered an issue while adding your service. ' +
-                    'But don\'t worry, it\'s not the end of the world. ' +
-                    'Give it another shot or contact support if the problem persists.',
-                showCloseButton: true,
+                    'We encountered an issue while adding your service. ',
                 focusConfirm: false,
                 confirmButtonText:
                     '<i class="fa fa-times-circle"></i> I\'ll try again',
                 confirmButtonAriaLabel: 'I\'ll try again',
-                timer: 7000
+                timer: 5000
             })
         });
     }
@@ -89,12 +84,12 @@ export default function AddService(){
 
                 <div className="mb-3">
                     <label htmlFor="item" className="form-label">Item Name:</label>
-                    <input type="text" className="form-control" id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} />
+                    <input type="text" className="form-control" id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} required />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="price" className="form-label">Item Price:</label>
-                    <input type="number" className="form-control" id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} />
+                    <input type="number" className="form-control" id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} required />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>

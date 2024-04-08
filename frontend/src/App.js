@@ -1,7 +1,7 @@
 import './App.css';
 
 //Maleesha
-import AddService from './components/Maleesha/AddService';
+// import AddService from './components/Maleesha/AddService';
 // import ServiceDetails from './components/Maleesha/SearchService';
 // import CounterClass from './components/Maleesha/ClassBaseApproch';
 // import CounterFunction from './components/Maleesha/CounterFunction';
@@ -19,6 +19,9 @@ import AddService from './components/Maleesha/AddService';
 // import UpdateService from './components/Maleesha/UpdateService';
 // import AccessoriesImagePage from './pages/Maleesha/AccessoriesPage';
 // import EmailForm from './pages/Maleesha/EmailSend';
+// import FooterWave from './components/Maleesha/FooterWave';
+// import Footer from './components/Maleesha/Footer';
+import SalonHome from './pages/Maleesha/SalonHome';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -31,7 +34,7 @@ function App() {
   return (
     <div className="App">
         {/* <h1>hello</h1> */}
-        <AddService/> 
+        {/* <AddService/>  */}
         {/* <hr></hr> */}
         {/* <ServiceDetails/> */}
         {/* <Header/> */}
@@ -41,7 +44,7 @@ function App() {
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
         {/* <QuotationPage/> */}
-        {/* <LandingPage/>*/}
+        {/* <LandingPage/> */}
         {/* <SkinServices/> */}
         {/* <NailServices/> */}
         {/* <BridalServices/> */}
@@ -49,6 +52,9 @@ function App() {
         {/* <UpdateService/> */}
         {/* <AccessoriesImagePage/> */}
         {/* <EmailForm/> */}
+        {/* <FooterWave/> */}
+        {/* <Footer/> */}
+        <SalonHome/>
 
         {/* <InventoryDash/>
         <AddInventory/>
