@@ -20,6 +20,9 @@ const inventorySchema = new Schema({
       type: Number,
       required: true  
     },
+    useQuantity: {
+      type: Number 
+    }
  })
 
  const Studio = mongoose.model("Studio", inventorySchema);
