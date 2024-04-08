@@ -1,14 +1,14 @@
 import './App.css';
 
 //Maleesha
-// import AddService from './components/Maleesha/AddService';
+import AddService from './components/Maleesha/AddService';
 // import ServiceDetails from './components/Maleesha/SearchService';
 // import CounterClass from './components/Maleesha/ClassBaseApproch';
 // import CounterFunction from './components/Maleesha/CounterFunction';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
 // import HairServices from './pages/Maleesha/HairService';
-import ImageForme from './components/Maleesha/ImageForm';
+// import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
 // import QuotationPage from './pages/Maleesha/QuotationPage';
 // import ServiceList from './components/Maleesha/ServiceList';
@@ -18,6 +18,7 @@ import ImageForme from './components/Maleesha/ImageForm';
 // import DeleteService from './components/Maleesha/DeleteService';
 // import UpdateService from './components/Maleesha/UpdateService';
 // import AccessoriesImagePage from './pages/Maleesha/AccessoriesPage';
+// import EmailForm from './pages/Maleesha/EmailSend';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -30,14 +31,14 @@ function App() {
   return (
     <div className="App">
         {/* <h1>hello</h1> */}
-        {/* <AddService/>  */}
+        <AddService/> 
         {/* <hr></hr> */}
         {/* <ServiceDetails/> */}
         {/* <Header/> */}
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
-        <ImageForme/>
+        {/* <ImageForme/> */}
         {/* <LandingPage/> */}
         {/* <QuotationPage/> */}
         {/* <LandingPage/>*/}
@@ -47,6 +48,7 @@ function App() {
         {/* <DeleteService/> */}
         {/* <UpdateService/> */}
         {/* <AccessoriesImagePage/> */}
+        {/* <EmailForm/> */}
 
         {/* <InventoryDash/>
         <AddInventory/>

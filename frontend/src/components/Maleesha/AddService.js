@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const serviceSubcategories = {
     "Hair Care": ["Haircut", "Hair Color", "Hair Treatment"],
@@ -31,10 +32,35 @@ export default function AddService(){
             itemPrice
         };
 
-        axios.post("/services/itemsAdd",newService).then(response =>{
-            alert(response.data.message);
+        axios.post("/services/itemsAdd", newService).then(response => {
+            Swal.fire({
+                title: '<strong>Service Enlisted!</strong>',
+                icon: 'success',
+                html:
+                    'Your new service has been <b>successfully</b> added to the catalogue. ' +
+                    'It\'s time to shine and provide the best experience to your customers!',
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Great!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                timer: 5000
+            })
         }).catch(err => {
-            alert(err.response.data.message);
+            Swal.fire({
+                title: '<strong>Uh-oh...</strong>',
+                icon: 'error',
+                html:
+                    'We encountered an issue while adding your service. ' +
+                    'But don\'t worry, it\'s not the end of the world. ' +
+                    'Give it another shot or contact support if the problem persists.',
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-times-circle"></i> I\'ll try again',
+                confirmButtonAriaLabel: 'I\'ll try again',
+                timer: 7000
+            })
         });
     }
 

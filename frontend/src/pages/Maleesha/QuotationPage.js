@@ -4,6 +4,8 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
+import SalonLogo from '../../images/Maleesha/Logo.png';
+
 
 export default function QuotationPage() {
 
@@ -110,23 +112,54 @@ export default function QuotationPage() {
         return total;
     };
 
-    const handleDownloadPDF = () => {
-        const doc = new jsPDF();
-        
-        // Add a title to the PDF
-        doc.text('Quotation', 10, 10);
-        
-        //Generate the table
-        doc.autoTable({ html: '#serviceTable' });
+const handleDownloadPDF = () => {
+    const doc = new jsPDF();
 
-        // Add total amount
-        let totalAmount = selectedServices.reduce((acc, service) => acc + (service.itemPrice * service.quantity), 0);
-        doc.text(`Total Amount: Rs.${totalAmount.toFixed(2)}`, 10, doc.autoTable.previous.finalY + 10);
+    const logo = new Image();
+    logo.onload = function() {
+        doc.addImage(logo, 'PNG', 70, 5, 60, 40); // Adjust the positioning and size of the logo(Y,X,W,H)
+
+        // Add a title to the PDF
+        doc.setFontSize(16);
+        doc.text('Quotation', 105, 50, { align: 'center' }); // Adjust alignment and positioning of the title(Y,X)
+
+        // array to hold table data
+        let tableData = [];
+
+        // Push each service as a row to the table data
+        selectedServices.forEach(service => {
+            tableData.push([
+                service.itemNo,
+                service.itemName,
+                service.quantity,
+                service.itemPrice * service.quantity
+            ]);
+        });
+
+        // Calculate total amount
+        let totalAmount = calculateTotalAmount();
+        tableData.push([ 'Total Amount','', '', `Rs.${totalAmount.toFixed(2)}`]);
+
+        // Generate the table
+        doc.autoTable({
+            head: [['Item No', 'Service Name', 'Number Of Persons', 'Service Price']],
+            body: tableData,
+            startY: 60, 
+            theme: 'grid', // Add a theme to the table
+            styles: { halign: 'center' } // Center align content in the table
+        });
+
+        doc.setFontSize(12);
+        doc.text('For more further details please Contact +94767455431', 105, 150, { align: 'center' }); // Adjust alignment and positioning of the title(Y,X)
 
         // Save the PDF
         doc.save('quotation.pdf');
     };
 
+    logo.src = SalonLogo; // Use the imported logo image path
+};
+
+    
     return (
         <div className='mainContainer'>
             <div className='contentContainer'>

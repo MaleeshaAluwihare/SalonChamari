@@ -288,7 +288,7 @@ app.delete("/itemsDelete/:itemID" , async(req,res) =>{
 app.put("/itemsUpdate/:itemID", async(req,res) => {
 
     let itemID = req.params.itemID;
-    const { serviceName,subCategoryName,itemName,itemPrice,serviceTime } = req.body;
+    const { serviceName,subCategoryName,itemName,itemPrice } = req.body;
 
     try{
 

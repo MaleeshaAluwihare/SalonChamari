@@ -18,7 +18,7 @@ const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
 const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking");
 const salonRouter = require("./Routes/Yasiru/Saloon.js");
-// const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
+const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
 require("dotenv").config();
@@ -64,7 +64,7 @@ app.use("/services",servicesRouter)
 app.use("/services",searchRouter);
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
-// app.use("/mail",sendMailRouter);
+app.use("/MailSend",sendMailRouter);
 
 //chavidu
 app.use("/SalonBooking",salonBookingRouter);
