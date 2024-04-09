@@ -1,7 +1,6 @@
 import './CSS/App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Header from './components/Dasun/Header';
-import Home from './pages/home';
 import AddFaq from './components/Dasun/addFaq';
 import AllFaqs from './components/Dasun/allFaq';
 
