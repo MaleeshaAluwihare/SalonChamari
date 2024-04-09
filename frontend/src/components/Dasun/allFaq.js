@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../../CSS/allFaq.css';
+import { Link } from "react-router-dom";
 
 export default function AllFaqs() {
 
@@ -46,8 +47,8 @@ export default function AllFaqs() {
                         <tr key={faqs._id}>
                             <td>{faqs.question}</td>
                             <td>{faqs.answer}</td>
-                            <td><button className="UpdateBtn">Update</button></td>
-                            <td><button className="DeleteBtn">Delete</button></td>
+                            <td><Link to={"/faq/update/${faqs._id}"}><button className="UpdateBtn">Update</button></Link></td>
+                            <td><Link to={"/faq/delete"}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
