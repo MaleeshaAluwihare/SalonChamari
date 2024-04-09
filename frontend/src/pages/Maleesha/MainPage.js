@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SaloonImg from '../../images/Maleesha/Saloon.jpg';
 import StudioImg from '../../images/Maleesha/Studio.jpg';
-import EventImg from '../../images/Maleesha/Event.jpg';
+import EventImg from '../../images/Maleesha/EventImage.jpg';
 import '../../css/Maleesha/MainPage.css';
 
 function Slideshow() {
