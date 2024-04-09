@@ -1,0 +1,16 @@
+/* Dashboard Container */
+.dashboardContainer {
+    display: flex;
+  }
+  
+  /* Sidebar */
+  .sideBar {
+    flex: 0 0 250px; /* Set sidebar width */
+  }
+  
+  /* Dashboard Content */
+  .dashboardContent {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+  }
+  

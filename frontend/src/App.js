@@ -1,4 +1,6 @@
 import './App.css';
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 //Maleesha
 // import AddService from './components/Maleesha/AddService';
@@ -21,7 +23,8 @@ import './App.css';
 // import EmailForm from './pages/Maleesha/EmailSend';
 // import FooterWave from './components/Maleesha/FooterWave';
 // import Footer from './components/Maleesha/Footer';
-import SalonHome from './pages/Maleesha/SalonHome';
+// import SalonHome from './pages/Maleesha/SalonHome';
+import Dashboard from './pages/Maleesha/Dashboard';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -54,7 +57,8 @@ function App() {
         {/* <EmailForm/> */}
         {/* <FooterWave/> */}
         {/* <Footer/> */}
-        <SalonHome/>
+        {/* <SalonHome/> */}
+        <Dashboard/>
 
         {/* <InventoryDash/>
         <AddInventory/>
