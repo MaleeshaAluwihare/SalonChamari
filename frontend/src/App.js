@@ -1,12 +1,28 @@
 import './CSS/App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Header from './components/Dasun/Header';
 import Home from './pages/home';
+import AddFaq from './components/Dasun/addFaq';
+import AllFaqs from './components/Dasun/allFaq';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Salon Chamari</h1>
-      <Home />
-    </div>
+    <Router>
+        <div className="App">
+
+          <Header />
+          
+          <br />
+
+          <Routes>
+
+            <Route path='/faq/all' exact Component={AllFaqs} /> 
+            <Route path="/faq/add" exact Component={AddFaq} /> 
+
+          </Routes>
+
+        </div>
+    </Router>
   );
 }
 
