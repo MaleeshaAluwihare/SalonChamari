@@ -12,10 +12,10 @@ function Header() {
 
         <nav>
             <ul>
-            <li><a href="/faq/all">FAQs</a></li>
-            <li><a href="/faq/add">Add FAQ</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">Add Blog</a></li>
+            <li><Link to="/faq/all">FAQs</Link></li>
+            <li><Link to="/faq/add">Add FAQ</Link></li>
+            <li><Link href="#">Blogs</Link></li>
+            <li><Link href="#">Add Blog</Link></li>
             </ul>
         </nav>
         </div>
