@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 let Service = require("../../Models/Maleesha/ServiceModel");
+let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 
 
 //INSERT DATA
@@ -318,6 +319,56 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
     } catch(error) {
         console.error('Error updating item:', error);
         res.status(500).json({ message: error.message });
+    }
+});
+
+
+// get popular services based on bookings
+app.get("/popular-services", async (req, res) => {
+    try {
+        const popularServices = await SalonBooking.aggregate([
+            { $group: { _id: "$service", count: { $sum: 1 } } },
+            { $sort: { count: -1 } }
+        ]);
+
+        // Get the top 5 most booked services or less if there are fewer unique services
+        const topServices = popularServices.slice(0, 5);
+
+        res.json(topServices);
+        
+    } catch (err) {
+        console.error("Error with get popular services:", err.message);
+        res.status(500).send({ status: "Error with get popular services", error: err.message });
+    }
+});
+
+//pie chart
+app.get("/pie-chart-data", async (req, res) => {
+    try {
+        // Aggregate the data to get the count of items under each service name
+        const serviceData = await Service.aggregate([
+            {
+                $group: {
+                    _id: "$serviceName",
+                    itemCount: { $sum: 1 }
+                }
+            }
+        ]);
+
+        // Calculate the total number of items
+        const totalItems = await Service.countDocuments();
+
+        // Calculate the percentage of items for each service name
+        const serviceDataWithPercentage = serviceData.map(service => ({
+            serviceName: service._id,
+            itemCount: service.itemCount,
+            percentage: ((service.itemCount / totalItems) * 100).toFixed(2)
+        }));
+
+        res.json(serviceDataWithPercentage);
+    } catch (error) {
+        console.error("Error fetching service data for pie chart:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
