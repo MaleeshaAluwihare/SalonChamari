@@ -7,7 +7,7 @@ export default function AddEmployee(){
     const[Employee_ID, setEmployee_ID] =useState("")
     const[Name, setName] =useState("")
     const[Address, setAddress] =useState("")
-    const[Qualification, setQualification] =useState("")
+    const[jobRole, setjobRole] =useState("")
     const[Salary, setsalary] =useState("")
 
     function sendData(e){
@@ -18,7 +18,7 @@ export default function AddEmployee(){
         Employee_ID,
         Name,
         Address,
-        Qualification,
+        jobRole,
         Salary
      };
      console.log(newEmployee)
@@ -63,9 +63,9 @@ export default function AddEmployee(){
         </div>
 
         <div className="form-group">
-            <label htmlFor="name">Qualification</label>
-            <input type="text" className="form-control" id="name" placeholder="Qualification" onChange={(e)=>{
-                setQualification(e.target.value);
+            <label htmlFor="name">jobRole</label>
+            <input type="text" className="form-control" id="name" placeholder="jobRole" onChange={(e)=>{
+                setjobRole(e.target.value);
             }}/>
         </div>
 

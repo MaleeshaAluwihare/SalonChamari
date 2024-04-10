@@ -5,7 +5,7 @@ import AddEmployee from "./Addemployee";
 
 export default function SaloonEmployeetable() {
   const [employee, setEmployee] = useState([]);
-  const [EmployeeID, setEmployee_ID] = useState("");//update
+  const [EmployeeID, setEmployee_ID] = useState("");//delete
 
   const navigate = useNavigate()
 
@@ -39,7 +39,7 @@ export default function SaloonEmployeetable() {
             <th>Employee_ID</th>
             <th>Name</th>
             <th>Address</th>
-            <th>Qualification</th>
+            <th>jobRole</th>
             <th>Daily Salary</th>
           </tr>
         </thead>
@@ -49,7 +49,7 @@ export default function SaloonEmployeetable() {
               <td>{Employee.Employee_ID}</td>
               <td>{Employee.Name}</td>
               <td>{Employee.Address}</td>
-              <td>{Employee.Qualification}</td>
+              <td>{Employee.jobRole}</td>
               <td>{Employee.Salary}</td>
               <td>
               <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>

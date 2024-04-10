@@ -27,4 +27,14 @@ router.route("/add").post((req,res)=>{
         console.log(err);
     })
 })
+
+router.route("/").get((req, res)=>{
+
+    Attendacecount.find().then((employees)=>{
+        res.json(employees)
+    }).catch((err)=>{
+        console.log(err)
+    })
+
+})
 module.exports = router;

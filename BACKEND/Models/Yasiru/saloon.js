@@ -19,7 +19,7 @@ const saloonSchema = new Schema({
         required:true
     },
 
-    Qualification:{
+    jobRole:{
         type:String,
         required:true
     },

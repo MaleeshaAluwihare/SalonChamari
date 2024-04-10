@@ -15,6 +15,7 @@ import ProfileLoging from './pages/Yasiru/Profileloging';
 import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
 import Attendancepage from './pages/Yasiru/Attendancepage';
+import Attendancecount from './pages/Yasiru/Attendancecount';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <hr></hr>
         <ServiceDetails/> */}
         
+        <Route path='/Attendacecount'element={<Attendancecount/>}/>
         <Route path='/Attendacegive'element={<Attendancepage/>}/>
         <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
         <Route path ='/Add' element ={<AddEmployee/>} />

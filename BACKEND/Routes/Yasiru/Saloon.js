@@ -8,7 +8,7 @@ router.route("/add").post((req,res)=>{
     const Employee_ID=req.body.Employee_ID
     const Name = req.body.Name;
     const Address =req.body.Address;
-    const Qualification = req.body.Qualification;
+    const jobRole = req.body.jobRole;
     const Salary = Number(req.body.Salary);
     //const Attendance = Number(req.body.Attendance);
 
@@ -18,7 +18,7 @@ router.route("/add").post((req,res)=>{
         Employee_ID,
         Name,
         Address,
-        Qualification,
+        jobRole,
         Salary,
         //Attendance
     })
@@ -60,14 +60,14 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
 
     let Employee_ID =req.params.Employee_ID;
 
-    const{Name, Address, Qualification, Salary} = req.body;
+    const{Name, Address, jobRole, Salary} = req.body;
 
     try{
 
         const updateEmployee={
             Name,
             Address,
-            Qualification,
+            jobRole,
             Salary,
         // Attendance
         }

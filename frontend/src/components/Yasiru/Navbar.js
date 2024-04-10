@@ -21,6 +21,7 @@ export default function NavBars () {
           <Nav.Link href="/profile">profile</Nav.Link>
           <Nav.Link href="/Profilloging">Profile_loging</Nav.Link>
           <Nav.Link href="/Edit">update</Nav.Link>
+          <Nav.Link href="/Attendacecount">Attendance</Nav.Link>
            
 
         </Nav>

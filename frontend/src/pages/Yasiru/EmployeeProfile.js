@@ -29,7 +29,7 @@ export default function EmployeeProfile(){
         </div>
 
         <div class="form-group">
-            <lable  for ="name">Qualification</lable>
+            <lable  for ="name">jobRole</lable>
             <input type ="text"class="form-control" id="name" placeholder="Qualification"/>
         </div>
 
