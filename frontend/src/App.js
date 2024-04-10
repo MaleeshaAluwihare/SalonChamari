@@ -1,4 +1,6 @@
 import './App.css';
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 //Maleesha
 // import AddService from './components/Maleesha/AddService';
@@ -8,9 +10,9 @@ import './App.css';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
 // import HairServices from './pages/Maleesha/HairService';
-import ImageForme from './components/Maleesha/ImageForm';
+// import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
-// import QuotationPage from './pages/Maleesha/QuotationPage';
+import QuotationPage from './pages/Maleesha/QuotationPage';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import SkinServices  from './pages/Maleesha/SkinService';
 // import NailServices from './pages/Maleesha/NailService';
@@ -18,6 +20,11 @@ import ImageForme from './components/Maleesha/ImageForm';
 // import DeleteService from './components/Maleesha/DeleteService';
 // import UpdateService from './components/Maleesha/UpdateService';
 // import AccessoriesImagePage from './pages/Maleesha/AccessoriesPage';
+// import EmailForm from './pages/Maleesha/EmailSend';
+// import FooterWave from './components/Maleesha/FooterWave';
+// import Footer from './components/Maleesha/Footer';
+// import SalonHome from './pages/Maleesha/SalonHome';
+// import Dashboard from './pages/Maleesha/Dashboard';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -37,16 +44,21 @@ function App() {
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
         {/* <HairServices/> */}
-        <ImageForme/>
+        {/* <ImageForme/> */}
         {/* <LandingPage/> */}
-        {/* <QuotationPage/> */}
-        {/* <LandingPage/>*/}
+        <QuotationPage/>
+        {/* <LandingPage/> */}
         {/* <SkinServices/> */}
         {/* <NailServices/> */}
         {/* <BridalServices/> */}
         {/* <DeleteService/> */}
         {/* <UpdateService/> */}
         {/* <AccessoriesImagePage/> */}
+        {/* <EmailForm/> */}
+        {/* <FooterWave/> */}
+        {/* <Footer/> */}
+        {/* <SalonHome/> */}
+        {/* <Dashboard/> */}
 
         {/* <InventoryDash/>
         <AddInventory/>

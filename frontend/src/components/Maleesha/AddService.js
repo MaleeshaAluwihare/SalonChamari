@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const serviceSubcategories = {
     "Hair Care": ["Haircut", "Hair Color", "Hair Treatment"],
@@ -31,10 +32,30 @@ export default function AddService(){
             itemPrice
         };
 
-        axios.post("/services/itemsAdd",newService).then(response =>{
-            alert(response.data.message);
+        axios.post("/services/itemsAdd", newService).then(response => {
+            Swal.fire({
+                title: '<strong>Service Enlisted!</strong>',
+                icon: 'success',
+                html:
+                    'New service has been <b>successfully</b> added to the catalogue. ',
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Great!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                timer: 5000
+            })
         }).catch(err => {
-            alert(err.response.data.message);
+            Swal.fire({
+                title: '<strong>Uh-oh...</strong>',
+                icon: 'error',
+                html:
+                    'We encountered an issue while adding your service. ',
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-times-circle"></i> I\'ll try again',
+                confirmButtonAriaLabel: 'I\'ll try again',
+                timer: 5000
+            })
         });
     }
 
@@ -63,12 +84,12 @@ export default function AddService(){
 
                 <div className="mb-3">
                     <label htmlFor="item" className="form-label">Item Name:</label>
-                    <input type="text" className="form-control" id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} />
+                    <input type="text" className="form-control" id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} required />
                 </div>
 
                 <div className="mb-3">
                     <label htmlFor="price" className="form-label">Item Price:</label>
-                    <input type="number" className="form-control" id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} />
+                    <input type="number" className="form-control" id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} required />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>

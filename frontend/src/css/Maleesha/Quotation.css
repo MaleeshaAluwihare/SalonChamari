@@ -74,7 +74,7 @@ select:focus {
 .serviceTable th, .serviceTable td {
     padding: 8px;
     border: 1px solid #ddd;
-    text-align: left;
+    
 }
 
 .serviceTable th {
@@ -112,3 +112,81 @@ h4{
     font-weight: bold;
     font-size: 35px;
 }
+
+.remove-btn {
+    background-color: #dc3545; /* Red color for remove button */
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.remove-btn:hover {
+    background-color: #bb2d3b; /* Darker red color on hover */
+}
+
+.downloadPDFBtn{
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFCF00; /* Yellow color, you can change it */
+    color: rgb(0, 0, 0); /* Black color */
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for a floating effect */
+    display: flex; /* Ensure it's a flex container */
+    justify-content: center; /* Center the icon horizontally */
+    align-items: center; /* Center the icon vertically */
+  }
+  
+  .floating-button:hover {
+    background-color: #ffffff; 
+  }
+  
+  .quantity-adjustment {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantity-adjustment button {
+    background-color: #5fafff;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;  
+    transition: background-color 0.3s ease;
+    outline: none;
+  }
+
+  .quantity-adjustment button:focus {
+    outline: none; 
+  }
+  
+  .quantity-adjustment button:hover {
+    background-color: #15b300; /* Change color on hover for visual feedback */
+  }
+  
+  .quantity-display {
+    padding: 0 15px;
+    font-size: 1.2rem; /* Adjust size as needed */
+  }
+  
+  

@@ -72,7 +72,7 @@ export default function ImageUploadForm (){
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} required accept="image/*" />
         </div>
 
-        <button type="submit">Upload Image</button>
+        <button type="submit" className='submitBtn'>Upload Image</button>
       </form>
       {message && <div id="message" style={{ color: message.startsWith('Error') ? 'red' : 'green' }}>{message}</div>}
     </div>
