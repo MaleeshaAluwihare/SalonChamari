@@ -1,8 +1,7 @@
 .dashboard-home {
     display: flex;
-    position: relative;
-    justify-content: space-between;
-  }
+    flex-direction: column; }
+
   
 .date-time-display {
     position: absolute;
@@ -25,7 +24,7 @@
     background-color: #f8f9fa; /* Change this to your preferred color */
     border-radius: 15px;
     padding: 20px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
   
 .popularService p {
@@ -64,4 +63,29 @@
   
 .popularService table tr:hover {
     background-color: #ced4da; /* Add hover effect only to table rows, not the header */
+}
+
+.pie-chart-container {
+    margin-top: 20px; /* Add margin for spacing */
+    width: 500px;
+    background-color: #f8f9fa; /* Change this to your preferred color */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.pie-chart-container p {
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 10px; /* Add margin for spacing */
+    text-align: center; /* Center horizontally */
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* Adjust the size of the canvas */
+#pieChart {
+    width: 400px;
+    height: 400px;
 }

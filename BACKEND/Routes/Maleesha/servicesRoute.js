@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const Chart = require('chart.js');
 let Service = require("../../Models/Maleesha/ServiceModel");
 let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 
@@ -365,7 +366,9 @@ app.get("/pie-chart-data", async (req, res) => {
             percentage: ((service.itemCount / totalItems) * 100).toFixed(2)
         }));
 
+        // Send data to the client
         res.json(serviceDataWithPercentage);
+        
     } catch (error) {
         console.error("Error fetching service data for pie chart:", error);
         res.status(500).json({ error: "Internal server error" });

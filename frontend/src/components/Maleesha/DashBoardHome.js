@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PieChart from './ServicesPieChart.js';
+import PieChart from "./PieChart";
 import '../../css/Maleesha/DashBoardHome.css';
 
 // Date and Time Component
@@ -58,7 +58,8 @@ export default function DashboardHome() {
           </tbody>
         </table>
       </div>
-      <div className="lineChart">
+      <div className="pie-chart-container">
+        <p>Services Distribution</p>
         <PieChart/>
       </div>
     </div>
