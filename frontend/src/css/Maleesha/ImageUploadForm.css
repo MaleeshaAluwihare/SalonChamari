@@ -38,13 +38,7 @@
     box-sizing: border-box;
   }
   
-  /* Adjust button hover color for consistency */
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  
-  button {
+  .submitBtn {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -54,7 +48,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .submitBtn:hover {
     background-color: #0056b3;
   }
   

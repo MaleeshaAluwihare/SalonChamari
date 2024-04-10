@@ -3,25 +3,6 @@ import axios from "axios";
 import PieChart from "./PieChart";
 import '../../css/Maleesha/DashBoardHome.css';
 
-// Date and Time Component
-const DateTimeDisplay = () => {
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="date-time-display">
-      {currentDateTime.toLocaleString()}
-    </div>
-  );
-};
-
-// DashboardHome Component
 export default function DashboardHome() {
 
     const [popularServices, setPopularServices] = useState([]);
@@ -38,7 +19,6 @@ export default function DashboardHome() {
 
   return (
     <div className="dashboard-home">
-      <DateTimeDisplay />
       <div className="popularService">
         <p>POPULAR SERVICES</p>
         <table>

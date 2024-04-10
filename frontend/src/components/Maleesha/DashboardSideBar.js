@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/DashboardSideBar.css';
 import Logo from '../../images/Maleesha/Logo.png';
 
@@ -29,7 +31,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("home");
                 }}
               >
-                Home
+                <FontAwesomeIcon icon={faHouse} className="button-icon" />Home
               </button>
             </li>
             <li className="nav-item">
@@ -40,7 +42,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("create-service");
                 }}
               >
-                Create Service
+                <FontAwesomeIcon icon={faCirclePlus} className="button-icon" />Create Service
               </button>
             </li>
             <li className="nav-item">
@@ -51,7 +53,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("remove-service");
                 }}
               >
-                Remove Service
+                <FontAwesomeIcon icon={faTrash} className="button-icon" />Remove Service
               </button>
             </li>
             <li className="nav-item">
@@ -62,7 +64,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("update-service");
                 }}
               >
-                Update Service
+                <FontAwesomeIcon icon={faFilePen} className="button-icon" />Update Service
               </button>
             </li>
             <li className="nav-item">
@@ -73,7 +75,18 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("quotation-list");
                 }}
               >
-                View Quotations
+                <FontAwesomeIcon icon={faEye} className="button-icon" />View Quotations
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`nav-button ${selectedOption === "image-upload" ? "active" : ""}`}
+                onClick={() => {
+                  onSelectOption("image-upload");
+                  setSelectedOption("image-upload");
+                }}
+              >
+                <FontAwesomeIcon icon={faUpload} className="button-icon" />Add Accessories
               </button>
             </li>
             <li className="nav-item">
@@ -84,7 +97,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("logout");
                 }}
               >
-                Logout
+                <FontAwesomeIcon icon={faRightFromBracket} className="button-icon" />Logout
               </button>
             </li>
           </ul>

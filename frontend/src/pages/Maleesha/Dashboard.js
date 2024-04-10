@@ -4,6 +4,7 @@ import Home from '../../components/Maleesha/DashBoardHome';
 import AddService from "../../components/Maleesha/AddService";
 import RemoveService from '../../components/Maleesha/DeleteService';
 import UpdateService from '../../components/Maleesha/UpdateService';
+import ImageUpload from '../../components/Maleesha/ImageForm';
 import '../../css/Maleesha/Dashboard.css';
 
 export default function Dashboard(){
@@ -19,7 +20,8 @@ export default function Dashboard(){
                 {selectedOption === "home" && <Home/>}
                 {selectedOption === "create-service" && <AddService />}
                 {selectedOption === "remove-service" && <RemoveService/>}
-                {selectedOption === "update-service" && <UpdateService/>} 
+                {selectedOption === "update-service" && <UpdateService/>}
+                {selectedOption === "image-upload" && <ImageUpload/>}  
             </div>
         </div>
     )

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarCheck, faTrash, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
@@ -216,14 +218,14 @@ const handleDownloadPDF = () => {
                                     <tr key={index}>
                                         <td>{service.itemNo}</td>
                                         <td>{service.itemName}</td>
-                                        <td>
-                                            <button onClick={() => handleQuantityChange(index, -1)}>-</button>
-                                            {service.quantity}
-                                            <button onClick={() => handleQuantityChange(index, 1)}>+</button>
+                                        <td className="quantity-adjustment">
+                                            <button onClick={() => handleQuantityChange(index, -1)}><FontAwesomeIcon icon={faMinus}/></button>
+                                            <span className='quantity-display'>{service.quantity}</span>
+                                            <button onClick={() => handleQuantityChange(index, 1)}><FontAwesomeIcon icon={faPlus}/></button>
                                         </td>
                                         <td>{service.itemPrice * service.quantity}</td>
                                         <td>
-                                            <button onClick={() => handleRemoveService(index)}>Remove</button>
+                                            <button onClick={() => handleRemoveService(index)} className='remove-btn'><FontAwesomeIcon icon={faTrash}/> </button>
                                         </td>
                                     </tr>
                                 ))}
@@ -238,6 +240,9 @@ const handleDownloadPDF = () => {
                     {selectedServices.length > 0 && (
                         <button className="downloadPDFBtn" onClick={handleDownloadPDF}>Download Quote</button>
                     )}
+                </div>
+                <div className='floating-button'>
+                 <FontAwesomeIcon icon={faCalendarCheck} className="floating-button-icon" /> 
                 </div>
                 <hr></hr>
             </div>
