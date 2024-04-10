@@ -8,8 +8,13 @@ export default function Attendancecount() {
   useEffect(() => {
     function getAttendance() {
       axios.get("/Attendancecount/").then((res) => {
-        console.log(res.data)
-        setattendance(res.data);
+        const formattedAttendance = res.data.map((employee) => {
+          return {
+            ...employee,
+            data: new Date().toLocaleDateString() // Set the current date
+          };
+        });
+        setattendance(formattedAttendance);
       }).catch((err) => {
         alert(err.message);
       });
@@ -21,11 +26,10 @@ export default function Attendancecount() {
     <table className="table">
       <thead>
         <tr>
-         
           <th>empId</th>
           <th>jobRole</th>
           <th>attendance</th>
-          <th>Date</th>
+          <th>data</th> 
         </tr>
       </thead>
       <tbody>
@@ -34,8 +38,7 @@ export default function Attendancecount() {
             <td>{Employee.empId}</td>
             <td>{Employee.jobRole}</td>
             <td>{Employee.attendance}</td>
-            <td>{Employee.Date}</td>
-            <td></td>
+            <td>{Employee.data}</td> {/* Display the current date */}
           </tr>
         ))}
       </tbody>

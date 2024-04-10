@@ -8,6 +8,7 @@ router.route("/add").post((req,res)=>{
     const empId = req.body.empId;
     const attendance = req.body.attendance;
     const jobRole = req.body.jobRole;
+    const date = req.body.date
  
     //const Attendance = Number(req.body.Attendance);
 
@@ -16,7 +17,8 @@ router.route("/add").post((req,res)=>{
     const AttendanceCount = new Attendacecount({
         empId,
         attendance,
-        jobRole
+        jobRole,
+        date
       
         //Attendance
     })
