@@ -5,7 +5,14 @@ const messageSchema = new schema({
 
     customerId: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+
+    messageId: {
+        type: String,
+        required: true,
+        unique: true
     },
 
     message: {
@@ -19,7 +26,7 @@ const messageSchema = new schema({
         default: Date.now
     }
 
-});
+}, {timestamps : true});
 
 const Messages = mongoose.model('customerMessages', messageSchema);
 
