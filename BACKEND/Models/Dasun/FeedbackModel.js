@@ -27,8 +27,9 @@ const feedbackSchema = new schema({
     },
 
     sendDate: {
-        type: String,
-        required: true
+        type: Date,
+        required: true,
+        default: Date.now
     },
 
 }, {timestamps : true});
