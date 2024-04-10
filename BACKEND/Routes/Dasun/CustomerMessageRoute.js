@@ -10,12 +10,14 @@ let CustomerMessages = require("../../Models/Dasun/CustomerMessageModel");
 router.route("/add").post((req,res) => {
 
     const customerId = req.body.customerId;
+    const messageId = req.body.messageId;
     const message = req.body.message;
     const date = req.body.date;
 
     const newMessage = new CustomerMessages({
 
         customerId,
+        messageId,
         message,
         date
 
@@ -60,9 +62,9 @@ router.route("/display").get((req,res) => {
 //http: //localhost:8070/CustomerMessages/get/
 router.route("/get/:id").get(async(req,res) => {
 
-    let messageId = req.params.id;
+    let messageID = req.params.id;
 
-    const message = await CustomerMessages.findById(messageId).then((CustomerMessages) => {
+    const message = await CustomerMessages.findById(messageID).then((CustomerMessages) => {
 
         res.status(200).send({status: "Message fetched", CustomerMessages});
 
@@ -83,19 +85,20 @@ router.route("/get/:id").get(async(req,res) => {
 //http: //localhost:8070/CustomerMessages/update/
 router.route("/update/:id").put(async(req,res) => {
 
-    let messageId = req.params.id;
+    let messageID = req.params.id;
     
-    const{customerId, message, date} = req.body;
+    const{customerId, messageId, message, date} = req.body;
 
     const updateMessage = {
 
         customerId,
+        messageId,
         message,
         date
 
     }
 
-    const update = await CustomerMessages.findByIdAndUpdate(messageId, updateMessage).then(() => {
+    const update = await CustomerMessages.findByIdAndUpdate(messageID, updateMessage).then(() => {
 
         res.status(200).send({status: "Message updated"});
 
@@ -116,9 +119,9 @@ router.route("/update/:id").put(async(req,res) => {
 //http: //localhost:8070/CustomerMessages/delete/
 router.route("/delete/:id").delete(async(req,res) => {
 
-    let messageId = req.params.id;
+    let messageID = req.params.id;
 
-    await CustomerMessages.findByIdAndDelete(messageId).then(() => {
+    await CustomerMessages.findByIdAndDelete(messageID).then(() => {
 
         res.status(200).send({status: "Message deleted"});
 
