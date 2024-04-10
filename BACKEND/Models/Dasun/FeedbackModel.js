@@ -34,6 +34,6 @@ const feedbackSchema = new schema({
 
 }, {timestamps : true});
 
-const Feedbacks = mongoose.model('feedback', feedbackSchema);
+const Feedbacks = mongoose.model('customerfeedback', feedbackSchema);
 
 module.exports = Feedbacks;
