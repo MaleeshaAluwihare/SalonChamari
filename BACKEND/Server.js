@@ -46,6 +46,11 @@ const customerMessageRouter = require("./Routes/Dasun/CustomerMessageRoute.js");
 app.use("/CustomerMessages", customerMessageRouter);
 
 
+//url (http: //localhost:8070/MessageReplies)
+const messageReplyRouter = require("./Routes/Dasun/MessageReplyRoute.js");
+app.use("/MessageReplies", messageReplyRouter);
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
