@@ -34,7 +34,7 @@ router.route("/").get((req, res)=>{
 
     Attendacecount.find().then((employees)=>{
         res.json(employees)
-    }).catch((err)=>{
+    }).catch((err)=>{ 
         console.log(err)
     })
 

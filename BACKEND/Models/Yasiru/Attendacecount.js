@@ -6,7 +6,7 @@ const AttendanceSchema = new Schema({
     empId:{
         type:String,
         required:true,
-        unique: true
+       
     },
     
     attendance:{
