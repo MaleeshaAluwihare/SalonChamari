@@ -3,7 +3,7 @@ import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarCheck, faTrash, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faMinus, faPlus, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
@@ -161,7 +161,10 @@ const handleDownloadPDF = () => {
     logo.src = SalonLogo; // Use the imported logo image path
 };
 
-    
+    const toggleFormVisibility = () => {
+    setShowAppointmentForm(prevState => !prevState);
+};
+
     return (
         <div className='mainContainer'>
             <div className='contentContainer'>
@@ -241,9 +244,14 @@ const handleDownloadPDF = () => {
                         <button className="downloadPDFBtn" onClick={handleDownloadPDF}>Download Quote</button>
                     )}
                 </div>
-                <div className='floating-button'>
-                 <FontAwesomeIcon icon={faCalendarCheck} className="floating-button-icon" /> 
+                <div className='floating-button' onClick={toggleFormVisibility}>
+                    <FontAwesomeIcon icon={faCalendarDays} className="floating-button-icon" />
                 </div>
+                {showAppointmentForm && (
+                    <div className="appointmentFormContainer">
+                        {/* Your appointment form JSX goes here */}
+                    </div>
+                )}
                 <hr></hr>
             </div>
         </div>
