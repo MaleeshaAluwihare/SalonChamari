@@ -8,6 +8,7 @@ import BudgetItem from "../BudgetItem/BudgetItem";
 function Budget() {
 
   //here useGlobalContext used to bring globalContext methods
+  //these methods are coming from globalContext
   const {addBudget,getBudgets,budgets} = useGlobalContext();
   //useEffect take backend response array to budget component
   //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
