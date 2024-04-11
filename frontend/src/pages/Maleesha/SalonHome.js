@@ -17,7 +17,7 @@ import staffIcon from '../../images/Maleesha/staff-icon.png';
 export default function SalonHome() {
 
     const videoRef = useRef(null);
-
+    
     useEffect(() => {
         const currentVideoRef = videoRef.current;
         
@@ -60,6 +60,33 @@ export default function SalonHome() {
             document.removeEventListener('keydown', handleUserInteraction);
         };
     }, []);
+
+    const img1Ref = useRef();
+    const img2Ref = useRef();
+    const img3Ref = useRef();
+
+    useEffect(() => {
+        let images = [img1Ref.current, img2Ref.current, img3Ref.current];
+        let currentImageIndex = 0;
+
+        function changeImage() {
+            let imgElement = images[currentImageIndex];
+            imgElement.style.opacity = 0;
+
+            setTimeout(() => {
+                imgElement.style.opacity = 1;
+            }, 100);
+
+            currentImageIndex++;
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+        }
+
+        const intervalId = setInterval(changeImage, 6667); // Change image every 6.67 seconds
+
+        return () => clearInterval(intervalId); // Clean up on unmount
+    }, []);
     
     
 
@@ -67,13 +94,14 @@ export default function SalonHome() {
         <div className="homepage">
             <div className="parallax-container">
                 <div className="parallax-background">
-                    <img src={image1} alt="Background 1" className="slide-image" />
-                    <img src={image2} alt="Background 2" className="slide-image" />
-                    <img src={image3} alt="Background 3" className="slide-image" />
+                    <img ref={img1Ref} src={image1} alt="Background 1" className="slide-image" />
+                    <img ref={img2Ref} src={image2} alt="Background 2" className="slide-image" />
+                    <img ref={img3Ref} src={image3} alt="Background 3" className="slide-image" />
                 </div>
                 <div className="parallax-content">
-                    <h1>Welcome to Salon Chamari</h1>
-                    <p>Experience the ultimate beauty treatments in a serene environment.</p>
+                    <p>RELAX IN STYLE, LEAVE WITH SMILE</p>
+                    <h1>WELCOME TO SALON CHAMARI</h1>
+                    <p>EXPERIENCE THE ULTIMATE BEAUTY TREATMENT IN A SERENE ENVIORNMENT</p>
                 </div>
             </div>
             <div className='infromationContainer'>
