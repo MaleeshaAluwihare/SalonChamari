@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { calender, dollar, trash } from "../../../utils/Pulasthi/Icons";
+import { calender, dollar, trash, update } from "../../../utils/Pulasthi/Icons";
 import Button from "../Button/Button";
 //this component is used to display items
 function BudgetItem({
@@ -16,6 +16,7 @@ function BudgetItem({
 }) {
   return (
     <BudgetItemStyled indicator={indicatorColor}>
+        
       {/* <div className="icon">
 
       </div> */}
@@ -39,6 +40,16 @@ function BudgetItem({
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
                         onClick={() => deleteItem(budgetId)}
+                    />
+                    <Button
+                        icon={update}
+                        bPad={'1rem'}
+                        bRad={'50%'}
+                        bg={'var(--primary-color'}
+                        color={'#fff'}
+                        iColor={'#fff'}
+                        hColor={'var(--color-green)'}
+                        // onClick={() => deleteItem(budgetId)}
                     />
                 </div>
             </div>
