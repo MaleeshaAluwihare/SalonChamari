@@ -19,7 +19,8 @@ export const GlobalProvider = ({children}) => {
             .catch((err) =>{
                 setError(err.response.data.message)
             })
-           //getIncomes()
+            //aluth budget ekk add karaddi e add krpu newbudget eka realtime pennana getBudgets() method eka call krnwa
+           getBudgets()
     }
     // get Budget
     const getBudgets = async () => {
@@ -27,13 +28,19 @@ export const GlobalProvider = ({children}) => {
         setBudgets(response.data)
         console.log(response.data)
     }
-
+    //delete budget
+    const deleteBudget = async (id) => {
+        const res  = await axios.delete(`${BASE_URL}delete-budget/${id}`)
+        //budget ekk delete karata passeth backend eke tyenna budgets tika pennana getBudgets() method eka call karanawa
+        getBudgets()
+    }
 
     return(
         <GlobalContext.Provider value={{
             addBudget,
             getBudgets,
-            budgets
+            budgets,
+            deleteBudget,
         }}>
             {children}
         </GlobalContext.Provider>

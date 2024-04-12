@@ -9,7 +9,7 @@ function Budget() {
 
   //here useGlobalContext used to bring globalContext methods
   //these methods are coming from globalContext
-  const {addBudget,getBudgets,budgets} = useGlobalContext();
+  const {addBudget,getBudgets,budgets,deleteBudget} = useGlobalContext();
   //useEffect take backend response array to budget component
   //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
   useEffect(() =>{
@@ -39,7 +39,7 @@ function Budget() {
                       amount={amount} 
                       date={date}  
                       indicatorColor="var(--color-DarkYellow)"
-                      // deleteItem={deleteBudget}
+                      deleteItem={deleteBudget}
                   />
               })}
           </div>
