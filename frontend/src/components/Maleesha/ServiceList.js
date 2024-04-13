@@ -17,7 +17,7 @@ export default function ServiceList() {
         <Link to = {SkinService} className="ServicesButton">SKIN</Link>
         <Link to = {NailService} className="ServicesButton">NAIL</Link>
         <Link to = {BridalService} className="ServicesButton">BRIDAL</Link>
-        <Link to = "#" className="ServicesButton">ITEMS</Link>
+        <Link to = "#" className="ServicesButton">Sarees & Gowns</Link>
       </div>
     </div>
   );

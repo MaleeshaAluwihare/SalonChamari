@@ -44,7 +44,7 @@ export default function ImageUploadForm (){
   };
 
   return (
-    <div className="container">
+    <div className="image-container">
       <h2>Image Upload</h2>
       <form onSubmit={handleSubmit}>
           <div className="form-group">

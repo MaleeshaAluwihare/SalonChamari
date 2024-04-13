@@ -17,11 +17,21 @@ export default function Dashboard(){
                 <SideBar onSelectOption={setSelectedOption}/>
             </div>
             <div className="dashboardContent">
-                {selectedOption === "home" && <Home/>}
-                {selectedOption === "create-service" && <AddService />}
-                {selectedOption === "remove-service" && <RemoveService/>}
-                {selectedOption === "update-service" && <UpdateService/>}
-                {selectedOption === "image-upload" && <ImageUpload/>}  
+                <div className="home">
+                    {selectedOption === "home" && <Home/>}
+                </div>
+                <div className="createService">
+                    {selectedOption === "create-service" && <AddService />}
+                </div>
+                <div className="removeService">
+                    {selectedOption === "remove-service" && <RemoveService/>}
+                </div>
+                <div className="updateService">
+                    {selectedOption === "update-service" && <UpdateService/>}
+                </div>
+                <div className="imageUpload">
+                    {selectedOption === "image-upload" && <ImageUpload/>}  
+                </div>
             </div>
         </div>
     )

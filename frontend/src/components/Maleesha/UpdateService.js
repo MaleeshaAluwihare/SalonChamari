@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import '../../css/Maleesha/UpdateService.css';
 
 export default function UpdateService(){
 
@@ -47,6 +49,7 @@ export default function UpdateService(){
         setSelectedServiceID(selectedItemInfo ? selectedItemInfo.itemID : '');
     };
 
+
     const fetchDataForSelectedService = async () => {
         if (selectedServiceID) {
             try {
@@ -61,91 +64,119 @@ export default function UpdateService(){
 
             } catch (error) {
                 console.error('Error fetching service data:', error);
-                alert('An error occurred while fetching service data.');
+                Swal.fire({
+                    title: 'Error',
+                    text: 'An error occurred while fetching service data.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         }
     };
 
     const handleUpdateButtonClick = async () => {
         if (!selectedServiceID) {
-            alert('Please select a service to update.');
+            Swal.fire({
+                title: 'Select a Service',
+                text: 'Please select a service to update.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
         }
-
+    
         const updatedService = {
             serviceName,
             subCategoryName,
             itemName,
             itemPrice
         };
-        
+    
         try {
             await axios.put(`/services/itemsUpdate/${selectedServiceID}`, updatedService);
-            alert('Service updated successfully.');
+    
+            Swal.fire({
+                title: 'Success!',
+                text: 'Service updated successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+    
+            // Clear form fields
+            setServiceName("");
+            setSubCategoryName("");
+            setItemName("");
+            setItemPrice("");
         } catch (error) {
             console.error('Error updating service:', error);
-            alert('An error occurred while updating the service.');
+            Swal.fire({
+                title: 'Error',
+                text: 'An error occurred while updating the service.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
-
+    
     useEffect(() => {
         fetchDataForSelectedService();
     }, [selectedServiceID]); // Fetch data whenever selectedServiceID changes
 
     return(
-        <div className='MainContainer'>
-            <div className='dropdownContainer'>
-                <div className='dropdown'>
-                    <label>Pick Category:</label>
-                    <select value={selectedService} onChange={handleServiceChange}>
-                        <option value="">Select</option>
-                        {services.map((service, index) => (
-                            <option key={index} value={service}>{service}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className='dropdown'>
-                    <label>Pick Sub-Category:</label>
-                    <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
-                        <option value="">Select</option>
-                        {subcategories.map((subcategory, index) => (
-                            <option key={index} value={subcategory}>{subcategory}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className='dropdown'>
-                    <label>Pick Service:</label>
-                    <select value={selectedServiceItem} onChange={handleServiceItemClick}>
-                        <option value="">Select</option>
-                        {serviceItems.map((item, index) => (
-                            <option key={index} value={item.itemName}>{item.itemName}</option>
-                        ))}
-                    </select>
-                </div>
+        <div className='main-update-container'>
+            <div className='service-select-container'>
+                <form className='service-select-form'>
+                    <div className='dropdown'>
+                        <label>Pick Category:</label>
+                        <select value={selectedService} onChange={handleServiceChange}>
+                            <option value="">Select</option>
+                            {services.map((service, index) => (
+                                <option key={index} value={service}>{service}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='dropdown'>
+                        <label>Pick Sub-Category:</label>
+                        <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
+                            <option value="">Select</option>
+                            {subcategories.map((subcategory, index) => (
+                                <option key={index} value={subcategory}>{subcategory}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='dropdown'>
+                        <label>Pick Service:</label>
+                        <select value={selectedServiceItem} onChange={handleServiceItemClick}>
+                            <option value="">Select</option>
+                            {serviceItems.map((item, index) => (
+                                <option key={index} value={item.itemName}>{item.itemName}</option>
+                            ))}
+                        </select>
+                    </div>
+                </form>    
             </div>
-            {selectedService && (
-                <div className="container">
-                    <form>
-                        <div className="mb-3">
-                            <label htmlFor="Category" className="form-label">Category:</label>
-                            <input type="text" className="form-control" id="Category" value= {serviceName} readOnly />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="SubCategory" className="form-label">Sub-Category:</label>
-                            <input type="text" className="form-control" id="SubCategory" value={subCategoryName} readOnly />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="Service" className="form-label">Service Name:</label>
-                            <input type="text" className="form-control" id="Service" value={itemName} onChange={(e) => setSelectedServiceItem(e.target.value)} />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="Service price" className="form-label">Service Price:</label>
-                            <input type="text" className="form-control" id="Service price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
-                        </div>
-                        <button className='UpdateServiceBtn' onClick={handleUpdateButtonClick}>Update</button>
-                    </form>
-                </div>
-            )}
+            {/* Both forms are displayed here */}
+            <div className="update-service-container">
+                <form className='update-service-form'>
+                    <div className="mb-3">
+                        <label htmlFor="Category" className="form-label">Category:</label>
+                        <input type="text" className="form-control" id="Category" value= {serviceName} readOnly />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="SubCategory" className="form-label">Sub-Category:</label>
+                        <input type="text" className="form-control" id="SubCategory" value={subCategoryName} readOnly />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Service" className="form-label">Service Name:</label>
+                        <input type="text" className="form-control" id="Service" value={itemName} onChange={(e) => setItemName(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="Service price" className="form-label">Service Price:</label>
+                        <input type="text" className="form-control" id="Service price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
+                    </div>
+                    <button className='UpdateServiceBtn' onClick={handleUpdateButtonClick}>Update</button>
+                </form>
+            </div>
         </div>
     )
 }

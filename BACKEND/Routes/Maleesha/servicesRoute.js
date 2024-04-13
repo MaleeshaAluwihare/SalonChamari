@@ -8,7 +8,7 @@ let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 //INSERT DATA
 app.post("/itemsAdd", async (req,res) => {
 
-    const{ serviceName, subCategoryName, itemName, itemPrice, serviceTime } = req.body;
+    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
 
     //console.log(req.body);
 

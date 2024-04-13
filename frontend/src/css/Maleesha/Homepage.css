@@ -25,45 +25,15 @@ body {
     overflow: hidden;
 }
 
-.slide-image {
+.parallax-background .slide-image {
+    filter: brightness(80%);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: slide 40s infinite; /* Increased duration */
-}
-
-@keyframes slide {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(0.8) rotate(5deg);
-    }
-    20%, 80% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-    33%, 66% {
-        opacity: 0;
-        transform: scale(1.2) rotate(-5deg);
-    }
-}
-
-.slide-image:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.slide-image:nth-child(2) {
-    animation-delay: 10s; /* Display for at least 10 seconds */
-}
-
-.slide-image:nth-child(3) {
-    animation-delay: 20s; /* Display for at least 10 seconds */
-}
-
-
-
+  }
 
 .parallax-content {
     position: absolute;
@@ -71,8 +41,19 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #000000;
     z-index: 2;
+}
+
+.parallax-content h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    color: white;
+}
+
+.parallax-content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: white;
 }
 
 
@@ -146,53 +127,135 @@ body {
         height: 400px;
     }
 }
-
-.locationContainer{
-    margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-.locationContainer {
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .locationContainer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
+    align-items: stretch; /* This will make the children stretch to fill the container */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .mapContainer {
+    margin-left: 20px;
+    flex: 1;
+    margin-right: 20px;
+    overflow: hidden; /* Hide overflow to respect border-radius */
+    border-radius: 10px; /* Rounded corners for the map */
+  }
+  
+  .detailContainer {
+    width: calc(100% - 850px); /* Adjust the width by reducing the map container's width */
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-}
-
-.mapContainer {
-    flex: 1; /* Take up remaining space */
-    margin-right: 20px; /* Add margin for spacing */
-}
-
-.detailContainer {
-    margin-top: 100px;
-    flex: 1; /* Take up remaining space */
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.detailContent {
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-.title {
+  }
+  
+  .title {
+    margin-top: 30px;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.contactInfo {
-    margin-bottom: 50px;
-}
-
-.contactInfo p {
+    color: #333333; /* Darker color for better readability */
+  }
+  
+  .location-icon {
+    margin-right: 10px;
+    color: #363636; /* Color icon for a pop of color */
+  }
+  
+  .contactInfo {
+    margin-top: 80px;
+  }
+  
+  .contactInfo p {
     margin: 5px 0;
+    color: #555555; /* Soft color for text */
+  }
+  
+  .contactInfo p span {
+    font-weight: bold;
+    color: #333333; /* Darker color for important info */
+  }
+
+  /*fixed bg*/
+  .fixed-background-section {
+    display: flex; 
+    justify-content: flex-end; 
+    /* align-items: stretch; */
+    position: relative; /* Establishes the containing block for absolutely positioned elements */
+    height: 600px; /* Maximum height for the background section */
+    background-image: url('../../images/Maleesha/owner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+.about-content {
+    position: absolute; /* Positions the about-content relative to its nearest positioned ancestor */
+    top: 0; /* Aligns the top edge of the about-content with the top of the container */
+    bottom: 0; /* Aligns the bottom edge of the about-content with the bottom of the container */
+    width: 37%; 
+    background-color: white;
+    /* opacity:0.7 ; */
+    padding: 20px;
+    /* overflow: auto; Adds scrollbars if content overflows */
+  }
+  
+  
+  /* Additional styles for h3 and p inside .about-content */
+.about-content h3 {
+    margin-bottom: 30px; /* Space below the heading */
+  }
+  
+.about-content p {
+    text-align: justify;
 }
 
-.contactInfo p span {
+
+.info-Container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-around; /* Align items with equal space around them */
+    margin-left: 40px; /* Left margin */
+    margin-right: 40px; /* Right margin */
+    background-color: beige;
+}
+
+.staff-info, .experience-info, .services-info, .open-info {
+    margin-top: 20px;
+    flex: none;
+    display: flex; /* Display child elements as flex */
+    flex-direction: column; /* Arrange child elements vertically */
+    align-items: center; /* Center align child elements horizontally */
+    text-align: center; /* Center align text */
+    padding: 20px; /* Add padding to create space around content */
+}
+
+.Icon {
+    width: 80px; /* Set fixed width for the icon */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.info-p {
+    font-size: 1.2em; /* Adjust font size as needed */
+    margin-top: 20px; /* Add margin between paragraphs */
+    line-height: 2;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
+
+
+  
+  

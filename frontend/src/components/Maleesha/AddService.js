@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import '../../css/Maleesha/AddService.css';
 
 const serviceSubcategories = {
     "Hair Care": ["Haircut", "Hair Color", "Hair Treatment"],
@@ -44,6 +45,11 @@ export default function AddService(){
                 confirmButtonAriaLabel: 'Thumbs up, great!',
                 timer: 5000
             })
+            setServiceName(" ");
+            setSubName(" ");
+            setItemName(" ");
+            setItemPrice(" ");
+
         }).catch(err => {
             Swal.fire({
                 title: '<strong>Uh-oh...</strong>',
