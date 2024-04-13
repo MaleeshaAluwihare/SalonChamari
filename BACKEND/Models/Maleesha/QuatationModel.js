@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const QuotationSchema = new mongoose.Schema({
     
     appointmentID: {
@@ -15,8 +16,7 @@ const QuotationSchema = new mongoose.Schema({
         required: true
     },
     quotation: {
-        data: Buffer, 
-        contentType: String
+        type: String
     },
     currentDate: {
         type: Date,

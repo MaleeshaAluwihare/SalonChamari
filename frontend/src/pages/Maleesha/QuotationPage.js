@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faMinus, faPlus, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faMinus, faPlus, faCalendarDays, faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
@@ -20,6 +21,13 @@ export default function QuotationPage() {
     const [selectedServicePrice, setSelectedServicePrice] = useState('');
     const [selectedServices, setSelectedServices] = useState([]);
     const [allDropdownsSelected, setAllDropdownsSelected] = useState(false); // State variable to track if all dropdowns are selected
+    const [showAppointmentForm, setShowAppointmentForm] = useState(false); // State variable to toggle the visibility of the appointment form
+    const [customerName, setCustomerName] = useState("");
+    const [contactNumber, setContactNumber] = useState("");
+    const [quotation,setQuotaionPDF] = useState("");
+    const [appointmentDate, setAppoinmentDate] = useState("");
+    const [appointmentTime, setAppoinmentTime] = useState("");
+
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -114,56 +122,135 @@ export default function QuotationPage() {
         return total;
     };
 
-const handleDownloadPDF = () => {
-    const doc = new jsPDF();
+    const handleDownloadPDF = () => {
+        const doc = new jsPDF();
+    
+        const logo = new Image();
+        logo.onload = function() {
+            doc.addImage(logo, 'PNG', 70, 5, 60, 40); 
+    
+            // Add a title to the PDF with underline
+            doc.setFontSize(22);
+            doc.setFont('times', 'bold');
+            doc.text('Quotation', 105, 55, { align: 'center' }); 
+            doc.setDrawColor(0, 0, 0); 
+            doc.line(80, 57, 130, 57);
+            doc.line(80, 58, 130, 58); 
+    
+            // Salon address on the left side above the table
+            doc.setFontSize(12);
+            doc.setFont('times', 'normal');
+            doc.setTextColor(100); 
+            doc.text('QUOTE FROM:\nSalon Chamari,\n523/7 DS Senanayake Mawatha,\nAnuradhapura', 14, 70); 
+    
+            // array to hold table data
+            let tableData = [];
+    
+            // Push each service as a row to the table data
+            selectedServices.forEach(service => {
+                tableData.push([
+                    service.itemNo,
+                    service.itemName,
+                    service.quantity,
+                    service.itemPrice * service.quantity
+                ]);
+            });
+    
+            // Calculate total amount
+            let totalAmount = calculateTotalAmount();
+            tableData.push(['Total Amount', '', '', `Rs.${totalAmount.toFixed(2)}`]);
+    
+            // Generate the table
+            doc.autoTable({
+                head: [['Item No', 'Service Name', 'Number Of Persons', 'Service Price']],
+                body: tableData,
+                startY: 100, // Adjusted to make space for the address
+                theme: 'grid',
+                styles: { halign: 'center', font: 'helvetica' }
+            });
+    
+            // Add the quotation date and expiration date on the right side above the table
+            let today = new Date();
+            let expiryDate = new Date();
+            expiryDate.setDate(today.getDate() + 30); // Quotation valid for 30 days
+            doc.setFontSize(12);
+            doc.setFont('times', 'normal');
+            doc.setTextColor(150); 
+            doc.text(`Issue Date: ${today.toDateString()}`, 140, 70); 
+            doc.text(`Valid Until: ${expiryDate.toDateString()}`, 140, 77); 
 
-    const logo = new Image();
-    logo.onload = function() {
-        doc.addImage(logo, 'PNG', 70, 5, 60, 40); // Adjust the positioning and size of the logo(Y,X,W,H)
-
-        // Add a title to the PDF
-        doc.setFontSize(16);
-        doc.text('Quotation', 105, 50, { align: 'center' }); // Adjust alignment and positioning of the title(Y,X)
-
-        // array to hold table data
-        let tableData = [];
-
-        // Push each service as a row to the table data
-        selectedServices.forEach(service => {
-            tableData.push([
-                service.itemNo,
-                service.itemName,
-                service.quantity,
-                service.itemPrice * service.quantity
-            ]);
-        });
-
-        // Calculate total amount
-        let totalAmount = calculateTotalAmount();
-        tableData.push([ 'Total Amount','', '', `Rs.${totalAmount.toFixed(2)}`]);
-
-        // Generate the table
-        doc.autoTable({
-            head: [['Item No', 'Service Name', 'Number Of Persons', 'Service Price']],
-            body: tableData,
-            startY: 60, 
-            theme: 'grid', // Add a theme to the table
-            styles: { halign: 'center' } // Center align content in the table
-        });
-
-        doc.setFontSize(12);
-        doc.text('For more further details please Contact +94767455431', 105, 150, { align: 'center' }); // Adjust alignment and positioning of the title(Y,X)
-
-        // Save the PDF
-        doc.save('quotation.pdf');
-    };
+            // Contact details aligned at the bottom center of the PDF
+            doc.setFontSize(10);
+            doc.setFont('courier', 'italic');
+            doc.text('We will happy to supply any further information you may need\n Contact Us: +94767455431', 105, doc.internal.pageSize.getHeight() - 20, { align: 'center' });
+    
+            // Double border for each page
+            doc.setLineWidth(1);
+            doc.rect(5, 5, doc.internal.pageSize.getWidth() - 10, doc.internal.pageSize.getHeight() - 10);
+            doc.setLineWidth(0.5);
+            doc.rect(7, 7, doc.internal.pageSize.getWidth() - 14, doc.internal.pageSize.getHeight() - 14);
+    
+            // Save the PDF
+            doc.save('SalonChamariQuotation.pdf');
+        };
 
     logo.src = SalonLogo; // Use the imported logo image path
-};
+    };
 
-    const toggleFormVisibility = () => {
-    setShowAppointmentForm(prevState => !prevState);
-};
+    const FormVisibility = () => {
+        setShowAppointmentForm(prevState => !prevState);
+    };
+
+    const handleClose = () => {
+        setShowAppointmentForm(false);
+    };
+
+    const handleAppoinment = async(event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('customerName',customerName);
+        formData.append('contactNumber',contactNumber);
+        formData.append('pdf',quotation);
+        formData.append('appointmentDate',appointmentDate);
+        formData.append('appointmentTime',appointmentTime);
+
+        try{
+            const response = await axios.post('/quotation/newAppointment',formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            if(response.status === 200){
+                Swal.fire({
+                    title: '<strong>Service Enlisted!</strong>',
+                    icon: 'success',
+                    html:
+                        'Appoinment has been <b>successfully</b> placed. ',
+                    focusConfirm: false,
+                    confirmButtonText:
+                        '<i class="fa fa-thumbs-up"></i> Great!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                    timer: 5000
+                })
+            }
+            
+        } catch (error){
+            Swal.fire({
+                title: '<strong>Uh-oh...</strong>',
+                icon: 'error',
+                html:
+                    'We encountered an issue while placing your Appoinment. ',
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-times-circle"></i> I\'ll try again',
+                confirmButtonAriaLabel: 'I\'ll try again',
+                timer: 5000
+            })
+        }
+    }
+
 
     return (
         <div className='mainContainer'>
@@ -244,15 +331,77 @@ const handleDownloadPDF = () => {
                         <button className="downloadPDFBtn" onClick={handleDownloadPDF}>Download Quote</button>
                     )}
                 </div>
-                <div className='floating-button' onClick={toggleFormVisibility}>
+                <div className='floating-button' onClick={FormVisibility}>
                     <FontAwesomeIcon icon={faCalendarDays} className="floating-button-icon" />
                 </div>
                 {showAppointmentForm && (
-                    <div className="appointmentFormContainer">
-                        {/* Your appointment form JSX goes here */}
+                    <div className='modal-container'>
+                      <div className="appointmentFormContainer">
+                            <form onSubmit={handleAppoinment}>
+                                <button onClick={handleClose} className="close-icon">
+                                    <FontAwesomeIcon icon={faTimes} />
+                                </button>
+                                <div className="formField">
+                                    <label htmlFor="customerName">Customer Name:</label>
+                                    <input
+                                        type="text"
+                                        id="customerName"
+                                        name="customerName"
+                                        value={customerName}
+                                        onChange={(e) => {setCustomerName(e.target.value)}}
+                                        required
+                                    />
+                                </div>
+                                <div className="formField">
+                                    <label htmlFor="contactNumber">Contact Number:</label>
+                                    <input
+                                        type="tel"
+                                        id="contactNumber"
+                                        name="contactNumber"
+                                        value={contactNumber}
+                                        onChange={(e) => {setContactNumber(e.target.value)}}
+                                        required
+                                    />
+                                </div>
+                                <div className="formField">
+                                    <label htmlFor="pdf">Attach PDF:</label>
+                                    <input
+                                        type="file"
+                                        id="pdf"
+                                        name="pdf"
+                                        onChange={(e) => {setQuotaionPDF(e.target.files[0])}}
+                                        accept=".pdf"
+                                        required
+                                    />
+                                     <p class="instructionMessage">*Please attach your generated quote PDF.</p>
+                                </div>
+                                <div className="formField">
+                                    <label htmlFor="appointmentDate">Appointment Date:</label>
+                                    <input
+                                        type="date"
+                                        id="appointmentDate"
+                                        name="appointmentDate"
+                                        value={appointmentDate}
+                                        onChange={(e) => {setAppoinmentDate(e.target.value)}}
+                                        required
+                                    />
+                                </div>
+                                <div className="formField">
+                                    <label htmlFor="appointmentTime">Appointment Time:</label>
+                                    <input
+                                        type="time"
+                                        id="appointmentTime"
+                                        name="appointmentTime"
+                                        value={appointmentTime}
+                                        onChange={(e) => {setAppoinmentTime(e.target.value)}}
+                                        required
+                                    />
+                                </div>
+                                <button type="submit" className='formSubmitBtn'>Submit</button>
+                            </form>                    
+                        </div>
                     </div>
                 )}
-                <hr></hr>
             </div>
         </div>
     );

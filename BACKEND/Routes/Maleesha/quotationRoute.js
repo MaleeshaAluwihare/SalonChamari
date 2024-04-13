@@ -42,8 +42,12 @@ app.get('/serviceitems/:subCategoryName',async (req,res) => {
 
 //store the pdf file inside frontend folder and pass the filename to backend to store in DB
 const storage = multer.diskStorage({
-    destination:function (req,file,cd){
-        createBrotliCompress(null,path.join(__dirname, '../../../frontend/src/frontend/src/QuotationPDF'));
+    destination: function (req, file, cb) {
+        const destinationPath = path.join(__dirname, '../../../frontend/src/QuotationPDF');
+        fs.mkdir(destinationPath, { recursive: true }, (err) => {
+            if (err) return cb(err);
+            cb(null, destinationPath);
+        });
     },
     filename: function (req, file, cb){
         const uniqueSuffix = Date.now();
@@ -51,35 +55,43 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({storage:storage});
+const upload = multer({ storage: storage })
 
 //create an appoinment
 app.post("/newAppointment", upload.single('pdf'), async (req, res) => {
-    try {
-        const { appointmentID, customerName, contactNumber, appointmentDate, appointmentTime } = req.body;
-        
-        const pdfName = req.file.filename;
 
-        // Create a new Appointment document
-        const newAppointment = new Appointment({
-            appointmentID: appointmentID,
-            customerName: customerName,
-            contactNumber: contactNumber,
-            quotation: pdfName,
-            currentDate: new Date(),
-            appointmentDate: new Date(appointmentDate),
-            appointmentTime: appointmentTime
-        });
+    // Get the highest existing appointmentID
+    const highestAppointment = await Appointment.findOne({}, {}, { sort: { 'appointmentID': -1 } });
 
-        // Save the document to MongoDB
-        const savedAppointment = await newAppointment.save();
-        console.log('Appointment saved successfully:', savedAppointment);
-        res.status(200).json(savedAppointment);
-    } catch (error) {
-        console.error('Error saving appointment:', error);
-        res.status(500).json({ error: 'Error saving appointment' });
+    // Determine the next appointmentID
+    let nextAppointmentID = 1;
+    if (highestAppointment) {
+        nextAppointmentID = parseInt(highestAppointment.appointmentID.substr(3)) + 1;
     }
+
+    // Create a new Appointment document
+    const { customerName, contactNumber, appointmentDate, appointmentTime } = req.body;
+    const pdf = req.file.filename;
+
+    try {
+        await Appointment.create({
+                                    appointmentID: 'APP' + nextAppointmentID.toString().padStart(4, '0'),
+                                    customerName,
+                                    contactNumber, 
+                                    quotation: pdf, 
+                                    appointmentDate, 
+                                    appointmentTime
+                                });
+
+        res.status(200).json({status: "Appointment saved successfully"});
+        
+    } catch (error) {
+        console.error("Error creating appointment:", error);
+        res.status(500).json({status: "Error creating appointment"});
+    }
+    
 });
+
 
 module.exports = app;
 
