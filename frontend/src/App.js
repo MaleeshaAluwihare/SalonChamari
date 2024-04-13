@@ -12,7 +12,7 @@ import './App.css';
 // import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
-import QuotationPage from './pages/Maleesha/QuotationPage';
+// import QuotationPage from './pages/Maleesha/QuotationPage';
 // import ServiceList from './components/Maleesha/ServiceList';
 // import SkinServices  from './pages/Maleesha/SkinService';
 // import NailServices from './pages/Maleesha/NailService';
@@ -24,7 +24,7 @@ import QuotationPage from './pages/Maleesha/QuotationPage';
 // import FooterWave from './components/Maleesha/FooterWave';
 // import Footer from './components/Maleesha/Footer';
 // import SalonHome from './pages/Maleesha/SalonHome';
-// import Dashboard from './pages/Maleesha/Dashboard';
+import Dashboard from './pages/Maleesha/Dashboard';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -46,7 +46,7 @@ function App() {
         {/* <HairServices/> */}
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
-        <QuotationPage/>
+        {/* <QuotationPage/> */}
         {/* <LandingPage/> */}
         {/* <SkinServices/> */}
         {/* <NailServices/> */}
@@ -58,7 +58,7 @@ function App() {
         {/* <FooterWave/> */}
         {/* <Footer/> */}
         {/* <SalonHome/> */}
-        {/* <Dashboard/> */}
+        <Dashboard/>
 
         {/* <InventoryDash/>
         <AddInventory/>
