@@ -12,6 +12,7 @@ function BudgetItem({
     amount,
     date,
     deleteItem,
+    updateItem,
     indicatorColor,
 }) {
   return (
@@ -49,7 +50,7 @@ function BudgetItem({
                         color={'#fff'}
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
-                        // onClick={() => deleteItem(budgetId)}
+                        onClick={() => updateItem(budgetId)}
                     />
                 </div>
             </div>
@@ -63,7 +64,7 @@ const BudgetItemStyled = styled.div`
     border: 2px solid #FFFFFF;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
-    padding: 1rem;
+    padding: .8rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -83,6 +84,11 @@ const BudgetItemStyled = styled.div`
             font-size: 2.6rem;
         }
     } */
+    .btn-con{
+        display:flex;
+        flex-direction:column-reverse;
+        gap: .8rem;
+    }
     .content{
         flex: 1;
         display: flex;

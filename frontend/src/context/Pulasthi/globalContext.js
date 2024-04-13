@@ -10,6 +10,7 @@ export const GlobalProvider = ({children}) => {
 
     //state is used to store the array
     const [budgets, setBudgets] = useState([])
+    const [budget,setBudget] = useState(null);
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
     //add Budget
@@ -34,6 +35,21 @@ export const GlobalProvider = ({children}) => {
         //budget ekk delete karata passeth backend eke tyenna budgets tika pennana getBudgets() method eka call karanawa
         getBudgets()
     }
+    //update budget
+    // const updateBudget = async () =>{
+    //     const res = await axios.put(`${BASE_URL}update-budget/${id}`, budgets)
+    //     .catch((err)=>{
+    //         setError(err.res.data.message)
+    //     })
+    //     getBudgets()
+    // }
+
+    //getOneBudgetData
+    const getOneBudget = async (id) => {
+        const response = await axios.get(`${BASE_URL}getBudgetById/${id}`)//error ekk print karanawanm methona then catch ekk danna onne
+        setBudget(response.data.budget);//.budget is must here
+        console.log(response.data)
+    }
 
     return(
         <GlobalContext.Provider value={{
@@ -41,6 +57,9 @@ export const GlobalProvider = ({children}) => {
             getBudgets,
             budgets,
             deleteBudget,
+            // updateBudget,
+            getOneBudget,
+            budget,
         }}>
             {children}
         </GlobalContext.Provider>

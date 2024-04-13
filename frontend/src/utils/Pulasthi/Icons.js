@@ -10,3 +10,4 @@ export const dollar = <i className="fa-solid fa-dollar-sign"></i>
 export const calender = <i className="fa-solid fa-calendar"></i>
 export const trash = <i className="fa-solid fa-trash"></i>
 export const update = <i class="fa-solid fa-pen"></i>
+export const search = <i class="fa-solid fa-magnifying-glass"></i>
