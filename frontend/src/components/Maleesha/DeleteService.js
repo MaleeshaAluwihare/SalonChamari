@@ -60,7 +60,8 @@ export default function DeleteService(){
                 confirmButtonText: 'OK',
                 customClass: {
                     confirmButton: 'btn btn-warning'
-                }
+                },
+                timer: 5000
             });
             return;
         }
@@ -76,7 +77,8 @@ export default function DeleteService(){
             customClass: {
                 confirmButton: 'btn btn-danger',
                 cancelButton: 'btn btn-secondary mx-2'
-            }
+            },
+            timer: 5000
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
@@ -94,7 +96,8 @@ export default function DeleteService(){
                         confirmButtonText: 'Great!',
                         customClass: {
                             confirmButton: 'btn btn-success'
-                        }
+                        },
+                        timer: 5000
                     });
                     
                 } catch (error) {
@@ -106,7 +109,8 @@ export default function DeleteService(){
                         confirmButtonText: 'OK',
                         customClass: {
                             confirmButton: 'btn btn-danger'
-                        }
+                        },
+                        timer: 5000
                     });
                 }
             }

@@ -19,12 +19,12 @@ import './App.css';
 // import BridalServices from './pages/Maleesha/BridalService';
 // import DeleteService from './components/Maleesha/DeleteService';
 // import UpdateService from './components/Maleesha/UpdateService';
-// import CostumePage from './pages/Maleesha/CostumePage';
+import CostumePage from './pages/Maleesha/CostumePage';
 // import EmailForm from './pages/Maleesha/EmailSend';
 // import FooterWave from './components/Maleesha/FooterWave';
 // import Footer from './components/Maleesha/Footer';
 // import SalonHome from './pages/Maleesha/SalonHome';
-import Dashboard from './pages/Maleesha/Dashboard';
+// import Dashboard from './pages/Maleesha/Dashboard';
 
 //Anoj 
 // import InventoryDash from './pages/Anoj/inventoryDash';
@@ -53,12 +53,12 @@ function App() {
         {/* <BridalServices/> */}
         {/* <DeleteService/> */}
         {/* <UpdateService/> */}
-        {/* <CostumePage/> */}
+        <CostumePage/>
         {/* <EmailForm/> */}
         {/* <FooterWave/> */}
         {/* <Footer/> */}
         {/* <SalonHome/> */}
-        <Dashboard/>
+        {/* <Dashboard/> */}
 
         {/* <InventoryDash/>
         <AddInventory/>

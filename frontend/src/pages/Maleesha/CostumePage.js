@@ -99,7 +99,6 @@ export default function ProductPage() {
         {currentProducts.map(product => (
           <div className='product-card' key={product._id}>
             <img src={require(`../../uploads/${product.image}`)} alt={product.itemName} />
-            <p>{product.itemName}</p>
           </div>
         ))}
       </div>

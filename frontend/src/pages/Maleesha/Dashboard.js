@@ -5,6 +5,7 @@ import AddService from "../../components/Maleesha/AddService";
 import RemoveService from '../../components/Maleesha/DeleteService';
 import UpdateService from '../../components/Maleesha/UpdateService';
 import ImageUpload from '../../components/Maleesha/ImageForm';
+import Appointments from '../../components/Maleesha/QuotationsAppointments';
 import '../../css/Maleesha/Dashboard.css';
 
 export default function Dashboard(){
@@ -28,6 +29,9 @@ export default function Dashboard(){
                 </div>
                 <div className="updateService">
                     {selectedOption === "update-service" && <UpdateService/>}
+                </div>
+                <div className="viewQuotations">
+                    {selectedOption === "quotation-list" && <Appointments/>}
                 </div>
                 <div className="imageUpload">
                     {selectedOption === "image-upload" && <ImageUpload/>}  
