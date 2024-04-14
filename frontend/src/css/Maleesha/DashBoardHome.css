@@ -49,14 +49,6 @@
   text-align: center;
 }
 
-.popularService table th {
-    background-color: #fff4b7; /* Change this to your preferred color */
-}
-
-.popularService table th:hover {
-    background-color: #fff4b7; /* Remove hover effect from table head */
-}
-  
 .popularService table tr:nth-child(even) {
     background-color: #e9ecef;
 }

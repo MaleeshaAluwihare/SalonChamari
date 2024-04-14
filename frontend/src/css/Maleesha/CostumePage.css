@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    scroll-behavior:smooth;
+    margin-bottom: 50px;
+    overflow-y: scroll;
+   scroll-behavior: smooth;
   }
   
   .serviceList-container {
@@ -44,7 +46,7 @@
   
   .product-card img {
     width: 100%;
-    height: 91%; /* Allocate 70% of the card's height to the image */
+    height: 100%; 
     object-fit: cover; /* This will cover the area without stretching the image */
   }
   
@@ -138,9 +140,9 @@
 }
 
 .styled-hr {
-  border: 0; /* Remove the default border */
-  height: 2px; /* Set the height of the line */
-  background-image: linear-gradient(to right, #d20000, #ff5353, #d51919); /* Gradient effect */
-  margin: 20px 0; /* Add some vertical spacing */
+  border: 1; 
+  height: 2px;
+  background-image: linear-gradient(to right, #d20000, #ff5353, #d51919); 
+  margin: 20px 20px; 
 }
 
