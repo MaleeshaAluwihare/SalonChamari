@@ -51,7 +51,7 @@ export default function Messages() {
                             <td>{messages.messageId}</td>
                             <td>{messages.message}</td>
                             <td>{messages.date}</td>
-                            <td><Link to={"#"}><button className="UpdateBtn">Reply</button></Link></td>
+                            <td><Link to={"/ReplyMessage/add"}><button className="UpdateBtn">Reply</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
