@@ -6,7 +6,7 @@ const path = require('path'); // Destination folder for uploaded files
 const Service = require('../../Models/Maleesha/ServiceModel');
 const Appointment = require('../../Models/Maleesha/QuatationModel');
 
-// Fetch all services
+// Fetch all services names
 app.get('/allServices', async( req, res ) => {
     try{
         const services = await Service.find().distinct('serviceName');
@@ -90,6 +90,16 @@ app.post("/newAppointment", upload.single('pdf'), async (req, res) => {
         res.status(500).json({status: "Error creating appointment"});
     }
     
+});
+
+//fetch all Appointments available in DB
+app.get("/fetch", async (req, res) => {
+    try {
+        const appointments = await Appointment.find({});
+        res.json({ status: "Success", data: appointments });
+    } catch (error) {
+        res.json({ status: error });
+    }
 });
 
 
