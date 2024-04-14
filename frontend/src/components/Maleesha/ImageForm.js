@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import '../../css/Maleesha/ImageUploadForm.css';
 
 export default function ImageUploadForm (){
@@ -8,7 +9,6 @@ export default function ImageUploadForm (){
   const [itemName, setItemName] = useState('');
   const [itemPrice, setItemPrice] = useState('');
   const [image, setImage] = useState(null);
-  const [message, setMessage] = useState('');
 
   const handleSubmit = async (event) => {
 
@@ -28,18 +28,18 @@ export default function ImageUploadForm (){
       });
 
       if (response.status === 200) {
-        setMessage('Image uploaded successfully!');
+        Swal.fire('Success', 'Image uploaded successfully!', 'success');
         setCategory('');
         setItemName('');
         setItemPrice('');
         setImage('');
         
       } else {
-        setMessage('Error: ' + response.data.status);
+        Swal.fire('Error', 'Error: ' + response.data.status, 'error');
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('An error occurred, please try again.');
+      Swal.fire('Error', 'An error occurred, please try again.', 'error');
     }
   };
 
@@ -74,9 +74,6 @@ export default function ImageUploadForm (){
 
         <button type="submit" className='submitBtn'>Upload Image</button>
       </form>
-      {message && <div id="message" style={{ color: message.startsWith('Error') ? 'red' : 'green' }}>{message}</div>}
     </div>
   );
 };
-
-

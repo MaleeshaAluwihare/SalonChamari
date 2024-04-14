@@ -1,0 +1,131 @@
+/* General Table Styles */
+.fade-in {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  /* Filter Dropdown Styles */
+  select {
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  /* Hover Effects */
+  tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  /* Responsive Table */
+  @media screen and (max-width: 600px) {
+    table thead {
+      display: none;
+    }
+  
+    table, table tbody, table tr, table td {
+      display: block;
+      width: 100%;
+    }
+  
+    table tr {
+      margin-bottom: 15px;
+    }
+  
+    table td {
+      text-align: right;
+      padding-left: 50%;
+      text-align: right;
+      position: relative;
+    }
+  
+    table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  
+  /* Additional CSS for Filter Dropdown inside Table Header */
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .filter-container label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Adjusting the last 'th' to accommodate the filter */
+  thead th:last-child {
+    position: sticky;
+    top: 0;
+    background-color: #009879;
+  }
+  
+  
+  /* Adjusting the media query for responsive design */
+  @media screen and (max-width: 600px) {
+  
+    .filter-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .filter-container label {
+      margin-bottom: 5px;
+    }
+  }
+  
