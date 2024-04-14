@@ -140,26 +140,25 @@ h4{
 }
 
 .floating-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #FFCF00; /* Yellow color, you can change it */
-    color: rgb(0, 0, 0); /* Black color */
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for a floating effect */
-    display: flex; /* Ensure it's a flex container */
-    justify-content: center; /* Center the icon horizontally */
-    align-items: center; /* Center the icon vertically */
+  position: fixed; /* Fixed position to float on the page */
+  bottom: 20px; /* 20px from the bottom */
+  right: 0px; /* 20px from the left */
+  padding: 10px 20px; /* Padding inside the button */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  border-top-left-radius: 10px; /* Rounded top-left corner */
+  border-bottom-left-radius: 10px; /* Rounded bottom-left corner */
+  border-top-right-radius: 0; /* Square top-right corner */
+  border-bottom-right-radius: 0; /* Square bottom-right corner */
+  font-size: 16px; /* Font size */
+  text-align: center; /* Center the text */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Shadow for depth */
+  z-index: 1000; /* Ensure it's above other elements */
   }
   
   .floating-button:hover {
-    background-color: #ffffff; 
-  }
+    background-color: #0056b3;  }
   
   .quantity-adjustment {
     align-items: center;
@@ -281,4 +280,8 @@ h4{
     color: #555;
     font-size: 0.8em; 
     margin-top: 5px; 
+}
+
+.swal2-container {
+  z-index: 9999 !important;
 }
