@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faMinus, faPlus, faCalendarDays, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faMinus, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
@@ -69,8 +69,13 @@ export default function QuotationPage() {
 
     const handleAddService = () => {
         if (!allDropdownsSelected) {
-            // If any dropdown is not selected, display a warning message and return without adding the service
-            alert('Please select all fields');
+            Swal.fire({
+                title: 'Incomplete Selection',
+                text: 'Please select all fields before proceeding.',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+                timer: 5000
+            });
             return;
         }
 
@@ -224,7 +229,7 @@ export default function QuotationPage() {
 
             if(response.status === 200){
                 Swal.fire({
-                    title: '<strong>Service Enlisted!</strong>',
+                    title: '<strong>Done!</strong>',
                     icon: 'success',
                     html:
                         'Appoinment has been <b>successfully</b> placed. ',
@@ -332,7 +337,7 @@ export default function QuotationPage() {
                     )}
                 </div>
                 <div className='floating-button' onClick={FormVisibility}>
-                    <FontAwesomeIcon icon={faCalendarDays} className="floating-button-icon" />
+                    Make Appointment
                 </div>
                 {showAppointmentForm && (
                     <div className='modal-container'>
