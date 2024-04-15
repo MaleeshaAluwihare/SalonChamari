@@ -51,6 +51,16 @@ const messageReplyRouter = require("./Routes/Dasun/MessageReplyRoute.js");
 app.use("/MessageReplies", messageReplyRouter);
 
 
+//url (http: //localhost:8070/Blogs)
+const blogRouter = require("./Routes/Dasun/BlogRoute.js");
+app.use("/Blogs", blogRouter);
+
+
+//url (http: //localhost:8070/)
+const commentRouter = require("./Routes/Dasun/CommentRoute.js");
+app.use("/Comment", commentRouter);
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
