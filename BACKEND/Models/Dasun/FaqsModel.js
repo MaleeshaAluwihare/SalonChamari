@@ -3,6 +3,12 @@ const schema = mongoose.Schema;
 
 const faqSchema = new schema({
 
+    faqId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+
     question: {
         type: String,
         required: true
@@ -15,6 +21,6 @@ const faqSchema = new schema({
 
 });
 
-const Faqs = mongoose.model('faqDB', faqSchema);
+const Faqs = mongoose.model('faqs', faqSchema);
 
 module.exports = Faqs;
