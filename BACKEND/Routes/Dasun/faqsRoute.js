@@ -7,31 +7,31 @@ let Faqs = require("../../Models/Dasun/FaqsModel");
 
 //ADD
 //http: //localhost:8070/Faqs/add
-router.route("/add").post((req,res) => {
+router.route("/add").post(async (req,res) => {
 
-    const question = req.body.question;
-    const answer = req.body.answer;
+    const {faqId, question, answer} = req.body;
 
-    const newFaq = new Faqs({
+    try{
 
-        question,
-        answer
+        const newFaq = new Faqs({
 
-    })
+            faqId,
+            question,
+            answer
+    
+        });
+    
+        await newFaq.save();
+        res.json("New Faq Added");
 
-    newFaq.save().then(() => {
+    } catch(err) {
 
-        res.json("New Faq Added")
+        res.status(500).json({err : "Failed to add faq"})
+        console.log(err.message);
 
-    }).catch((err) => {
+    }
 
-        res.status(500).json({error : "Failed to add faq"})
-        console.log(err);
-
-    })
-
-})
-
+});
 
 
 //DISPLAY
@@ -56,22 +56,31 @@ router.route("/display").get((req,res) => {
 
 //GetOne
 //http: //localhost:8070/Faqs/get/
-router.route("/get/:id").get(async(req,res) => {
+router.route("/get/:faqId").get(async(req,res) => {
 
-    let faqId = req.params.id;
+    let faqId = req.params.faqId;
 
-    const faq = await Faqs.findById(faqId).then((Faqs) => {
+    try{
 
-        res.status(200).send({status: "Faq fetched", Faqs});
+        const faq = await Faqs.findOne({ faqId: faqId });
 
-    }).catch((error) => {
 
-        console.log(error);
-        res.status(500).send({status: "Error with get faq", error: error.message});
+        if(!faq) {
+            
+            return res.status(404).send({ status: "FAQ not found" });
 
-    })
+        }
 
-})
+        res.status(200).send({status: "FAQ fetched", faq: faq});
+
+    } catch (error) {
+
+        console.error("Error fetching faq", error);
+        res.status(500).send({ status: "Server error" });
+
+    }
+
+});
 
 
 
@@ -79,31 +88,41 @@ router.route("/get/:id").get(async(req,res) => {
 
 //UPDATE
 //http: //localhost:8070/Faqs/update/
-router.route("/update/:id").put(async(req,res) => {
+router.route("/update/:faqId").put(async (req,res) => {
 
-    let faqId = req.params.id;
-    
-    const{question, answer} = req.body;
+    let faqId = req.params.faqId;
 
-    const updateFaq = {
+    const { question, answer } = req.body;
+
+    const updateField = {
 
         question,
         answer
 
+    };
+
+    try {
+
+        const updateFaq = await Faqs.findOneAndUpdate({faqId: faqId}, updateField, {new: true});
+
+
+        if(!updateFaq) {
+
+            return res.status(404).send({status: "Faq not found"});
+
+        }
+
+        res.status(200).send({status: "Faq Updated", updateFaq: updateFaq});
+
+
+    } catch (error) {
+
+        console.error("Error with updating faq", error);
+        res.status(500).send({status: "Server Error"});
+
     }
 
-    const update = await Faqs.findByIdAndUpdate(faqId, updateFaq).then(() => {
-
-        res.status(200).send({status: "Faq updated"});
-
-    }).catch((error) => {
-
-        console.log(error);
-        res.status(500).send({status: "Error with updating data"});
-
-    })
-
-})
+});
 
 
 
@@ -111,22 +130,30 @@ router.route("/update/:id").put(async(req,res) => {
 
 //DELETE
 //http: //localhost:8070/Faqs/delete/
-router.route("/delete/:id").delete(async(req,res) => {
+router.route("/delete/:faqId").delete(async (req,res) => {
 
-    let faqId = req.params.id;
+    let faqId = req.params.faqId;
 
-    await Faqs.findByIdAndDelete(faqId).then(() => {
+    try{
 
-        res.status(200).send({status: "Faq deleted"});
+        const faq = await Faqs.findOne({faqId: faqId});
 
-    }).catch((error) => {
+        if(!faq) {
+            return res.status(404).send({status: "Faq not found"});
+        }
 
-        console.log(error);
-        res.status(500).send({status: "Error with deleting faq", error: error.message});
+        await Faqs.findOneAndDelete({faqId: faqId});
 
-    })
+        res.status(200).send({status: "Faq Deleted"});
 
-})
+    } catch(error) {
+
+        console.error("Error with deleting Faq", error);
+        res.status(500).send({status: "Server Error", error: error.message});
+
+    }
+
+});
 
 
 
