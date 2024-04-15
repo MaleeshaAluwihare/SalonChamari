@@ -1,98 +1,79 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-export default function UpdateFaq() {
+const UpdateFaq = () => {
+  const { faqId } = useParams(); // Get FAQ ID from URL params
+  
+  const [faqData, setFaqData] = useState({
+    question: '',
+    answer: '',
+  });
 
-    const {id} = useParams();
-    const [question, setQuestion] = useState('');
-    const [answer, setAnswer] = useState('');
-
-    useEffect(() => {
-
-        const fetchFaq = async() => {
-
-            try{
-
-                const response = await axios.get("http://localhost:8070/Faqs/get/${id}");
-                const {question, answer} = response.data;
-
-                setQuestion(question);
-                setAnswer(answer);
-
-            } catch(error){
-
-                console.error("Error with fetching faq : ", error);
-
-            }
-
-        }
-        fetchFaq();
-
-    }, [id]);
-
-    const handleQuestionChange = (e) => {
-
-        setQuestion(e.target.value);
-
+  // Fetch the FAQ data by ID on component mount
+  useEffect(() => {
+    const fetchFaq = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8070/Faqs/get/${faqId}`);
+        const { question, answer } = response.data.faq;
+        setFaqData({ question, answer });
+      } catch (error) {
+        console.error('Error fetching FAQ', error);
+      }
     };
 
-    const handleAnswerChange = (e) => {
+    fetchFaq(); // Call the fetch function
+  }, [faqId]); // Re-run effect when faqId changes
 
-        setAnswer(e.target.value);
+  // Update the input fields as the user types
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFaqData({ ...faqData, [name]: value });
+  };
 
-    };
-
-    const handleSubmit = async (e) => {
-
-        e.preventDefault();
-
-        try{
-
-            await axios.put("http://localhost:8070/Faqs/update/${id}", {question, answer});
-            alert("Faq updated");
-
-        } catch(error) {
-
-            alert("Error in updating faq");
-            console.log(error);
-
-        }
-
+  // Handle form submission to update the FAQ
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(`http://localhost:8070/Faqs/update/${faqId}`, faqData);
+      alert('FAQ updated successfully');
+    } catch (error) {
+      console.error('Error updating FAQ', error);
     }
+  };
 
-
-    return (
-
+  return (
+    <div>
+      <h2>Update FAQ</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-            <form onSubmit={handleSubmit}>
-
-                <div class="form-group">
-
-                    <label for="question">Question</label>
-                    <input type="text" class="form-control" id="question" value={question} onChange={handleQuestionChange} />
-                    
-
-                </div>
-
-                <br />
-
-
-                <div class="form-group">
-
-                    <label for="answer">Answer</label>
-                    <input type="text" class="form-control" id="answer" value={answer} onChange={handleAnswerChange}/>
-                    
-
-                </div>
-
-                <br />
-
-                <button type="submit" class="btn btn-primary">Update</button>
-
-            </form>
+          <label htmlFor="question">Question:</label>
+          <input
+            type="text"
+            id="question"
+            name="question"
+            value={faqData.question}
+            onChange={handleChange}
+            required
+          />
         </div>
+        <div>
+          <label htmlFor="answer">Answer:</label>
+          <textarea
+            id="answer"
+            name="answer"
+            value={faqData.answer}
+            onChange={handleChange}
+            rows={4}
+            required
+          />
+        </div>
+        <button type="submit">Update FAQ</button>
+      </form>
+    </div>
+  );
+};
 
-    )
+export default UpdateFaq;
 
-}
+
