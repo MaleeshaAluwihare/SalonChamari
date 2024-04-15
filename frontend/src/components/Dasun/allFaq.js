@@ -37,6 +37,7 @@ export default function AllFaqs() {
             <table className="FaqTable">
                 <thead className="theader">
                     <tr>
+                        <th>FAQ ID</th>
                         <th>Question</th>
                         <th>Answer</th>
                     </tr>
@@ -44,11 +45,12 @@ export default function AllFaqs() {
 
                 <tbody className="tbody">
                     {faqs.map(faqs => (
-                        <tr key={faqs._id}>
+                        <tr key={faqs._faqId}>
+                            <td>{faqs.faqId}</td>
                             <td>{faqs.question}</td>
                             <td>{faqs.answer}</td>
-                            <td><Link to={"/faq/update/${faqs._id}"}><button className="UpdateBtn">Update</button></Link></td>
-                            <td><Link to={"/faq/delete"}><button className="DeleteBtn">Delete</button></Link></td>
+                            <td><Link to={`/faq/update/:faqId`}><button className="UpdateBtn">Update</button></Link></td>
+                            <td><Link to={"/faq/delete/:faqId"}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
