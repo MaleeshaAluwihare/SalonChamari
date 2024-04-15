@@ -1,53 +1,79 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const Blogs = require("../../Models/Dasun/BlogModel");
 
 
 
+// Multer setup for file uploads
 const storage = multer.diskStorage({
-
-    destination: function (req, file, cb) {
-
-        cb(null, path.join(__dirname, '../../../frontend/src/uploads'));
-
-    },
-
-    filename: function (req, file, cb) {
-
-        const uniqueSuffix = Date.now();
-        cb(null, uniqueSuffix + file.originalname);
-
-    }
-
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + Date.now() + ext);
+  }
 });
 
+const upload = multer({ storage });
 
+// CRUD operations
 
-const upload = multer({storage: storage});
+// Create a new blog
+router.post('/add', upload.single('image'), async (req, res) => {
+  const { blogId, topic, content } = req.body;
+  const imagePath = req.file ? req.file.path : '';
 
+  try {
+    const newBlog = new Blogs({ blogId, topic, content, image: imagePath });
+    await newBlog.save();
+    res.json(newBlog);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
+// Read all blogs
+router.get('/display', async (req, res) => {
+  try {
+    const blogs = await Blogs.find();
+    res.json(blogs);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
+// Update a blog by blogId
+router.put('/update/:blogId', upload.single('image'), async (req, res) => {
+  const { topic, content } = req.body;
+  const { blogId } = req.params;
+  const imagePath = req.file ? req.file.path : '';
 
-//ADD BLOG
-app.post('/add', upload.single("image")), async (req, res) => {
+  try {
+    const updatedBlog = await Blogs.findOneAndUpdate(
+      { blogId },
+      { topic, content, image: imagePath },
+      { new: true }
+    );
+    res.json(updatedBlog);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-    const {blogId, topic, content} = req.body;
-    const image = req.file.filename;
+// Delete a blog by blogId
+router.delete('/delete/:blogId', async (req, res) => {
+  const { blogId } = req.params;
 
-    try {
+  try {
+    await Blogs.findOneAndDelete({ blogId });
+    res.json({ message: 'Blog deleted' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-        await Blogs.create({blogId, topic, content, image: image});
-        res.json({status: "Success"});
-
-    }catch(error){
-
-        res.json({status: error});
-
-    }
-
-}
-
-
-
+module.exports = router;
