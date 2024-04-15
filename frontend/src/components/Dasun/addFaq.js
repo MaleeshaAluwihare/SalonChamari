@@ -1,10 +1,14 @@
 import React,{useState} from "react";
 import axios from "axios";
+// import {userNavigate} from 'react-router-dom';
 
 export default function AddFaq() {
 
+    const [faqId, setFaqId] = useState("");
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
+
+    // const navigate = userNavigate();
 
 
     function sendData(e){
@@ -13,6 +17,7 @@ export default function AddFaq() {
         
         const newFaq = {
 
+            faqId,
             question,
             answer
 
@@ -22,8 +27,11 @@ export default function AddFaq() {
 
             alert("Faq added");
 
+            setFaqId("");
             setQuestion("");
             setAnswer("");
+
+            // navigate("/faq/all");
 
         }).catch((err) => {
 
@@ -37,6 +45,21 @@ export default function AddFaq() {
 
         <div>
             <form onSubmit={sendData}>
+
+
+                <div class="form-group">
+
+                    <label for="faqId">Faq ID</label>
+                    <input type="text" class="form-control" id="faqId" placeholder="Enter ID" 
+                    onChange={(e) => {
+                        setFaqId(e.target.value);
+                    }} />
+                    
+
+                </div>
+
+                <br />
+
 
                 <div class="form-group">
 
