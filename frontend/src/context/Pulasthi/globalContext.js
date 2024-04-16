@@ -46,9 +46,20 @@ export const GlobalProvider = ({children}) => {
 
     //getOneBudgetData
     const getOneBudget = async (id) => {
-        const response = await axios.get(`${BASE_URL}getBudgetById/${id}`)//error ekk print karanawanm methona then catch ekk danna onne
-        setBudget(response.data.budget);//.budget is must here
-        console.log(response.data)
+        try{
+            const response = await axios.get(`${BASE_URL}getBudgetById/${id}`)//error ekk print karanawanm methona then catch ekk danna onne
+            setBudget(response.data.budget);//.budget is must here
+            console.log(response.data)
+        }
+        catch(error){
+            console.error('Error fetching budget:', error);
+            if (error.response && error.response.status === 404) {
+                setError('Budget ID not found.');
+                alert('Budget ID not found.')
+            } else {
+                setError('An error occurred. Please try again.');
+            }
+        }
     }
 
     return(

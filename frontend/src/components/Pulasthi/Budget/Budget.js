@@ -12,11 +12,16 @@ function Budget() {
 
   //here useGlobalContext used to bring globalContext methods
   //these methods are coming from globalContext
+  //addBudget method render in form componenet
   const {addBudget,getBudgets,budgets,deleteBudget,updateBudget,getOneBudget,budget} = useGlobalContext();
   const [budgetId, setBudgetId] = useState('');
   //useEffect take backend response array to budget component
   //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
   const handleSearch = () => {
+    if (budgetId.trim() === '') {
+      alert('Please enter a Budget ID.');
+      return;
+    }
     getOneBudget(budgetId);
   };
   useEffect(() =>{
@@ -34,8 +39,9 @@ function Budget() {
                type="text" 
                id="BudgetId"
                placeholder="Budget ID"
+                
                value={budgetId} 
-               onChange={(e) => setBudgetId(e.target.value)} 
+               onChange={(e) => setBudgetId(e.target.value)}
                />
               <Button icon={search} 
                   bPad={'.5rem'}
