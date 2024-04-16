@@ -27,6 +27,11 @@ function Form() {
 
     const handleSubmit = e => {
         e.preventDefault()
+
+        if (!validateBudgetId(budgetId)) {
+            alert('Invalid budget ID. Please enter a valid ID starting with "b" followed by 4 digits.');
+            return;
+        }
         //Send Entered values
         addBudget(inputState)
         getBudgets()
@@ -38,6 +43,11 @@ function Form() {
         //     description: '',
         // })
     }
+    // Function to validate budget ID using regex
+    const validateBudgetId = (id) => {
+        const pattern = /^b\d{4}$/; // regex pattern: starts with "b" followed by 4 digits
+        return pattern.test(id);
+    };
 
   return (
     <FormStyled onSubmit={handleSubmit}>

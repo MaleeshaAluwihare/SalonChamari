@@ -18,6 +18,7 @@ function Budget() {
   //useEffect take backend response array to budget component
   //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
   const handleSearch = () => {
+    //if searchbar is empty
     if (budgetId.trim() === '') {
       alert('Please enter a Budget ID.');
       return;
