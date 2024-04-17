@@ -12,7 +12,7 @@ const AttendanceSchema = new Schema({
     attendance:{
         type:Number,
         required:true
-    },
+    }, 
 
     jobRole:{
         type:String,

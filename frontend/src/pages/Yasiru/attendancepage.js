@@ -49,7 +49,7 @@ export default function Attendancepage() {
           <label htmlFor="name">empId</label>
           <select className="form-control" id ="empId" value={empId} onChange={(e) => setemp_ID(e.target.value)}>
             <option value =" ">Select Employee</option>
-            {employeeID.map(id => (
+          {employeeID.map(id => (
               <option key={id} value={id}>{id}</option>
             ))}
           </select>
@@ -64,7 +64,7 @@ export default function Attendancepage() {
 
         <div className="mb-3">
           <label htmlFor="name">Attendance</label>
-          <input type="text" className="form-control" id="job" placeholder="Only you can give the  1 or 0" onChange={(e) => {
+          <input type="Number" className="form-control" id="job" placeholder="Only you can give the  1 or 0" onChange={(e) => {
             setattendance(e.target.value);
           }} />
         </div>

@@ -42,7 +42,7 @@ export default function AddEmployee(){
         <form onSubmit={sendData}>
         <div className="form-group">
             <label htmlFor="name">Employee_ID</label>
-            <input type="text" className="form-control" id="name" placeholder="Enter Employee ID" onChange={(e)=>{
+            <input type="text" className="form-control" id="name" placeholder="Enter Employee ID" required onChange={(e)=>{
                 setEmployee_ID(e.target.value);
             }}/>
 
@@ -50,28 +50,28 @@ export default function AddEmployee(){
 
         <div className="form-group">
             <label htmlFor="name">Employee Name</label>
-            <input type="text" className="form-control" id="name" placeholder="Enter Employee Name" onChange={(e)=>{
+            <input type="text" className="form-control" id="name" placeholder="Enter Employee Name" required onChange={(e)=>{
                 setName(e.target.value);
             }}/>
         </div>
 
         <div className="form-group">
             <label htmlFor="name">Address</label>
-            <input type="text" className="form-control" id="name" placeholder="Address" onChange={(e)=>{
+            <input type="text" className="form-control" id="name" placeholder="Address" required onChange={(e)=>{
                 setAddress(e.target.value);
             }}/> 
         </div>
 
         <div className="form-group">
             <label htmlFor="name">jobRole</label>
-            <input type="text" className="form-control" id="name" placeholder="jobRole" onChange={(e)=>{
+            <input type="text" className="form-control" id="name" placeholder="jobRole" required onChange={(e)=>{
                 setjobRole(e.target.value);
             }}/>
         </div>
 
         <div className="form-group">
             <label htmlFor="name"> Salary</label>
-            <input type="text" className="form-control" id="name" placeholder="Daily Salary" onChange={(e)=>{
+            <input type="text" className="form-control" id="name" placeholder="Daily Salary" required onChange={(e)=>{
                 setsalary(e.target.value);
             }}/>
         </div>
