@@ -6,7 +6,6 @@ import Button from "../Button/Button";
 function BudgetItem({
     //me props enne Budget component eken
     //me id eka mkkd kiyala hoya ganna
-    id,
     budgetId,
     month,
     amount,

@@ -14,17 +14,36 @@ function Budget() {
   //these methods are coming from globalContext
   //addBudget method render in form componenet
   const {addBudget,getBudgets,budgets,deleteBudget,updateBudget,getOneBudget,budget} = useGlobalContext();
+
   const [budgetId, setBudgetId] = useState('');
-  //useEffect take backend response array to budget component
-  //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
-  const handleSearch = () => {
+  // State to track search visibility
+  const [searchActive, setSearchActive] = useState(false);
+
+
+  const handleSearch = async() => {
     //if searchbar is empty
     if (budgetId.trim() === '') {
       alert('Please enter a Budget ID.');
       return;
     }
-    getOneBudget(budgetId);
+    //handle the getOneBudget() errors locally
+    try{
+      const result = await getOneBudget(budgetId);
+      setSearchActive(true); // Activate search when a valid ID is entered
+    }catch(error){
+      alert('Budget ID not found.');
+      setSearchActive(false);
+    }
+    // setSearchActive(true); 
+    // getOneBudget(budgetId);
   };
+
+  const handleCloseSearch = () => {
+    setSearchActive(false); // Deactivate search when the close button is clicked
+    setBudgetId(''); // Clear search input
+  };
+  //useEffect take backend response array to budget component
+  //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
   useEffect(() =>{
     getBudgets()
   },[])
@@ -54,7 +73,7 @@ function Budget() {
                   onClick={handleSearch}
               /> 
           </div>
-          <SearchBudgetItem budget={budget} />
+          {/* <SearchBudgetItem budget={budget} /> */}
 
         <div className="budget-content">
           <div className="form-container"></div>
@@ -63,29 +82,36 @@ function Budget() {
           <div className="budgets">
               <Form/>
           </div>
-          
-          {/* get budgets */}
-          <div className="budgets">
-              {budgets.map((budget) => {
-                  const {_id, budgetId, month, amount, date,} = budget;
-                  // one functional component access another component
-                  return <BudgetItem
-                      key={_id}
-                      id={_id} 
-                      budgetId={budgetId} 
-                      month={month} 
-                      amount={amount} 
-                      date={date}  
-                      indicatorColor="var(--color-DarkYellow)"
-                      deleteItem={deleteBudget}
-                      updateItem = {updateBudget}
-                  />
-              })}
+
+          {/* Conditional rendering based on search state */}
+          {/* if searchActive value is true then app shows SearchBudgetItem componenet
+          else app shows BudgetItems */}
+          {searchActive? (
+              //properties inside the angle brackets are going to SearchBudgetItem component as props
+              <SearchBudgetItem budget={budget} onClose={handleCloseSearch}/>
+          ) : (
+            //getbudgets
+            <div className="budgets">
+                {budgets.map((budget) => (
+                    
+                    // one functional component access another component
+                    <BudgetItem
+                        key={budget._id}
+                        budgetId={budget.budgetId}
+                        month={budget.month}
+                        amount={budget.amount}
+                        date={budget.date}
+                        indicatorColor="var(--color-DarkYellow)"
+                        deleteItem={deleteBudget}
+                        updateItem={updateBudget}
+                    />
+                ))}
+            </div>
+            )}
           </div>
-        </div>
       </InnerLayout>
     </BudgetStyled>
-  )
+  );
 };
 
 const BudgetStyled = styled.div`
