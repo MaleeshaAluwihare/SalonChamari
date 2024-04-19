@@ -36,6 +36,8 @@ router.post('/add', upload.single('image'), async (req, res) => {
   }
 });
 
+
+
 // Read all blogs
 router.get('/display', async (req, res) => {
   try {
@@ -45,6 +47,29 @@ router.get('/display', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+
+
+router.get('/get/:blogId', async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+      // Find the blog in the database by its blogId
+      const blog = await Blogs.findOne({ blogId });
+
+      if (!blog) {
+          return res.status(404).json({ message: 'Blog not found' });
+      }
+
+      res.status(200).json(blog);
+  } catch (error) {
+      console.error('Error fetching blog:', error);
+      res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
 
 // Update a blog by blogId
 router.put('/update/:blogId', upload.single('image'), async (req, res) => {
@@ -63,6 +88,9 @@ router.put('/update/:blogId', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+
+
 
 // Delete a blog by blogId
 router.delete('/delete/:blogId', async (req, res) => {
