@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const DeleteFaq = () => {
@@ -48,6 +48,7 @@ const DeleteFaq = () => {
         <strong>Answer:</strong> {faq.answer}
       </p>
       <button onClick={handleDelete}>Delete FAQ</button>
+      <Link to={`/faq/all`}> <button> Cancel </button> </Link>
     </div>
   );
 };
