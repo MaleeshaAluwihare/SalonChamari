@@ -18,6 +18,7 @@ function Header() {
             <li><Link to="/blog/add">Add Blog</Link></li>
             <li><Link to="/CustomerMessages/all">Messages</Link></li>
             <li><Link to="/feedback/all">Feedbacks</Link></li>
+            <li><Link to="/clientSide">Customer Side</Link></li>
             </ul>
         </nav>
         </div>
