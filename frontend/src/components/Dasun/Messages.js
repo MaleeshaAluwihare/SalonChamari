@@ -26,7 +26,16 @@ export default function Messages() {
         }
         allmessages();
 
-    }, [])
+    }, []);
+
+
+    const formatDate = (dateString) => {
+
+        const date = new Date(dateString);
+        return date.toLocaleDateString();
+
+    };
+
 
     return(
 
@@ -50,7 +59,7 @@ export default function Messages() {
                             <td>{messages.customerId}</td>
                             <td>{messages.messageId}</td>
                             <td>{messages.message}</td>
-                            <td>{messages.date}</td>
+                            <td>{formatDate(messages.date)}</td>
                             <td><Link to={"/ReplyMessage/add"}><button className="UpdateBtn">Reply</button></Link></td>
                         </tr>
                     ))}
