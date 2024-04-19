@@ -14,8 +14,8 @@ function ClientHome() {
             <ul>
             <li><Link to="#">FAQs</Link></li>
             <li><Link to="/feedbackCustomer">Feedback</Link></li>
-            <li><Link to="#">Blogs</Link></li>
-            <li><Link to="#">Messages</Link></li>
+            <li><Link to="/blogCustomer">Blogs</Link></li>
+            <li><Link to="/messageCustomer">Messages</Link></li>
             </ul>
         </nav>
         </div>
