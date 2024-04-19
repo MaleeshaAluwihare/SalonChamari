@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const UpdateFaq = () => {
   const { faqId } = useParams(); // Get FAQ ID from URL params
+
+  // const history = useHistory(); //Access history object for navigation
   
   const [faqData, setFaqData] = useState({
     question: '',
@@ -37,6 +39,10 @@ const UpdateFaq = () => {
     try {
       await axios.put(`http://localhost:8070/Faqs/update/${faqId}`, faqData);
       alert('FAQ updated successfully');
+
+      // //Rederect home page after successful update
+      // history.push('/'); //Navigate to the home page
+
     } catch (error) {
       console.error('Error updating FAQ', error);
     }
