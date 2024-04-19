@@ -53,6 +53,7 @@ export default function Feedbacks() {
                         <th>Date</th>
                     </tr>
                 </thead>
+                
 
                 <tbody className="tbody">
                     {feedbacks.map(feedbacks => (
