@@ -20,7 +20,7 @@ export default function ReplyMessage() {
             reply,
             date
 
-        }
+        };
 
         axios.post("http://localhost:8070/MessageReplies/add", newReply).then(() => {
 
@@ -38,6 +38,7 @@ export default function ReplyMessage() {
         })
 
     }
+
 
     return(
 
@@ -88,8 +89,8 @@ export default function ReplyMessage() {
 
                 <div class="form-group">
 
-                    <label for="date">Reply</label>
-                    <input type="text" class="form-control" id="date" placeholder="Enter Date" 
+                    <label htmlFor="date">Date</label>
+                    <input type="date" class="form-control" id="date" value={date} placeholder="Enter Date" 
                     onChange={(e) => {
                         setDate(e.target.value);
                     }} />
