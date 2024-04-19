@@ -11,6 +11,9 @@ import FaqUpdate from './components/Dasun/updateFaq';
 import DeleteFaq from './components/Dasun/deleteFaq';
 import AddBlog from './components/Dasun/addBlog';
 import ViewBlog from './components/Dasun/allBlog';
+import FeedbackCustomer from './pages/FeedbackCustomer';
+import ClientHome from './pages/ClientHome';
+import SendFeedback from './components/Dasun/SendFeedbackCustomer';
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
             <Route path="/ReplyMessage/add" exact Component={ReplyMessage} />
             <Route path="/blog/add" exact Component={AddBlog} />
             <Route path="/blog/all" exact Component={ViewBlog} />
+            <Route path="/clientSide" exact Component={ClientHome} />
+            <Route path="/feedbackCustomer" exact Component={FeedbackCustomer} />
+            <Route path="/feedbackCustomer/add" exact Component={SendFeedback} />
 
           </Routes>
 
