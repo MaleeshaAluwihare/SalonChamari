@@ -14,6 +14,9 @@ import ViewBlog from './components/Dasun/allBlog';
 import FeedbackCustomer from './pages/FeedbackCustomer';
 import ClientHome from './pages/ClientHome';
 import SendFeedback from './components/Dasun/SendFeedbackCustomer';
+import MessageCustomer from './pages/MessageCustomer';
+import SendMessage from './components/Dasun/SendMessageCustomer';
+import CustomerBlog from './pages/BlogCustomer';
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
             <Route path="/clientSide" exact Component={ClientHome} />
             <Route path="/feedbackCustomer" exact Component={FeedbackCustomer} />
             <Route path="/feedbackCustomer/add" exact Component={SendFeedback} />
+            <Route path="/messageCustomer" exact Component={MessageCustomer} />
+            <Route path="/messageCustomer/add" exact Component={SendMessage} />
+            <Route path="/blogCustomer" exact Component={CustomerBlog} />
 
           </Routes>
 
