@@ -12,7 +12,7 @@ function ClientHome() {
 
         <nav>
             <ul>
-            <li><Link to="#">FAQs</Link></li>
+            <li><Link to="/faqCustomer">FAQs</Link></li>
             <li><Link to="/feedbackCustomer">Feedback</Link></li>
             <li><Link to="/blogCustomer">Blogs</Link></li>
             <li><Link to="/messageCustomer">Messages</Link></li>
