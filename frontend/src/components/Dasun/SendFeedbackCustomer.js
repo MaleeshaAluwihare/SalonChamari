@@ -82,9 +82,9 @@ export default function SendFeedback() {
                 <br />
 
 
-                <div>
+                <div className="form-group">
 
-                    <label for="category">
+                    <label htmlFor="category">
 
                         Category
 
@@ -98,12 +98,13 @@ export default function SendFeedback() {
 
                         }}
                         required
+                        className="form-control"
 
                         >
 
-                            <option value={Salon}> Salon </option>
-                            <option value={Photography}> Photography </option>
-                            <option value={Events}> Event </option>
+                            <option value="Salon"> Salon </option>
+                            <option value="Photography"> Photography </option>
+                            <option value="Events"> Event </option>
 
                         </select>
 
