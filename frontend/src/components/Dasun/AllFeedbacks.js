@@ -26,7 +26,16 @@ export default function Feedbacks() {
         }
         allfeedbacks();
 
-    }, [])
+    }, []);
+
+
+    const formatDate = (dateString) => {
+
+        const date = new Date(dateString);
+        return date.toLocaleDateString();
+
+    };
+
 
     return(
 
@@ -52,7 +61,7 @@ export default function Feedbacks() {
                             <td>{feedbacks.bookingId}</td>
                             <td>{feedbacks.category}</td>
                             <td>{feedbacks.content}</td>
-                            <td>{feedbacks.sendDate}</td>
+                            <td>{formatDate(feedbacks.sendDate)}</td>
                             <td><Link to={"#"}><button className="UpdateBtn">Reply</button></Link></td>
                         </tr>
                     ))}
