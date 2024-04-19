@@ -17,6 +17,7 @@ import SendFeedback from './components/Dasun/SendFeedbackCustomer';
 import MessageCustomer from './pages/MessageCustomer';
 import SendMessage from './components/Dasun/SendMessageCustomer';
 import CustomerBlog from './pages/BlogCustomer';
+import CustomerFaq from './pages/FaqCustomer';
 
 
 function App() {
@@ -33,10 +34,10 @@ function App() {
             <Route path='/faq/all' exact Component={AllFaqs} /> 
             <Route path="/faq/add" exact Component={AddFaq} /> 
             <Route path='/faq/update/:faqId' Component={UpdateFaq} />
-            <Route path='/faq/delete/:faqId' Component={DeleteFaq} />
+            <Route path="/faq/delete/:faqId" Component={DeleteFaq} />
             <Route path="/CustomerMessages/all" exact Component={Messages} />
             <Route path="/feedback/all" exact Component={Feedbacks} />
-            <Route path="/ReplyMessage/add" exact Component={ReplyMessage} />
+            <Route path="/ReplyMessage/add/:messageId" exact Component={ReplyMessage} />
             <Route path="/blog/add" exact Component={AddBlog} />
             <Route path="/blog/all" exact Component={ViewBlog} />
             <Route path="/clientSide" exact Component={ClientHome} />
@@ -45,6 +46,7 @@ function App() {
             <Route path="/messageCustomer" exact Component={MessageCustomer} />
             <Route path="/messageCustomer/add" exact Component={SendMessage} />
             <Route path="/blogCustomer" exact Component={CustomerBlog} />
+            <Route path="/faqCustomer" exact Component={CustomerFaq} />
 
           </Routes>
 
