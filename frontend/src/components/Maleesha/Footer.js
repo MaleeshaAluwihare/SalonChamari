@@ -16,7 +16,7 @@ export default function Footer() {
                 <img src={SalonLogo} alt="footer_logo" className="img-fluid" />
               </a>
               <p className="footer-info-text">
-                Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                EXPERIENCE THE ULTIMATE BEAUTY TREATMENT IN A SERENE ENVIORNMENT
               </p>
               {/* Footer social links */}
               <div className="footer-social-link">
