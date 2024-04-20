@@ -9,7 +9,7 @@ import './App.css';
 // import CounterFunction from './components/Maleesha/CounterFunction';
 // import Header from './pages/Maleesha/Header';
 // import MainPage from './pages/Maleesha/MainPage';
-// import HairServices from './pages/Maleesha/HairService';
+import HairServices from './pages/Maleesha/HairService';
 // import ImageForme from './components/Maleesha/ImageForm';
 // import LandingPage from './pages/Maleesha/LandingPage';
 // import QuotationPage from './pages/Maleesha/QuotationPage';
@@ -19,7 +19,7 @@ import './App.css';
 // import BridalServices from './pages/Maleesha/BridalService';
 // import DeleteService from './components/Maleesha/DeleteService';
 // import UpdateService from './components/Maleesha/UpdateService';
-import CostumePage from './pages/Maleesha/CostumePage';
+// import CostumePage from './pages/Maleesha/CostumePage';
 // import EmailForm from './pages/Maleesha/EmailSend';
 // import FooterWave from './components/Maleesha/FooterWave';
 // import Footer from './components/Maleesha/Footer';
@@ -43,7 +43,7 @@ function App() {
         {/* <Header/> */}
         {/* <MainPage/> */}
         {/* <ServiceList/> */}
-        {/* <HairServices/> */}
+        <HairServices/>
         {/* <ImageForme/> */}
         {/* <LandingPage/> */}
         {/* <QuotationPage/> */}
@@ -53,11 +53,11 @@ function App() {
         {/* <BridalServices/> */}
         {/* <DeleteService/> */}
         {/* <UpdateService/> */}
-        <CostumePage/>
+        {/* <CostumePage/> */}
         {/* <EmailForm/> */}
         {/* <FooterWave/> */}
         {/* <Footer/> */}
-        {/* <SalonHome/> */}
+        {/* <SalonHome/>  */}
         {/* <Dashboard/> */}
 
         {/* <InventoryDash/>
