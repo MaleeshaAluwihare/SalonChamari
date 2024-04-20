@@ -2,9 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import ServiceList from "../../components/Maleesha/ServiceList";
+import { Link } from "react-router-dom";
 import '../../css/Maleesha/CostumePage.css';
 import video from '../../video/costumeVideo.mp4';
+import BridalServices from "./BridalService";
+import HairService from "./HairService.js";
+import SkinService from "./SkinService.js";
+import NailService from "./NailService.js";
 
 
 export default function ProductPage() {
@@ -77,7 +81,19 @@ export default function ProductPage() {
   return (
     <div className='main-container'>
       <div className="serviceList-container">
-        <ServiceList />
+        <div className="ServiceRec">
+                  <h2>OUR SERVICES</h2>
+                  <div className="serviceName">
+                      <h1>Sarees<br/> & Gowns</h1>
+                  </div>
+                  <div className="ServiceCircles">
+                      <Link to = {HairService} className="ServicesButton">HAIR</Link>
+                      <Link to = {SkinService} className="ServicesButton">SKIN</Link>
+                      <Link to = {NailService} className="ServicesButton">NAIL</Link>
+                      <Link to = {BridalServices} className="ServicesButton">BRIDAL</Link>
+                      <Link to = {null} className="ServicesButton">Sarees & Gowns</Link>
+                  </div>
+            </div>
       </div>
       <div className="introduction">
         <div className="scrollable-content">
