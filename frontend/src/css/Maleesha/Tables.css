@@ -102,10 +102,6 @@
     background-color: #812b2b; 
   } */
   
-  /* Hover effect
-  .table tbody tr:hover {
-    background-color: #fdf74a; /* Hover effect 
-  } */
   
   /* Set specific widths for columns */
   .table th:nth-child(1),
@@ -126,4 +122,43 @@
     padding-left: 25px;
   }
 
+.Icon{
+  width: 40px; /* Set fixed width for the icon */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 10px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
 
+/*Search Bar*/
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Adjust width as needed */
+  margin: 0 auto; /* Center the entire search bar container */
+  margin-top: 40px;
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.search-bar input[type="text"]::placeholder {
+  color: #000000;
+}
+
+.search-bar .button {
+  margin-right: 10px; /* Adjust the margin for spacing */
+  cursor: pointer;
+  width: 7%;
+  height: auto;
+}

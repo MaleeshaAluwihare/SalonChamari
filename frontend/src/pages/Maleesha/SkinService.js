@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Tables.css';
+import skin from "../../images/Maleesha/skin-care.png";
 import HairService from "./HairService.js";
 import NailService from "./NailService.js";
 import BridalService from "./BridalService.js";
@@ -10,6 +13,7 @@ import CostumeService from "./CostumePage.js";
 export default function SkinServices(){
 
     const [ SkinService, setSkinService ] = useState( [] );
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect( () => {
         axios.get("/services/skinTreatment").then((res) => {
@@ -34,12 +38,15 @@ export default function SkinServices(){
                     <Link to = {CostumeService} className="ServicesButton">Sarees & Gowns</Link>
                 </div>
             </div>
+            <div className="search-bar">
+                <input type="text" placeholder="Search service.." onChange={event => {setSearchTerm(event.target.value)}}/><FontAwesomeIcon icon={faMagnifyingGlass} className="button" />
+            </div>
             <div className = "table-container-wrapper">
                 <div className = "table-container">
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">Skin Treatment</th>
+                                <th scope="col">Skin Treatment<img src={skin} className='Icon' alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
@@ -49,7 +56,13 @@ export default function SkinServices(){
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
-                                SkinService.map((skinService) => (
+                                SkinService.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else{
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((skinService) => (
                                         <tr key={skinService.id}>
                                             <td>{skinService.itemName}</td>
                                             <td>{skinService.itemPrice}</td>

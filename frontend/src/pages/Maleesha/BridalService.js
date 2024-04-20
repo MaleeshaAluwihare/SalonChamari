@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Tables.css';
+import bride from '../../images/Maleesha/bride.png';
+import groome from '../../images/Maleesha/groom.png';
 import HairService from "./HairService.js";
 import SkinService from "./SkinService.js";
 import CostumeService from "./CostumePage.js";
@@ -12,6 +16,7 @@ export default function BridalServices(){
 
     const [ BrideServices, setBrideServices ] = useState( [] );
     const [ GroomServices, setGroomServices ] = useState( [] );
+    const [searchTerm, setSearchTerm] = useState("");
 
 
     useEffect( () => {
@@ -43,12 +48,17 @@ export default function BridalServices(){
                     <Link to = {CostumeService} className="ServicesButton">Sarees & Gowns</Link>
                 </div>
             </div>
+
+            <div className="search-bar">
+                <input type="text" placeholder="Search service.." onChange={event => {setSearchTerm(event.target.value)}}/><FontAwesomeIcon icon={faMagnifyingGlass} className="button" />
+            </div>
+
             <div className = "table-container-wrapper">
                 <div className = "table-container">
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">Bride Service</th>
+                                <th scope="col">Bride Service<img src={bride} className='Icon' alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
@@ -58,7 +68,13 @@ export default function BridalServices(){
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
-                                BrideServices.map((brideServices) => (
+                                BrideServices.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else {
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((brideServices) => (
                                         <tr key={brideServices.id}>
                                             <td>{brideServices.itemName}</td>
                                             <td>{brideServices.itemPrice}</td>
@@ -72,7 +88,7 @@ export default function BridalServices(){
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">Groom Service</th>
+                                <th scope="col">Groom Service<img src={groome} className='Icon' alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
@@ -82,7 +98,13 @@ export default function BridalServices(){
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
-                                GroomServices.map((groomServices) => (
+                                GroomServices.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else {
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((groomServices) => (
                                         <tr key={groomServices.id}>
                                             <td>{groomServices.itemName}</td>
                                             <td>{groomServices.itemPrice}</td>
