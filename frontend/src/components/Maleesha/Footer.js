@@ -57,15 +57,14 @@ export default function Footer() {
                 {/* Useful Links */}
                 <div className="footer-widget footer-left-widget">
                   <div className="section-heading">
-                    <h3>Useful Links</h3>
+                    <h3>USEFUL LINKS</h3>
                     <span className="animate-border border-black"></span>
                   </div>
                   <ul>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Our Work</a></li>
+                    <li><a href="#">Gallery</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Faq</a></li>
-                    {/* Move "Give us a call" section here */}
                     <li>
                       <div className="contact-us">
                         <div className="contact-icon">
@@ -86,7 +85,7 @@ export default function Footer() {
                 {/* Subscribe */}
                 <div className="footer-widget">
                   <div className="section-heading">
-                    <h3>Subscribe</h3>
+                    <h3>SUBSCRIBE</h3>
                     <span className="animate-border border-black"></span>
                   </div>
                   <p>
