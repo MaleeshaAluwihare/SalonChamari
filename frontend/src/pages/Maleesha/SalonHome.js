@@ -6,7 +6,9 @@ import ServiceList from '../../components/Maleesha/ServiceList';
 import Footer from '../../components/Maleesha/Footer.js';
 import image1 from '../../images/Maleesha/homeimg1.jpg';
 import image2 from '../../images/Maleesha/homeimg2.jpg';
-import image3 from '../../images/Maleesha/homeimg5.jpg';
+import image3 from '../../images/Maleesha/homeimg3.JPG';
+import image4 from '../../images/Maleesha/homeimg4.jpg';
+import image5 from '../../images/Maleesha/homeimg5.jpg';
 import video from '../../video/HomeVideo1.mp4';
 import openHourIcon from '../../images/Maleesha/opening-hours-icon.png';
 import experienceIcon from '../../images/Maleesha/experience-icon.png';
@@ -61,67 +63,41 @@ export default function SalonHome() {
         };
     }, []);
 
-    const img1Ref = useRef();
-    const img2Ref = useRef();
-    const img3Ref = useRef();
-
-    useEffect(() => {
-        let images = [img1Ref.current, img2Ref.current, img3Ref.current];
-        let currentImageIndex = 0;
-
-        function changeImage() {
-            let imgElement = images[currentImageIndex];
-            imgElement.style.opacity = 0;
-
-            setTimeout(() => {
-                imgElement.style.opacity = 1;
-            }, 100);
-
-            currentImageIndex++;
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            }
-        }
-
-        const intervalId = setInterval(changeImage, 6667); // Change image every 6.67 seconds
-
-        return () => clearInterval(intervalId); // Clean up on unmount
-    }, []);
-    
-    
-
     return (
         <div className="homepage">
-            <div className="parallax-container">
-                <div className="parallax-background">
-                    <img ref={img1Ref} src={image1} alt="Background 1" className="slide-image" />
-                    <img ref={img2Ref} src={image2} alt="Background 2" className="slide-image" />
-                    <img ref={img3Ref} src={image3} alt="Background 3" className="slide-image" />
+            <div className="slide-container">
+                <div className="slide-background">
+                    <img src={image1} alt="Background 1" className="slide-image" />
+                    <img src={image2} alt="Background 2" className="slide-image" />
+                    <img src={image3} alt="Background 3" className="slide-image" />
+                    <img src={image4} alt="Background 4" className="slide-image" />
+                    <img src={image5} alt="Background 5" className="slide-image" />
+
                 </div>
-                <div className="parallax-content">
+                <div className="welcome-content">
                     <p>RELAX IN STYLE, LEAVE WITH SMILE</p>
                     <h1>WELCOME TO SALON CHAMARI</h1>
                     <p>EXPERIENCE THE ULTIMATE BEAUTY TREATMENT IN A SERENE ENVIORNMENT</p>
                 </div>
             </div>
             <div className='infromationContainer'>
-                <div className='welcomeContainer'>
-                    <p className='welcome-text1'>We make sure we serve</p><br /><p className='welcome-text2'><b>The best of our service</b></p>
-                </div>
-                <div className='containers'>
-                    <div className='container1'>
-                        <h5>ENRICH</h5><br />
-                        <p>Enrich the lives of our community by empowering them to unveil their innate beauty and cultivate unwavering confidence. Our mission is to inspire every individual to embrace life's journey with grace.</p>
+                    <div className='welcomeContainer'>
+                        <p className='welcome-text1'>We make sure we serve</p><br /><p className='welcome-text2'><b>The best of our service</b></p>
                     </div>
-                    <div className='container2'>
-                        <h5>ELEVATE</h5><br />
-                        <p>Elevate the standards of beauty and self-care within our community, encouraging individuals to indulge in personalized grooming experiences that nurture their well-being and elevate their spirits</p>
+                    <div className='containers'>
+                        <div className='container1'>
+                            <h5>ENRICH</h5><br />
+                            <p>Enrich the lives of our community by empowering them to unveil their innate beauty and cultivate unwavering confidence. Our mission is to inspire every individual to embrace life's journey with grace.</p>
+                        </div>
+                        <div className='container2'>
+                            <h5>ELEVATE</h5><br />
+                            <p>Elevate the standards of beauty and self-care within our community, encouraging individuals to indulge in personalized grooming experiences that nurture their well-being and elevate their spirits</p>
+                        </div>
+                        <div className='container3'>
+                            <h5>TRANSFORM</h5><br />
+                            <p>Transform the way you perceive beauty and grooming. Let us guide you on a journey to discover your true radiance, empowering you to embrace every moment with poise and vitality</p>
+                        </div>
                     </div>
-                    <div className='container3'>
-                        <h5>TRANSFORM</h5><br />
-                        <p>Transform the way you perceive beauty and grooming. Let us guide you on a journey to discover your true radiance, empowering you to embrace every moment with poise and vitality</p>
-                    </div>
-                </div>
             </div>
             <div className='serviceList'>
                 <ServiceList/>

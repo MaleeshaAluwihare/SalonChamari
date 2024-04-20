@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import '../../css/Maleesha/Tables.css';
-import ServiceList from '../../components/Maleesha/ServiceList';
+import HairService from "./HairService.js";
+import SkinService from "./SkinService.js";
+import BridalService from "./BridalService.js";
+import CostumeService from "./CostumePage.js";
 
 
 export default function NailServices(){
@@ -26,7 +30,19 @@ export default function NailServices(){
 
     return(
         <div>
-            <ServiceList/>
+            <div className="ServiceRec">
+                <h2>OUR SERVICES</h2>
+                <div className="serviceName">
+                    <h1>Nail Care</h1>
+                </div>
+                <div className="ServiceCircles">
+                    <Link to = {HairService} className="ServicesButton">HAIR</Link>
+                    <Link to = {SkinService} className="ServicesButton">SKIN</Link>
+                    <Link to = {null} className="ServicesButton">NAIL</Link>
+                    <Link to = {BridalService} className="ServicesButton">BRIDAL</Link>
+                    <Link to = {CostumeService} className="ServicesButton">Sarees & Gowns</Link>
+                </div>
+            </div>
             <div className = "table-container-wrapper">
                 <div className = "table-container">
                     <table className="table">

@@ -146,3 +146,71 @@
   margin: 20px 20px; 
 }
 
+/*Service List Bar*/
+  /*Service list*/
+  .ServiceRec {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../images/Maleesha/floral-corner-frame.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    font-family: 'Vacelyn', sans-serif;
+    position: relative;
+  }
+  
+  .ServiceRec h2 {
+    color: rgb(255, 207, 0);
+    font-family: 'Vacelyn', sans-serif;
+    font-size: 35px; 
+    font-weight: 700; 
+    position: absolute;
+    left: 50%;
+    margin-top: 40px;
+  }
+  
+  .serviceName {
+    color: rgb(255, 207, 0);
+    font-family: 'Vacelyn', sans-serif;
+    position: absolute;
+    top: 55%;
+    left: 250px;
+    transform: translateY(-50%);
+  }
+  
+  
+  .ServiceRec .ServiceCircles {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+    margin-left: 250px;
+    margin-top: 110px;
+  }
+  
+  .ServicesButton {
+    background-color: #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    font-family: 'Vacelyn', sans-serif; /* Matching font family for buttons */
+  }
+  
+  .ServicesButton:hover {
+    background-color: black;
+    color: #FFCF00;
+  }
+  

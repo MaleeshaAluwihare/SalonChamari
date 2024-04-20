@@ -51,18 +51,29 @@ export default function AddService(){
             setItemPrice(" ");
 
         }).catch(err => {
-            Swal.fire({
-                title: '<strong>Uh-oh...</strong>',
-                icon: 'error',
-                html:
-                    'We encountered an issue while adding your service. ',
-                focusConfirm: false,
-                confirmButtonText:
-                    '<i class="fa fa-times-circle"></i> I\'ll try again',
-                confirmButtonAriaLabel: 'I\'ll try again',
-                timer: 5000
-            })
+            if (err.response && err.response.data && err.response.data.message) {
+                // If the error response contains a message, display it
+                Swal.fire({
+                    title: '<strong>Uh-oh...</strong>',
+                    icon: 'error',
+                    html: err.response.data.message,
+                    focusConfirm: false,
+                    confirmButtonText: '<i class="fa fa-times-circle"></i> Close',
+                    confirmButtonAriaLabel: 'I\'ll try again'
+                })
+            } else {
+                // If the error response does not contain a message, display default
+                Swal.fire({
+                    title: '<strong>Uh-oh...</strong>',
+                    icon: 'error',
+                    html: 'We encountered an issue while adding your service.',
+                    focusConfirm: false,
+                    confirmButtonText: '<i class="fa fa-times-circle"></i> I\'ll try again',
+                    confirmButtonAriaLabel: 'I\'ll try again'
+                })
+            }
         });
+        
     }
 
     return(
@@ -70,7 +81,7 @@ export default function AddService(){
             <form onSubmit={sendData}>
                 <div className="mb-3">
                     <label htmlFor="service" className="form-label">Service Name:</label>
-                        <select id="service" className="form-select" onChange={handleServiceChange}>
+                        <select id="service" className="form-select" onChange={handleServiceChange} required>
                             <option value="">Select Service</option>
                             {Object.keys(serviceSubcategories).map((service) => (
                                 <option key={service} value={service}>{service}</option>
@@ -80,7 +91,7 @@ export default function AddService(){
 
                 <div className="mb-3">
                     <label htmlFor="subcategory" className="form-label">Subcategory Name:</label>
-                        <select id="subcategory" className="form-select" onChange={(e) => { setSubName(e.target.value) }}>
+                        <select id="subcategory" className="form-select" onChange={(e) => { setSubName(e.target.value) }} required>
                             <option value="">Select Subcategory</option>
                             {serviceSubcategories[serviceName] && serviceSubcategories[serviceName].map((subcategory) => (
                                 <option key={subcategory} value={subcategory}>{subcategory}</option>
