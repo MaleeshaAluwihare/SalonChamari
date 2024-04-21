@@ -12,7 +12,7 @@ export default function Feedbacks() {
 
             try{
 
-                const response = await fetch('http://localhost:8070/Feedbacks/display');
+                const response = await fetch('http://localhost:8070/Feedback/display');
                 const data = await response.json();
 
                 setFeedbacks(data);
@@ -58,6 +58,7 @@ export default function Feedbacks() {
                         <th>Booking ID</th>
                         <th>Category</th>
                         <th>Feedback</th>
+                        <th>Rating</th>
                         <th>Date</th>
                     </tr>
                 </thead>
@@ -70,8 +71,10 @@ export default function Feedbacks() {
                             <td>{feedbacks.bookingId}</td>
                             <td>{feedbacks.category}</td>
                             <td>{feedbacks.content}</td>
+                            <td>{feedbacks.rating}</td>
                             <td>{formatDate(feedbacks.sendDate)}</td>
                             <td><Link to={"#"}><button className="UpdateBtn">Reply</button></Link></td>
+                            <td><Link to={`/feedback/delete/${feedbacks.feedbackId}`}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
