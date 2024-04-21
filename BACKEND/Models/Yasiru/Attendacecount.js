@@ -17,7 +17,9 @@ const AttendanceSchema = new Schema({
     jobRole:{
         type:String,
         required:true
-    }
+    },
+
+  
 })
 
 const Attendance = mongoose.model("Attendance",AttendanceSchema);//Database name

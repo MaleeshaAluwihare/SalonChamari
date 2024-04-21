@@ -14,15 +14,15 @@ export default function NavBars () {
     <div>
     <Navbar bg="light" data-bs-theme="light">
       <Container>
-        <Navbar.Brand href="#Dash">Dashboard</Navbar.Brand>
+      <Nav.Link href="/Dash">Dashbord</Nav.Link>
         <Nav className="me-auto">
           <Nav.Link href="/EmployeeDetails">Saloon Employee</Nav.Link>
           <Nav.Link href="/Add">Saloon add</Nav.Link>
           <Nav.Link href="/profile">profile</Nav.Link>
           <Nav.Link href="/Profilloging">Profile_loging</Nav.Link>
           <Nav.Link href="/Edit">update</Nav.Link>
-          <Nav.Link href="/Attendacecount">Attendance</Nav.Link>
-           
+         
+        
 
         </Nav>
       </Container>

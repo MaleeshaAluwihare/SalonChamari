@@ -2,8 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
-import Employee from '../../../../BACKEND/Models/Yasiru/saloon';
+import { useNavigate } from 'react-router-dom'; 
 
 
 export default function ProfileLoging() {
@@ -18,8 +17,12 @@ export default function ProfileLoging() {
     const handleSubmit = (event) => {
       event.preventDefault()
       axios.post("/SalonEmp/add",ProfileLoging)
-      .then(result => console.log(result))
-      .catch(err => console.log(err))
+      .then(res => {
+        console.log(res);
+        navigate('/')
+      })
+      
+
     }
     return (
       <div className='d-flex justify-cotent-center align-iems'>
@@ -43,5 +46,5 @@ export default function ProfileLoging() {
       </div>
     );
   }
-  
+
  

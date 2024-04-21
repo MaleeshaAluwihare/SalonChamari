@@ -16,6 +16,7 @@ import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
 import Attendancepage from './pages/Yasiru/Attendancepage';
 import Attendancecount from './pages/Yasiru/Attendancecount';
+import Dashbord from './pages/Dashbord';
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path ='/profile' element ={<EmployeeProfile/>} />
         <Route path ='/Deletesaloon' element ={<DeleteEmployeedatials/>} />
       <Route path ='/Profilloging' element ={<ProfileLoging/>} />
-        
+        <Route path='/Dash'element={<Dashbord/>}/>
 
         
 

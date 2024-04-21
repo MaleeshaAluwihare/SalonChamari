@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function EmployeeProfile(){
     const navigate = useNavigate()
+
+    
+
     return(
         
         <div>
