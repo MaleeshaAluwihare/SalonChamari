@@ -57,11 +57,11 @@ router.route("/display").get((req,res) => {
 //http: //localhost:8070/Feedback/get/
 router.route("/get/:feedbackId").get(async(req,res) => {
 
-    let feedbackId = req.params.id;
+    let feedbackId = req.params.feedbackId;
 
     try{
 
-    const feedback = await Feedbacks.findOne(feedbackId);
+    const feedback = await Feedbacks.findOne({feedbackId: feedbackId});
 
         if (!feedback) {
 
@@ -69,7 +69,7 @@ router.route("/get/:feedbackId").get(async(req,res) => {
 
         }
 
-        res.status(200).send({status: "Feedback fetched", feedback});
+        res.status(200).send({status: "Feedback fetched", feedback: feedback});
 
 
     
@@ -89,7 +89,7 @@ router.route("/get/:feedbackId").get(async(req,res) => {
 //http: //localhost:8070/Feedback/update/
 router.route("/update/:feedbackId").put(async(req,res) => {
 
-    let feedbackID = req.params.id;
+    let feedbackID = req.params.feedbackId;
     
     const{feedbackId, bookingId, category, content, rating, sendDate} = req.body;
 
@@ -104,7 +104,7 @@ router.route("/update/:feedbackId").put(async(req,res) => {
 
     }
 
-    const update = await Feedbacks.findOneAndUpdate(feedbackID, updateFeedback).then(() => {
+    const update = await Feedbacks.findOneAndUpdate({feedbackID: feedbackId}, updateFeedback).then(() => {
 
         res.status(200).send({status: "Feedback updated"});
 
@@ -125,18 +125,26 @@ router.route("/update/:feedbackId").put(async(req,res) => {
 //http: //localhost:8070/Feedback/delete/
 router.route("/delete/:feedbackId").delete(async(req,res) => {
 
-    let feedbackID = req.params.id;
+    let feedbackId = req.params.feedbackId;
 
-    await Feedbacks.findOneAndDelete(feedbackID).then(() => {
+    try{
 
-        res.status(200).send({status: "Feedback deleted"});
+        const feedback = await Feedbacks.findOne({feedbackId: feedbackId});
 
-    }).catch((error) => {
+        if(!feedback) {
+            return res.status(404).send({status: "Feedback not found"});
+        }
 
-        console.log(error);
-        res.status(500).send({status: "Error with deleting feedback", error: error.message});
+        await Feedbacks.findOneAndDelete({feedbackId: feedbackId});
 
-    })
+        res.status(200).send({status: "Feedback Deleted"});
+
+    } catch(error) {
+
+        console.error("Error with deleting Feedback", error);
+        res.status(500).send({status: "Server Error", error: error.message});
+
+    }
 
 })
 
