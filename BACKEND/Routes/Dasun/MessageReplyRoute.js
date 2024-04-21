@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let Replies = require("../../Models/Dasun/MessageReplyModel");
+let Messages = require("../../Models/Dasun/CustomerMessageModel");
 
 
 
@@ -13,6 +14,14 @@ router.route("/add").post(async (req,res) => {
     const{replyId, messageId, reply, date} = req.body;
 
     try{
+
+        const messageExists = await Messages.findById(messageId);
+
+        if(!messageExists){
+
+            return res.status(404).send({status: "Message not found"});
+
+        }
 
         const newReply = new Replies({replyId, messageId, reply, date});
         await newReply.save();
@@ -37,6 +46,8 @@ router.route("/add").post(async (req,res) => {
 router.route("/display").get((req,res) => {
 
     Replies.find().then((Replies) => {
+
+        
 
         res.json(Replies);
 
