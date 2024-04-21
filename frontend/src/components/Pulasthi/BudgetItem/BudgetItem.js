@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { calender, dollar, trash, update } from "../../../utils/Pulasthi/Icons";
 import Button from "../Button/Button";
+import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 //this component is used to display items
 function BudgetItem({
     //me props enne Budget component eken
@@ -14,6 +15,7 @@ function BudgetItem({
     updateItem,
     indicatorColor,
 }) {
+    const { getOneBudget } = useGlobalContext();
   return (
     <BudgetItemStyled indicator={indicatorColor}>
         
@@ -49,7 +51,7 @@ function BudgetItem({
                         color={'#fff'}
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
-                        onClick={() => updateItem(budgetId)}
+                        onClick={() => getOneBudget(budgetId)}
                     />
                 </div>
             </div>

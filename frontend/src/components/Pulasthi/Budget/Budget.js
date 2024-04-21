@@ -7,6 +7,7 @@ import BudgetItem from "../BudgetItem/BudgetItem";
 import Button from "../Button/Button";
 import { search } from "../../../utils/Pulasthi/Icons";
 import SearchBudgetItem from "../Search/SearchBudgetItem";
+import UpdateForm from "../Form/UpdateForm";
 
 function Budget() {
 
@@ -18,7 +19,17 @@ function Budget() {
   const [budgetId, setBudgetId] = useState('');
   // State to track search visibility
   const [searchActive, setSearchActive] = useState(false);
+  //const [updateActive, setUpdateActive] = useState(false);
 
+  // const handleUpdate = async() => {
+  //   try{
+  //       const result = await updateBudget(budgetId);
+  //       updateActive(true)
+  //   }catch{
+  //       alert("update error")
+  //       updateActive(false)
+  //   }
+  // }
 
   const handleSearch = async() => {
     //if searchbar is empty
@@ -78,9 +89,17 @@ function Budget() {
         <div className="budget-content">
           <div className="form-container"></div>
           
-          {/* add budget */}
-          <div className="budgets">
-              <Form/>
+          {/* {updateActive? (
+            <UpdateForm/>
+          ):( */}
+            // {/* add budget */}
+            <div className="budgets">
+                <Form/>
+            </div>
+          {/* )} */}
+          
+          <div className="update">
+            {budget &&<UpdateForm budgetToUpdate={budget}/>}
           </div>
 
           {/* Conditional rendering based on search state */}

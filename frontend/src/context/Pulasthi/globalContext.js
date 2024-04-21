@@ -35,14 +35,24 @@ export const GlobalProvider = ({children}) => {
         //budget ekk delete karata passeth backend eke tyenna budgets tika pennana getBudgets() method eka call karanawa
         getBudgets()
     }
-    //update budget
-    // const updateBudget = async () =>{
-    //     const res = await axios.put(`${BASE_URL}update-budget/${id}`, budgets)
-    //     .catch((err)=>{
-    //         setError(err.res.data.message)
-    //     })
-    //     getBudgets()
-    // }
+    
+    // update budget           //* arrow function ekata id eka pass wenna onne
+    const updateBudget = async (id, updatedBudget) => {
+        try {
+            const res = await axios.put(`${BASE_URL}update-budget/${id}`, updatedBudget);
+            // Check if the update was successful
+            if (res.status === 200) {
+                // If successful, update the budgets
+                getBudgets();
+            } else {
+                // Handle other status codes or errors as needed
+                setError("Error updating budget.");
+            }
+        } catch (error) {
+            console.error('Error updating budget:', error);
+            setError("Error updating budget.");
+        }
+    };
 
     //getOneBudgetData
     const getOneBudget = async (id) => {
@@ -71,7 +81,7 @@ export const GlobalProvider = ({children}) => {
             getBudgets,
             budgets,
             deleteBudget,
-            // updateBudget,
+            updateBudget,
             getOneBudget,
             budget,
         }}>
