@@ -26,6 +26,13 @@ const feedbackSchema = new schema({
         required: true
     },
 
+    rating: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 5
+    },
+
     sendDate: {
         type: Date,
         required: true,
@@ -34,6 +41,6 @@ const feedbackSchema = new schema({
 
 }, {timestamps : true});
 
-const Feedbacks = mongoose.model('customerfeedback', feedbackSchema);
+const Feedbacks = mongoose.model('customer_feedback', feedbackSchema);
 
 module.exports = Feedbacks;
