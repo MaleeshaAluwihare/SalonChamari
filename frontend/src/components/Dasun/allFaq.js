@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/allFaq.css';
+import '../../CSS/displayFaq.css';
 import { Link } from "react-router-dom";
 
 export default function AllFaqs() {
