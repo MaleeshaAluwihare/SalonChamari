@@ -6,8 +6,9 @@ export default function SendFeedback() {
 
     const [feedbackId, setFeedbackId] = useState("");
     const [bookingId, setBookingId] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState(null);
     const [content, setContent] = useState("");
+    const [rating, setRating] = useState(0);
 
     // const navigate = userNavigate();
 
@@ -24,11 +25,12 @@ export default function SendFeedback() {
             bookingId,
             category,
             content,
+            rating,
             sendDate
 
         }
 
-        axios.post("http://localhost:8070/Feedbacks/add", newFeedbackCustomer).then(() => {
+        axios.post("http://localhost:8070/Feedback/add", newFeedbackCustomer).then(() => {
 
             alert("Feedback added");
 
@@ -36,6 +38,7 @@ export default function SendFeedback() {
             setBookingId("");
             setCategory("");
             setContent("");
+            setRating(0);
 
             // navigate("/faq/all");
 
@@ -126,6 +129,43 @@ export default function SendFeedback() {
                 </div>
 
                 <br />
+
+
+
+                <div className="form-group">
+
+                    <label htmlFor="rating"> 
+                    
+                        Rating 
+                        
+                        <select 
+                        
+                        value= {rating}
+
+                        onChange={(e) => {
+
+                            setRating(e.target.value)
+
+                        }}
+                        required
+                        className="form-control"
+
+                        >
+
+                            <option value="0"> 0 </option>
+                            <option value="1"> 1 </option>
+                            <option value="2"> 2 </option>
+                            <option value="3"> 3 </option>
+                            <option value="4"> 4 </option>
+                            <option value="5"> 5 </option>
+
+                        </select>
+
+                        </label>
+
+                    
+
+                </div>
 
 
                 <br />
