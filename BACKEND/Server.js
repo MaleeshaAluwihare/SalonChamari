@@ -37,8 +37,8 @@ app.use("/Faqs", faqsRouter);
 
 
 //url (http: //localhost:8070/Feedbacks)
-const feedbackRouter = require("./Routes/Dasun/FeedbackRoute.js");
-app.use("/Feedbacks", feedbackRouter);
+const feedbacksRouter = require("./Routes/Dasun/FeedbackRoute.js");
+app.use("/Feedback", feedbacksRouter);
 
 
 //url (http: //localhost:8070/CustomerMessages)
