@@ -10,7 +10,8 @@ const replySchema = new schema({
     },
 
     messageId: {
-        type: String,
+        type: schema.Types.ObjectId,
+        ref: 'customerMessages',
         required: true
     },
 
@@ -27,6 +28,6 @@ const replySchema = new schema({
 
 }, {timestamps : true});
 
-const Replies = mongoose.model('adminReplies', replySchema);
+const Replies = mongoose.model('adminMessageReply', replySchema);
 
-module.exports = Replies;
+module.exports = Replies;           
