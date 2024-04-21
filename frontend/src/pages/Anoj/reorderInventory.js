@@ -2,84 +2,83 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ReorderingPage() {
-  const [itemId, setItem_ID] = useState("");
+  const [itemIdOptions, setItemIdOptions] = useState([]);
+  const [itemId, setItemId] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [date, setDate] = useState("");
-  const [itemType, setItemType] = useState("")
-  const [itemPrice,setPrice] = useState([]);
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [itemType, setItemType] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("salon");
 
   useEffect(() => {
-    const fetchitemId = async () => {
-    try{
-      const response = await axios.get("/StudioInventory/display");
-      set(response.data.map( => itemId.Item_ID));
-    }catch(error){
-      console.error("Error fetching data")
-    }
-  };
-  fetchEmployeeID(); 
-  },[]);
+    const fetchItemIds = async () => {
+      try {
+        const response = await axios.get(`/StudioInventory/display?category=${selectedCategory}`);
+        const itemIds = response.data.map(item => String(item.pid));
+        setItemIdOptions(itemIds);
+      } catch (error) {
+        console.error("Error fetching item IDs:", error);
+      }
+    };
 
-  function sendData(e) {
+    fetchItemIds();
+  }, [selectedCategory]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const  = {
-      
+    const inventoryItem = {
+      itemId,
+      quantity,
+      date,
+      itemType
+    };
+
+    try {
+      await axios.post("/StudioInventory/reorder", inventoryItem);
+      alert("Item sent successfully");
+    } catch (error) {
+      console.error("Error sending item:", error);
+      alert("Failed to send item");
     }
+  };
 
-    console.log()
-
-    axios.post("/Attendancecount/add",)
-      .then(() => {
-        alert("Item added")
-      })
-      .catch((err) => {
-        alert(err)
-      })
-  }
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
   return (
     <div className="container">
-      <h3>Re-ordering inventory Stocks</h3>
-      <form onSubmit={sendData}>
-
+      <h3>Re-ordering Inventory Stocks</h3>
+      <div className="mb-3">
+        <select className="form-select" value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="salon">Salon</option>
+          <option value="studio">Studio</option>
+        </select>
+      </div>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="name">Item ID</label>
-          <select className="form-control" id ="empId" value={empId} onChange={(e) => setemp_ID(e.target.value)}>
-            <option value =" ">item id</option>
-            {employeeID.map(id => (
+          <label htmlFor="itemId">Inventory ID</label>
+          <select className="form-control" id="itemId" value={itemId} onChange={(e) => setItemId(e.target.value)}>
+            <option value="">Select Inventory ID</option>
+            {itemIdOptions.map(id => (
               <option key={id} value={id}>{id}</option>
             ))}
           </select>
         </div>
-
         <div className="mb-3">
-          <label htmlFor="name">quantity</label>
-          <input type="text" className="form-control" id="job" placeholder="Quantity" onChange={(e) => {
-            setjobrole(e.target.value);
-          }} />
+          <label htmlFor="quantity">Quantity</label>
+          <input type="text" className="form-control" id="quantity" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
         </div>
-
-
         <div className="mb-3">
-          <label htmlFor="name">date</label>
-          <input type="text" className="form-control" id="job" value={date} placeholder="Date" onChange={(e) => {
-            setattendance(e.target.value);
-          }} />
+          <label htmlFor="date">Date</label>
+          <input type="date" className="form-control" id="date" placeholder="Date" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
-
         <div className="mb-3">
-          <label htmlFor="name">itemType</label>
-          <input type="text" className="form-control" placeholder="Item Type" id="job"readOnly />
+          <label htmlFor="itemType">Inventory Type</label>
+          <input type="text" className="form-control" id="itemType" placeholder="Inventory Type" value={itemType} onChange={(e) => setItemType(e.target.value)} />
         </div>
-
-        <div className="mb-3">
-          <label htmlFor="name">itemPrice</label>
-          <input type="text" className="form-control" placeholder="Item price" id="job" readOnly />
-        </div>
-
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
-  )
+  );
 }

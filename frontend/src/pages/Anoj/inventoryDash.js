@@ -1,29 +1,17 @@
-import React  from "react";
-
-
+import React from "react";
+import StockTable from "../../components/Anoj/stockTable";
+import { BarChart } from "../../components/Anoj/Bar"
+import { LineGraph as LineChartData } from "../../components/Anoj/Line";
+import { PieChart } from "../../components/Anoj/Pie"; // Updated import
 
 export default function InventoryDash() {
   return (
-    <div class="container">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Hair Dryers</td>
-          <td>10</td>
-          <td>Rs. 500</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  )
+    <>
+    <button>Report Generation</button>
+      <BarChart />
+      <LineChartData />
+      <PieChart />
+      <StockTable />
+    </>
+  );
 }
