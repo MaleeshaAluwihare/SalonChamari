@@ -7,14 +7,14 @@ let Feedbacks = require("../../Models/Dasun/FeedbackModel");
 
 
 //ADD
-//http: //localhost:8070/Feedbacks/add
+//http: //localhost:8070/Feedback/add
 router.route("/add").post(async (req,res) => {
 
-    const{feedbackId, bookingId, category, content, sendDate} = req.body;
+    const{feedbackId, bookingId, category, content, rating, sendDate} = req.body;
 
     try{
 
-        const newFeedback = new Feedbacks({feedbackId, bookingId, category, content, sendDate});
+        const newFeedback = new Feedbacks({feedbackId, bookingId, category, content, rating, sendDate});
         await newFeedback.save();
 
         res.json("Feedback Added");
@@ -33,7 +33,7 @@ router.route("/add").post(async (req,res) => {
 
 
 //DISPLAY
-//http: //localhost:8070/Feedbacks/display
+//http: //localhost:8070/Feedback/display
 router.route("/display").get((req,res) => {
 
     Feedbacks.find().then((Feedbacks) => {
@@ -54,43 +54,44 @@ router.route("/display").get((req,res) => {
 
 
 //GetOne
-//http: //localhost:8070/Feedbacks/get/
-router.route("/get/:id").get(async(req,res) => {
+//http: //localhost:8070/Feedback/get/
+router.route("/get/:feedbackId").get(async(req,res) => {
 
     let feedbackId = req.params.id;
 
+    try{
 
-    const feedback = await Feedbacks.findById(feedbackId).then((Feedbacks) => {
+    const feedback = await Feedbacks.findOne(feedbackId);
 
-        // if (!feedback) {
+        if (!feedback) {
 
-        //     return res.status(404).send({status: "Feedback not found"});
+            return res.status(404).send({status: "Feedback not found"});
 
-        // }
+        }
 
-        res.status(200).send({status: "Feedback fetched", Feedbacks});
+        res.status(200).send({status: "Feedback fetched", feedback});
 
 
     
-    }).catch((error) => {
+    } catch(error) {
 
-        console.log(err.message)
+        console.log(error.message)
         res.status(500).send({status: "Error with fetching feedback", error: error.message});
 
-    })
+    }
 
-})
+});
 
 
 
 
 //UPDATE
-//http: //localhost:8070/Feedbacks/update/
-router.route("/update/:id").put(async(req,res) => {
+//http: //localhost:8070/Feedback/update/
+router.route("/update/:feedbackId").put(async(req,res) => {
 
     let feedbackID = req.params.id;
     
-    const{feedbackId, bookingId, category, content, sendDate} = req.body;
+    const{feedbackId, bookingId, category, content, rating, sendDate} = req.body;
 
     const updateFeedback = {
 
@@ -98,11 +99,12 @@ router.route("/update/:id").put(async(req,res) => {
         bookingId,
         category, 
         content,
+        rating,
         sendDate
 
     }
 
-    const update = await Feedbacks.findByIdAndUpdate(feedbackID, updateFeedback).then(() => {
+    const update = await Feedbacks.findOneAndUpdate(feedbackID, updateFeedback).then(() => {
 
         res.status(200).send({status: "Feedback updated"});
 
@@ -120,12 +122,12 @@ router.route("/update/:id").put(async(req,res) => {
 
 
 //DELETE
-//http: //localhost:8070/Feedbacks/delete/
-router.route("/delete/:id").delete(async(req,res) => {
+//http: //localhost:8070/Feedback/delete/
+router.route("/delete/:feedbackId").delete(async(req,res) => {
 
     let feedbackID = req.params.id;
 
-    await Feedbacks.findByIdAndDelete(feedbackID).then(() => {
+    await Feedbacks.findOneAndDelete(feedbackID).then(() => {
 
         res.status(200).send({status: "Feedback deleted"});
 
