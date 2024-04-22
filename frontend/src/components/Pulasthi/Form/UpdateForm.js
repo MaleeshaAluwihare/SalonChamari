@@ -5,20 +5,31 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 import Button from "../Button/Button";
 import { plus } from "../../../utils/Pulasthi/Icons";
-
+                
+                     //budgetToUpdate prop come from Budget componenet
 function UpdateForm({ budgetToUpdate }) {
   const { updateBudget } = useGlobalContext();
 
   // State to manage form inputs
   const [inputState, setInputState] = useState({
-    budgetId: budgetToUpdate.budgetId || "",
-    month: budgetToUpdate.month || "",
-    amount: budgetToUpdate.amount || "",
-    date: new Date(budgetToUpdate.date) || new Date(),
+    budgetId: "",
+    month: "",
+    amount: "",
+    date: new Date(),
   });
 
   // Destructure inputState
   const { budgetId, month, amount, date } = inputState;
+
+  // useEffect use to update the inputState state when budgetToUpdate object changes
+  useEffect(() => {
+    setInputState({
+      budgetId: budgetToUpdate.budgetId || "",
+      month: budgetToUpdate.month || "",
+      amount: budgetToUpdate.amount || "",
+      date: budgetToUpdate.date ? new Date(budgetToUpdate.date) : new Date(),
+    });
+  }, [budgetToUpdate]);
 
   // Handle input change
   const handleInput = (name) => (e) => {
@@ -40,7 +51,7 @@ function UpdateForm({ budgetToUpdate }) {
       budgetId: "",
       month: "",
       amount: "",
-      date: new Date(),
+      date: "",  //new Date() ;
     });
   };
 
@@ -72,7 +83,7 @@ function UpdateForm({ budgetToUpdate }) {
             <option value="October">October</option>
             <option value="November">November</option>
             <option value="December">December</option>
-          {/* Add other options for months */}
+          
         </select>
       </div>
       <div className="input-control">
@@ -97,13 +108,12 @@ function UpdateForm({ budgetToUpdate }) {
       </div>
       <div className="submit-btn">
         <Button
-          name="Update Budget" // Change button text to "Update Budget"
+          name="Save" // Change button text to "Update Budget"
           icon={plus}
           bPad=".8rem 1.6rem"
           bRad="30px"
           bg="var(--color-lightYellow"
           color="#fff"
-        //   onClick={handleSubmit}
         />
       </div>
     </FormStyled>

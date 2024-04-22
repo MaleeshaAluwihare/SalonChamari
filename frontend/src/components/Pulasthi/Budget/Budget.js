@@ -92,7 +92,7 @@ function Budget() {
           {/* {updateActive? (
             <UpdateForm/>
           ):( */}
-            // {/* add budget */}
+             {/* add budget */}
             <div className="budgets">
                 <Form/>
             </div>

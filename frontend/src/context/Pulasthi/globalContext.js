@@ -58,8 +58,14 @@ export const GlobalProvider = ({children}) => {
     const getOneBudget = async (id) => {
         //try{
             const response = await axios.get(`${BASE_URL}getBudgetById/${id}`)//error ekk print karanawanm methona then catch ekk danna onne
-            setBudget(response.data.budget);//.budget is must here
-            console.log(response.data)
+            if(response.data){
+                setBudget(response.data.budget);//.budget is must here
+                console.log(response.data)
+            }
+        //}catch(error){
+           // console.error('Error fetching budget:', error);
+            //setError('An error occurred. Please try again.');
+        //}     
         //}
         // catch(error){
         //     console.error('Error fetching budget:', error);
