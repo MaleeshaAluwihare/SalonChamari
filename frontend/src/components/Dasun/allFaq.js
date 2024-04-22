@@ -50,8 +50,8 @@ export default function AllFaqs() {
                             <td>{faqs.faqId}</td>
                             <td>{faqs.question}</td>
                             <td>{faqs.answer}</td>
-                            <td><Link to={`/faq/update/${faqs.faqId}`}><button className="UpdateBtn">Update</button></Link></td>
-                            <td><Link to={`/faq/delete/${faqs.faqId}`}><button className="DeleteBtn">Delete</button></Link></td>
+                            <td><Link to={`/faq/update/${faqs.faqId}`}><button className="UpdateBtn">Update</button></Link>
+                            <Link to={`/faq/delete/${faqs.faqId}`}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
