@@ -1,4 +1,4 @@
-import './CSS/App.css';
+import './CSS/Dasun/App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Header from './components/Dasun/Header';
 import AddFaq from './components/Dasun/addFaq';
