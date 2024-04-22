@@ -7,12 +7,19 @@ let CustomerMessages = require("../../Models/Dasun/CustomerMessageModel");
 
 //ADD
 //http: //localhost:8070/CustomerMessages/add
-router.route("/add").post((req,res) => {
+router.route("/add").post( async (req,res) => {
 
     const customerId = req.body.customerId;
     const messageId = req.body.messageId;
     const message = req.body.message;
     const date = req.body.date;
+
+    let prefix = '';
+
+    // const itemCount = await CustomerMessages.countDocuments();
+
+    // const messageId = prefix + padNumber(itemCount + 1);
+
 
     const newMessage = new CustomerMessages({
 
@@ -156,20 +163,28 @@ router.route("/update/:messageId").put(async(req,res) => {
 
 //DELETE
 //http: //localhost:8070/CustomerMessages/delete/
-router.route("/delete/:id").delete(async(req,res) => {
+router.route("/delete/:messageId").delete(async(req,res) => {
 
-    let messageID = req.params.id;
+    let messageId = req.params.messageId;
 
-    await CustomerMessages.findByIdAndDelete(messageID).then(() => {
+    try{
 
-        res.status(200).send({status: "Message deleted"});
+        const message = await CustomerMessages.findOne({messageId: messageId});
 
-    }).catch((error) => {
+        if(!message) {
+            return res.status(404).send({status: "Message not found"});
+        }
 
-        console.log(error);
-        res.status(500).send({status: "Error with deleting message", error: error.message});
+        await CustomerMessages.findOneAndDelete({messageId: messageId});
 
-    })
+        res.status(200).send({status: "Message Deleted"});
+
+    } catch(error) {
+
+        console.error("Error with deleting Message", error);
+        res.status(500).send({status: "Server Error", error: error.message});
+
+    }
 
 })
 
