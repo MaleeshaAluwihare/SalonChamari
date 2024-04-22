@@ -12,6 +12,7 @@ export default function AddFaq() {
     // const navigate = userNavigate();
 
 
+    
     function sendData(e){
 
         e.preventDefault();
