@@ -6,8 +6,8 @@ export default function Feedbacks() {
 
     const [feedbacks, setFeedbacks] = useState([]);
     const [filteredFeedbacks, setFilteredFeedbacks] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [selectedRating, setSelectedRating] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedRating, setSelectedRating] = useState("All");
 
     useEffect(() => {
 
