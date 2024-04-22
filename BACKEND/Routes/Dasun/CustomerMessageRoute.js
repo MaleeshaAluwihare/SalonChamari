@@ -60,22 +60,41 @@ router.route("/display").get((req,res) => {
 
 //GetOne
 //http: //localhost:8070/CustomerMessages/get/
-router.route("/get/:id").get(async(req,res) => {
+router.route("/get/:messageId").get(async(req,res) => {
 
-    let messageID = req.params.id;
+    let messageId = req.params.messageId;
 
-    const message = await CustomerMessages.findById(messageID).then((CustomerMessages) => {
+    // const message = await CustomerMessages.findOne(messageID).then((CustomerMessages) => {
 
-        res.status(200).send({status: "Message fetched", CustomerMessages});
+    //     res.status(200).send({status: "Message fetched", CustomerMessages});
 
-    }).catch((error) => {
+    // }).catch((error) => {
 
-        console.log(error);
-        res.status(500).send({status: "Error with get message", error: error.message});
+    //     console.log(error);
+    //     res.status(500).send({status: "Error with get message", error: error.message});
 
-    })
+    // })
 
-})
+    try{
+
+        const message = await CustomerMessages.findOne({messageId: messageId});
+
+        if(!message) {
+
+            return res.status(404).send({status: "Message not found"});
+
+        }
+
+        res.status(200).send({status: "Message fetched", message: message});
+
+    } catch(error) {
+
+        console.log(error.message);
+        res.status(500).send({status: "Error with fetching message", error: error.message});
+
+    }
+
+});
 
 
 
@@ -83,31 +102,51 @@ router.route("/get/:id").get(async(req,res) => {
 
 //UPDATE
 //http: //localhost:8070/CustomerMessages/update/
-router.route("/update/:id").put(async(req,res) => {
+router.route("/update/:messageId").put(async(req,res) => {
 
-    let messageID = req.params.id;
+    let messageId = req.params.messageId;
     
-    const{customerId, messageId, message, date} = req.body;
+    const{ message, date} = req.body;
 
-    const updateMessage = {
+    const updateField = {
 
-        customerId,
-        messageId,
         message,
         date
 
+    };
+
+    // const update = await CustomerMessages.findOneAndUpdate({messageID: messageId}, updateMessage).then(() => {
+
+    //     res.status(200).send({status: "Message updated"});
+
+    // }).catch((error) => {
+
+    //     console.log(error);
+    //     res.status(500).send({status: "Error with updating data"});
+
+    // })
+
+
+    try {
+
+        const updateMessage = await CustomerMessages.findOneAndUpdate({messageId: messageId}, updateField, {new: true});
+
+
+        if(!updateMessage) {
+
+            return res.status(404).send({status: "Message not found"});
+
+        }
+
+        res.status(200).send({status: "Message Updated", updateMessage: updateMessage});
+
+
+    } catch (error) {
+
+        console.error("Error with updating message", error);
+        res.status(500).send({status: "Server Error"});
+
     }
-
-    const update = await CustomerMessages.findByIdAndUpdate(messageID, updateMessage).then(() => {
-
-        res.status(200).send({status: "Message updated"});
-
-    }).catch((error) => {
-
-        console.log(error);
-        res.status(500).send({status: "Error with updating data"});
-
-    })
 
 })
 
