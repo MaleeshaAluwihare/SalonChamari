@@ -62,7 +62,7 @@ export default function EditEmployeeDetails() {
     return (
         <div>
             <h3>Edit Employee Details</h3>
-            <div className="container">
+           <div className="container">
                 <label htmlFor="EmployeeID">Enter Employee ID: </label>
                 <input type="text" id="EmployeeID" value={Employee_ID} onChange={(e) => setEmployee_ID(e.target.value)} />
                 <button type="button" onClick={getEmployeeDetails}>Search</button>

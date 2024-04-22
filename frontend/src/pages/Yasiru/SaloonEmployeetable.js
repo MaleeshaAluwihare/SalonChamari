@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AddEmployee from "./Addemployee";
-import { BarChart } from "../../components/Yasiru/bar";
-import { PieChart } from "../../components/Yasiru/Pie";
-import { LineChartData } from "../../components/Yasiru/Data";
-import { LineGraph } from "../../components/Yasiru/Line";
+
 
 export default function SaloonEmployeetable() {
   const [employee, setEmployee] = useState([]);
@@ -63,8 +60,8 @@ export default function SaloonEmployeetable() {
                 <td>{Employee.jobRole}</td>
                 <td>{Employee.Salary}</td>
                 <td>
-                  <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
-                  <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.EmployeeID)}>Delete</button>
+                 <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
+                  <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(Employee.Employee_ID)}>Delete</button>
                 </td>
               </tr>
             ))}

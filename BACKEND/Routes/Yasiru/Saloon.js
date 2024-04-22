@@ -41,6 +41,22 @@ router.route("/add").post((req,res)=>{
     })
  
 })
+router.route('/getloggeduser').post(async (req, res) => {
+    const { id, name } = req.body;
+
+    try {
+        const loggedEmp = await Employee.findOne({ Employee_ID: id, Name: name });
+        if (loggedEmp) {
+            res.status(200).json(loggedEmp);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 
 
 //Read route - getting all users data
@@ -114,6 +130,24 @@ router.get('/get/:Employee_ID', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Get Product by ID
+router.get("/searchById", async (req, res) => {
+    const Employee_ID = req.query.Employee_ID; // Use query parameter instead of route parameter
+
+    try {
+        const Employee = await Studio.findOne({ Employee_ID: Employee_ID });
+
+        if (!Employee) {
+            return res.status(404).json({ status: "Product not found" });
+        }
+
+        res.status(200).json({ status: "Product fetched", Employee });
+    } catch (error) {
+        console.error("Error fetching product:", error);
+        res.status(500).json({ status: "Error", message: error.message });
     }
 });
 

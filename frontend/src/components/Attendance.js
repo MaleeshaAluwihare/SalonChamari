@@ -79,7 +79,6 @@ export default function Attendancecount() {
       alert("Failed to send item");
     }
   };
-
   
   return (
     <Table striped bordered hover>
@@ -105,10 +104,7 @@ export default function Attendancecount() {
                   'No Date Provided'
                 )}
               </td>
-              <td>
-              <button type = "submit" className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.empId)}>Delete</button>
-
-            </td>
+             
             </tr>
           ))}
         </tbody>

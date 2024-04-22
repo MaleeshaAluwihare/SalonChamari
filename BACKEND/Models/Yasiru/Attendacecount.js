@@ -10,7 +10,7 @@ const AttendanceSchema = new Schema({
     },
     
     attendance:{
-        type:Number,
+        type:Boolean,
         required:true
     }, 
 
@@ -19,8 +19,18 @@ const AttendanceSchema = new Schema({
         required:true
     },
 
-  
-})
+    date:{
+        type:Date,
+        default: () => {
+            let date = new Date();
+            date.setHours(0,0,0,0);
+            return date;
+        }
+    }
+});
 
-const Attendance = mongoose.model("Attendance",AttendanceSchema);//Database name
+// Add a compound index on empId and date
+AttendanceSchema.index({ empId: 1, date: 1 }, { unique: true });
+
+const Attendance = mongoose.model("Attendance",AttendanceSchema);
 module.exports=Attendance;

@@ -1,51 +1,56 @@
-import React from "react";
-import Form from 'react-bootstrap/Form';
+// EmployeeProfile.js
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+export default function EmployeeProfile() {
+    const navigate = useNavigate();
+    const empid = localStorage.getItem('empId');
+    const name = localStorage.getItem('empname');
 
+    const [empDetails, setEmpDetails] = useState({});
 
-export default function EmployeeProfile(){
-    const navigate = useNavigate()
+    useEffect(() => {
+        if (empid) {
+            axios.get(`http://localhost:8070/SalonEmp/get/${empid}`)
+                .then(res => setEmpDetails(res.data))
+                .catch(error => console.error("Error fetching employee details:", error));
+        }
+    }, [empid]);
 
-    
-
-    return(
-        
+    return (
         <div>
-             <h3>profile</h3>
-    
-        <Form>
-        <div class="form-group">
-            <lable  for ="name">Employee ID</lable>
-            <input type ="text"class="form-control" id="name" placeholder="Enter Employee ID"/>
+            <h3>Profile</h3>
+            <Form>
+                <Form.Group>
+                    <Form.Label>Employee ID</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Employee ID" value={empDetails.Employee_ID || ''} readOnly />
+                </Form.Group>
 
-        </div>
+                <Form.Group>
+                    <Form.Label>Employee Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Employee Name" value={empDetails.Name || ''} readOnly />
+                </Form.Group>
 
-        <div class="form-group">
-            <lable  for ="name">Employee Name</lable>
-            <input type ="text"class="form-control" id="name" placeholder="Enter Employee Name"/>
-        </div>
+                <Form.Group>
+                    <Form.Label>Address</Form.Label>
+                    <Form.Control type="text" placeholder="Address" value={empDetails.Address || ''} readOnly />
+                </Form.Group>
 
-        <div class="form-group">
-            <lable  for ="name">Address</lable>
-            <input type ="text"class="form-control" id="name" placeholder="Address"/> 
-        </div>
+                <Form.Group>
+                    <Form.Label>Job Role</Form.Label>
+                    <Form.Control type="text" placeholder="Job Role" value={empDetails.jobRole || ''} readOnly />
+                </Form.Group>
 
-        <div class="form-group">
-            <lable  for ="name">jobRole</lable>
-            <input type ="text"class="form-control" id="name" placeholder="Qualification"/>
-        </div>
+                <Form.Group>
+                    <Form.Label>Daily Salary</Form.Label>
+                    <Form.Control type="text" placeholder="Daily Salary" value={empDetails.Salary || ''} readOnly />
+                </Form.Group>
 
-        <div class="form-group">
-            <lable  for ="name">Daily Salary</lable>
-            <input type ="text"class="form-control" id="name" placeholder="Daily Salary"/>
-        </div>
-
-        <button type="submit" class="button" >save</button>
-        <button type="submit" class="submit-btn" onClick={()=>navigate('/Attendacegive')}>Attendance</button>
-
-    </Form>
-
+                <Button type="submit" className="button">Save</Button>
+                <button className="text-decoration-none btn btn-sm btn btn-success" onClick={() => navigate('/Attendacegive')}>Daily  attendance</button>
+            </Form>
         </div>
     )
 }
