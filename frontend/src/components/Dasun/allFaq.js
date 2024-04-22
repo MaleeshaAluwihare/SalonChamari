@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/displayFaq.css';
+import '../../CSS/Dasun/displayFaq.css';
 import { Link } from "react-router-dom";
 
 export default function AllFaqs() {
@@ -40,6 +40,7 @@ export default function AllFaqs() {
                         <th>FAQ ID</th>
                         <th>Question</th>
                         <th>Answer</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
