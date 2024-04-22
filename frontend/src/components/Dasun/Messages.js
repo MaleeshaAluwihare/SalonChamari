@@ -58,6 +58,7 @@ export default function Messages() {
                         <th>Message ID</th>
                         <th>Message</th>
                         <th>Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -68,7 +69,8 @@ export default function Messages() {
                             <td>{messages.messageId}</td>
                             <td>{messages.message}</td>
                             <td>{formatDate(messages.date)}</td>
-                            <td><Link to={`/ReplyMessage/add/${messages.messageId}`}><button className="UpdateBtn">Reply</button></Link></td>
+                            <td><Link to={`/ReplyMessage/add/${messages.messageId}`}><button className="UpdateBtn">Reply</button></Link>
+                            <Link to={`/CustomerMessages/delete/${messages.messageId}`}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
