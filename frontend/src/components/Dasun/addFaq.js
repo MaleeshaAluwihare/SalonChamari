@@ -49,7 +49,7 @@ export default function AddFaq() {
             <form onSubmit={sendData}>
 
 
-                <div class="form-group">
+                {/* <div class="form-group">
 
                     <label for="faqId">Faq ID</label>
                     <input type="text" class="form-control" id="faqId" placeholder="Enter ID" 
@@ -58,7 +58,7 @@ export default function AddFaq() {
                     }} />
                     
 
-                </div>
+                </div> */}
 
                 <br />
 
