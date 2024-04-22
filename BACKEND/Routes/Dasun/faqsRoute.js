@@ -2,6 +2,27 @@ const router = require("express").Router();
 let Faqs = require("../../Models/Dasun/FaqsModel");
 
 
+async function generateFaqId() {
+
+    const prefix = 'FQ100';
+
+    try {
+
+        const FaqCount = await Faqs.countDocuments();
+
+        const nextFaqNumber = FaqCount + 1;
+
+        const FaqId = `${prefix}${nextFaqNumber}`;
+
+        return FaqId;
+
+    } catch (error) {
+
+        console.error('Error generating Faq ID', error);
+
+    }
+
+}
 
 
 
@@ -9,7 +30,9 @@ let Faqs = require("../../Models/Dasun/FaqsModel");
 //http: //localhost:8070/Faqs/add
 router.route("/add").post(async (req,res) => {
 
-    const {faqId, question, answer} = req.body;
+    const {question, answer} = req.body;
+
+    const faqId = await generateFaqId();
 
     try{
 
