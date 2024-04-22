@@ -65,7 +65,7 @@ export default function SendMessage() {
                 <br />
 
 
-                <div class="form-group">
+                {/* <div class="form-group">
 
                     <label for="messageId">Message ID</label>
                     <input type="text" class="form-control" id="messageId" placeholder="Enter Message ID" 
@@ -74,7 +74,7 @@ export default function SendMessage() {
                     }} />
                     
 
-                </div>
+                </div> */}
 
                 <br />
 
