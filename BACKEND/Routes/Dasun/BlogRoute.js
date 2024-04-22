@@ -9,12 +9,12 @@ const Blogs = require("../../Models/Dasun/BlogModel");
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../../../frontend/src/uploads'));
   },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + '-' + Date.now() + ext);
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
   }
 });
 
