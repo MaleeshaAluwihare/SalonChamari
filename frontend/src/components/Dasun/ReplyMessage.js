@@ -6,12 +6,14 @@ export default function ReplyMessage() {
     const [replyId, setReplyId] = useState("");
     const [messageId, setMessageId] = useState("");
     const [reply, setReply] = useState("");
-    const [date, setDate] = useState("");
+    // const [date, setDate] = useState("");
 
 
     function sendData(e){
 
         e.preventDefault();
+
+        const date = new Date().toISOString().split('T')[0];
         
         const newReply = {
 
@@ -29,11 +31,12 @@ export default function ReplyMessage() {
             setReplyId("");
             setMessageId("");
             setReply("");
-            setDate("");
+            // setDate("");
 
         }).catch((err) => {
 
             alert(err);
+            console.error("Error send reply", err);
 
         })
 
@@ -62,7 +65,7 @@ export default function ReplyMessage() {
                 <div class="form-group">
 
                     <label for="messageId">Message ID</label>
-                    <input type="text" class="form-control" id="messageId" placeholder="Enter Message ID" 
+                    <input type="text" class="form-control" id="messageId" placeholder="Enter Message ID" value={messageId}
                     onChange={(e) => {
                         setMessageId(e.target.value);
                     }} />
@@ -87,7 +90,7 @@ export default function ReplyMessage() {
                 <br />
 
 
-                <div class="form-group">
+                {/* <div class="form-group">
 
                     <label htmlFor="date">Date</label>
                     <input type="date" class="form-control" id="date" value={date} placeholder="Enter Date" 
@@ -98,7 +101,7 @@ export default function ReplyMessage() {
 
                 </div>
 
-                <br />
+                <br /> */}
 
 
                 <button type="submit" class="btn btn-primary">Send</button>
