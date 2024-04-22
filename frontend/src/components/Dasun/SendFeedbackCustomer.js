@@ -6,7 +6,7 @@ export default function SendFeedback() {
 
     const [feedbackId, setFeedbackId] = useState("");
     const [bookingId, setBookingId] = useState("");
-    const [category, setCategory] = useState(null);
+    const [category, setCategory] = useState("Salon");
     const [content, setContent] = useState("");
     const [rating, setRating] = useState(0);
 
@@ -57,7 +57,7 @@ export default function SendFeedback() {
             <form onSubmit={sendData}>
 
 
-                <div class="form-group">
+                {/* <div class="form-group">
 
                     <label for="feedbackId">Feedback ID</label>
                     <input type="text" class="form-control" id="feedbackId" placeholder="Enter Feedback ID" 
@@ -68,7 +68,7 @@ export default function SendFeedback() {
 
                 </div>
 
-                <br />
+                <br /> */}
 
 
                 <div class="form-group">
