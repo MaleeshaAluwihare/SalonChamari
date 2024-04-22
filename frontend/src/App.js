@@ -19,6 +19,7 @@ import SendMessage from './components/Dasun/SendMessageCustomer';
 import CustomerBlog from './pages/BlogCustomer';
 import CustomerFaq from './pages/FaqCustomer';
 import DeleteFeedback from './components/Dasun/deleteFeedback';
+import DeleteMessage from './components/Dasun/deleteMessage';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path='/faq/update/:faqId' Component={UpdateFaq} />
             <Route path="/faq/delete/:faqId" Component={DeleteFaq} />
             <Route path="/CustomerMessages/all" exact Component={Messages} />
+            <Route path="/CustomerMessages/delete/:messageId" exact Component={DeleteMessage} />
             <Route path="/feedback/all" exact Component={Feedbacks} />
             <Route path="/feedback/delete/:feedbackId" Component={DeleteFeedback} />
             <Route path="/ReplyMessage/add/:messageId" exact Component={ReplyMessage} />
