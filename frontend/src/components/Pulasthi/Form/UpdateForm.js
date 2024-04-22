@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 import { close, plus, update } from "../../../utils/Pulasthi/Icons";
                 
                      //budgetToUpdate prop come from Budget componenet
-function UpdateForm({ budgetToUpdate }) {
+function UpdateForm({ budgetToUpdate,onClose }) {
   const { updateBudget } = useGlobalContext();
 
   // State to manage form inputs
@@ -23,6 +23,7 @@ function UpdateForm({ budgetToUpdate }) {
 
   // useEffect use to update the inputState state when budgetToUpdate object changes
   useEffect(() => {
+    //check budgetToUpdate is not null or undefined before accessing its properties
     if (budgetToUpdate?.budgetId) {
       setInputState({
         budgetId: budgetToUpdate.budgetId || "",
@@ -59,6 +60,10 @@ function UpdateForm({ budgetToUpdate }) {
 
   return (
     <FormStyled onSubmit={handleSubmit}>
+
+      <div className="heading">
+        <h2>Update Form</h2>
+      </div>
       <div className="input-control">
         <input
           type="text"
@@ -108,25 +113,28 @@ function UpdateForm({ budgetToUpdate }) {
           required
         />
       </div>
-      <div className="submit-btn">
-        <Button
-          name="Save" 
-          icon={update}
-          bPad=".8rem 1.6rem"
-          bRad="30px"
-          bg="var(--color-lightYellow)"
-          color="#fff"
-        />
-      </div>
-      <div className="submit-btn1">
-        <Button
-          name="Close" // Change button text to "Update Budget"
-          icon={close}
-          bPad=".8rem 1.6rem"
-          bRad="30px"
-          bg="var(--color-lightRed)"
-          color="#fff"
-        />
+      <div className="button-container">
+        <div className="submit-btn">
+          <Button
+            name="Save" 
+            icon={update}
+            bPad=".8rem 1.6rem"
+            bRad="30px"
+            bg="var(--color-lightYellow)"
+            color="#fff"
+          />
+        </div>
+        <div className="submit-btn1">
+          <Button
+            name="Close"
+            icon={close}
+            bPad=".8rem 1.6rem"
+            bRad="30px"
+            bg="var(--color-lightRed)"
+            color="#fff"
+            onClick={onClose}
+          />
+        </div>
       </div>
     </FormStyled>
   );
@@ -159,6 +167,10 @@ const FormStyled = styled.form`
     }
   }
 
+  h2 {
+      margin-bottom: -10px; 
+  }
+
   .selects {
     display: flex;
     justify-content: flex-end;
@@ -170,6 +182,12 @@ const FormStyled = styled.form`
       }
     }
   }
+
+  .button-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;  /*Distributes space evenly around items */
+   }
 
   .submit-btn {
     button {

@@ -84,21 +84,17 @@ function Budget() {
                   onClick={handleSearch}
               /> 
           </div>
-          {/* <SearchBudgetItem budget={budget} /> */}
-
+          
+        {/* Conditional rendering based on updateFormVisible state */}
         <div className="budget-content">
           <div className="form-container">
             {updateFormVisible ? (
-              <UpdateForm budgetToUpdate={budget} />
+              <UpdateForm budgetToUpdate={budget} onClose={handleHideUpdateForm}/>
             ) : (
               <Form />
             )}
           </div>
           
-          {/* <div className="update">
-            {budget &&<UpdateForm budgetToUpdate={budget}/>}
-          </div> */}
-
           {/* Conditional rendering based on search state */}
           {/* if searchActive value is true then app shows SearchBudgetItem componenet
           else app shows BudgetItems */}
@@ -144,11 +140,16 @@ const BudgetStyled = styled.div`
     }
     .budget-content{
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
         .budgets{
             flex:1;
         }
     }
+    .form-container {
+      min-width: 550px; /* Example fixed width */
+      min-height: 400px; /* Example fixed height */
+    }
+
 `;
 
 
