@@ -11,3 +11,4 @@ export const calender = <i className="fa-solid fa-calendar"></i>
 export const trash = <i className="fa-solid fa-trash"></i>
 export const update = <i class="fa-solid fa-pen"></i>
 export const search = <i class="fa-solid fa-magnifying-glass"></i>
+export const close = <i class="fa-solid fa-square-xmark"></i>

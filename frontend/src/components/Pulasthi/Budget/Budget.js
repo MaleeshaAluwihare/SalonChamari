@@ -19,17 +19,8 @@ function Budget() {
   const [budgetId, setBudgetId] = useState('');
   // State to track search visibility
   const [searchActive, setSearchActive] = useState(false);
-  //const [updateActive, setUpdateActive] = useState(false);
-
-  // const handleUpdate = async() => {
-  //   try{
-  //       const result = await updateBudget(budgetId);
-  //       updateActive(true)
-  //   }catch{
-  //       alert("update error")
-  //       updateActive(false)
-  //   }
-  // }
+  // State to track update form visibility
+  const [updateFormVisible, setUpdateFormVisible] = useState(false);
 
   const handleSearch = async() => {
     //if searchbar is empty
@@ -53,6 +44,15 @@ function Budget() {
     setSearchActive(false); // Deactivate search when the close button is clicked
     setBudgetId(''); // Clear search input
   };
+
+  const handleShowUpdateForm = () => {
+    setUpdateFormVisible(true);
+  };
+
+  const handleHideUpdateForm = () => {
+    setUpdateFormVisible(false);
+  };
+
   //useEffect take backend response array to budget component
   //useEffect use wena pradana thanak tama me budgets okkoma display karana functional component eka
   useEffect(() =>{
@@ -87,20 +87,17 @@ function Budget() {
           {/* <SearchBudgetItem budget={budget} /> */}
 
         <div className="budget-content">
-          <div className="form-container"></div>
-          
-          {/* {updateActive? (
-            <UpdateForm/>
-          ):( */}
-             {/* add budget */}
-            <div className="budgets">
-                <Form/>
-            </div>
-          {/* )} */}
-          
-          <div className="update">
-            {budget &&<UpdateForm budgetToUpdate={budget}/>}
+          <div className="form-container">
+            {updateFormVisible ? (
+              <UpdateForm budgetToUpdate={budget} />
+            ) : (
+              <Form />
+            )}
           </div>
+          
+          {/* <div className="update">
+            {budget &&<UpdateForm budgetToUpdate={budget}/>}
+          </div> */}
 
           {/* Conditional rendering based on search state */}
           {/* if searchActive value is true then app shows SearchBudgetItem componenet
@@ -123,6 +120,7 @@ function Budget() {
                         indicatorColor="var(--color-DarkYellow)"
                         deleteItem={deleteBudget}
                         updateItem={updateBudget}
+                        onShowUpdateForm={handleShowUpdateForm} // Pass function to show UpdateForm
                     />
                 ))}
             </div>

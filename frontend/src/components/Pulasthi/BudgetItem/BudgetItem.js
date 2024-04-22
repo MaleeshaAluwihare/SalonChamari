@@ -14,8 +14,15 @@ function BudgetItem({
     deleteItem,
     updateItem,
     indicatorColor,
+    onShowUpdateForm,
 }) {
     const { getOneBudget } = useGlobalContext();
+
+    const handleUpdateClick = () => {
+        onShowUpdateForm(); // Call parent function to show UpdateForm
+        getOneBudget(budgetId);
+    };
+
   return (
     <BudgetItemStyled indicator={indicatorColor}>
         
@@ -51,7 +58,7 @@ function BudgetItem({
                         color={'#fff'}
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
-                        onClick={() => getOneBudget(budgetId)}
+                        onClick={handleUpdateClick}
                     />
                 </div>
             </div>

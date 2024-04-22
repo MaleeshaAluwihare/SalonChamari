@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 import Button from "../Button/Button";
-import { plus } from "../../../utils/Pulasthi/Icons";
+import { close, plus, update } from "../../../utils/Pulasthi/Icons";
                 
                      //budgetToUpdate prop come from Budget componenet
 function UpdateForm({ budgetToUpdate }) {
@@ -23,13 +23,15 @@ function UpdateForm({ budgetToUpdate }) {
 
   // useEffect use to update the inputState state when budgetToUpdate object changes
   useEffect(() => {
-    setInputState({
-      budgetId: budgetToUpdate.budgetId || "",
-      month: budgetToUpdate.month || "",
-      amount: budgetToUpdate.amount || "",
-      date: budgetToUpdate.date ? new Date(budgetToUpdate.date) : new Date(),
-    });
-  }, [budgetToUpdate]);
+    if (budgetToUpdate?.budgetId) {
+      setInputState({
+        budgetId: budgetToUpdate.budgetId || "",
+        month: budgetToUpdate.month || "",
+        amount: budgetToUpdate.amount || "",
+        date: budgetToUpdate.date ? new Date(budgetToUpdate.date) : new Date(),
+      });
+    }
+  }, [budgetToUpdate]); //here budgetToUpdate is a dependency array
 
   // Handle input change
   const handleInput = (name) => (e) => {
@@ -45,7 +47,7 @@ function UpdateForm({ budgetToUpdate }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Call updateBudget method from global context
-    updateBudget(budgetToUpdate.budgetId,inputState);
+    updateBudget(budgetToUpdate?.budgetId,inputState);
     // Clear form fields after submission
     setInputState({
       budgetId: "",
@@ -108,11 +110,21 @@ function UpdateForm({ budgetToUpdate }) {
       </div>
       <div className="submit-btn">
         <Button
-          name="Save" // Change button text to "Update Budget"
-          icon={plus}
+          name="Save" 
+          icon={update}
           bPad=".8rem 1.6rem"
           bRad="30px"
-          bg="var(--color-lightYellow"
+          bg="var(--color-lightYellow)"
+          color="#fff"
+        />
+      </div>
+      <div className="submit-btn1">
+        <Button
+          name="Close" // Change button text to "Update Budget"
+          icon={close}
+          bPad=".8rem 1.6rem"
+          bRad="30px"
+          bg="var(--color-lightRed)"
           color="#fff"
         />
       </div>
@@ -163,7 +175,15 @@ const FormStyled = styled.form`
     button {
       box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
       &:hover {
-        background: var(--color-DarkYellow) !important;
+        background: var( --color-DarkYellow) !important;
+      }
+    }
+  }
+  .submit-btn1 {
+    button {
+      box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+      &:hover {
+        background: var(--color-darkRed) !important;
       }
     }
   }

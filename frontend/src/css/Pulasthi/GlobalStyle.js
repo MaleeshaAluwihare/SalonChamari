@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
         --color-delete: #FF0000;
         --color-lightYellow: #e5de00;
         --color-DarkYellow: #e6b400;
+        --color-lightRed: #EE4B2B;
+        --color-darkRed: #D22B2B;
     }
 
     body{
