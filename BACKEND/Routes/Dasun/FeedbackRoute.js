@@ -3,6 +3,28 @@ let Feedbacks = require("../../Models/Dasun/FeedbackModel");
 
 
 
+async function generateFeedbackId() {
+
+    const prefix = 'FD100';
+
+    try {
+
+        const FeedbackCount = await Feedbacks.countDocuments();
+
+        const nextFeedbackNumber = FeedbackCount + 1;
+
+        const FeedbackId = `${prefix}${nextFeedbackNumber}`;
+
+        return FeedbackId;
+
+    } catch (error) {
+
+        console.error('Error generating Feedback ID', error);
+
+    }
+
+}
+
 
 
 
@@ -10,7 +32,9 @@ let Feedbacks = require("../../Models/Dasun/FeedbackModel");
 //http: //localhost:8070/Feedback/add
 router.route("/add").post(async (req,res) => {
 
-    const{feedbackId, bookingId, category, content, rating, sendDate} = req.body;
+    const{bookingId, category, content, rating, sendDate} = req.body;
+
+    const feedbackId = await generateFeedbackId();
 
     try{
 
