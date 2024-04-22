@@ -4,21 +4,70 @@ let CustomerMessages = require("../../Models/Dasun/CustomerMessageModel");
 
 
 
+async function generateMessageId() {
+
+    const prefix = 'MS100';
+
+    try {
+
+        const MessageCount = await CustomerMessages.countDocuments();
+
+        const nextMessageNumber = MessageCount + 1;
+
+        const MessageId = `${prefix}${nextMessageNumber}`;
+
+        return MessageId;
+
+    } catch (error) {
+
+        console.error('Error generating Message ID', error);
+
+    }
+
+}
+
+
+
+
 
 //ADD
 //http: //localhost:8070/CustomerMessages/add
 router.route("/add").post( async (req,res) => {
 
     const customerId = req.body.customerId;
-    const messageId = req.body.messageId;
+    // const messageId = req.body.messageId;
     const message = req.body.message;
     const date = req.body.date;
 
-    let prefix = '';
+    // let prefix = '';
 
     // const itemCount = await CustomerMessages.countDocuments();
 
     // const messageId = prefix + padNumber(itemCount + 1);
+
+
+    async function generateFaqId() {
+
+    const prefix = 'FQ100';
+
+    try {
+
+        const FaqCount = await Faqs.countDocuments();
+
+        const nextFaqNumber = FaqCount + 1;
+
+        const FaqId = `${prefix}${nextFaqNumber}`;
+
+        return FaqId;
+
+    } catch (error) {
+
+        console.error('Error generating Faq ID', error);
+
+    }
+
+}
+    const messageId = await generateMessageId();
 
 
     const newMessage = new CustomerMessages({
