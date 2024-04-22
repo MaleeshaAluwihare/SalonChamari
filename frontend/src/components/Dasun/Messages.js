@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 export default function Messages() {
 
     const [messages, setMessages] = useState([]);
+    const [filteredMessages, setFilteredMessages] = useState([]);
+    const [searchCustomerId, setSearchCustomerId] = useState("");
 
     useEffect(() => {
 
@@ -16,6 +18,8 @@ export default function Messages() {
                 const data = await response.json();
 
                 setMessages(data);
+
+                setFilteredMessages(data);
 
             } catch(error) {
 
@@ -45,11 +49,44 @@ export default function Messages() {
     };
 
 
+    const handleSearch = () => {
+
+        const filtered = messages.filter((message) => message.customerId ===searchCustomerId);
+        setFilteredMessages(filtered);
+
+    };
+
+
+    const handleInputChange = (e) => {
+
+        setSearchCustomerId(e.target.value);
+
+    }
+
+
     return(
 
         <div>
 
             <h1>All Messages</h1>
+
+            <div>
+
+                <label htmlFor="customerId">Search by Customer ID: </label>
+
+                <input 
+                    type="text"
+                    id="customerId"
+                    value={searchCustomerId}
+                    onChange={handleInputChange}
+                    placeholder="Enter Customer ID"
+                />
+
+                <button onClick={handleSearch}>Search</button>
+
+            </div>
+
+            <br />
 
             <table className="FaqTable">
                 <thead className="theader">
@@ -63,7 +100,7 @@ export default function Messages() {
                 </thead>
 
                 <tbody className="tbody">
-                    {messages.map(messages => (
+                    {filteredMessages.map(messages => (
                         <tr key={messages._id}>
                             <td>{messages.customerId}</td>
                             <td>{messages.messageId}</td>
