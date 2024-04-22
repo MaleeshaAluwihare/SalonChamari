@@ -8,7 +8,7 @@ import UpdateInventory from './pages/Anoj/updateInventory';
 import SupplierOrder from './pages/Anoj/supplierOrder';
 import NavBars from './components/Anoj/navBars';
 import ReorderingPage from './pages/Anoj/reorderInventory';
-
+import ChartComponent from './components/Anoj/chart';
 
 
 
@@ -20,6 +20,7 @@ function App() {
       <div className="App">
         <NavBars/>
         <Routes>
+        <Route path='/chart' element={<ChartComponent />} />
           <Route path='/add' element={<AddInventory />} />
           <Route path='/dash' element={<InventoryDash />} />
           <Route path='/reorder' element={<ReorderingPage/>} />

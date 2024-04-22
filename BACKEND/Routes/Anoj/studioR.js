@@ -26,10 +26,11 @@ router.route("/reorder").post((req,res) => {
 
 
 router.post("/add", (req, res) => {
-    const { pid, name, price, quantity } = req.body;
+    const { category,pid, name, price, quantity } = req.body;
 
     // Creating a new instance of the Studio model with the data from the request body
     const newStudio = new Studio({
+        category,
         pid,
         name,
         price,
@@ -61,6 +62,25 @@ router.get("/display", (req, res) => {
             res.status(500).json({ error: "Failed to fetch Studios" });
         });
 });
+
+
+// Route to fetch data based on category
+router.get("/filter", (req, res) => {
+    // Extract the selected category from query parameters
+    const selectedCategory = req.query.category;
+    
+    const filter = selectedCategory && selectedCategory !== "All" ? { category: selectedCategory } : {};
+
+    Studio.find(filter)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            console.error("Error fetching data:", err);
+            res.status(500).json({ error: "Failed to fetch data based on category" });
+        });
+});
+
 
 // UPDATE BY ID
 router.put("/update/:pid", async (req, res) => {
@@ -147,6 +167,37 @@ router.delete("/delete/:pid", async(req, res) => {
     }
 });
 
+//pie chart
+router.get("/pie-chart-data", async (req, res) => {
+    try {
+        // Aggregate the data to get the count of items 
+        const serviceData = await Service.aggregate([
+            {
+                $group: {
+                    _id: "$serviceName",
+                    itemCount: { $sum: 1 }
+                }
+            }
+        ]);
+
+        // Calculate the total number of items
+        const totalItems = await Service.countDocuments();
+
+        // Calculate the percentage of items for each service name
+        const serviceDataWithPercentage = serviceData.map(service => ({
+            serviceName: service._id,
+            itemCount: service.itemCount,
+            percentage: ((service.itemCount / totalItems) * 100).toFixed(2)
+        }));
+
+        // Send data to the client
+        res.json(serviceDataWithPercentage);
+        
+    } catch (error) {
+        console.error("Error fetching service data for pie chart:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 
 module.exports = router;

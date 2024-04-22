@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { FormControl, InputLabel, Select, MenuItem, TextField, Button, Container, Typography } from '@mui/material';
 
 export default function AddInventory() {
-
-  const [pid, setID] = useState(0);
+  const [category, setCategory] = useState(""); 
+  const [pid, setID] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
-
   const navigate = useNavigate();
 
   function sendData(e) {
     e.preventDefault();
-
     const newProduct = {
+      category,
       pid,
       name,
       price,
@@ -24,47 +24,72 @@ export default function AddInventory() {
     axios.post('/StudioInventory/add', newProduct)
       .then(() => {
         alert("Product Added");
-        navigate("/dash"); // Navigate after successful submission
+        navigate("/dash");
       })
       .catch((err) => {
-        console.error('Error massage:',err)
+        console.error('Error message:', err);
         alert(err);
       });
   }
 
   return (
-    <div className="container mt-5">
-      <h1>Add Inventory</h1>
+    <Container maxWidth="sm" sx={{ marginTop: 5 }}>
+      <Typography variant="h4" gutterBottom>Add Inventory</Typography>
       <form onSubmit={sendData}>
-  
-        <div className="mb-3">
-          <label htmlFor="inventoryID" className="form-label">Inventory ID</label>
-          <input type="text" className="form-control" id="inventoryID" placeholder="Enter inventory ID"
-            onChange={(e) => setID(e.target.value)} />
-        </div>
+        <FormControl fullWidth sx={{ marginBottom: 2 }}>
+          <InputLabel id="category-label">Category</InputLabel>
+          <Select
+            labelId="category-label"
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <MenuItem value="">Select Category</MenuItem>
+            <MenuItem value="saloon">Saloon</MenuItem>
+            <MenuItem value="studio">Studio</MenuItem>
+          </Select>
+        </FormControl>
 
-        <div className="mb-3">
-          <label htmlFor="inventoryName" className="form-label">Inventory Name</label>
-          <input type="text" className="form-control" id="inventoryName" placeholder="Enter inventory name"
-            onChange={(e) => setName(e.target.value)} />
-        </div>
+        <TextField
+          fullWidth
+          id="inventoryID"
+          label="Inventory ID"
+          placeholder="Enter inventory ID"
+          onChange={(e) => setID(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
 
-        <div className="mb-3">
-          <label htmlFor="quantity" className="form-label">Quantity</label>
-          <input type="number" className="form-control" id="quantity" placeholder="Enter Quantity"
-            onChange={(e) => setQuantity(e.target.value)} />
-        </div>
+        <TextField
+          fullWidth
+          id="inventoryName"
+          label="Inventory Name"
+          placeholder="Enter inventory name"
+          onChange={(e) => setName(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
 
-        <div className="mb-3">
-          <label htmlFor="price" className="form-label">Price</label>
-          <input type="number" className="form-control" id="price" placeholder="Enter Price"
-            onChange={(e) => setPrice(e.target.value)} />
-        </div>
+        <TextField
+          fullWidth
+          type="number"
+          id="quantity"
+          label="Quantity"
+          placeholder="Enter Quantity"
+          onChange={(e) => setQuantity(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
+
+        <TextField
+          fullWidth
+          type="number"
+          id="price"
+          label="Price"
+          placeholder="Enter Price"
+          onChange={(e) => setPrice(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
           
-        <div className="mb-3">
-          <button className="btn btn-primary" type="submit">Submit</button>
-        </div>
+        <Button variant="contained" type="submit">Submit</Button>
       </form>
-    </div>
+    </Container>
   );
 }

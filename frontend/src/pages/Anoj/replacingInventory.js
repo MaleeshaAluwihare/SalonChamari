@@ -5,15 +5,19 @@ import { useNavigate } from "react-router-dom";
 export default function InventoryReplacing() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchInput, setSearchInput] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("salon");
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedCategory]);
 
   const fetchData = () => {
-    axios.get(`/StudioInventory/display?category=${selectedCategory}`)
+    let url = "/StudioInventory/filter";
+    if (selectedCategory !== "All") {
+      url += `?category=${selectedCategory}`;
+    }
+    axios.get(url)
       .then((res) => {
         setProducts(res.data);
       })
@@ -27,7 +31,7 @@ export default function InventoryReplacing() {
       .delete(`/StudioInventory/delete/${pid}`)
       .then((res) => {
         alert("Product deleted");
-        fetchData();
+        fetchData(); // Fetch data again after deletion
       })
       .catch((error) => {
         alert(error.response.data.status);
@@ -35,74 +39,41 @@ export default function InventoryReplacing() {
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return "";
+    if (!dateString) return ""; // Return empty string for null or undefined date
 
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return "Invalid Date";
+    if (isNaN(date.getTime())) return "Invalid Date"; // Return "Invalid Date" for invalid date string
 
-    return date.toLocaleString('en-US', {
-      year: 'numeric',
-      month: '2-digit',
+    return date.toLocaleString('en-US', { 
+      year: 'numeric', 
+      month: '2-digit', 
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit' 
     });
   };
 
-  const sendData = (e) => {
-    e.preventDefault();
-
-    if (searchInput.trim() !== "") {
-      const isNumeric = !isNaN(searchInput.trim());
-      const url = isNumeric ? `/StudioInventory/searchById?pid=${searchInput}&category=${selectedCategory}` : `/StudioInventory/searchByName?name=${searchInput}&category=${selectedCategory}`;
-
-      axios.get(url)
-        .then((res) => {
-          const productData = res.data.product;
-          if (productData) {
-            setProducts([productData]);
-          } else {
-            alert("Product not found");
-          }
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    } else {
-      fetchData();
-    }
-  };
-
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
+  const filteredProducts = products.filter((product) => {
+    if (!searchInput.trim()) return true; // If search input is empty, show all products
+    const searchLowerCase = searchInput.trim().toLowerCase();
+    return product.pid.toString().includes(searchLowerCase) || product.name.toLowerCase().includes(searchLowerCase);
+  });
 
   return (
     <div>
       <div className="container">
         <h1>Inventory Report</h1>
+        <div className="SearchBar">
+          <input type="text" placeholder="Enter ID or Name.." value={searchInput} onChange={(event) => setSearchInput(event.target.value)} />
+          <button className="btn btn-sm btn-primary mx-1" onClick={() => setSearchInput("")}>Clear</button>
+        </div>
         <div className="container">
-          <div className="mb-3">
-            <select
-              className="form-select"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
-              <option value="salon">Salon</option>
-              <option value="studio">Studio</option>
-            </select>
-          </div>
-          <form onSubmit={sendData}>
-            <label htmlFor="searchInput">Enter Product ID or Name: </label>
-            <input
-              type="text"
-              id="searchInput"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-            <button type="submit">Search</button>
-          </form>
+          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <option value="All">All</option>
+            <option value="saloon">Saloon</option>
+            <option value="studio">Studio</option>
+          </select>
           <table className="table">
             <thead>
               <tr>
@@ -116,7 +87,7 @@ export default function InventoryReplacing() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <tr key={product.pid}>
                   <td>{product.pid}</td>
                   <td>{product.name}</td>
