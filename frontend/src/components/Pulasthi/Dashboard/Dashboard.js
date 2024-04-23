@@ -5,6 +5,7 @@ import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 import { dollar, download } from "../../../utils/Pulasthi/Icons";
 import {useReactToPrint} from  "react-to-print"
 import Button from "../Button/Button";
+import Chart from "../Chart/Chart";
 
 function Dashboard() {
 
@@ -27,24 +28,31 @@ function Dashboard() {
     <InnerLayout>
     <DashboardStyled>
       <h1>Dashboard</h1>
-        <div className="amount-con" ref={ComponentsRef}>
-          <div className="income">
-              <h2>Total Income</h2>
-              <p>
-                  {dollar} {totalIncome()}
-              </p>
-          </div>
-          <div className="expense">
-              <h2>Total Expense</h2>
-              <p>
-                  {dollar} {totalExpense()}
-              </p>
-          </div>
-          <div className="balance">
-              <h2>Net Profit</h2>
-              <p>
-                  {dollar} {totalProfit()}
-              </p>
+      <div className="stats-con">
+          <div className="chart-con">
+            <Chart/>
+          
+              <div className="amount-con" ref={ComponentsRef}>
+                <div className="income">
+                    <h2>Total Income</h2>
+                    <p>
+                        {dollar} {totalIncome()}
+                    </p>
+                </div>
+                <div className="expense">
+                    <h2>Total Expense</h2>
+                    <p>
+                        {dollar} {totalExpense()}
+                    </p>
+                </div>
+                <div className="balance">
+                    <h2>Monthly Net Profit</h2>
+                    <p>
+                        {dollar} {totalProfit()}
+                    </p>
+                </div>
+            </div>
+
           </div>
        </div>
        <Button
