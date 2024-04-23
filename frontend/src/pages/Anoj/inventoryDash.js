@@ -2,7 +2,8 @@ import React from "react";
 import StockTable from "../../components/Anoj/stockTable";
 import { BarChart } from "../../components/Anoj/Bar"
 import { LineGraph as LineChartData } from "../../components/Anoj/Line";
-import PieChart from "../../components/Anoj/Pie"; // Updated import
+import PieChart from "../../components/Anoj/Pie"; 
+import DashboardSideBar from "../../components/Anoj/InventoryDashboardSideBar"
 
 export default function InventoryDash() {
   return (
@@ -12,6 +13,7 @@ export default function InventoryDash() {
       <BarChart />
       <LineChartData />
       <PieChart />
+      <DashboardSideBar/>
     </>
   );
 }

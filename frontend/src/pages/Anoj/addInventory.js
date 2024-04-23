@@ -24,7 +24,7 @@ export default function AddInventory() {
     axios.post('/StudioInventory/add', newProduct)
       .then(() => {
         alert("Product Added");
-        navigate("/dash");
+        navigate("dash");
       })
       .catch((err) => {
         console.error('Error message:', err);

@@ -1,56 +1,39 @@
-import React, { useEffect, useState } from "react";
-import Chart from "chart.js/auto";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Bar } from 'react-chartjs-2';
 
-const ChartComponent = ({ data }) => {
-  const [chart, setChart] = useState(null);
+const SingleChart = () => {
+    const [chartData, setChartData] = useState(null);
 
-  useEffect(() => {
-    if (data && data.length) {
-      const labels = data.map((item) => item.name);
-      const quantities = data.map((item) => item.quantity);
-      const useQuantities = data.map((item) => item.useQuantity);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/studio/chart-data');
+                const data = response.data.data;
+                setChartData(data);
+            } catch (error) {
+                console.error('Error fetching chart data:', error);
+            }
+        };
 
-      const ctx = document.getElementById("myChart");
+        fetchData();
+    }, []);
 
-      if (chart) {
-        chart.destroy(); // Destroy previous chart instance
-      }
-
-      setChart(
-        new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: labels,
-            datasets: [
-              {
-                label: "Quantity",
-                data: quantities,
-                backgroundColor: "rgba(54, 162, 235, 0.6)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
-              },
-              {
-                label: "Use Quantity",
-                data: useQuantities,
-                backgroundColor: "rgba(255, 99, 132, 0.6)",
-                borderColor: "rgba(255, 99, 132, 1)",
-                borderWidth: 1,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-        })
-      );
-    }
-  }, [data]);
-
-  return <canvas id="myChart" width="400" height="200"></canvas>;
+    return (
+        <div>
+            {chartData && (
+                <Bar
+                    data={chartData}
+                    options={{
+                        scales: {
+                            yAxes: [{ stacked: true }],
+                            xAxes: [{ stacked: true }]
+                        }
+                    }}
+                />
+            )}
+        </div>
+    );
 };
 
-export default ChartComponent;
+export default SingleChart;

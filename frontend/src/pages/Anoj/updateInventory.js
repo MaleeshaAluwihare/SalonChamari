@@ -21,10 +21,13 @@ export default function UpdateInventory() {
       setPrice(productData.price);
       setQuantity(productData.quantity);
       setUseQuantity(productData.useQuantity);
-      setTotalUseQuantity(productData.useQuantity); // Initialize total use quantity with current use quantity
-      setDate(productData.date); // Set date from location state
+      setDate(productData.date);
+  
+      // Update totalUseQuantity based on useQuantity from product data
+      setTotalUseQuantity(productData.useQuantity || 0);
     }
   }, [location.state]);
+  
 
   // Function to calculate maximum allowed use quantity
   const getMaxAllowedUseQuantity = () => {
@@ -40,6 +43,8 @@ export default function UpdateInventory() {
       useQuantity: parseInt(useQuantity) + totalUseQuantity, // Add updated use quantity to total use quantity
       date // Include date in the updated product
     };
+
+    console.log(updatedProduct);
 
     axios
       .put(`/StudioInventory/update/${pid}`, updatedProduct)
