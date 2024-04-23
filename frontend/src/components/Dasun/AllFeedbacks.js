@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import '../../CSS/Dasun/allFaq.css';
 import { Link } from "react-router-dom";
+import {jsPDF} from "jspdf";
+import { Toast } from "bootstrap";
 
 export default function Feedbacks() {
 
@@ -8,6 +10,9 @@ export default function Feedbacks() {
     const [filteredFeedbacks, setFilteredFeedbacks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedRating, setSelectedRating] = useState("All");
+    const [feedbackCounts, setFeedbackCounts] = useState({});
+    const [averageRating, setAverageRating] = useState(0);
+    const [categoryAverageRatings, setCategoryAverageRatings] = useState({});
 
     useEffect(() => {
 
@@ -21,6 +26,14 @@ export default function Feedbacks() {
                 setFeedbacks(data);
 
                 setFilteredFeedbacks(data); //Initialize filtered feedbacks with all feedbacks
+
+                //Calculate feedback counts
+                const counts = calculateFeedbackCounts(data);
+                setFeedbackCounts(counts);
+
+                //Calculate average rating
+                calculateAverageRatings(data);
+                calculateCategoryAverageRatings(data);
 
             } catch(error) {
 
@@ -90,6 +103,115 @@ export default function Feedbacks() {
     }
 
 
+    const calculateFeedbackCounts = (data) => {
+
+        const counts = {
+            total: data.length,
+            Salon: 0,
+            Photography: 0,
+            Events: 0
+        };
+
+        data.forEach((feedback) => {
+
+            if (feedback.category in counts) {
+
+                counts[feedback.category]++;
+
+            }
+
+        });
+
+        return counts;
+
+    }
+
+
+
+    //Calculate Average
+
+    const calculateAverageRatings = (data) => {
+
+        const totalFeedbacks = data.length;
+
+        if(totalFeedbacks > 0){
+
+            const totalRatingSum = data.reduce((sum, feedback) => sum + feedback.rating, 0);
+            const average = totalRatingSum / totalFeedbacks;
+
+            setAverageRating(average);
+
+        }
+
+    };
+
+
+    const calculateCategoryAverageRatings = (data) => {
+
+        const cateforyRatingsSum = {};
+        const categoryCounts = {};
+
+        data.forEach((feedback) => {
+
+            const {category, rating} = feedback;
+
+            if(!(category in cateforyRatingsSum)) {
+
+                cateforyRatingsSum[category] = 0;
+                categoryCounts[category] = 0;
+
+            }
+
+            cateforyRatingsSum[category] += rating;
+            categoryCounts[category]++;
+
+        });
+
+
+        const averageRatings = {};
+
+        for (const category in cateforyRatingsSum) {
+
+            if(categoryCounts[category] > 0) {
+
+                averageRating[category] = cateforyRatingsSum[category] / categoryCounts[category];
+
+            }
+
+        }
+
+
+        setCategoryAverageRatings(averageRatings);
+
+    };
+
+
+
+    // const generatePDFReport = () => {
+
+    //     const doc = new jsPDF();
+
+    //     let yPos = 10;
+
+    //     doc.text("Feedback Statistics Report", 10, yPos);
+    //     yPos += 10;
+
+    //     doc.text(`Average Rating for All Feedbacks: ${averageRating.toFixed(2)}`, 10, yPos);
+    //     yPos += 10;
+
+    //     for(const category in categoryAverageRatings) {
+
+    //         doc.text(`${category} Average Rating: ${categoryAverageRatings[category].toFixed(2)}`, 10, yPos);
+    //         yPos += 10;
+
+    //     }
+
+    //     doc.save(feedback_statistics_report.pdf);
+
+    // };
+
+
+
     return(
 
         <div>
@@ -146,6 +268,12 @@ export default function Feedbacks() {
 
             <br />
 
+
+            {/* <button onClick={generatePDFReport}>Generate PDF Report</button> */}
+
+
+            <br />
+
             <table className="FaqTable">
                 <thead className="theader">
                     <tr>
@@ -175,6 +303,21 @@ export default function Feedbacks() {
                     ))}
                 </tbody>
             </table>
+
+
+            <div>
+
+                <p>Total Feedbacks: {feedbackCounts.total}</p>
+                <p>Salon Feedbacks: {feedbackCounts.Salon}</p>
+                <p>Photography Feedbacks: {feedbackCounts.Photography}</p>
+                <p>Events Feedbacks: {feedbackCounts.Events}</p>
+
+                <p>Average Rating for All feedbacks: {averageRating.toFixed(2)}</p>
+                {Object.keys(categoryAverageRatings).map((category) => (
+                    <p key={category}>{`${category} Average Rating: ${categoryAverageRatings[category].toFixed(2)}`}</p>
+                ))}
+                
+            </div>
 
         </div>
 
