@@ -81,19 +81,7 @@ const BudgetItemStyled = styled.div`
     gap: 1rem;
     width: 100%;
     color: #222260;
-    /* .icon{
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-        background: #F5F5F5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #FFFFFF;
-        i{
-            font-size: 2.6rem;
-        }
-    } */
+    
     .btn-con{
         display:flex;
         flex-direction:column-reverse;
