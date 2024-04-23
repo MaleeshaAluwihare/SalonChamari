@@ -144,6 +144,7 @@ export default function SendFeedback() {
 
                         onChange={(e) => {
 
+                            
                             setRating(e.target.value)
 
                         }}
