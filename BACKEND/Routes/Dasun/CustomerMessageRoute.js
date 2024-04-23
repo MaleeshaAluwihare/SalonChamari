@@ -27,6 +27,29 @@ async function generateMessageId() {
 }
 
 
+async function generateCustomerId() {
+
+    const prefix = 'CS100';
+
+    try {
+
+        const MessageCount = await CustomerMessages.countDocuments();
+
+        const nextMessageNumber = MessageCount + 1;
+
+        const CustomerId = `${prefix}${nextMessageNumber}`;
+
+        return CustomerId;
+
+    } catch (error) {
+
+        console.error('Error generating Customer ID', error);
+
+    }
+
+}
+
+
 
 
 
@@ -34,7 +57,7 @@ async function generateMessageId() {
 //http: //localhost:8070/CustomerMessages/add
 router.route("/add").post( async (req,res) => {
 
-    const customerId = req.body.customerId;
+    // const customerId = req.body.customerId;
     // const messageId = req.body.messageId;
     const message = req.body.message;
     const date = req.body.date;
@@ -46,28 +69,30 @@ router.route("/add").post( async (req,res) => {
     // const messageId = prefix + padNumber(itemCount + 1);
 
 
-    async function generateFaqId() {
+//     async function generateFaqId() {
 
-    const prefix = 'FQ100';
+//     const prefix = 'FQ100';
 
-    try {
+//     try {
 
-        const FaqCount = await Faqs.countDocuments();
+//         const FaqCount = await Faqs.countDocuments();
 
-        const nextFaqNumber = FaqCount + 1;
+//         const nextFaqNumber = FaqCount + 1;
 
-        const FaqId = `${prefix}${nextFaqNumber}`;
+//         const FaqId = `${prefix}${nextFaqNumber}`;
 
-        return FaqId;
+//         return FaqId;
 
-    } catch (error) {
+//     } catch (error) {
 
-        console.error('Error generating Faq ID', error);
+//         console.error('Error generating Faq ID', error);
 
-    }
+//     }
 
-}
+// }
     const messageId = await generateMessageId();
+
+    const customerId = await generateCustomerId();
 
 
     const newMessage = new CustomerMessages({
