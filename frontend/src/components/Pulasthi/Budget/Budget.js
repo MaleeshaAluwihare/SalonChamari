@@ -44,7 +44,7 @@ function Budget() {
     setSearchActive(false); // Deactivate search when the close button is clicked
     setBudgetId(''); // Clear search input
   };
-
+  //this method call from BudgetItem component
   const handleShowUpdateForm = () => {
     setUpdateFormVisible(true);
   };
@@ -88,7 +88,7 @@ function Budget() {
         {/* Conditional rendering based on updateFormVisible state */}
         <div className="budget-content">
           <div className="form-container">
-            {updateFormVisible ? (
+            {updateFormVisible ? (  //UpdateForm component call from here(BudgetItem eken Search wecha budget object eka prop ekk widihata updateForm ekata send wenawa) 
               <UpdateForm budgetToUpdate={budget} onClose={handleHideUpdateForm}/>
             ) : (
               <Form />

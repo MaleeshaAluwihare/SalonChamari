@@ -18,8 +18,8 @@ function Navigation({active, setActive}) {
                 {menuItems.map((item) => {
                     return <li
                         key={item.id}
-                        onClick={() => setActive(item.id)}
-                        className={active === item.id ? 'active': ''}
+                        onClick={() => setActive(item.id)} //set the active state to active item id(this id goes to app.js switch case)
+                        className={active === item.id ? 'active': ''} //this active className used to style the active item
                     >
                         {item.icon}
                         <span>{item.title}</span>

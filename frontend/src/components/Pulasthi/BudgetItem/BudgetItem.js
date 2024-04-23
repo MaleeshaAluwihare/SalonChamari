@@ -19,6 +19,8 @@ function BudgetItem({
     const { getOneBudget } = useGlobalContext();
 
     const handleUpdateClick = () => {
+        //update icon eka click karama budgetItem ekk search karala eke values tika updateForm eke pennanwa
+        //methanin call wenwa Budget component eke onShowUpdateForm method eka. ita passe Budget componenet eken UpdateForm eka call wenwa
         onShowUpdateForm(); // Call parent function to show UpdateForm
         getOneBudget(budgetId);
     };
@@ -58,7 +60,7 @@ function BudgetItem({
                         color={'#fff'}
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
-                        onClick={handleUpdateClick}
+                        onClick={handleUpdateClick} //update starts from here
                     />
                 </div>
             </div>
