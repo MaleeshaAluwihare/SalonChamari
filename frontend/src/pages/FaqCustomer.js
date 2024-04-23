@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../CSS/Dasun/allFaq.css';
+import '../CSS/Dasun/customerFaq.css';
 import { Link } from "react-router-dom";
 
 export default function CustomerFaq() {
@@ -30,21 +31,21 @@ export default function CustomerFaq() {
 
     return(
 
-        <div>
+        <div id="Faq_customer_page" >
 
-            <h1>All Faqs</h1>
+            <h1 id="Faq_customer_page_heading" >FAQ</h1>
 
-            <table className="FaqTable">
-                <thead className="theader">
-                    <tr>
+            <table id="Faq_customer_page_table" className="FaqTable">
+                <thead id="Faq_customer_page_table_heading" className="theader">
+                    <tr id="Faq_customer_page_table_hr" >
                         <th>Question</th>
                         <th>Answer</th>
                     </tr>
                 </thead>
 
-                <tbody className="tbody">
+                <tbody id="Faq_customer_page_table_body" className="tbody">
                     {faqs.map(faqs => (
-                        <tr key={faqs._faqId}>
+                        <tr id="Faq_customer_page_table_br" key={faqs._faqId}>
                             <td>{faqs.question}</td>
                             <td>{faqs.answer}</td>
                         </tr>
