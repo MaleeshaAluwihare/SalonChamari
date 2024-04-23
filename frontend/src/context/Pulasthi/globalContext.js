@@ -13,6 +13,7 @@ export const GlobalProvider = ({children}) => {
     const [budget,setBudget] = useState(null);
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
+    const [incomes, setIncomes] = useState([])
     //add Budget
     const addBudget = async (budget) => {
                                                                 //budget(newBudget) kiyanna object eka enne addBudget form walin
@@ -29,6 +30,7 @@ export const GlobalProvider = ({children}) => {
         setBudgets(response.data)
         console.log(response.data)
     }
+    
     //delete budget
     const deleteBudget = async (id) => {
         const res  = await axios.delete(`${BASE_URL}delete-budget/${id}`)
@@ -79,6 +81,13 @@ export const GlobalProvider = ({children}) => {
         //     // }
            
         // }
+
+    };
+    // get Income
+    const getIncomes = async () => {
+        const response = await axios.get(`${BASE_URL}get-incomes`)
+        setIncomes(response.data)
+        console.log(response.data)
     }
 
     return(
@@ -90,6 +99,9 @@ export const GlobalProvider = ({children}) => {
             updateBudget,
             getOneBudget,
             budget,
+            getIncomes,
+            incomes,
+
         }}>
             {children}
         </GlobalContext.Provider>
