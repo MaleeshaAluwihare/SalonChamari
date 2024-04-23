@@ -64,23 +64,6 @@ export const GlobalProvider = ({children}) => {
                 setBudget(response.data.budget);//.budget is must here
                 console.log(response.data)
             }
-        //}catch(error){
-           // console.error('Error fetching budget:', error);
-            //setError('An error occurred. Please try again.');
-        //}     
-        //}
-        // catch(error){
-        //     console.error('Error fetching budget:', error);
-           
-        //     // if (error.response && error.response.status === 404) {
-        //     //     setError('Budget ID not found.');
-        //     //     // getBudgets()
-        //     //     // alert('Budget ID not found.')
-        //     // } else {
-        //     //     setError('An error occurred. Please try again.');
-        //     // }
-           
-        // }
 
     };
     // get Income
@@ -116,6 +99,7 @@ export const GlobalProvider = ({children}) => {
     const totalProfit = () => {
         return totalIncome() - totalExpense()
     }
+
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -131,7 +115,7 @@ export const GlobalProvider = ({children}) => {
             getExpenses,
             expenses,
             totalExpense,
-            totalProfit
+            totalProfit,
         }}>
             {children}
         </GlobalContext.Provider>

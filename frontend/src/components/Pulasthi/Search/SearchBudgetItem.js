@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { calender, dollar } from "../../../utils/Pulasthi/Icons"
+import { dateFormat } from "../../../utils/Pulasthi/dateFormat";
 
 // Inside your SearchBudgetItem component
 function SearchBudgetItem({budget,onClose}) {
@@ -13,7 +14,7 @@ function SearchBudgetItem({budget,onClose}) {
             
               <div className="text">
                 <p>{dollar} {budget.amount}</p>
-                <p>{calender} {budget.date}</p>
+                <p>{calender} {dateFormat(budget.date)}</p>
                 <p>{budget.budgetId}</p>
               </div>
               <div className="close-btn">

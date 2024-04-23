@@ -15,7 +15,7 @@ function Dashboard() {
     getIncomes()
     getExpenses()
   }, [])
-
+  //pdf generator
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content:() => ComponentsRef.current,

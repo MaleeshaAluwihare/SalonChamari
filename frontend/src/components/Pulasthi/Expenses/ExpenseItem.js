@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { calender, dollar, trash, update } from "../../../utils/Pulasthi/Icons";
 import Button from "../Button/Button";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
+import { dateFormat } from "../../../utils/Pulasthi/dateFormat";
 //this component is used to display items
 function ExpenseItem({
     //me props enne Income component eken
@@ -23,7 +24,7 @@ function ExpenseItem({
             <div className="inner-content">
                 <div className="text">
                     <p>{dollar} {amount}</p>
-                    <p>{calender} {date}</p>
+                    <p>{calender} {dateFormat(date)}</p>
                     <p>
                         {category}
                     </p>

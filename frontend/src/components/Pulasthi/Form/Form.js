@@ -35,13 +35,13 @@ function Form() {
         //Send Entered values
         addBudget(inputState)
         getBudgets()
-        // setInputState({
-        //     title: '',
-        //     amount: '',
-        //     date: '',
-        //     category: '',
-        //     description: '',
-        // })
+        //set form to be empty after new budget submission
+        setInputState({
+            budgetId: '',
+            month: '',
+            amount: '',
+            date: '',
+        })
     }
     // Function to validate budget ID using regex
     const validateBudgetId = (id) => {
