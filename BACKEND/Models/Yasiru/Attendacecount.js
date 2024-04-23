@@ -32,5 +32,9 @@ const AttendanceSchema = new Schema({
 // Add a compound index on empId and date
 AttendanceSchema.index({ empId: 1, date: 1 }, { unique: true });
 
+//TTL index to expire documents after 30 days
+AttendanceSchema.index({ date: 1 }, { expireAfterSeconds: 2592000 });
+
+
 const Attendance = mongoose.model("Attendance",AttendanceSchema);
 module.exports=Attendance;

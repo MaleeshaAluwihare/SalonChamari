@@ -7,6 +7,7 @@ export default function AddEmployee(){
     const[Employee_ID, setEmployee_ID] =useState("")
     const[Name, setName] =useState("")
     const[Address, setAddress] =useState("")
+    const[Category, setCategory] = useState("Salon")
     const[jobRole, setjobRole] =useState("")
     const[Salary, setsalary] =useState("")
 
@@ -18,6 +19,7 @@ export default function AddEmployee(){
         Employee_ID,
         Name,
         Address,
+        Category,
         jobRole,
         Salary
      };
@@ -61,6 +63,43 @@ export default function AddEmployee(){
                 setAddress(e.target.value);
             }}/> 
         </div>
+
+        <div className="form-group">
+            <label htmlFor="name">Category</label>
+            <input type="text" className="form-control" id="name" placeholder="Category" required onChange={(e)=>{
+                setCategory(e.target.value);
+            }}/> 
+        </div>
+
+        {/* <div className="form-group">
+
+            <label htmlFor="Category">
+
+                Category
+
+                <select 
+
+                value={Category}
+
+                onChange={(e) => {
+
+                    setCategory(e.target.value)
+
+                }}
+                required
+                className="form-control"
+
+                >
+
+                    <option value="Salon">Salon</option>
+                    <option value="Photography">Photography</option>
+
+
+                </select>
+
+            </label>
+
+        </div> */}
 
         <div className="form-group">
             <label htmlFor="name">jobRole</label>

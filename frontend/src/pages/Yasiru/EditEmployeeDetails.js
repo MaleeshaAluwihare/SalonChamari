@@ -6,6 +6,7 @@ export default function EditEmployeeDetails() {
     const [Employee_ID, setEmployee_ID] = useState("");
     const [Name, setName] = useState("");
     const [Address, setAddress] = useState("");
+    const [Category,setCategory]=useState("")
     const [jobRole, setjobRole] = useState("");
     const [Salary, setSalary] = useState("");
 
@@ -19,6 +20,7 @@ export default function EditEmployeeDetails() {
                 if (EmployeeData) {
                     setName(EmployeeData.Name);
                     setAddress(EmployeeData.Address);
+                    setCategory(EmployeeData.Category);
                     setjobRole(EmployeeData.jobRole);
                     setSalary(EmployeeData.Salary);
                 } else {
@@ -37,6 +39,7 @@ export default function EditEmployeeDetails() {
         const updatedEmployee = {
             Name,
             Address,
+            Category,
             jobRole,
             Salary
         };
@@ -50,6 +53,7 @@ export default function EditEmployeeDetails() {
                 setEmployee_ID("");
                 setName("");
                 setAddress("");
+                setCategory("");
                 setjobRole("");
                 setSalary("");
             })
@@ -74,6 +78,8 @@ export default function EditEmployeeDetails() {
                         <input type="text" value={Name} onChange={(e) => setName(e.target.value)} />
                         <label>Address:</label>
                         <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} />
+                        <label>Category:</label>
+                        <input type="text" value={Category} onChange={(e) => setCategory(e.target.value)} />
                         <label>jobRole:</label>
                         <input type="text" value={jobRole} onChange={(e) => setjobRole(e.target.value)} />
                         <label>Salary:</label>
