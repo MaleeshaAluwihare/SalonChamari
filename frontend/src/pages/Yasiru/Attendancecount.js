@@ -18,16 +18,17 @@ export default function Attendancecount() {
             if (attendanceMap.has(key)) {
               // If employee exists in the map, update attendance
               const existingAttendance = attendanceMap.get(key);
+              // Only increment attendance if it's true (1)
               attendanceMap.set(key, {
                 ...existingAttendance,
-                attendance: existingAttendance.attendance + attendance
+                attendance: existingAttendance.attendance + (attendance ? 1 : 0)
               });
             } else {
               // If employee is not in the map, add new entry
               attendanceMap.set(key, {
                 empId,
                 jobRole,
-                attendance,
+                attendance: attendance ? 1 : 0,
                 date,
               });
             }
@@ -80,7 +81,6 @@ export default function Attendancecount() {
     }
   };
 
-  
   return (
     <Table striped bordered hover>
       <>
@@ -106,9 +106,8 @@ export default function Attendancecount() {
                 )}
               </td>
               <td>
-              <button type = "submit" className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.empId)}>Delete</button>
-
-            </td>
+                <button type="submit" className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.empId)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -54,7 +54,7 @@ export default function SaloonEmployeetable() {
           <button className="btn btn-sm btn-primary mx-1" onClick={() => setSearchInput("")}>Clear</button>
         </div>
       <div>
-        <h3>Saloon Employee Table</h3>
+        {/* <h3>Saloon Employee Table</h3> */}
 
         Category dropdown
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
@@ -84,7 +84,6 @@ export default function SaloonEmployeetable() {
                 <td>{employee.jobRole}</td>
                 <td>{employee.Salary}</td>
                 <td>
-                 <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
                   <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.Employee_ID)}>Delete</button>
                 </td>
               </tr>
@@ -92,6 +91,9 @@ export default function SaloonEmployeetable() {
           </tbody>
         </table>
         <button className="text-decoration-none btn btn-sm btn btn-success" onClick={() => navigate('/Add')}>Add Employee</button>
+
+        <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
+
       </div>
       
     </>

@@ -13,22 +13,22 @@ export default function Attendancecount() {
           // Group attendance date by employee empId
           const attendanceMap = new Map();
           res.data.forEach((employee) => {
-            const { empId, jobRole, attendance, date } = employee;
+            const { empId, jobRole, attendance } = employee;
             const key = `${empId}_${jobRole}`;
             if (attendanceMap.has(key)) {
               // If employee exists in the map, update attendance
               const existingAttendance = attendanceMap.get(key);
+              // Only increment attendance if it's true (1)
               attendanceMap.set(key, {
                 ...existingAttendance,
-                attendance: existingAttendance.attendance + attendance
+                attendance: existingAttendance.attendance + (attendance ? 1 : 0)
               });
             } else {
               // If employee is not in the map, add new entry
               attendanceMap.set(key, {
                 empId,
                 jobRole,
-                attendance,
-                date,
+                attendance: attendance ? 1 : 0
               });
             }
           });
@@ -63,23 +63,6 @@ export default function Attendancecount() {
     });
   };
 
-  const handleSubmit = async (empId, jobRole, attendance, date) => {
-    const inventoryItem = {
-      empId,
-      jobRole,
-      attendance,
-      date
-    };
-
-    try {
-      await axios.post("/StudioInventory/reorder", inventoryItem);
-      alert("Item sent successfully");
-    } catch (error) {
-      console.error("Error sending item:", error);
-      alert("Failed to send item");
-    }
-  };
-  
   return (
     <Table striped bordered hover>
       <>
@@ -88,7 +71,6 @@ export default function Attendancecount() {
             <th>empId</th>
             <th>jobRole</th>
             <th>attendance</th>
-            <th>Attendance Submission Time</th>
           </tr>
         </thead>
         <tbody>
@@ -97,14 +79,9 @@ export default function Attendancecount() {
               <td>{employee.empId}</td>
               <td>{employee.jobRole}</td>
               <td>{employee.attendance}</td>
-              <td>
-                {employee.date ? (
-                  new Date(employee.date).toLocaleDateString() // Use toLocaleDateString() to display date without time
-                ) : (
-                  'No Date Provided'
-                )}
-              </td>
-             
+              {/* <td>
+                <button type="submit" className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.empId)}>Delete</button>
+              </td> */}
             </tr>
           ))}
         </tbody>
