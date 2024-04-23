@@ -59,6 +59,7 @@ const BudgetItemStyled = styled.div`
         display: flex;
         flex-direction: column;
         gap: .2rem;
+        align-items: center;
         h5{
             font-size: 1.3rem;
             font-weight: bold;
