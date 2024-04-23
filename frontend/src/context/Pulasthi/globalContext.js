@@ -112,6 +112,10 @@ export const GlobalProvider = ({children}) => {
         })
         return totalExpense;
     }
+    //profit
+    const totalProfit = () => {
+        return totalIncome() - totalExpense()
+    }
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -126,7 +130,8 @@ export const GlobalProvider = ({children}) => {
             totalIncome,
             getExpenses,
             expenses,
-            totalExpense
+            totalExpense,
+            totalProfit
         }}>
             {children}
         </GlobalContext.Provider>
