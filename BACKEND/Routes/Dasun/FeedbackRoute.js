@@ -26,15 +26,40 @@ async function generateFeedbackId() {
 }
 
 
+async function generateBookingId() {
+
+    const prefix = 'BK100';
+
+    try {
+
+        const FeedbackCount = await Feedbacks.countDocuments();
+
+        const nextFeedbackNumber = FeedbackCount + 1;
+
+        const BookingId = `${prefix}${nextFeedbackNumber}`;
+
+        return BookingId;
+
+    } catch (error) {
+
+        console.error('Error generating Bookig ID', error);
+
+    }
+
+}
+
+
 
 
 //ADD
 //http: //localhost:8070/Feedback/add
 router.route("/add").post(async (req,res) => {
 
-    const{bookingId, category, content, rating, sendDate} = req.body;
+    const{category, content, rating, sendDate} = req.body;
 
     const feedbackId = await generateFeedbackId();
+
+    const bookingId = await generateBookingId();
 
     try{
 
