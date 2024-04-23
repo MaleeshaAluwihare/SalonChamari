@@ -5,8 +5,7 @@ import Button from "../Button/Button";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 //this component is used to display items
 function IncomeItem({
-    //me props enne Budget component eken
-    //me id eka mkkd kiyala hoya ganna
+    //me props enne Income component eken
     incomeId,
     amount,
     date,

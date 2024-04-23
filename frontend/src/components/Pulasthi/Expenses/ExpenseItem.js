@@ -4,64 +4,31 @@ import { calender, dollar, trash, update } from "../../../utils/Pulasthi/Icons";
 import Button from "../Button/Button";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 //this component is used to display items
-function BudgetItem({
-    //me props enne Budget component eken
-    budgetId,
-    month,
+function ExpenseItem({
+    //me props enne Income component eken
+    expenseId,
     amount,
     date,
-    deleteItem,
-    updateItem,
+    category,
     indicatorColor,
-    onShowUpdateForm,
 }) {
-    const { getOneBudget } = useGlobalContext();
-
-    const handleUpdateClick = () => {
-        //update icon eka click karama budgetItem ekk search karala eke values tika updateForm eke pennanwa
-        //methanin call wenwa Budget component eke onShowUpdateForm method eka. ita passe Budget componenet eken UpdateForm eka call wenwa
-        onShowUpdateForm(); // Call parent function to show UpdateForm
-        getOneBudget(budgetId);
-    };
+   
 
   return (
     <BudgetItemStyled indicator={indicatorColor}>
         
-      {/* <div className="icon">
-
-      </div> */}
+     
       <div className="content">
-            <h5>{month}</h5>
+            <h5>{expenseId}</h5>
             <div className="inner-content">
                 <div className="text">
                     <p>{dollar} {amount}</p>
                     <p>{calender} {date}</p>
                     <p>
-                        {budgetId}
+                        {category}
                     </p>
                 </div>
-                <div className="btn-con">
-                    <Button
-                        icon={trash}
-                        bPad={'1rem'}
-                        bRad={'50%'}
-                        bg={'var(--primary-color'}
-                        color={'#fff'}
-                        iColor={'#fff'}
-                        hColor={'var(--color-green)'}
-                        onClick={() => deleteItem(budgetId)}
-                    />
-                    <Button
-                        icon={update}
-                        bPad={'1rem'}
-                        bRad={'50%'}
-                        bg={'var(--primary-color'}
-                        color={'#fff'}
-                        iColor={'#fff'}
-                        hColor={'var(--color-green)'}
-                        onClick={handleUpdateClick} //update starts from here
-                    />
-                </div>
+                
             </div>
       </div>        
     </BudgetItemStyled>
@@ -80,19 +47,7 @@ const BudgetItemStyled = styled.div`
     gap: 1rem;
     width: 100%;
     color: #222260;
-    /* .icon{
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-        background: #F5F5F5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #FFFFFF;
-        i{
-            font-size: 2.6rem;
-        }
-    } */
+   
     .btn-con{
         display:flex;
         flex-direction:column-reverse;
@@ -103,6 +58,7 @@ const BudgetItemStyled = styled.div`
         display: flex;
         flex-direction: column;
         gap: .2rem;
+        align-items: center;
         h5{
             font-size: 1.3rem;
             font-weight: bold;
@@ -140,4 +96,4 @@ const BudgetItemStyled = styled.div`
         }
     } 
 `;
-export default BudgetItem
+export default ExpenseItem

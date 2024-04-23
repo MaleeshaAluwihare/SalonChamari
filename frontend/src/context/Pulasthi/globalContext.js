@@ -89,7 +89,7 @@ export const GlobalProvider = ({children}) => {
         setIncomes(response.data)
         console.log(response.data)
     }
-
+    //total income
     const totalIncome = () =>{
         let totalIncome = 0;
         incomes.forEach((income)=>{
@@ -98,6 +98,20 @@ export const GlobalProvider = ({children}) => {
         return totalIncome;
     }
     console.log(totalIncome());
+    //get expense
+    const getExpenses = async () => {
+        const response = await axios.get(`${BASE_URL}get-expenses`)
+        setExpenses(response.data)
+        console.log(response.data)
+    }
+    //total expense
+    const totalExpense = () =>{
+        let totalExpense = 0;
+        expenses.forEach((expense)=>{
+            totalExpense = totalExpense + expense.amount
+        })
+        return totalExpense;
+    }
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -109,7 +123,10 @@ export const GlobalProvider = ({children}) => {
             budget,
             getIncomes,
             incomes,
-            totalIncome
+            totalIncome,
+            getExpenses,
+            expenses,
+            totalExpense
         }}>
             {children}
         </GlobalContext.Provider>

@@ -19,7 +19,7 @@ function Income() {
         <h2 className="total-income">Total Income:<span>${totalIncome()}</span></h2>
 
         <div className="income-content">
-            {/* getbudgets */}
+            
             <div className="incomes">
                 {incomes.map((income) => (
                     
@@ -42,8 +42,7 @@ function Income() {
 };
 
 const IncomeStyled = styled.div`
-    display: flex;
-    overflow: auto;
+   
     .total-income{
         display: flex;
         justify-content: center;
