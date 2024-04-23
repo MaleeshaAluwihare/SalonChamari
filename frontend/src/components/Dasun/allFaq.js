@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/Dasun/displayFaq.css';
+import '../../CSS/Dasun/allFaqs.css';
 import { Link } from "react-router-dom";
 
 export default function AllFaqs() {
@@ -30,12 +30,12 @@ export default function AllFaqs() {
 
     return(
 
-        <div>
+        <div id="Faq_page" >
 
-            <h1>All Faqs</h1>
+            <h1 id="Faq_page_heading" >FAQs</h1>
 
-            <table className="FaqTable">
-                <thead className="theader">
+            <table id="Faq_page_table" className="FaqTable">
+                <thead id="Faq_page_table_heading" className="theader">
                     <tr>
                         <th>FAQ ID</th>
                         <th>Question</th>
@@ -44,7 +44,7 @@ export default function AllFaqs() {
                     </tr>
                 </thead>
 
-                <tbody className="tbody">
+                <tbody id="Faq_page_table_body" className="tbody">
                     {faqs.map(faqs => (
                         <tr key={faqs._faqId}>
                             <td>{faqs.faqId}</td>

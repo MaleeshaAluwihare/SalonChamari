@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
-import '../../CSS/Dasun/forms.css';
+import '../../CSS/Dasun/addFaqForm.css';
 // import {userNavigate} from 'react-router-dom';
 
 export default function AddFaq() {
@@ -45,8 +45,8 @@ export default function AddFaq() {
 
     return(
 
-        <div>
-            <form onSubmit={sendData}>
+        <div id="add_Faq_page">
+            <form id="add_Faq_page_form" onSubmit={sendData}>
 
 
                 {/* <div class="form-group">
@@ -65,8 +65,8 @@ export default function AddFaq() {
 
                 <div class="form-group">
 
-                    <label for="question">Question</label>
-                    <input type="text" class="form-control" id="question" placeholder="Enter Question" 
+                    <label id="add_Faq_page_form_label_question" for="question">Question</label>
+                    <input type="text" class="form-control" id="add_Faq_page_form_input_question" placeholder="Enter Question" 
                     onChange={(e) => {
                         setQuestion(e.target.value);
                     }} />
@@ -79,8 +79,8 @@ export default function AddFaq() {
 
                 <div class="form-group">
 
-                    <label for="answer">Answer</label>
-                    <input type="text" class="form-control" id="answer" placeholder="Enter Answer" 
+                    <label id="add_Faq_page_form_label_answer" for="answer">Answer</label>
+                    <input type="text" class="form-control" id="add_Faq_page_form_input_answer" placeholder="Enter Answer" 
                     onChange={(e) => {
                         setAnswer(e.target.value);
                     }} />
@@ -90,7 +90,7 @@ export default function AddFaq() {
 
                 <br />
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="add_Faq_page_form_submitBtn" type="submit" class="btn btn-primary">Submit</button>
 
             </form>
         </div>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/Dasun/allFaq.css';
+import '../../CSS/Dasun/allFeedbacks.css';
 import { Link } from "react-router-dom";
 import {jsPDF} from "jspdf";
 import { Toast } from "bootstrap";
@@ -214,24 +214,24 @@ export default function Feedbacks() {
 
     return(
 
-        <div>
+        <div id="feedback_page" >
 
-            <h1>All Feedbacks</h1>
+            <h1 id="feedback_page_heading" >Customer Feedbacks</h1> <br />
 
-            <div>
+            <div id="feedback_page_category_filter" >
 
-                <label htmlFor="categoryFilter">Filter by Category</label>
+                <label id="feedback_page_category_filter_label" htmlFor="categoryFilter">Filter by Category</label>
 
                 <select 
-                    id= "categoryFilter"
+                    id= "feedback_page_category_filter_select"
                     value={selectedCategory}
                     onChange={(e) => handleCategoryFilter(e.target.value)}
                 >
 
-                    <option value="All">All</option>
-                    <option value="Salon">Salon</option>
-                    <option value="Photography">Photography</option>
-                    <option value="Events">Events</option>
+                    <option id="feedback_page_category_filter_option1" value="All">All</option>
+                    <option id="feedback_page_category_filter_option2" value="Salon">Salon</option>
+                    <option id="feedback_page_category_filter_option3" value="Photography">Photography</option>
+                    <option id="feedback_page_category_filter_option4" value="Events">Events</option>
 
                 </select>
 
@@ -239,23 +239,23 @@ export default function Feedbacks() {
             </div>
 
 
-            <div>
+            <div id="feedback_page_rating_filter" >
 
-                <label htmlFor="ratingFilter">Filter by Rating</label>
+                <label id="feedback_page_rating_filter_label" htmlFor="ratingFilter">Filter by Rating</label>
 
                 <select 
-                    id= "ratingFilter"
+                    id= "feedback_page_rating_filter_select"
                     value={selectedRating}
                     onChange={(e) => handleRatingFilter(e.target.value)}
                 >
 
-                    <option value="All">All</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option id="feedback_page_rating_filter_option1" value="All">All</option>
+                    <option id="feedback_page_rating_filter_option2" value="0">0</option>
+                    <option id="feedback_page_rating_filter_option3" value="1">1</option>
+                    <option id="feedback_page_rating_filter_option4" value="2">2</option>
+                    <option id="feedback_page_rating_filter_option5" value="3">3</option>
+                    <option id="feedback_page_rating_filter_option6" value="4">4</option>
+                    <option id="feedback_page_rating_filter_option7" value="5">5</option>
 
 
 
@@ -274,8 +274,8 @@ export default function Feedbacks() {
 
             <br />
 
-            <table className="FaqTable">
-                <thead className="theader">
+            <table id="feedback_page_table" className="FaqTable">
+                <thead id="feedback_page_table_header" className="theader">
                     <tr>
                         <th>Feedback ID</th>
                         <th>Booking ID</th>
@@ -288,31 +288,33 @@ export default function Feedbacks() {
                 </thead>
                 
 
-                <tbody className="tbody">
+                <tbody id="feedback_page_table_body" className="tbody">
                     {filteredFeedbacks.map(feedbacks => (
                         <tr key={feedbacks._id}>
-                            <td>{feedbacks.feedbackId}</td>
-                            <td>{feedbacks.bookingId}</td>
-                            <td>{feedbacks.category}</td>
-                            <td>{feedbacks.content}</td>
-                            <td>{feedbacks.rating}</td>
-                            <td>{formatDate(feedbacks.sendDate)}</td>
-                            <td><Link to={"#"}><button className="UpdateBtn">Reply</button></Link>
-                            <Link to={`/feedback/delete/${feedbacks.feedbackId}`}><button className="DeleteBtn">Delete</button></Link></td>
+                            <td id="feedback_page_table_body_1" >{feedbacks.feedbackId}</td>
+                            <td id="feedback_page_table_body_2" >{feedbacks.bookingId}</td>
+                            <td id="feedback_page_table_body_3" >{feedbacks.category}</td>
+                            <td id="feedback_page_table_body_4" >{feedbacks.content}</td>
+                            <td id="feedback_page_table_body_5" >{feedbacks.rating}</td>
+                            <td id="feedback_page_table_body_6" >{formatDate(feedbacks.sendDate)}</td>
+                            <td><Link to={"#"}><button className="ReplyBtn" id="feedback_page_table_body_replyBtn" >Reply</button></Link>
+                            <Link to={`/feedback/delete/${feedbacks.feedbackId}`}><button className="DeleteBtn" id="feedback_page_table_body_deleteBtn" >Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
+            <br/>
 
-            <div>
 
-                <p>Total Feedbacks: {feedbackCounts.total}</p>
-                <p>Salon Feedbacks: {feedbackCounts.Salon}</p>
-                <p>Photography Feedbacks: {feedbackCounts.Photography}</p>
-                <p>Events Feedbacks: {feedbackCounts.Events}</p>
+            <div id="feedback_page_stats" >
 
-                <p>Average Rating for All feedbacks: {averageRating.toFixed(2)}</p>
+                <p id="feedback_page_stats_totalFeedbacks" >Total Feedbacks: {feedbackCounts.total}</p> <br />
+                <p id="feedback_page_stats_salonFeedbacks" >Salon Feedbacks: {feedbackCounts.Salon}</p>
+                <p id="feedback_page_stats_photoFeedbacks" >Photography Feedbacks: {feedbackCounts.Photography}</p>
+                <p id="feedback_page_stats_eventFeedbacks" >Events Feedbacks: {feedbackCounts.Events}</p> <br />
+
+                <p id="feedback_page_stats_Average" >Average Rating for All feedbacks: {averageRating.toFixed(2)}</p>
                 {Object.keys(categoryAverageRatings).map((category) => (
                     <p key={category}>{`${category} Average Rating: ${categoryAverageRatings[category].toFixed(2)}`}</p>
                 ))}

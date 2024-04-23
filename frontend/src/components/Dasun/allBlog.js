@@ -30,7 +30,7 @@ const ViewBlog = () => {
             <h3>{blog.topic}</h3>
             <p>{blog.content}</p>
             {blog.image && (
-              <img src={`http://localhost:8070/${blog.image}`} alt={blog.topic} style={{ maxWidth: '100%', height: 'auto' }} />
+              <img src={`http://localhost:8070/${blog.image}`}  style={{ maxWidth: '100%', height: 'auto' }} />
             )}
           </div>
         ))}

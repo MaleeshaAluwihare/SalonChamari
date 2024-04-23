@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 // import {userNavigate} from 'react-router-dom';
+import '../../CSS/Dasun/addMessage.css';
 
 export default function SendMessage() {
 
@@ -47,11 +48,11 @@ export default function SendMessage() {
 
     return(
 
-        <div>
-            <form onSubmit={sendData}>
+        <div id="send_message_page" >
+            <form id="send_message_page_form" onSubmit={sendData}>
 
 
-                <div class="form-group">
+                {/* <div class="form-group">
 
                     <label for="customerId">Customer ID</label>
                     <input type="text" class="form-control" id="customerId" placeholder="Enter Customer ID" 
@@ -62,7 +63,7 @@ export default function SendMessage() {
 
                 </div>
 
-                <br />
+                <br /> */}
 
 
                 {/* <div class="form-group">
@@ -82,8 +83,8 @@ export default function SendMessage() {
 
                 <div class="form-group">
 
-                    <label for="message">Massage</label>
-                    <input type="text" class="form-control" id="message" placeholder="Enter Message" 
+                    <label id="send_message_page_form_label_message" for="message">Massage</label> <br />
+                    <input type="text" class="form-control" id="send_message_page_form_input_message" placeholder="Enter Message" 
                     onChange={(e) => {
                         setMessage(e.target.value);
                     }} />
@@ -96,7 +97,7 @@ export default function SendMessage() {
 
                 <br />
 
-                <button type="submit" class="btn btn-primary">Send</button>
+                <button id="send_message_page_form_submitBtn" type="submit" class="btn btn-primary">Send</button>
 
             </form>
         </div>

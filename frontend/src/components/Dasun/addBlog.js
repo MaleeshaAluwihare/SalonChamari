@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../../CSS/Dasun/addBlogForm.css'
 
 const AddBlog = () => {
   const [blogId, setBlogId] = useState('');
@@ -33,14 +34,14 @@ const AddBlog = () => {
   };
 
   return (
-    <div>
-      <h2>Add New Blog</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Blog ID" value={blogId} onChange={(e) => setBlogId(e.target.value)} />
-        <input type="text" placeholder="Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
-        <textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
-        <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-        <button type="submit">Add Blog</button>
+    <div id='Add_blog_page'>
+      <h2 id='Add_blog_page_Heading'>Add New Blog</h2>
+      <form id='Add_blog_form' onSubmit={handleSubmit}>
+        {/* <input type="text" placeholder="Blog ID" value={blogId} onChange={(e) => setBlogId(e.target.value)} /> */}
+        <input id='Add_blog_form_topic' type="text" placeholder="Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
+        <textarea id='Add_blog_form_content' placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
+        <input id='Add_blog_form_image' type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+        <button idAdd_blog_form_submitBtn type="submit">Add Blog</button>
       </form>
     </div>
   );

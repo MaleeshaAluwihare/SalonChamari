@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/Dasun/allFaq.css';
+import '../../CSS/Dasun/allMessages.css';
 import { Link } from "react-router-dom";
 
 export default function Messages() {
@@ -66,17 +66,17 @@ export default function Messages() {
 
     return(
 
-        <div>
+        <div id="Message_page">
 
-            <h1>All Messages</h1>
+            <h1 id="Message_page_heading" >Customer Messages</h1>
 
-            <div>
+            <div id="Message_page_search" >
 
-                <label htmlFor="customerId">Search by Customer ID: </label>
+                <label id="Message_page_search_label" htmlFor="customerId">Search by Customer ID: </label>
 
                 <input 
                     type="text"
-                    id="customerId"
+                    id="Message_page_search_customerId"
                     value={searchCustomerId}
                     onChange={handleInputChange}
                     placeholder="Enter Customer ID"
@@ -88,8 +88,8 @@ export default function Messages() {
 
             <br />
 
-            <table className="FaqTable">
-                <thead className="theader">
+            <table id="Message_table">
+                <thead id="Message_table_heading" className="theader">
                     <tr>
                         <th>Customer ID</th>
                         <th>Message ID</th>
@@ -99,14 +99,14 @@ export default function Messages() {
                     </tr>
                 </thead>
 
-                <tbody className="tbody">
+                <tbody id="Message_table_body" className="tbody">
                     {filteredMessages.map(messages => (
                         <tr key={messages._id}>
                             <td>{messages.customerId}</td>
                             <td>{messages.messageId}</td>
                             <td>{messages.message}</td>
                             <td>{formatDate(messages.date)}</td>
-                            <td><Link to={`/ReplyMessage/add/${messages.messageId}`}><button className="UpdateBtn">Reply</button></Link>
+                            <td><Link to={`/ReplyMessage/add/${messages.messageId}`}><button className="ReplyBtn">Reply</button></Link>
                             <Link to={`/CustomerMessages/delete/${messages.messageId}`}><button className="DeleteBtn">Delete</button></Link></td>
                         </tr>
                     ))}
