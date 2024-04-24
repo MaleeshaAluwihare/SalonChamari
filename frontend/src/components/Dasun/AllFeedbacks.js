@@ -22,6 +22,7 @@ export default function Feedbacks() {
 
                 const response = await fetch('http://localhost:8070/Feedback/display');
                 const data = await response.json();
+                
 
                 setFeedbacks(data);
 
