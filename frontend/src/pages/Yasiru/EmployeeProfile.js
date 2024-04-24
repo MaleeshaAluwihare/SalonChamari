@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import '../../CSS/Yasiru/Employeeprofile.css'
 
 export default function EmployeeProfile() {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function EmployeeProfile() {
     return (
         <div>
             <h3>Profile</h3>
-            <Form>
+            <Form className="profileEmp">
                 <Form.Group>
                     <Form.Label>Employee ID</Form.Label>
                     <Form.Control type="text" placeholder="Enter Employee ID" value={empDetails.Employee_ID || ''} readOnly />
@@ -49,7 +50,7 @@ export default function EmployeeProfile() {
                 </Form.Group>
 
                 <Button type="submit" className="button">Save</Button>
-                <button className="text-decoration-none btn btn-sm btn btn-success" onClick={() => navigate('/Attendacegive')}>Daily  attendance</button>
+                <button className="Attendancegiven" onClick={() => navigate('/Attendacegive')}>Daily  attendance</button>
             </Form>
         </div>
     )

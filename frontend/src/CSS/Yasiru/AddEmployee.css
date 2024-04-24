@@ -1,0 +1,153 @@
+/* AddEmployee.css */
+
+/* Form container */
+/* .AddEmployee {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(169, 131, 131, 0.654);
+}
+
+/* Form header */
+/* .AddEmployee h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #060606;
+} */
+
+/* Form fields */
+/* .AddEmployee .Add {
+    margin-bottom: 20px;
+} */
+
+/* .AddEmployee label {
+    font-weight: bold;
+    color: #463535;
+} */
+
+.AddEmployee input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+} */
+
+/* Submit button */
+.AddEmployee .Addbutton {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.AddEmployee .Addbutton:hover {
+    background-color: #0056b3;
+}
+
+/* AddEmployee.css */
+
+/* Form header */
+.AddName {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #070707;
+}
+
+/* AddEmployee.css */
+
+/* Submit button */
+.Addbutton {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.Addbutton:hover {
+    background-color: #0056b3;
+}
+
+/* AddEmployee.css */
+
+/* Submit button */
+.Addbutton {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    padding: 12px;
+    background-color: #9fa4a9;
+    color: #161515;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-style:Bold;
+    transition: background-color 0.3s ease;
+}
+
+.Addbutton:hover {
+    background-color: #00070e;
+}
+/* AddEmployee.css */
+
+/* Form container */
+.addform {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form header styles */
+.addform h3.AddName {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input label styles */
+.addform .AddEmployee label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input field styles */
+.addform .AddEmployee input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Submit button styles */
+.addform button.Addbutton {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.addform button.Addbutton:hover {
+    background-color: #0056b3;
+}

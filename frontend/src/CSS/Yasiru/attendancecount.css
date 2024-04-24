@@ -1,0 +1,40 @@
+/* Attendancecount.css */
+
+.Attendancecount {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .Attendancecount th,
+  .Attendancecount td {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .Attendancecount th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .Attendancecount tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .Attendancecount tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .Attendancecount button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .Attendancecount button:hover {
+    background-color: #c82333;
+  }
+  

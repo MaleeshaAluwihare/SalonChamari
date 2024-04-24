@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
+import '../../CSS/Yasiru/Update.css'
 
 export default function EditEmployeeDetails() {
     const [Employee_ID, setEmployee_ID] = useState("");
@@ -66,13 +67,13 @@ export default function EditEmployeeDetails() {
     return (
         <div>
             <h3>Edit Employee Details</h3>
-           <div className="container">
+           <div className="Updateform">
                 <label htmlFor="EmployeeID">Enter Employee ID: </label>
                 <input type="text" id="EmployeeID" value={Employee_ID} onChange={(e) => setEmployee_ID(e.target.value)} />
                 <button type="button" onClick={getEmployeeDetails}>Search</button>
             </div>
             {Employee_ID && (
-                <div className="container">
+                <div className="Updatedetails">
                     <form onSubmit={sendData}>
                         <label>Name:</label>
                         <input type="text" value={Name} onChange={(e) => setName(e.target.value)} />

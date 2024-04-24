@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import '../../CSS/Yasiru/AddEmployee.css'
 
 export default function AddEmployee(){
 
@@ -39,10 +39,10 @@ export default function AddEmployee(){
     return(
         
         <div>
-             <h3>Add Employee Details</h3>
+             <h3 className="AddName">Add Employee Details</h3>
     
-        <form onSubmit={sendData}>
-        <div className="form-group">
+        <form onSubmit={sendData} className="addform">
+        <div className="AddEmployee">
             <label htmlFor="name">Employee_ID</label>
             <input type="text" className="form-control" id="name" placeholder="Enter Employee ID" required onChange={(e)=>{
                 setEmployee_ID(e.target.value);
@@ -50,21 +50,21 @@ export default function AddEmployee(){
 
         </div>
 
-        <div className="form-group">
+        <div className="AddEmployee">
             <label htmlFor="name">Employee Name</label>
             <input type="text" className="form-control" id="name" placeholder="Enter Employee Name" required onChange={(e)=>{
                 setName(e.target.value);
             }}/>
         </div>
 
-        <div className="form-group">
+        <div className="AddEmployee">
             <label htmlFor="name">Address</label>
             <input type="text" className="form-control" id="name" placeholder="Address" required onChange={(e)=>{
                 setAddress(e.target.value);
             }}/> 
         </div>
 
-        <div className="form-group">
+        <div className="AddEmployee">
             <label htmlFor="name">Category</label>
             <input type="text" className="form-control" id="name" placeholder="Category" required onChange={(e)=>{
                 setCategory(e.target.value);
@@ -101,21 +101,21 @@ export default function AddEmployee(){
 
         </div> */}
 
-        <div className="form-group">
+        <div className="AddEmployee">
             <label htmlFor="name">jobRole</label>
             <input type="text" className="form-control" id="name" placeholder="jobRole" required onChange={(e)=>{
                 setjobRole(e.target.value);
             }}/>
         </div>
 
-        <div className="form-group">
+        <div className="AddEmployee">
             <label htmlFor="name"> Salary</label>
             <input type="text" className="form-control" id="name" placeholder="Daily Salary" required onChange={(e)=>{
                 setsalary(e.target.value);
             }}/>
         </div>
 
-        <button type="submit" className="button" >Submit</button>
+        <button type="submit" className="Addbutton" >Submit</button>
 
     </form>
 

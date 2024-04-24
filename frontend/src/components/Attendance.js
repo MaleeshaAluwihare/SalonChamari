@@ -1,6 +1,7 @@
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from "react";
+import '../CSS/Yasiru/attendancereport.css'
 
 export default function Attendancecount() {
   const [attendanceData, setAttendanceData] = useState([]);
@@ -64,7 +65,7 @@ export default function Attendancecount() {
   };
 
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover className="attendancereport">
       <>
         <thead>
           <tr>

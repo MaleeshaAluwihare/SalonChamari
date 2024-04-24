@@ -1,0 +1,99 @@
+/* EmployeeProfile.css */
+
+/* Form container */
+.profileEmp {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form header styles */
+.profileEmp h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input label styles */
+.profileEmp label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input field styles */
+.profileEmp input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Save button styles */
+.profileEmp .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px; /* Add margin-bottom to create space between Save and Daily attendance buttons */
+}
+
+.profileEmp .button:hover {
+    background-color: #0056b3;
+}
+
+/* Daily attendance button styles */
+.profileEmp .btn-success {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.profileEmp .btn-success:hover {
+    background-color: #218838;
+}
+/* Employeeprofile.css */
+
+/* Profile form styles */
+.profileEmp {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.Attendancegiven {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff; /* Blue color */
+    transition: background-color 0.3s ease;
+}
+
+.Attendancegiven:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}

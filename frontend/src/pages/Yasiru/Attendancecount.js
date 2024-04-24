@@ -1,6 +1,7 @@
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from "react";
+import '../../CSS/Yasiru/attendancecount.css'
 
 export default function Attendancecount() {
   const [attendanceData, setAttendanceData] = useState([]);
@@ -13,7 +14,7 @@ export default function Attendancecount() {
           // Group attendance date by employee empId
           const attendanceMap = new Map();
           res.data.forEach((employee) => {
-            const { empId, jobRole, attendance, date } = employee;
+            const { empId, jobRole, attendance } = employee;
             const key = `${empId}_${jobRole}`;
             if (attendanceMap.has(key)) {
               // If employee exists in the map, update attendance
@@ -29,7 +30,6 @@ export default function Attendancecount() {
                 empId,
                 jobRole,
                 attendance: attendance ? 1 : 0,
-                date,
               });
             }
           });
@@ -64,32 +64,14 @@ export default function Attendancecount() {
     });
   };
 
-  const handleSubmit = async (empId, jobRole, attendance, date) => {
-    const inventoryItem = {
-      empId,
-      jobRole,
-      attendance,
-      date
-    };
-
-    try {
-      await axios.post("/StudioInventory/reorder", inventoryItem);
-      alert("Item sent successfully");
-    } catch (error) {
-      console.error("Error sending item:", error);
-      alert("Failed to send item");
-    }
-  };
-
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover className="Attendancecount">
       <>
         <thead>
           <tr>
             <th>empId</th>
             <th>jobRole</th>
             <th>attendance</th>
-            <th>Attendance Submission Time</th>
           </tr>
         </thead>
         <tbody>
@@ -99,14 +81,7 @@ export default function Attendancecount() {
               <td>{employee.jobRole}</td>
               <td>{employee.attendance}</td>
               <td>
-                {employee.date ? (
-                  new Date(employee.date).toLocaleDateString() // Use toLocaleDateString() to display date without time
-                ) : (
-                  'No Date Provided'
-                )}
-              </td>
-              <td>
-                <button type="submit" className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.empId)}>Delete</button>
+                <button type="submit" className="deleteemployee" onClick={() => deleteEmployee(employee.empId)}>Delete</button>
               </td>
             </tr>
           ))}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import '../../CSS/Yasiru/Attendacepage.css'
 
 export default function Attendancepage() {
   const [empId, setEmpId] = useState("");
@@ -40,9 +41,9 @@ export default function Attendancepage() {
   }
 
   return (
-    <div className="container">
+    <div className="Attendancsubmit">
       <h3>Enter Attendance Details</h3>
-      <form onSubmit={sendData}>
+      <form onSubmit={sendData} className="Attendacepage">
         <div className="mb-3">
           <label htmlFor="name">empId</label>
           <select className="form-control" id="empId" value={empId} onChange={(e) => setEmpId(e.target.value)}>
@@ -64,7 +65,7 @@ export default function Attendancepage() {
           <label htmlFor="date">Date</label>
           <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="Attendancesubmit">Submit</button>
       </form>
     </div>
   )

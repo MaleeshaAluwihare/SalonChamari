@@ -1,0 +1,142 @@
+/* Employeetable.css */
+
+.EmployeeDetailstable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .EmployeeDetailstable th, .EmployeeDetailstable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .EmployeeDetailstable th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .EmployeeDetailstable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .EmployeeDetailstable tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .deletebutton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .deletebutton:hover {
+    background-color: #d32f2f;
+  }
+  
+  .Addsaloon {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .Addsaloon:hover {
+    background-color: #45a049;
+  }
+  
+  .update {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update:hover {
+    background-color: #0073e6;
+  }
+  /* Employeetable.css */
+
+.SearchBar {
+    margin-bottom: 20px;
+  }
+  
+  .SearchBar input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .SearchBar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .SearchBar button:hover {
+    background-color: #0056b3;
+  }
+  
+  .SearchBar button:active {
+    background-color: #004080;
+  }
+  
+  /* Adjust button margin */
+  .SearchBar button.mx-1 {
+    margin-left: 10px;
+  }
+  
+  /* EmployeeDetailstable.css */
+
+.EmployeeDetailstable {
+    border: 1px solid #ddd; /* Add border to the table */
+    border-collapse: collapse; /* Collapse border spacing */
+  }
+  
+  .EmployeeDetailstable th,
+  .EmployeeDetailstable td {
+    border: 1px solid #ddd; /* Add border to table cells */
+    padding: 8px; /* Add padding to table cells */
+  }
+  
+  .EmployeeDetailstable th {
+    background-color: #f2f2f2; /* Add background color to table header */
+    text-align: left; /* Align text to left in table header */
+  }
+  
+  .EmployeeDetailstable tr:nth-child(even) {
+    background-color: #f2f2f2; /* Add alternate background color to even rows */
+  }
+  
+  .EmployeeDetailstable tr:hover {
+    background-color: #ddd; /* Add hover background color to rows */
+  }
+  

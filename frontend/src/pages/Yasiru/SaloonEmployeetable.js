@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AddEmployee from "./Addemployee";
+import '../../CSS/Yasiru/Employeetable.css'
 
 
 export default function SaloonEmployeetable() {
@@ -63,7 +64,7 @@ export default function SaloonEmployeetable() {
           <option value="Photography">Photography</option>
         </select>
 
-        <table className="table">
+        <table className="EmployeeDetailstable">
           <thead>
             <tr>
               <th>Employee_ID</th>
@@ -84,15 +85,15 @@ export default function SaloonEmployeetable() {
                 <td>{employee.jobRole}</td>
                 <td>{employee.Salary}</td>
                 <td>
-                  <button className='text-decoration-none btn btn-sm btn btn-danger mx-1' onClick={() => deleteEmployee(employee.Employee_ID)}>Delete</button>
+                  <button className="deletebutton" onClick={() => deleteEmployee(employee.Employee_ID)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <button className="text-decoration-none btn btn-sm btn btn-success" onClick={() => navigate('/Add')}>Add Employee</button>
+        <button className="Addsaloon" onClick={() => navigate('/Add')}>Add Employee</button>
 
-        <button className='text-decoration-none btn btn-sm btn btn-success' onClick={() => navigate(`/Edit`)}>Update</button>
+        <button className='update' onClick={() => navigate(`/Edit`)}>Update</button>
 
       </div>
       
