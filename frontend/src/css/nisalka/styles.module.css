@@ -199,7 +199,7 @@
 
 
 .navbar h1 {
-	color: white;
+	color: #3bb19b;
 	font-size: 25px;
 	margin-left: 20px;
 }
@@ -233,7 +233,7 @@
     align-items: center;
     width: 100%;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #3bb19b;
     color: white;
     position: fixed;
     top: 0;
@@ -284,7 +284,7 @@ label {
     padding: 8px;
     margin-top: 20px;
 	height: 35px;
-    background-color: #007bff;
+    background-color: #3bb19b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -292,7 +292,7 @@ label {
 }
 
 .update_btn:hover {
-    background-color: #0056b3;
+    background-color: #2a7a6c;
 }
 .label_1{
 	margin-right: 450px;
