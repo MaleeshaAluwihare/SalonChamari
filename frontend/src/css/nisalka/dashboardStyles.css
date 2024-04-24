@@ -1,0 +1,98 @@
+.home-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cm-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.dashboard-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.generate-report-btn {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.generate-report-btn:hover {
+    background-color: #0056b3;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+.user-row:hover {
+    background-color: #f2f2f2;
+}
+
+.user-data {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Separate each column */
+.table-header, .user-data {
+    border-right: 1px solid #ccc;
+}
+
+/* Add margin between sections */
+.search-bar, .generate-report-btn, .table-container {
+    margin-bottom: 20px;
+}

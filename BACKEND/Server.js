@@ -11,13 +11,22 @@ const imageUploadRouter = require("./Routes/Maleesha/imageUploadRoute.js");
 const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
 const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 
+
+const adminRouter=require("./Routes/nisalka/Admin.js");
+const userRoutes = require("./Routes/nisalka/users.js");
+const authRoutes = require("./Routes/nisalka/auth.js");
+
+
+
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8070;  /*when we import the web application to server we need to give a port number of a server 
 to open our application. process.env.Port allow to use available port at the time we import 
 web app to server or if we know the available ports on server we can directly give port number*/
 
-app.use(cors());
+app.use(cors({
+    
+}));
 app.use(bodyParser.json());  //json format mean the key value pairs
 
 const URL = process.env.MONGODB_URL;
@@ -48,3 +57,12 @@ app.use("/services",searchRouter);
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
 app.use("/MailSend",sendMailRouter);
+
+//nisalka
+
+app.use("/AdminProfile",adminRouter);
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+
+
+
