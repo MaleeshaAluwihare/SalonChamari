@@ -8,7 +8,7 @@ import { plus } from "../../../utils/Pulasthi/Icons";
 
 function Form() {
 
-    const {addBudget,getBudgets}=useGlobalContext();
+    const {addBudget,getBudgets,budgets}=useGlobalContext();
     //ekin ekata states hadanne nathuwa okkoma column values walata eka state hadala tma me tyenne
     const [inputState, setInputState] = useState({
         budgetId: '',
@@ -24,12 +24,19 @@ function Form() {
         setInputState({...inputState, [name]: e.target.value})
         // setError('')
     }
+    const monthAlreadyHasBudget = (selectedMonth) => {
+        return budgets.some(budget => budget.month === selectedMonth);
+    };
 
     const handleSubmit = e => {
         e.preventDefault()
 
         if (!validateBudgetId(budgetId)) {
             alert('Invalid budget ID. Please enter a valid ID starting with "b" followed by 4 digits.');
+            return;
+        }
+        if (monthAlreadyHasBudget(month)) {
+            alert('A budget for this month already exists. Please choose another month.');
             return;
         }
         //Send Entered values
