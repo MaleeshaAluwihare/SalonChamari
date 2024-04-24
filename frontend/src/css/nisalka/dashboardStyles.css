@@ -38,15 +38,15 @@
 .generate-report-btn {
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #3bb19b;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .generate-report-btn:hover {
-    background-color: #0056b3;
+    background-color: #3bb19b;
 }
 
 .table-container {
@@ -60,7 +60,7 @@
 }
 
 .table-header {
-    background-color: #007bff;
+    background-color: #3bb19b;
     color: white;
     padding: 10px;
 }
@@ -79,7 +79,7 @@
     background-color: #dc3545;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
