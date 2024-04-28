@@ -76,15 +76,15 @@ export default function EditEmployeeDetails() {
                 <div className="Updatedetails">
                     <form onSubmit={sendData}>
                         <label>Name:</label>
-                        <input type="text" value={Name} onChange={(e) => setName(e.target.value)} />
+                        <input type="text" required value={Name} onChange={(e) => setName(e.target.value)} />
                         <label>Address:</label>
-                        <input type="text" value={Address} onChange={(e) => setAddress(e.target.value)} />
+                        <input type="text" required value={Address} onChange={(e) => setAddress(e.target.value)} />
                         <label>Category:</label>
-                        <input type="text" value={Category} onChange={(e) => setCategory(e.target.value)} />
+                        <input type="text" required value={Category} onChange={(e) => setCategory(e.target.value)} />
                         <label>jobRole:</label>
-                        <input type="text" value={jobRole} onChange={(e) => setjobRole(e.target.value)} />
+                        <input type="text" required value={jobRole} onChange={(e) => setjobRole(e.target.value)} />
                         <label>Salary:</label>
-                        <input type="text" value={Salary} onChange={(e) => setSalary(e.target.value)} />
+                        <input type="text" required value={Salary} onChange={(e) => setSalary(e.target.value)} />
                         <button type="submit">Update</button>
                     </form>
                 </div>

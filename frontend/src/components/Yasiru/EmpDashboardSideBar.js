@@ -42,7 +42,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("employee");
                 }}
               >
-                <FontAwesomeIcon icon={faCirclePlus} className="button-icon" /> Add stock
+                <FontAwesomeIcon icon={faCirclePlus} className="button-icon" /> Employee
               </button>
             </li>
             <li className="nav-item">
@@ -53,7 +53,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("profileLogin");
                 }}
               >
-                <FontAwesomeIcon icon={faTrash} className="button-icon" />Update stock
+                <FontAwesomeIcon icon={faTrash} className="button-icon" />Profile Login
               </button>
             </li>
             <li className="nav-item">
@@ -64,7 +64,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("profileLogin");
                 }}
               >
-                <FontAwesomeIcon icon={faFilePen} className="button-icon" />Re-Order Stock
+                <FontAwesomeIcon icon={faFilePen} className="button-icon" />profile
               </button>
             </li>
             <li className="nav-item">
@@ -75,7 +75,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("quotation-list");
                 }}
               >
-                <FontAwesomeIcon icon={faEye} className="button-icon" />Stocks
+                <FontAwesomeIcon icon={faEye} className="button-icon" />Attendance
               </button>
             </li>
             {/* <li className="nav-item">

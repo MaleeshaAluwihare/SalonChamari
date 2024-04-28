@@ -51,7 +51,7 @@ export default function SaloonEmployeetable() {
   return (
     <>
         <div className="SearchBar">
-          <input type="text" placeholder="Enter ID or Name.." value={searchInput} onChange={(event) => setSearchInput(event.target.value)} />
+          <input type="text" placeholder="Enter ID " value={searchInput} onChange={(event) => setSearchInput(event.target.value)} />
           <button className="btn btn-sm btn-primary mx-1" onClick={() => setSearchInput("")}>Clear</button>
         </div>
       <div>

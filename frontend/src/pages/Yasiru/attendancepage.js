@@ -46,7 +46,7 @@ export default function Attendancepage() {
       <form onSubmit={sendData} className="Attendacepage">
         <div className="mb-3">
           <label htmlFor="name">empId</label>
-          <select className="form-control" id="empId" value={empId} onChange={(e) => setEmpId(e.target.value)}>
+          <select className="form-control" required id="empId" value={empId} onChange={(e) => setEmpId(e.target.value)}>
             <option value="">Select Employee</option>
             {employeeID.map(id => (
               <option key={id} value={id}>{id}</option>
@@ -55,15 +55,15 @@ export default function Attendancepage() {
         </div>
         <div className="mb-3">
           <label htmlFor="job">jobRole</label>
-          <input type="text" className="form-control" id="job" placeholder="Enter job role" onChange={(e) => setJobRole(e.target.value)} />
+          <input type="text" className="form-control" id="job" required placeholder="Enter job role" onChange={(e) => setJobRole(e.target.value)} />
         </div>
         <div className="mb-3">
           <label htmlFor="attendance">Attendance</label>
-          <input type="number" className="form-control" id="attendance" placeholder="Enter 1 or 0" onChange={(e) => setAttendance(e.target.value)} />
+          <input type="number" className="form-control" id="attendance" required placeholder="Enter 1 or 0" onChange={(e) => setAttendance(e.target.value)} />
         </div>
         <div className="mb-3">
           <label htmlFor="date">Date</label>
-          <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input type="date" className="form-control" id="date" required value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
         <button type="submit" className="Attendancesubmit">Submit</button>
       </form>

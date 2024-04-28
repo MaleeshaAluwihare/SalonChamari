@@ -5,7 +5,7 @@ import { LineGraph } from '../components/Yasiru/Line'
 import { PieChart } from '../components/Yasiru/Pie'
 import Attendance from '../components/Attendance'
 import {useReactToPrint} from 'react-to-print'
-import DashboardSideBar from '../components/Yasiru/EmpDashboardSideBar'
+// import DashboardSideBar from '../components/Yasiru/EmpDashboardSideBar'
 
 
 export default function Dashbord() {
@@ -21,7 +21,7 @@ export default function Dashbord() {
     <div>
       <div ref={ComponentsRef}>
         <Attendance/>
-        <DashboardSideBar/>
+        {/* <DashboardSideBar/> */}
         {/* <LineGraph/>
         <PieChart/> */}
       </div>
