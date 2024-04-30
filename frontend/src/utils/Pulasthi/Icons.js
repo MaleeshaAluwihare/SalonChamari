@@ -13,3 +13,4 @@ export const update = <i class="fa-solid fa-pen"></i>
 export const search = <i class="fa-solid fa-magnifying-glass"></i>
 export const close = <i class="fa-solid fa-square-xmark"></i>
 export const download = <i class="fa-solid fa-file-arrow-down"></i>
+export const list = <i class="fa-solid fa-clipboard-list"></i>

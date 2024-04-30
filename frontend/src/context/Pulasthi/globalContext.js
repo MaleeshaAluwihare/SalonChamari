@@ -14,6 +14,8 @@ export const GlobalProvider = ({children}) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
     const [incomes, setIncomes] = useState([])
+    const [items, setItems] = useState([])
+
     //add Budget
     const addBudget = async (budget) => {
                                                                 //budget(newBudget) kiyanna object eka enne addBudget form walin
@@ -100,6 +102,13 @@ export const GlobalProvider = ({children}) => {
         return totalIncome() - totalExpense()
     }
 
+    // get Inventory Items
+    const getInvItems = async () => {
+        const response = await axios.get(`${BASE_URL}get-invItems`)
+        setItems(response.data)
+        console.log(response.data)
+    }
+
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -116,6 +125,8 @@ export const GlobalProvider = ({children}) => {
             expenses,
             totalExpense,
             totalProfit,
+            getInvItems,
+            items
         }}>
             {children}
         </GlobalContext.Provider>
