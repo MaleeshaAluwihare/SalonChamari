@@ -32,7 +32,7 @@ export default function StockTable() {
       second: "2-digit",
     });
   };
-
+ 
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,

@@ -4,6 +4,7 @@ import { BarChart } from "../../components/Anoj/Bar"
 import { LineGraph as LineChartData } from "../../components/Anoj/Line";
 import PieChart from "../../components/Anoj/Pie"; 
 import DashboardSideBar from "../../components/Anoj/InventoryDashboardSideBar"
+import ItemTable from "./supplierOrder";
 
 
 export default function InventoryDash() {
@@ -15,6 +16,7 @@ export default function InventoryDash() {
       <LineChartData />
       <PieChart />
       <DashboardSideBar/>
+      <ItemTable/>
       
     </>
   );

@@ -1,30 +1,38 @@
-import React from "react";
-export default function SupplierOrder () {
+import React, { useState } from "react";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 
-  return(
-    <div class="container">
-      <h1>Re-Order Inventory Stocks</h1>
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Hair Dryers</td>
-          <td>10</td>
-          <td>Rs. 500</td>
-        </tr>
-      </tbody>
-    </table>
-    <div>
-      <button class="btn btn-danger" type="button">Send</button>
-    </div>
-  </div>
-  )
+function ItemTable() {
+  // Sample data for demonstration
+  const initialItems = [
+    { id: 1, quantity: 10, itemType: "Type A" },
+    { id: 2, quantity: 20, itemType: "Type B" },
+    { id: 3, quantity: 15, itemType: "Type C" },
+    // Add more items as needed
+  ];
+
+  // State to hold the items
+  const [items, setItems] = useState(initialItems);
+
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>ID</TableCell>
+          <TableCell>Quantity</TableCell>
+          <TableCell>Item Type</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {items.map((item) => (
+          <TableRow key={item.id}>
+            <TableCell>{item.id}</TableCell>
+            <TableCell>{item.quantity}</TableCell>
+            <TableCell>{item.itemType}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
 }
+ 
+export default ItemTable;
