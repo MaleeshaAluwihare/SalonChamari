@@ -58,9 +58,7 @@ app.use("/finance",empSalaryRouter);
 app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);
 
-
-
-
+//chavidu
 app.use("/SalonBooking",salonBookingRouter);
 app.use("/SalonBooking",SalonItemTimeRouter);
 app.use("/StudioBooking",studioBookingRouter);
