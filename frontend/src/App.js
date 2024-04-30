@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-        <Route path='/admin' element={<InventoryDashboard />} />
+        <Route path='/' element={<InventoryDashboard />} />
         <Route path='/chart' element={<ChartComponent />} />
         <Route path='/add' element={<AddInventory />} />
         <Route path='/dash' element={<StockTable/>} />
@@ -26,6 +26,7 @@ function App() {
         <Route path='/update' element={<UpdateInventory />} />
         <Route path='/edit' element={<InventoryReplacing/>} />
         <Route path='/order' element={<SupplierOrder/>} />
+        <Route path='/dashboard' element={<InventoryDashboard/>}/>
         </Routes>
       </div>
     </Router>

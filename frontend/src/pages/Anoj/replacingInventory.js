@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Stack from '@mui/material/Stack';
 
 export default function InventoryReplacing() {
   const navigate = useNavigate();
@@ -31,7 +41,7 @@ export default function InventoryReplacing() {
       .delete(`/StudioInventory/delete/${pid}`)
       .then((res) => {
         alert("Product deleted");
-        fetchData(); // Fetch data again after deletion
+        fetchData();
       })
       .catch((error) => {
         alert(error.response.data.status);
@@ -39,11 +49,9 @@ export default function InventoryReplacing() {
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return ""; // Return empty string for null or undefined date
-
+    if (!dateString) return "";
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return "Invalid Date"; // Return "Invalid Date" for invalid date string
-
+    if (isNaN(date.getTime())) return "Invalid Date";
     return date.toLocaleString('en-US', { 
       year: 'numeric', 
       month: '2-digit', 
@@ -55,70 +63,65 @@ export default function InventoryReplacing() {
   };
 
   const filteredProducts = products.filter((product) => {
-    if (!searchInput.trim()) return true; // If search input is empty, show all products
+    if (!searchInput.trim()) return true;
     const searchLowerCase = searchInput.trim().toLowerCase();
     return product.pid.toString().includes(searchLowerCase) || product.name.toLowerCase().includes(searchLowerCase);
   });
+
+  const handleUpdateButtonClick = () => {
+    navigate("/dashboard", { state: { selectedOption: "update-stock" } });
+  };
 
   return (
     <div>
       <div className="container">
         <h1>Inventory Report</h1>
         <div className="SearchBar">
-          <input type="text" placeholder="Enter ID or Name.." value={searchInput} onChange={(event) => setSearchInput(event.target.value)} />
-          <button className="btn btn-sm btn-primary mx-1" onClick={() => setSearchInput("")}>Clear</button>
+          <TextField
+            label="Enter ID or Name"
+            value={searchInput}
+            onChange={(event) => setSearchInput(event.target.value)}
+          />
+          <Button variant="contained" onClick={() => setSearchInput("")}>Clear</Button>
         </div>
         <div className="container">
-          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-            <option value="All">All</option>
-            <option value="saloon">Saloon</option>
-            <option value="studio">Studio</option>
-          </select>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Inventory Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Use Quantity</th>
-                <th>Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <MenuItem value="All">All</MenuItem>
+            <MenuItem value="saloon">Saloon</MenuItem>
+            <MenuItem value="studio">Studio</MenuItem>
+          </Select>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Inventory Name</TableCell>
+                <TableCell>Quantity</TableCell>
+                <TableCell>Price</TableCell>
+                <TableCell>Use Quantity</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {filteredProducts.map((product) => (
-                <tr key={product.pid}>
-                  <td>{product.pid}</td>
-                  <td>{product.name}</td>
-                  <td>{product.quantity}</td>
-                  <td>{product.price}</td>
-                  <td>{product.useQuantity}</td>
-                  <td>{formatDate(product.date)}</td>
-                  <td>
-                    <button
-                      className="text-decoration-none btn btn-sm btn btn-success"
-                      onClick={() => navigate("/update", { state: product })}
-                    >
-                      Update
-                    </button>
-                    <button
-                      className="text-decoration-none btn btn-sm btn btn-danger mx-1"
-                      onClick={() => deleteProduct(product.pid)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                <TableRow key={product.pid}>
+                  <TableCell>{product.pid}</TableCell>
+                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product.quantity}</TableCell>
+                  <TableCell>{product.price}</TableCell>
+                  <TableCell>{product.useQuantity}</TableCell>
+                  <TableCell>{formatDate(product.date)}</TableCell>
+                  <TableCell>
+                  <Stack spacing={2} direction="row">
+                    <Button variant="contained" color="success" onClick={handleUpdateButtonClick}>Update</Button>
+                    <Button variant="contained" color="error" onClick={() => deleteProduct(product.pid)}>Delete</Button>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
-          <button
-            className="text-decoration-none btn btn-sm btn btn-success"
-            onClick={() => navigate("/add")}
-          >
-            Add
-          </button>
+            </TableBody>
+          </Table>
+          <Button variant="contained" color="primary" onClick={() => navigate("/add")}>Add</Button>
         </div>
       </div>
     </div>

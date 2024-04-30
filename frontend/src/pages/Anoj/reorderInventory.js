@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Container, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Button } from "@mui/material";
 
+// Functional component for reordering inventory stocks
 export default function ReorderingPage() {
-  const [itemIdOptions, setItemIdOptions] = useState([]); // State to store the available item IDs
-  const [itemId, setItemId] = useState(""); // State to store the selected item ID
+  // State variables to manage form data
+  const [itemIdOptions, setItemIdOptions] = useState([]);
+  const [itemId, setItemId] = useState("");
   const [quantity, setQuantity] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [itemType, setItemType] = useState("");
   const [category, setCategory] = useState("");
-  
+
   // Fetch item IDs based on selected category
   useEffect(() => {
     const fetchItemIds = async () => {
       try {
         const response = await axios.get(`/StudioInventory/filter?category=${category}`);
-        console.log("Response data:", response.data); // Log response data for troubleshooting
         const items = response.data;
-        const itemIds = items.map(item => item.pid);
-        setItemIdOptions(itemIds);
-        console.log("Item IDs:", itemIds); // Log extracted item IDs for troubleshooting
+        const itemIds = items.map((item) => item.pid);
         setItemIdOptions(itemIds);
       } catch (error) {
         console.error("Error fetching item IDs:", error);
       }
     };
-  
+
     if (category) {
       fetchItemIds();
     }
   }, [category]);
-  
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,7 +38,7 @@ export default function ReorderingPage() {
       itemId,
       quantity,
       date,
-      itemType
+      itemType,
     };
 
     try {
@@ -50,46 +50,93 @@ export default function ReorderingPage() {
     }
   };
 
+  // JSX code for rendering the component
   return (
-    <div className="container">
-      <h3>Re-ordering Inventory Stocks</h3>
+    <Container maxWidth="sm">
+      <Typography variant="h5" gutterBottom>
+        Re-ordering Inventory Stocks
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="category">Category</label>
-          <select className="form-control" id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="">Select Category</option>
-            <option value="saloon">Saloon</option>
-            <option value="studio">Studio</option>
-          </select>
-        </div>
+        {/* Select category */}
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="category-label">Category</InputLabel>
+          <Select
+            labelId="category-label"
+            id="category"
+            value={category}
+            required
+            onChange={(e) => setCategory(e.target.value)}
+            label="Category"
+          >
+            <MenuItem value="">Select Category</MenuItem>
+            <MenuItem value="saloon">Saloon</MenuItem>
+            <MenuItem value="studio">Studio</MenuItem>
+          </Select>
+        </FormControl>
 
-        <div className="mb-3">
-          <label htmlFor="itemId">Item ID</label>
-          <select className="form-control" id="itemId" value={itemId} onChange={(e) => setItemId(e.target.value)}>
-            <option value="">Select Item ID</option>
+        {/* Select item ID */}
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="itemId-label">Item ID</InputLabel>
+          <Select
+            labelId="itemId-label"
+            id="itemId"
+            value={itemId}
+            required
+            onChange={(e) => setItemId(e.target.value)}
+            label="Item ID"
+          >
+            <MenuItem value="">Select Item ID</MenuItem>
             {itemIdOptions.map((pid, index) => (
-            <option key={index} value={pid}>{pid}</option>
+              <MenuItem key={index} value={pid}>
+                {pid}
+              </MenuItem>
             ))}
-          </select>
-        </div>
+          </Select>
+        </FormControl>
 
-        <div className="mb-3">
-          <label htmlFor="quantity">Quantity</label>
-          <input type="text" className="form-control" id="quantity" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-        </div>
+        {/* Input field for quantity */}
+        <TextField
+          fullWidth
+          margin="normal"
+          id="quantity"
+          label="Quantity"
+          type="text"
+          value={quantity}
+          required
+          onChange={(e) => setQuantity(e.target.value)}
+        />
 
-        <div className="mb-3">
-          <label htmlFor="date">Date</label>
-          <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        </div>
+        {/* Input field for date */}
+        <TextField
+          fullWidth
+          margin="normal"
+          id="date"
+          label="Date"
+          type="date"
+          value={date}
+          disabled
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
 
-        <div className="mb-3">
-          <label htmlFor="itemType">Item Type</label>
-          <input type="text" className="form-control" id="itemType" placeholder="Item Type" value={itemType} onChange={(e) => setItemType(e.target.value)} />
-        </div>
+        {/* Input field for item type */}
+        <TextField
+          fullWidth
+          margin="normal"
+          id="itemType"
+          label="Item Type"
+          type="text"
+          value={itemType}
+          required
+          onChange={(e) => setItemType(e.target.value)}
+        />
 
-        <button type="submit" className="btn btn-primary">Submit</button>
+        {/* Submit button */}
+        <Button type="submit" variant="contained" color="primary">
+          Submit
+        </Button>
       </form>
-    </div>
+    </Container>
   );
 }

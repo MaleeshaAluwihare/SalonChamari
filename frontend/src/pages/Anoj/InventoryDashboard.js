@@ -7,6 +7,7 @@ import UpdateInventory from "./updateInventory";
 import ReorderingPage from "./reorderInventory";
 import InventoryReplacing from "./replacingInventory";
 
+
 export default function InventoryDashboard(){
 
     const [selectedOption, setSelectedOption] = useState('home');
@@ -24,7 +25,7 @@ export default function InventoryDashboard(){
                     {selectedOption === "create-stock" && <AddInventory />}
                 </div>
                 <div className="update-stock">
-                    {selectedOption === "update-stock" && <UpdateInventory/>}
+                    {selectedOption === "update-stock" && <UpdateInventory />}
                 </div>
                 <div className="reorder-stock">
                     {selectedOption === "reorder-stock" &&  <ReorderingPage/>}

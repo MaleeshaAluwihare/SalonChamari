@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { TextField, Button, Typography, Container } from '@mui/material';
 
 export default function UpdateInventory() {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ export default function UpdateInventory() {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [useQuantity, setUseQuantity] = useState("");
-  const [date, setDate] = useState(""); // Add state for date
-  const [totalUseQuantity, setTotalUseQuantity] = useState(0); // Add state for total use quantity
+  const [date, setDate] = useState("");
+  const [totalUseQuantity, setTotalUseQuantity] = useState(0);
 
   useEffect(() => {
     const productData = location.state;
@@ -22,30 +23,33 @@ export default function UpdateInventory() {
       setQuantity(productData.quantity);
       setUseQuantity(productData.useQuantity);
       setDate(productData.date);
-  
-      // Update totalUseQuantity based on useQuantity from product data
       setTotalUseQuantity(productData.useQuantity || 0);
     }
   }, [location.state]);
-  
 
-  // Function to calculate maximum allowed use quantity
   const getMaxAllowedUseQuantity = () => {
     return parseInt(quantity) - totalUseQuantity;
   };
 
   const updateProduct = (e) => {
     e.preventDefault();
+  
+    const maxAllowedUseQuantity = parseInt(quantity) - totalUseQuantity;
+    const updatedUseQuantity = parseInt(useQuantity) + totalUseQuantity;
+    
+    if (updatedUseQuantity > parseInt(quantity)) {
+      alert("Use Quantity cannot exceed available Quantity");
+      return; 
+    }
+  
     const updatedProduct = {
       name,
       price,
       quantity,
-      useQuantity: parseInt(useQuantity) + totalUseQuantity, // Add updated use quantity to total use quantity
-      date // Include date in the updated product
+      useQuantity: updatedUseQuantity,
+      date
     };
-
-    console.log(updatedProduct);
-
+  
     axios
       .put(`/StudioInventory/update/${pid}`, updatedProduct)
       .then(() => {
@@ -56,83 +60,65 @@ export default function UpdateInventory() {
         alert(err);
       });
   };
+  
 
   return (
-    <div className="container">
-      <h1>Update Inventory</h1>
+    <Container maxWidth="sm">
+      <Typography variant="h4" gutterBottom>Update Inventory</Typography>
       <form onSubmit={updateProduct}>
-        <div className="mb-3">
-          <label htmlFor="id" className="form-label">
-            Inventory ID
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="pid"
-            value={pid}
-            readOnly
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Inventory Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            value={name}
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="price" className="form-label">
-            Price
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="price"
-            value={price}
-            required
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="quantity" className="form-label">
-            Quantity
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="quantity"
-            value={quantity}
-            readOnly
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="useQuantity" className="form-label">
-            Use Quantity
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="useQuantity"
-            value={useQuantity}
-            max={getMaxAllowedUseQuantity()} // Set maximum allowed use quantity
-            onChange={(e) => setUseQuantity(e.target.value)}
-            required
-          />
-          <small className="text-muted">
-            Maximum allowed: {getMaxAllowedUseQuantity()}
-          </small>
-        </div>
-        <button type="submit" className="btn btn-primary">
+        <TextField
+          label="Inventory ID"
+          value={pid}
+          fullWidth
+          disabled
+          variant="outlined"
+          margin="normal"
+        />
+        <TextField
+          label="Inventory Name"
+          value={name}
+          fullWidth
+          required
+          variant="outlined"
+          margin="normal"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          label="Price"
+          value={price}
+          fullWidth
+          required
+          type="number"
+          variant="outlined"
+          margin="normal"
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <TextField
+          label="Quantity"
+          value={quantity}
+          fullWidth
+          disabled
+          variant="outlined"
+          margin="normal"
+        />
+        <TextField
+          label="Use Quantity"
+          value={useQuantity}
+          fullWidth
+          required
+          type="number"
+          variant="outlined"
+          margin="normal"
+          max={getMaxAllowedUseQuantity()}
+          onChange={(e) => setUseQuantity(e.target.value)}
+        />
+        <Typography variant="body2" color="textSecondary">
+          Maximum allowed: {getMaxAllowedUseQuantity()}
+        </Typography>
+        <Button type="submit" variant="contained" color="primary">
           Update
-        </button>
+        </Button>
       </form>
-    </div>
+    </Container>
   );
 }
-

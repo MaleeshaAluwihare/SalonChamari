@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Anoj/InventoryDashboradSideBar.css';
-// import Logo from '../../images/Maleesha/Logo.png';
+// import Logo from '../../images/Maleesha/Logo.png'; 
+
+
 
 export default function DashboardSideBar({ onSelectOption }) {
 
@@ -17,7 +19,7 @@ export default function DashboardSideBar({ onSelectOption }) {
           </div>
           <h1 className="salon-name">Inventory Managements</h1>
           <div className="dashboard-title">
-            <h2 className="dashboard-heading">Service Dashboard</h2>
+            <h2 className="dashboard-heading">Inventory Dashboard</h2>
             <hr className="dashboard-divider" />
           </div>
         </div>

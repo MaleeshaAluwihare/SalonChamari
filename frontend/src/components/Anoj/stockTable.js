@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
+import { Typography, Table, TableHead, TableBody, TableRow, TableCell, Button } from "@mui/material";
+import ChartComponent1 from "./Chart1";
 
 export default function StockTable() {
   const [products, setProducts] = useState([]);
@@ -34,40 +36,50 @@ export default function StockTable() {
   const ComponentsRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => ComponentsRef.current,
-    documentTitle: "Finance Manager Report",
+    documentTitle: "Inventory Manager Report",
     onAfterPrint: () => alert("Report Successfully Download"),
   });
 
   return (
     <div>
       <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }} ref={ComponentsRef}>
-        <h2 style={{ marginBottom: "10px" }}>Inventory stocks</h2>
+        <Typography variant="h4" style={{ marginBottom: "10px" }}>
+          Inventory stocks
+        </Typography>
 
-        <table style={{ borderCollapse: "collapse", width: "100%" }}>
-          <thead>
-            <tr style={{ borderBottom: "1px solid #ddd" }}>
-              <th style={{ padding: "8px", textAlign: "left" }}>ID</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Inventory Name</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Quantity</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Price</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Add Date</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table style={{ borderCollapse: "collapse", width: "100%" }}>
+          <TableHead>
+            <TableRow style={{ borderBottom: "1px solid #ddd" }}>
+              <TableCell style={{ padding: "8px", textAlign: "left" }}>ID</TableCell>
+              <TableCell style={{ padding: "8px", textAlign: "left" }}>Inventory Name</TableCell>
+              <TableCell style={{ padding: "8px", textAlign: "left" }}>Quantity</TableCell>
+              <TableCell style={{ padding: "8px", textAlign: "left" }}>Price</TableCell>
+              <TableCell style={{ padding: "8px", textAlign: "left" }}>Add Date</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {products.map((product) => (
-              <tr key={product.pid} style={{ borderBottom: "1px solid #ddd" }}>
-                <td style={{ padding: "8px", textAlign: "left" }}>{product.pid}</td>
-                <td style={{ padding: "8px", textAlign: "left" }}>{product.name}</td>
-                <td style={{ padding: "8px", textAlign: "left" }}>{product.quantity}</td>
-                <td style={{ padding: "8px", textAlign: "left" }}>{product.price}</td>
-                <td style={{ padding: "8px", textAlign: "left" }}>{formatDate(product.date)}</td>
-              </tr>
+              <TableRow key={product.pid} style={{ borderBottom: "1px solid #ddd" }}>
+                <TableCell style={{ padding: "8px", textAlign: "left" }}>{product.pid}</TableCell>
+                <TableCell style={{ padding: "8px", textAlign: "left" }}>{product.name}</TableCell>
+                <TableCell style={{ padding: "8px", textAlign: "left" }}>{product.quantity}</TableCell>
+                <TableCell style={{ padding: "8px", textAlign: "left" }}>{product.price}</TableCell>
+                <TableCell style={{ padding: "8px", textAlign: "left" }}>{formatDate(product.date)}</TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
-      <button style={{ margin: "20px", padding: "10px 20px", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }} onClick={handlePrint}>Download report</button>
+      <ChartComponent1 />
+      <Button
+        variant="contained"
+        style={{ margin: "20px", padding: "10px 20px", backgroundColor: "#007bff", color: "#fff", borderRadius: "5px" }}
+        onClick={handlePrint}
+      >
+        Download report
+      </Button>
     </div>
   );
 }
+
 
