@@ -1,0 +1,71 @@
+/* Custom CSS for Salon Booking Form */
+#booking {
+	background-color: #f4f4f4;
+	padding: 50px 0;
+  }
+  
+  .booking-form {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+	padding: 40px;
+  }
+  
+  .booking-bg {
+	background-color: #856849;
+	border-radius: 10px;
+	color: #fff;
+	padding: 20px;
+  }
+  
+  .form-header h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+  }
+  
+  .form-header p {
+	font-size: 18px;
+  }
+  
+  .form-label {
+	color: #856849;
+	font-size: 16px;
+	margin-bottom: 5px;
+  }
+  
+  .form-control {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+  }
+  
+  .select-arrow {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #ccc;
+  }
+  
+  .submit-btn {
+	background-color: #856849;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+	padding: 15px 30px;
+	transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+	background-color: #63462e;
+  }
+  
+  @media screen and (max-width: 768px) {
+	.booking-form {
+	  padding: 20px;
+	}
+  }
+  
