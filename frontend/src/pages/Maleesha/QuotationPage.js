@@ -8,6 +8,7 @@ import { faTrash, faMinus, faPlus, faTimes } from '@fortawesome/free-solid-svg-i
 import '../../css/Maleesha/Quotation.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
+import Header from '../Maleesha/Header';
 
 
 export default function QuotationPage() {
@@ -259,6 +260,7 @@ export default function QuotationPage() {
 
     return (
         <div className='mainContainer'>
+            <div className='header-container'><Header/></div>
             <div className='contentContainer'>
                 <h1>Quotation</h1>
                 <div className='headingContainer'>
@@ -388,6 +390,7 @@ export default function QuotationPage() {
                                         name="appointmentDate"
                                         value={appointmentDate}
                                         onChange={(e) => {setAppoinmentDate(e.target.value)}}
+                                        min={new Date().toISOString().split('T')[0]} 
                                         required
                                     />
                                 </div>

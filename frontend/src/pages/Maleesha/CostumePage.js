@@ -5,10 +5,8 @@ import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import '../../css/Maleesha/CostumePage.css';
 import video from '../../video/costumeVideo.mp4';
-import BridalServices from "./BridalService";
-import HairService from "./HairService.js";
-import SkinService from "./SkinService.js";
-import NailService from "./NailService.js";
+import Header from './Header';
+import Footer from "../../components/Maleesha/Footer";
 
 
 export default function ProductPage() {
@@ -80,6 +78,9 @@ export default function ProductPage() {
 
   return (
     <div className='main-container'>
+      <div className="header-container">
+        <Header/>
+      </div>
       <div className="serviceList-container">
         <div className="ServiceRec">
                   <h2>OUR SERVICES</h2>
@@ -87,11 +88,11 @@ export default function ProductPage() {
                       <h1>Sarees<br/> & Gowns</h1>
                   </div>
                   <div className="ServiceCircles">
-                      <Link to = {HairService} className="ServicesButton">HAIR</Link>
-                      <Link to = {SkinService} className="ServicesButton">SKIN</Link>
-                      <Link to = {NailService} className="ServicesButton">NAIL</Link>
-                      <Link to = {BridalServices} className="ServicesButton">BRIDAL</Link>
-                      <Link to = {null} className="ServicesButton">Sarees & Gowns</Link>
+                      <Link to = '/hair-page' className="ServicesButton">HAIR</Link>
+                      <Link to = '/skin-page' className="ServicesButton">SKIN</Link>
+                      <Link to = '/nail-page' className="ServicesButton">NAIL</Link>
+                      <Link to = '/bridal-page' className="ServicesButton">BRIDAL</Link>
+                      <Link to = '/costume-page' className="ServicesButton">Sarees & Gowns</Link>
                   </div>
             </div>
       </div>
@@ -129,6 +130,9 @@ export default function ProductPage() {
                 <FontAwesomeIcon icon={faRightLong} className="button-icon" />
             </button>
           )}
+      </div>
+      <div className="footer-container">
+        <Footer/>
       </div>
     </div>
   );

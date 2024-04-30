@@ -6,10 +6,9 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Tables.css';
 import nailLaq from '../../images/Maleesha/nail-polish.png';
 import manic from '../../images/Maleesha/manicure.png';
-import HairService from "./HairService.js";
-import SkinService from "./SkinService.js";
-import BridalService from "./BridalService.js";
-import CostumeService from "./CostumePage.js";
+import Header from './Header';
+import Footer from "../../components/Maleesha/Footer.js";
+
 
 
 export default function NailServices(){
@@ -35,17 +34,20 @@ export default function NailServices(){
 
     return(
         <div>
+            <div className="header-container">
+                <Header/>
+            </div>
             <div className="ServiceRec">
                 <h2>OUR SERVICES</h2>
                 <div className="serviceName">
                     <h1>Nail Care</h1>
                 </div>
                 <div className="ServiceCircles">
-                    <Link to = {HairService} className="ServicesButton">HAIR</Link>
-                    <Link to = {SkinService} className="ServicesButton">SKIN</Link>
-                    <Link to = {null} className="ServicesButton">NAIL</Link>
-                    <Link to = {BridalService} className="ServicesButton">BRIDAL</Link>
-                    <Link to = {CostumeService} className="ServicesButton">Sarees & Gowns</Link>
+                    <Link to = '/hair-page' className="ServicesButton">HAIR</Link>
+                    <Link to = '/skin-page' className="ServicesButton">SKIN</Link>
+                    <Link to = '/nail-page' className="ServicesButton">NAIL</Link>
+                    <Link to = '/bridal-page' className="ServicesButton">BRIDAL</Link>
+                    <Link to = '/costume-page' className="ServicesButton">Sarees & Gowns</Link>
                 </div>
             </div>
             <div className="search-bar">
@@ -112,6 +114,9 @@ export default function NailServices(){
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="footer-container">
+                <Footer/>
             </div>
         </div>
     )

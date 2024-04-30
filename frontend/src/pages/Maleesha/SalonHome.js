@@ -14,6 +14,7 @@ import openHourIcon from '../../images/Maleesha/opening-hours-icon.png';
 import experienceIcon from '../../images/Maleesha/experience-icon.png';
 import serviceCompleteIcon from '../../images/Maleesha/service-complete-icon.png';
 import staffIcon from '../../images/Maleesha/staff-icon.png';
+import Header from './Header.js';
 
 
 export default function SalonHome() {
@@ -65,6 +66,9 @@ export default function SalonHome() {
 
     return (
         <div className="homepage">
+            <div className='header-container'>
+                <Header/>
+            </div>
             <div className="slide-container">
                 <div className="slide-background">
                     <img src={image1} alt="Background 1" className="slide-image" />

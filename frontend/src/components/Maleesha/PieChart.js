@@ -59,7 +59,7 @@ export default function MyComponent() {
                 }]
             },
             options: {
-                responsive: false
+                responsive: true
             }
         });
     };

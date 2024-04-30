@@ -6,8 +6,24 @@ import studioLogo from '../../images/Maleesha/studioLogo.png';
 import salonImg from '../../images/Maleesha/Saloon.jpg';
 import studioImage from '../../images/Maleesha/StudioImage.jpg';
 import eventImage from '../../images/Maleesha/EventImage.jpg';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+
+    const navigate = useNavigate();
+
+    const handleSalonClick = () => {
+        navigate('/salon-home');
+      };
+    
+      const handleStudioClick = () => {
+        navigate('/studio-home');
+      };
+    
+      const handleEventClick = () => {
+        navigate('/event-home');
+      };
+    
     const [text] = useTypewriter({
         words: ['Beauty', 'Photography', 'Event Planing'],
         loop: true,
@@ -82,17 +98,20 @@ export default function LandingPage() {
             <div className="salonImageContainer">
                 <div className="salonImageBox">
                      <p className="salonText">A whole new world, a whole new look</p>
-                     <button className="visitPageBtn1">Visit Page</button>
+                     <Link to="/salon-home">
+                     <button  className="visitPageBtn1">Visit Page</button>
+                     </Link>
+                     
                      <img src= {salonImg} alt= "salonImage" className="salonImage"></img>
                 </div>
                 <div className="salonImageBox">
                      <p className="studioText"> Capturing the best moments for you </p>
-                     <button className="visitPageBtn2">Visit Page</button>
+                     <button onClick={handleStudioClick} className="visitPageBtn2">Visit Page</button>
                      <img src= {studioImage} alt= "salonImage" className="salonImage"></img>
                 </div>
                 <div className="salonImageBox">
                      <p className="eventText"> Your Professional Dream Maker </p>
-                     <button className="visitPageBtn3">Visit Page</button>
+                     <button onClick={handleEventClick} className="visitPageBtn3">Visit Page</button>
                      <img src= {eventImage} alt= "salonImage" className="salonImage"></img>   
                 </div>
             </div>
