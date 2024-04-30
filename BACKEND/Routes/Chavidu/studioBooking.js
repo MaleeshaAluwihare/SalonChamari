@@ -1,14 +1,48 @@
 const router = require("express").Router();
-let StudioBooking = require("../../Models/Chavidu/studioBookingModel");
+const StudioBooking = require("../../Models/Chavidu/studioBookingModel");
+const IncomeTable = require("../../Models/pulasthi-models/Income");
+const nodemailer = require("nodemailer");
 
+// Function to send confirmation email
+async function sendConfirmationEmail(email, bookingDetails) {
+    try {
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            port: 587,
+            auth: {
+                user: "sliititpt105@gmail.com", // Replace with your Gmail email address
+                pass: "qzfn juro ifbt ncgf" // Replace with your Gmail password
+            }
+        });
+
+        const mailOptions = {
+            from: "sliititpt105@gmail.com",
+            to: email,
+            subject: "Booking Confirmation",
+            text: `Dear ${bookingDetails.name},\n\nYour booking has been confirmed. Details:\nService: ${bookingDetails.StudioPackage}\nAmount: ${bookingDetails.amount}\n\nThank you for choosing us!\n\nBest regards,\nStudio Nishan Team`
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully");
+    } catch (error) {
+        console.error("Error sending email:", error);
+    }
+}
 
 // Insert route
-router.route("/makebooking").post(async (req, res) => {
-    const { name, email, pid, package, amount, photographer } = req.body;
+router.post("/makebooking", async (req, res) => {
+    const { name, email, contactNumber, date, sid, StudioPackage, amount, photographer } = req.body;
 
     try {
-        const newBooking = new StudioBooking({ name,email,pid,package,amount,photographer});
+        const newBooking = new StudioBooking({ name, email, contactNumber, date, sid, StudioPackage, amount, photographer });
         await newBooking.save();
+
+        const newSalonIncome = new IncomeTable({ incomeId: sid, amount, date, category: StudioPackage });
+        await newSalonIncome.save();
+
+        // Send confirmation email
+        await sendConfirmationEmail(email, { name, StudioPackage, amount });
+
         res.json("Booking Added");
     } catch (err) {
         console.error(err.message);
@@ -16,109 +50,116 @@ router.route("/makebooking").post(async (req, res) => {
     }
 });
 
-
-//Read route - get all booking data
-router.route("/studiobookings").get((req, res) => {
-
-    StudioBooking.find().then((StudioBooking) => {
-        res.json(StudioBooking) // Send the found bookings as a JSON response
-
-    }).catch((err) => {
-
-        console.log(err.message);
-        res.status(500).send({ status: "Error with get user", error: err.message });
-    })
-})
-
-//get specific booking
-router.route("/getBooking/:customId").get(async (req, res) => {
-    let customId = req.params.customId;
-
+// Read route - get all booking data
+router.get("/studiobookings", async (req, res) => {
     try {
-        // Find the booking by custom ID
-        const booking = await StudioBooking.findOne({ customId: customId });
-
-        // Check if booking is found
-        if (!booking) {
-            return res.status(404).send({ status: "Booking_Not_Found" });
-        }
-
-        // Send the booking data to the frontend
-        res.status(200).send({ status: "Booking fetched", booking: booking });
-    } catch (error) {
-        // Handle errors
-        console.error("Error fetching booking:", error);
-        res.status(500).send({ status: "Internal_Server_Error" });
+        const bookings = await StudioBooking.find();
+        res.json(bookings);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
     }
 });
 
+// Get specific booking
+router.get("/getBooking/:id", async (req, res) => {
+    const id = req.params.id;
 
-
-//Update route
-router.route("/update/:id").put(async (req, res) => {
-    let bookingID = req.params.id;
-    const { name, email, pid, package, amount, photographer} = req.body;
-
-    const updateBooking = {
-        name,
-        email,
-        pid,
-        package,
-        amount,
-        photographer
+    try {
+        const booking = await StudioBooking.findById(id);
+        if (!booking) {
+            return res.status(404).send("Booking not found");
+        }
+        res.json(booking);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
     }
+});
 
-    const update = await StudioBooking.findByIdAndUpdate(bookingID, updateBooking).then(() => {
-       
-        res.status(200).send({ status: "Booking Updated" });
+// Update route
+router.put("/update/:id", async (req, res) => {
+    const id = req.params.id;
+    const { name, email, contactNumber, date, sid, StudioPackage, amount, photographer } = req.body;
 
-    }).catch(() => {
-
-        console.log(err.message);
-        //sending error to frontend
-        res.status(500).send({ status: "Error with updating booking" });
-
-    })
-
-})
-
-//Delete route
-router.route("/delete/:id").delete(async (req, res) => {
-    let bookingID = req.params.id;
-
-    await StudioBooking.findById(bookingID);
-    if (!SalonBooking) {
-        return res.status(404).send({ status: "Student not found" });
+    try {
+        const updatedBooking = await StudioBooking.findByIdAndUpdate(id, { name, email, contactNumber, date, sid, StudioPackage, amount, photographer }, { new: true });
+        if (!updatedBooking) {
+            return res.status(404).send("Booking not found");
+        }
+        res.json(updatedBooking);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
     }
+});
 
-    await StudioBooking.findByIdAndDelete(bookingID).then(() => {
+// Delete route
+router.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id;
 
-        res.status(200).send({ status: "User deleted" });
+    try {
+        const deletedBooking = await StudioBooking.findByIdAndDelete(id);
+        if (!deletedBooking) {
+            return res.status(404).send("Booking not found");
+        }
+        res.send("Booking deleted");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
 
-    }).catch(() => {
+// Cancel booking (client)
+router.delete("/cancel/:id", async (req, res) => {
+    const id = req.params.id;
 
-        console.log(err.message);
-        res.status(500).send({ status: "Error with deleting booking", error: err.message });
-    })
-})
+    try {
+        // Retrieve the booking from the database
+        const booking = await StudioBooking.findById(id);
+        if (!booking) {
+            return res.status(404).send("Booking not found");
+        }
 
-// Define a route for handling payment requests
-// app.post("/makePayment", async (req, res) => {
-//     // Extract amount and sid from the request body
-//     const { amount, sid } = req.body;
+        // Calculate the time difference between booking creation date and current date
+        const creationDate = booking.createdAt;
+        const currentDate = new Date();
+        const timeDifference = currentDate.getTime() - creationDate.getTime();
+        const daysDifference = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
 
-//     try {
-//         // Insert the amount and sid into another table
-//         // Replace "AnotherTable" with the name of your table
-//         await AnotherTable.create({ pamount:amount, psid:sid });
+        // Check if the booking can be canceled (within 2 days)
+        if (daysDifference <= 2) {
+            // Perform cancellation (delete) logic
+            await StudioBooking.findByIdAndDelete(id);
+            return res.json("Booking canceled successfully");
+        } else {
+            return res.status(400).send("Booking cannot be canceled after 2 days");
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
 
-//         // Send a success response to the client
-//         res.status(200).send({ status: "Payment_Successful" });
-//     } catch (error) {
-//         // Handle errors
-//         console.error("Error making payment:", error);
-//         res.status(500).send({ status: "Internal_Server_Error" });
-//     }
-// });
+// Check availability
+router.get("/checkAvailability", async (req, res) => {
+    const { date } = req.query;
+
+    try {
+        // Check if there are any bookings for the specified date
+        const bookings = await StudioBooking.find({ date: date });
+
+        // If there are no bookings for the date, it's available
+        if (bookings.length === 0) {
+            res.json({ available: true });
+        } else {
+            res.json({ available: false });
+        }
+    } catch (error) {
+        console.error("Error checking availability:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
 
 module.exports = router;

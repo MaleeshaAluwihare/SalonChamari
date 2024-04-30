@@ -11,7 +11,7 @@ const sbookingSchema = new Schema({
         type: String,
         required: true
     },
-    sid: {
+    salonId: {
         type: String,
         required: true
     },
