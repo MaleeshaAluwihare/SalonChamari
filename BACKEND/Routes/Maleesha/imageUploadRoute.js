@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const imgSchema = require("../../Models/Maleesha/ImageUploadModel");
 
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname, '../../../frontend/src/uploads'));
@@ -13,7 +14,6 @@ const storage = multer.diskStorage({
       cb(null, uniqueSuffix + file.originalname);
     }
 });
-
   
 const upload = multer({ storage: storage });
 
@@ -31,7 +31,8 @@ app.post('/upload', upload.single("image"), async (req, res) => {
     }
 });
 
-// Fetch images
+
+// Retrive images from database
 app.get("/fetch", async (req, res) => {
     try {
         const images = await imgSchema.find({});

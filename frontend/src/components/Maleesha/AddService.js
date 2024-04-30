@@ -45,10 +45,11 @@ export default function AddService(){
                 confirmButtonAriaLabel: 'Thumbs up, great!',
                 timer: 5000
             })
-            setServiceName(" ");
-            setSubName(" ");
-            setItemName(" ");
-            setItemPrice(" ");
+            
+            setServiceName("");
+            setSubName("");
+            setItemName("");
+            setItemPrice("");        
 
         }).catch(err => {
             if (err.response && err.response.data && err.response.data.message) {

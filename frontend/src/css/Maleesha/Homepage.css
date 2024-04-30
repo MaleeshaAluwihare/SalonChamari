@@ -9,6 +9,10 @@ body {
     scroll-behavior: smooth;
 }
 
+.header-container{
+  margin-top: 90px;
+}
+
 .homepage {
     width: 100%;
 }

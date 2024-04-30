@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 #upload folders
-/src/uploads/
-/src/QuotationPDF/
+# /src/uploads/
+# /src/QuotationPDF/
 

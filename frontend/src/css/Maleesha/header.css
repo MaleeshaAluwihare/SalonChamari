@@ -7,12 +7,6 @@
     font-family: "Poppins",sans-serif;
 }
 
-body{
-    min-height: 100vh;
-    background: url('../../images/Maleesha/hsin.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
 .header{
     position: fixed;
     top: 0;
@@ -53,7 +47,10 @@ body{
 }
 
 .logo{
-    height: 50px;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 .navbar a {

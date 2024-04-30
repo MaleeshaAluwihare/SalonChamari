@@ -1,6 +1,6 @@
 .dashboard-home {
     display: flex;
-    flex-direction: column; }
+ }
 
   
 .date-time-display {
@@ -59,6 +59,7 @@
 
 .pie-chart-container {
     margin-top: 20px; /* Add margin for spacing */
+    margin-left: 40px;
     width: 500px;
     background-color: #f8f9fa; /* Change this to your preferred color */
     border-radius: 15px;

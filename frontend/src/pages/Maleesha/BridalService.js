@@ -6,10 +6,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Tables.css';
 import bride from '../../images/Maleesha/bride.png';
 import groome from '../../images/Maleesha/groom.png';
+import couple from '../../images/Maleesha/couple.png';
 import HairService from "./HairService.js";
 import SkinService from "./SkinService.js";
 import CostumeService from "./CostumePage.js";
 import NailService from "./NailService.js";
+import Header from './Header';
+import Footer from "../../components/Maleesha/Footer.js";
 
 
 export default function BridalServices(){
@@ -35,6 +38,9 @@ export default function BridalServices(){
 
     return(
         <div>
+            <div className="header-container">
+                <Header/>
+            </div>
             <div className="ServiceRec">
                 <h2>OUR SERVICES</h2>
                 <div className="serviceName">
@@ -54,6 +60,18 @@ export default function BridalServices(){
             </div>
 
             <div className = "table-container-wrapper">
+            <div className = "table-container">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Bridal Service<img src={couple} className='Icon' alt='Icon'/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <td> Please contact +94 71 853 4870 for more details </td>
+                        </tbody>
+                    </table>
+                </div>
                 <div className = "table-container">
                     <table className="table">
                         <thead>
@@ -114,6 +132,9 @@ export default function BridalServices(){
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="footer-container">
+                <Footer/>
             </div>
         </div>
     )

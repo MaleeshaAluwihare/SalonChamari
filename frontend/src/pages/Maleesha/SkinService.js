@@ -5,10 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import '../../css/Maleesha/Tables.css';
 import skin from "../../images/Maleesha/skin-care.png";
-import HairService from "./HairService.js";
-import NailService from "./NailService.js";
-import BridalService from "./BridalService.js";
-import CostumeService from "./CostumePage.js";
+import Header from './Header';
+import Footer from "../../components/Maleesha/Footer";
 
 export default function SkinServices(){
 
@@ -25,17 +23,20 @@ export default function SkinServices(){
 
     return(
         <div>
+            <div className="header-container">
+                <Header/>
+            </div>
             <div className="ServiceRec">
                 <h2>OUR SERVICES</h2>
                 <div className="serviceName">
                     <h1>Skin Care</h1>
                 </div>
                 <div className="ServiceCircles">
-                    <Link to = {HairService} className="ServicesButton">HAIR</Link>
-                    <Link to = {null} className="ServicesButton">SKIN</Link>
-                    <Link to = {NailService} className="ServicesButton">NAIL</Link>
-                    <Link to = {BridalService} className="ServicesButton">BRIDAL</Link>
-                    <Link to = {CostumeService} className="ServicesButton">Sarees & Gowns</Link>
+                    <Link to = '/hair-page' className="ServicesButton">HAIR</Link>
+                    <Link to = '/skin-page' className="ServicesButton">SKIN</Link>
+                    <Link to = '/nail-page' className="ServicesButton">NAIL</Link>
+                    <Link to = '/bridal-page' className="ServicesButton">BRIDAL</Link>
+                    <Link to = '/costume-page' className="ServicesButton">Sarees & Gowns</Link>
                 </div>
             </div>
             <div className="search-bar">
@@ -72,6 +73,9 @@ export default function SkinServices(){
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="footer-container">
+                <Footer/>
             </div>
         </div>
     )

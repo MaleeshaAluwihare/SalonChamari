@@ -52,6 +52,9 @@ export default function DashboardHome() {
                         <p>Services Distribution</p>
                         <PieChart />
                     </div>
+                    {/* <div className="total-services">
+                    <iframe style="background: #F1F5F4;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-project-0-pohxg/embed/dashboards?id=e852bbd6-01ec-4a0c-8def-e57bf6ca8797&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+                    </div> */}
                 </>
             )}
         </div>

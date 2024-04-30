@@ -20,9 +20,9 @@
 }
 
 .dropdownContainer {
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
-    align-items: center; /* Center-align the dropdowns horizontally */
+    align-items: center;
     margin-top: 80px;
     margin-bottom: 10px;
 }
