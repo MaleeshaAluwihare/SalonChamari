@@ -1,21 +1,26 @@
 var mongoose = require('mongoose');
+
 var imageSchema = new mongoose.Schema({
 
-    imageId: {
+    category: {
         type: String,
         required: true
     },
 
-    name :{
+    itemName: {
         type: String,
+        required: true
+    },
+     
+    itemPrice: {
+        type:Number,
         required: true
     },
 
     image: {
-        data: Buffer,
-        contentType: String,
+        type: String
     }
 });
 
-const imgSchema = mongoose.model('Image',imageSchema);
+const imgSchema = mongoose.model('ImageDetails', imageSchema);
 module.exports = imgSchema;

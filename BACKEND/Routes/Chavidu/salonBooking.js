@@ -1,100 +1,72 @@
-const router = require("express").Router();
+// Import necessary modules
+const express = require("express");
+const router = express.Router();
+const SalonBooking = require("../../Models/Chavidu/salonBookingModel");
+const IncomeTable = require("../../Models/pulasthi-models/Income")
 let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 let Studio = require("../../Models/Chavidu/studioBookingModel");
 const nodemailer = require("nodemailer");
 
-
-// //Insert booking
-// router.route("/makebooking").post((req, res) => {
-//     const name = req.body.name;
-//     const age = Number(req.body.age);
-//     const gender = req.body.gender;
-//     const address = req.body.address;
-
-//     const newStudent = new Student({
-//         name,
-//         age,
-//         gender,
-//         address
-//     })
-
-//     //passing the new student object to the mongo DB through student.js model
-//     newStudent.save().then(() => {
-//         //if success sending msg in json format to frontend
-//         res.json("Student Added");
-
-//     }).catch((err) => {
-//         //if unsuccess
-//         console.log(err.message);
-//     })
-// })
-
-
-// Insert route
+// Endpoint to make a booking
 router.route("/makebooking").post(async (req, res) => {
-    const { name, email, sid, service, amount } = req.body;
+    const { name, email, salonId, service, amount, date, time } = req.body;
 
     try {
-        const newBooking = new SalonBooking({ name,email,sid,service,amount });
+        // Create a new booking instance
+        const newBooking = new SalonBooking({ name, email, salonId, service, amount, date, time });
+
+        // Save the new booking to the database
         await newBooking.save();
 
-        const newTable = new Studio({ 
-            id: sid,
-            price: amount
-        });
-        await newTable.save();
+        // Create a new instance of IncomeTable with salonId as incomeId
+        const newSalonIncome = new IncomeTable({ incomeId: salonId, amount, date, category:service }); 
 
-        // email
-        // await sendConfirmationEmail(email, { name, service, amount });
+        // Save the new income entry to the database
+        await newSalonIncome.save();
 
+        // Send confirmation email to the user
+        await sendConfirmationEmail(email, { name, service, amount });
+
+        // Respond with success message
         res.json("Booking Added");
-    } catch (err) {
-        console.error(err.message);
+    } catch (error) {
+        console.error(error.message);
         res.status(500).send("Server Error");
     }
 });
-
-
-//Read route - get all booking data
+// Endpoint to get all bookings
 router.route("/salonbookings").get((req, res) => {
+    SalonBooking.find()
+        .then((bookings) => {
+            res.json(bookings);
+        })
+        .catch((error) => {
+            console.error(error.message);
+            res.status(500).send({ status: "Error with getting bookings", error: error.message });
+        });
+});
 
-    SalonBooking.find().then((SalonBooking) => {
-        res.json(SalonBooking)
-
-    }).catch((err) => {
-
-        console.log(err.message);
-        res.status(500).send({ status: "Error with get user", error: err.message });
-    })
-})
-
-//get specific booking
+// Endpoint to get a specific booking by ID
 router.route("/getBookingById/:bookingID").get(async (req, res) => {
-    let bookingID = req.params.bookingID;
+    const bookingID = req.params.bookingID;
 
     try {
-        // Find the booking by custom ID
-        const booking = await SalonBooking.findOne({ sid: bookingID });
+        const booking = await SalonBooking.findOne({ salonId: bookingID });
 
-        // Check if booking is found
         if (!booking) {
             return res.status(404).send({ status: "Booking_Not_Found" });
         }
 
-        // Send the booking data to the frontend
-        res.status(200).send({ status: "Booking fetched", booking: booking });
+        res.status(200).send({ status: "Booking fetched", booking });
     } catch (error) {
-        // Handle errors
         console.error("Error fetching booking:", error);
         res.status(500).send({ status: "Internal_Server_Error" });
     }
 });
 
-
-
-// Update route
+// Endpoint to update a booking
 router.route("/update/:id").put(async (req, res) => {
-    let bookingID = req.params.id;
+    const bookingID = req.params.id;
     const { name, email, service, amount } = req.body;
 
     const updateBooking = {
@@ -105,94 +77,109 @@ router.route("/update/:id").put(async (req, res) => {
     };
 
     try {
-        // Find and update the booking by ID
-        const updatedBooking = await SalonBooking.findOneAndUpdate({ sid: bookingID }, updateBooking, { new: true });
+        const updatedBooking = await SalonBooking.findOneAndUpdate({ salonId: bookingID }, updateBooking, { new: true });
 
-        // Check if booking is found and updated
         if (!updatedBooking) {
             return res.status(404).send({ status: "Booking_Not_Found" });
         }
 
-        // Send the updated booking data to the frontend
         res.status(200).send({ status: "Booking Updated", booking: updatedBooking });
     } catch (error) {
-        // Handle errors
         console.error("Error updating booking:", error);
         res.status(500).send({ status: "Internal_Server_Error" });
     }
 });
 
-//Delete route
+// Endpoint to delete a booking
 router.route("/delete/:id").delete(async (req, res) => {
-    let bookingID = req.params.id;
+    const bookingID = req.params.id;
 
     try {
-        // Find the booking by ID
-        const booking = await SalonBooking.findOne({ sid: bookingID });
+        const booking = await SalonBooking.findOne({ salonId: bookingID });
 
-        // Check if booking exists
         if (!booking) {
             return res.status(404).send({ status: "Booking_Not_Found" });
         }
 
-        // Delete the booking
         await SalonBooking.findOneAndDelete({ _id: bookingID });
 
-        // Send success response
         res.status(200).send({ status: "Booking deleted" });
     } catch (error) {
-        // Handle errors
         console.error("Error deleting booking:", error);
         res.status(500).send({ status: "Internal_Server_Error", error: error.message });
     }
-
 });
+
+// Function to send confirmation email
 async function sendConfirmationEmail(email, bookingDetails) {
-    // Create a transporter object using SMTP transport
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port:587,
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        port: 587,
         auth: {
-            user: 'sliititpt105@gmail.com', // Your Gmail email address
-            pass: 'projectITPt105' // Your Gmail password
+            user: "sliititpt105@gmail.com", // Replace with your Gmail email address
+            pass: "qzfn juro ifbt ncgf" // Replace with your Gmail password
         }
     });
 
-    // Define email content
-    console.log("To email>>>", email);
-    let mailOptions = {
-        from: 'sliititpt105@gmail.com', // Sender address
-        to: email, // Receiver address
-        subject: 'Booking Confirmation', // Subject line
+    const mailOptions = {
+        from: "sliititpt105@gmail.com",
+        to: email,
+        subject: "Booking Confirmation",
         text: `Dear ${bookingDetails.name},\n\nYour booking has been confirmed. Details:\nService: ${bookingDetails.service}\nAmount: ${bookingDetails.amount}\n\nThank you for choosing us!\n\nBest regards,\nYour Salon Team`
     };
 
-    // Send the email
     await transporter.sendMail(mailOptions);
 }
 
+//check avaialability
+const MAX_BOOKINGS_PER_HOUR = 2; // Define the maximum number of bookings per hour
+
+router.get("/checkAvailability", async (req, res) => {
+    const { date, time } = req.query;
+
+    try {
+        // Check the count of bookings for the specified date and time
+        const bookingCount = await SalonBooking.countDocuments({ date: date, time: time });
+
+        // If the count is less than the maximum allowed bookings, it's available
+        if (bookingCount < MAX_BOOKINGS_PER_HOUR) {
+            res.json({ available: true });
+        } else {
+            res.json({ available: false });
+        }
+    } catch (error) {
+        console.error("Error checking availability:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+//calculate date by week
+router.get("/bookingsByWeek", async (req, res) => {
+    try {
+        // Calculate the start and end dates for the time period (e.g., 30 days)
+        const startDate = new Date();
+        const endDate = new Date();
+        endDate.setDate(startDate.getDate() + 30);
+
+        // Fetch bookings within the specified time period
+        const bookings = await SalonBooking.find({ date: { $gte: startDate, $lte: endDate } });
+
+        // Process bookings data to count bookings for each day of the week
+        const bookingCounts = [0, 0, 0, 0, 0, 0, 0]; // Initialize counts for each day of the week (0: Sunday, 1: Monday, ..., 6: Saturday)
+
+        bookings.forEach(booking => {
+            const dayOfWeek = booking.date.getDay(); // Get day of the week (0-6)
+            bookingCounts[dayOfWeek]++; // Increment count for the corresponding day of the week
+        });
+
+        // Send the booking counts data
+        res.json({ bookingCounts });
+    } catch (error) {
+        console.error("Error fetching bookings by week:", error);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+
 module.exports = router;
-
-// // Fetch services from the backend
-// axios.get('/api/services')
-//     .then(response => {
-//         // Extract services from the response data
-//         const services = response.data.services;
-
-//         // Get the select element
-//         const selectElement = document.getElementById('services');
-
-//         // Populate the select element with services
-//         services.forEach(service => {
-//             const option = document.createElement('option');
-//             option.value = service._id; // Assuming service object has an _id field
-//             option.text = service.name; // Assuming service object has a name field
-//             selectElement.appendChild(option);
-//         });
-//     })
-//     .catch(error => {
-//         console.error('Error fetching services:', error);
-//     });
-
-
-
