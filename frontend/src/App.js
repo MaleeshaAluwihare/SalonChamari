@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router and Routes
 import './App.css';
 
+
 //Chavidu
 import StudioBookingForm from './components/Chavidu/studioBookingForm';
 import SalonBookingForm from './components/Chavidu/salonBookingForm';
@@ -32,25 +33,30 @@ import CostumePage from './pages/Maleesha/CostumePage';
 import QuotationPage from './pages/Maleesha/QuotationPage';
 import Service_Dashboard from './pages/Maleesha/Dashboard';
 
+//Anoj
+import StockTable from './components/Anoj/stockTable';
+import AddInventory from './pages/Anoj/addInventory';
+import InventoryReplacing from './pages/Anoj/replacingInventory';
+import UpdateInventory from './pages/Anoj/updateInventory';
+import SupplierOrder from './pages/Anoj/supplierOrder';
+import ReorderingPage from './pages/Anoj/reorderInventory';
+import ChartComponent from './components/Anoj/chart';
+import InventoryDashboard from './pages/Anoj/InventoryDashboard';
 
 function App() {
-
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<LandingPage/>} />
+        <Route path="/salon-home" element={<SalonHome />} />
+        <Route path='/hair-page' element={<HairServices/>}/>
+        <Route path='/skin-page' element={<SkinServices/>}/>
+        <Route path='/nail-page' element={<NailServices/>}/>
+        <Route path='/bridal-page' element={<BridalServices/>}/>
+        <Route path='/costume-page' element={<CostumePage/>}/>
+        <Route path='/quote-page' element={<QuotationPage/>}/>
+        <Route path='/dash' element={<Service_Dashboard/>}/>
 
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/salon-home" element={<SalonHome />} />
-          <Route path='/hair-page' element={<HairServices/>}/>
-          <Route path='/skin-page' element={<SkinServices/>}/>
-          <Route path='/nail-page' element={<NailServices/>}/>
-          <Route path='/bridal-page' element={<BridalServices/>}/>
-          <Route path='/costume-page' element={<CostumePage/>}/>
-          <Route path='/quote-page' element={<QuotationPage/>}/>
-          <Route path='/dash' element={<Service_Dashboard/>}/>
-
-        {<Header />}
-        <Routes>
         <Route path="/Salon/booking" element={<SalonBookingForm/>} />
         <Route path="/Studio" element={<StudioHome/>} />
         <Route path="/studio/booking" element={<StudioBookingForm />} />
@@ -60,10 +66,20 @@ function App() {
         <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />
         <Route path="/admin/addImage" element={<StudioImageUploader />} />
         <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
-        </Routes>
-      </div>
-    </Router>
+
+        <Route path='/' element={<InventoryDashboard />} />
+        <Route path='/chart' element={<ChartComponent />} />
+        <Route path='/add' element={<AddInventory />} />
+        <Route path='/dash' element={<StockTable/>} />
+        <Route path='/reorder' element={<ReorderingPage/>} />
+        <Route path='/update' element={<UpdateInventory />} />
+        <Route path='/edit' element={<InventoryReplacing/>} />
+        <Route path='/order' element={<SupplierOrder/>} />
+        <Route path='/dashboard' element={<InventoryDashboard/>}/>
+      </Routes>
+    </div>
   );
 }
 
 export default App;
+
