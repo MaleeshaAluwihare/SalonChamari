@@ -33,6 +33,7 @@ function Inventory() {
                         quantity={item.quantity}
                         date={item.date}
                         itemType={item.itemType}
+                        itemPrice={item.itemPrice}
                         indicatorColor="var(--color-DarkYellow)"
                         
                     />

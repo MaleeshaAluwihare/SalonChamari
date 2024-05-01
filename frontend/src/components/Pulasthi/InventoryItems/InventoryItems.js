@@ -8,6 +8,7 @@ function InventoryItems({
       quantity,
       date,
       itemType,
+      itemPrice,
       indicatorColor
 }) {
 
@@ -23,7 +24,7 @@ function InventoryItems({
                     <p>
                         {itemType}
                     </p>
-                    <p>itemPrice</p>
+                    <p>{dollar}{itemPrice}</p>
                 </div>
                 
             </div>

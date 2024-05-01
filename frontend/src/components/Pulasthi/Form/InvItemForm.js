@@ -8,7 +8,7 @@ import { plus } from "../../../utils/Pulasthi/Icons";
 
 function InvItemForm() {
 
-    //const {addBudget,getBudgets,budgets}=useGlobalContext();
+    const {getInvItems}=useGlobalContext();
     //ekin ekata states hadanne nathuwa okkoma column values walata eka state hadala tma me tyenne
     const [inputState, setInputState] = useState({
         itemId: '',
@@ -17,7 +17,7 @@ function InvItemForm() {
         date: '',
     })
     //Dstructure to inputState
-    const { itemId, itemType, quantity, date } = inputState;
+    const { itemId, itemType, quantity, date, itemPrice } = inputState;
     //...?
     const handleInput = name => e => {
         //setInputState get the whatever we typing in the input
@@ -25,25 +25,10 @@ function InvItemForm() {
         // setError('')
     }
 
-    //react event handling 
-    const handleSubmit = e => {
-        e.preventDefault()
-
-        //getBudgets()
-        //set form to be empty after new budget submission
-        // setInputState({
-        //     budgetId: '',
-        //     month: '',
-        //     amount: '',
-        //     date: '',
-        // })
-
+    const handleCalculatePrice = () => {
         let price;
-        let quan = quantity;//quantity = inputState.quantity
-        quan = Number(quan);
-        let type = itemType;
-        
-        switch(type) {
+        let quan = parseInt(quantity, 10);
+        switch(itemType) {
             case "Hair Dryer":
                 price = 500;
                 break;
@@ -60,11 +45,45 @@ function InvItemForm() {
                 price = 8000;
                 break;
             default:
-                price = 0; // default price if type is not recognized
-    }
-    
-    let itemPrice = quan * price;
-    document.getElementById("itemP").innerHTML = "Item price: " + itemPrice;
+                price = 0;
+        }
+        let itemPrice = quan * price;
+        setInputState(prevState => ({ ...prevState, itemPrice })); //create a new state for itemPrice property
+    };
+
+    const BASE_URL = "http://localhost:8070/finance/";
+    //react event handling 
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        try {
+            const response = await fetch(`${BASE_URL}update-item-price`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                itemId: itemId,
+                itemPrice: itemPrice,
+                date: date,
+                itemType: itemType
+              })
+            });
+            const data = await response.json();
+            console.log('Success:', data);
+            // Do something here on success, like clearing the form or showing a success message
+          } catch (error) {
+            console.error('Error:', error);
+          }
+
+          getInvItems()
+        //set form to be empty after new budget submission
+        // setInputState({
+        //     budgetId: '',
+        //     month: '',
+        //     amount: '',
+        //     date: '',
+        // })
     }
 
   return (
@@ -124,10 +143,11 @@ function InvItemForm() {
                 bRad={'30px'}
                 bg={'var(--color-lightYellow'}
                 color={'#fff'}
+                onClick={handleCalculatePrice}
             />
         </div>
         <div className="price-label">
-            <label id="itemP"></label>
+            <label id="itemP">Item price: {itemPrice}</label>
         </div>
     </InvItemFormStyled>
   )

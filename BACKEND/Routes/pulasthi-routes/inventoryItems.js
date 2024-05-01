@@ -1,3 +1,4 @@
+const ExpenseTable = require("../../Models/pulasthi-models/Expense");
 const InventoryItemTable = require("../../Models/pulasthi-models/InventoryItem");
 
 const router = require("express").Router();
@@ -21,5 +22,30 @@ router.route("/get-invItems").get((req, res) => {
 })
 
 //items price eka hadila methanin tma expense table ekata data yanna onne
+// Route to update item price in InventoryItemTable and add an entry in ExpenseTable
+router.post('/update-item-price', async (req, res) => {
+    const { itemId, itemPrice, date, itemType } = req.body;
+    try {
+      // Update the inventory item
+      const updatedInventoryItem = await InventoryItemTable.findOneAndUpdate(
+        { itemId: itemId },
+        { $set: { itemPrice: itemPrice } },
+        { new: true }
+      );
+  
+      // Create a new expense record
+      const newExpense = new ExpenseTable({
+        expenseId: itemId,
+        amount: itemPrice,
+        date: date,
+        category: itemType
+      });
+      await newExpense.save();
+  
+      res.status(200).json({ inventory: updatedInventoryItem, expense: newExpense });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  });
 
 module.exports = router;
