@@ -40,14 +40,14 @@ import InventoryReplacing from './pages/Anoj/replacingInventory';
 import UpdateInventory from './pages/Anoj/updateInventory';
 import SupplierOrder from './pages/Anoj/supplierOrder';
 import ReorderingPage from './pages/Anoj/reorderInventory';
-import ChartComponent from './components/Anoj/chart';
+// import ChartComponent from './components/Anoj/chart';
 import InventoryDashboard from './pages/Anoj/InventoryDashboard';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LandingPage/>} />
+        <Route path="/landpage" element={<LandingPage/>} />
         <Route path="/salon-home" element={<SalonHome />} />
         <Route path='/hair-page' element={<HairServices/>}/>
         <Route path='/skin-page' element={<SkinServices/>}/>
@@ -67,10 +67,10 @@ function App() {
         <Route path="/admin/addImage" element={<StudioImageUploader />} />
         <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
 
-        <Route path='/' element={<InventoryDashboard />} />
-        <Route path='/chart' element={<ChartComponent />} />
+        <Route path='/inventoryDashboard' element={<InventoryDashboard />} />
+        {/* <Route path='/chart' element={<ChartComponent />} /> */}
         <Route path='/add' element={<AddInventory />} />
-        <Route path='/dash' element={<StockTable/>} />
+        <Route path='/stock' element={<StockTable/>} />
         <Route path='/reorder' element={<ReorderingPage/>} />
         <Route path='/update' element={<UpdateInventory />} />
         <Route path='/edit' element={<InventoryReplacing/>} />

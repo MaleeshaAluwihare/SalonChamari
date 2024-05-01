@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Button } from "@mui/material";
 
 // Functional component for reordering inventory stocks
 export default function ReorderingPage() {
@@ -52,91 +51,97 @@ export default function ReorderingPage() {
 
   // JSX code for rendering the component
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h5" gutterBottom>
-        Re-ordering Inventory Stocks
-      </Typography>
-      <form onSubmit={handleSubmit}>
+    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+      <h2 style={{ textAlign: "center" }}>Re-ordering Inventory Stocks</h2>
+      <form onSubmit={handleSubmit} style={{ padding: "20px", backgroundColor: "#f2f2f2", borderRadius: "5px" }}>
         {/* Select category */}
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            labelId="category-label"
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="category" style={{ display: "block", marginBottom: "5px" }}>
+            Category
+          </label>
+          <select
             id="category"
             value={category}
             required
             onChange={(e) => setCategory(e.target.value)}
-            label="Category"
+            style={{ width: "100%", padding: "10px" }}
           >
-            <MenuItem value="">Select Category</MenuItem>
-            <MenuItem value="saloon">Saloon</MenuItem>
-            <MenuItem value="studio">Studio</MenuItem>
-          </Select>
-        </FormControl>
+            <option value="">Select Category</option>
+            <option value="saloon">Saloon</option>
+            <option value="studio">Studio</option>
+          </select>
+        </div>
 
         {/* Select item ID */}
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="itemId-label">Item ID</InputLabel>
-          <Select
-            labelId="itemId-label"
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="itemId" style={{ display: "block", marginBottom: "5px" }}>
+            Item ID
+          </label>
+          <select
             id="itemId"
             value={itemId}
             required
             onChange={(e) => setItemId(e.target.value)}
-            label="Item ID"
+            style={{ width: "100%", padding: "10px" }}
           >
-            <MenuItem value="">Select Item ID</MenuItem>
+            <option value="">Select Item ID</option>
             {itemIdOptions.map((pid, index) => (
-              <MenuItem key={index} value={pid}>
+              <option key={index} value={pid}>
                 {pid}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
-        </FormControl>
+          </select>
+        </div>
 
         {/* Input field for quantity */}
-        <TextField
-          fullWidth
-          margin="normal"
-          id="quantity"
-          label="Quantity"
-          type="text"
-          value={quantity}
-          required
-          onChange={(e) => setQuantity(e.target.value)}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="quantity" style={{ display: "block", marginBottom: "5px" }}>
+            Quantity
+          </label>
+          <input
+            type="text"
+            id="quantity"
+            value={quantity}
+            required
+            onChange={(e) => setQuantity(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Input field for date */}
-        <TextField
-          fullWidth
-          margin="normal"
-          id="date"
-          label="Date"
-          type="date"
-          value={date}
-          disabled
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="date" style={{ display: "block", marginBottom: "5px" }}>
+            Date
+          </label>
+          <input
+            type="date"
+            id="date"
+            value={date}
+            disabled
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Input field for item type */}
-        <TextField
-          fullWidth
-          margin="normal"
-          id="itemType"
-          label="Item Type"
-          type="text"
-          value={itemType}
-          required
-          onChange={(e) => setItemType(e.target.value)}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="itemType" style={{ display: "block", marginBottom: "5px" }}>
+            Item Type
+          </label>
+          <input
+            type="text"
+            id="itemType"
+            value={itemType}
+            required
+            onChange={(e) => setItemType(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Submit button */}
-        <Button type="submit" variant="contained" color="primary">
+        <button type="submit" style={{ width: "100%", padding: "10px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
           Submit
-        </Button>
+        </button>
       </form>
-    </Container>
+    </div>
   );
 }
