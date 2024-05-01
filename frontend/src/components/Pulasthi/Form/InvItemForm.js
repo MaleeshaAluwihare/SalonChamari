@@ -62,6 +62,7 @@ function InvItemForm() {
               headers: {
                 'Content-Type': 'application/json',
               },
+              //Serializes the collected data into a JSON string.
               body: JSON.stringify({
                 itemId: itemId,
                 itemPrice: itemPrice,

@@ -22,7 +22,7 @@ router.route("/get-invItems").get((req, res) => {
 })
 
 //items price eka hadila methanin tma expense table ekata data yanna onne
-// Route to update item price in InventoryItemTable and add an entry in ExpenseTable
+// API endpoint  to update item price in InventoryItemTable and add an entry in ExpenseTable
 router.post('/update-item-price', async (req, res) => {
     const { itemId, itemPrice, date, itemType } = req.body;
     try {
