@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { InnerLayout } from "../../../css/Pulasthi/Layouts";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 import InventoryItems from "./InventoryItems";
+import InvItemForm from "../Form/InvItemForm";
 
 function Inventory() {
 
@@ -17,6 +18,10 @@ function Inventory() {
         <h1>Inventory Items</h1>
 
         <div className="inv-content">
+
+        <div className="form-container">
+            <InvItemForm/>
+        </div>
             
             <div className="items">
                 {items.map((item) => (
@@ -40,9 +45,23 @@ function Inventory() {
 };
 
 const InventoryStyled = styled.div`
-   
+  display: flex;
+  overflow: auto;
     h1{
         margin-bottom:2rem;
+    }
+
+    .inv-content{
+        display: flex;
+        gap: 2rem;
+        .items{
+            flex:1;
+        }
+    }
+
+    .form-container {
+      min-width: 550px; /* Example fixed width */
+      min-height: 400px; /* Example fixed height */
     }
 `;
 
