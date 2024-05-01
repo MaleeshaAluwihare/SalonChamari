@@ -1,5 +1,5 @@
 .mainContainer {
-    background-color: #000000;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,32 +27,17 @@
     width: 20px; /* Adjust space between images */
   }
 
-  /* .logoBox .logoImage {
-    box-shadow: 0 0 5px #fff;
-    animation: glowEffect 1.5s infinite alternate;
-  }
-  
-  @keyframes glowEffect {
-    from {
-      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFCF00, 0 0 35px #FFCF00, 0 0 40px #FFCF00, 0 0 50px #FFCF00, 0 0 75px #FFCF00;
-    }
-    to {
-      box-shadow: 0 0 5px #fff, 0 0 25px #FFCF00, 0 0 50px #FFCF00, 0 0 100px #FFCF00, 0 0 200px #FFCF00;
-    }
-  } */
-  
-
   .studiologoImage{
     width: 700px;
   }
 
   .contentBox {
-    background-color: #000000; /* Example background color for content */
+    background-color: #ffffff; /* Example background color for content */
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 40px; /* Add some space between contentBox and salonImageBox */
     align-items: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: "Titillium Web", sans-serif;
     font-weight: 200;
     font-style: normal;
@@ -69,7 +54,7 @@
     text-align: center;
     line-height: 0.8;
     margin-top: 70px; /* Adjust margin-top as needed */
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: "Titillium Web", sans-serif;
     font-weight: 200;
     font-style: normal;
@@ -111,32 +96,32 @@
     width: 100%; /* Adjust as needed */
     max-width: 1400px; /* Limit the maximum width of the salon image */
     margin-bottom: 20px;
-    box-shadow: rgba(0,0,0,0.2) 0px 60px 40px -7px;
-    transform: translateX(400%);
-    transition: transform 0.7s ease;
+    /* box-shadow: rgba(0,0,0,0.2) 0px 60px 40px -7px;  */
+    /* transform: translateX(400%); */
+    /* transition: transform 0.7s ease; */
   }
 
-  .salonImageBox:nth-of-type(even){
-    transform: translateX(-400%);
-  }
-
-  .salonImageBox.show{
+  /* .salonImageBox.show{
     transform: translateX(0);
-  }
-  
-  .salonImage {
-    width: 1000px;
-    border-radius: 10px; 
-  }
+  } */
+
+  /* .salonImageBox:nth-of-type(even){
+    transform: translateX(-400%);
+  } */
 
 .salonImageBox h3:nth-child(2) {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Background color for better readability */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 10px;
     margin: 0;
+} 
+
+.salonImage {
+  width: 1000px;
+  border-radius: 10px; 
 }
 
   .backBtn{

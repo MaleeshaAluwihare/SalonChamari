@@ -13,6 +13,7 @@
   background-position: center;
   font-family: 'Vacelyn', sans-serif;
   position: relative;
+  margin-top: 80px;
 }
 
 .ServiceRec h2 {
@@ -22,6 +23,7 @@
   font-weight: 700; 
   position: absolute;
   left: 50%;
+  margin-top: 30px;
 }
 
 .serviceName {
@@ -67,7 +69,7 @@
 }
 
 /*TABLE */
-.table-container-wrapper {
+.tablecontainerwrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -76,7 +78,7 @@
     margin-right: 50px;
 }
 
-.table-container {
+.tablecontainer {
     width: calc(50% - 25px); /* Set width for each table container (assuming 2 tables per row) */
     margin-bottom: 50px; /* Add some space between tables */
     
@@ -132,7 +134,7 @@
 }
 
 /*Search Bar*/
-.search-bar {
+.searchbar {
   display: flex;
   align-items: center;
   justify-content: center; /* Center horizontally */
@@ -145,7 +147,7 @@
   margin-top: 40px;
 }
 
-.search-bar input[type="text"] {
+.searchbar input[type="text"] {
   border: none;
   outline: none;
   flex: 1;
@@ -153,11 +155,11 @@
   font-size: 14px;
 }
 
-.search-bar input[type="text"]::placeholder {
+.searchbar input[type="text"]::placeholder {
   color: #000000;
 }
 
-.search-bar .button {
+.searchbar .button {
   margin-right: 10px; /* Adjust the margin for spacing */
   cursor: pointer;
   width: 7%;
