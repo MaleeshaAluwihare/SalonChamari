@@ -33,9 +33,9 @@ export default function InventoryDashboard(){
                 <div className="stock-list">
                     {selectedOption === "stock-list" && <InventoryReplacing/>}
                 </div>
-                <div className="surlier-order">
+                {/* <div className="surlier-order">
                     {selectedOption === "surlier-order" && <SuplierOrder/>}  
-                </div>
+                </div> */}
             </div>
         </div>
     )

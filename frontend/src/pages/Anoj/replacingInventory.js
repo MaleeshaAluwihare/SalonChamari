@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Stack from '@mui/material/Stack';
 
 export default function InventoryReplacing() {
   const navigate = useNavigate();
@@ -27,7 +17,8 @@ export default function InventoryReplacing() {
     if (selectedCategory !== "All") {
       url += `?category=${selectedCategory}`;
     }
-    axios.get(url)
+    axios
+      .get(url)
       .then((res) => {
         setProducts(res.data);
       })
@@ -52,77 +43,133 @@ export default function InventoryReplacing() {
     if (!dateString) return "";
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return "Invalid Date";
-    return date.toLocaleString('en-US', { 
-      year: 'numeric', 
-      month: '2-digit', 
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit' 
+    return date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
     });
   };
 
   const filteredProducts = products.filter((product) => {
     if (!searchInput.trim()) return true;
     const searchLowerCase = searchInput.trim().toLowerCase();
-    return product.pid.toString().includes(searchLowerCase) || product.name.toLowerCase().includes(searchLowerCase);
+    return (
+      product.pid.toString().includes(searchLowerCase) ||
+      product.name.toLowerCase().includes(searchLowerCase)
+    );
   });
 
-  const handleUpdateButtonClick = () => {
-    navigate("/dashboard", { state: { selectedOption: "update-stock" } });
+  const handleUpdateButtonClick = (product) => {
+    navigate("/update", { state: product });
   };
+  
 
   return (
     <div>
-      <div className="container">
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <h1>Inventory Report</h1>
-        <div className="SearchBar">
-          <TextField
-            label="Enter ID or Name"
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+          <input
+            type="text"
+            placeholder="Enter ID or Name"
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
+            style={{ padding: "8px", flex: 1, marginRight: "10px" }}
           />
-          <Button variant="contained" onClick={() => setSearchInput("")}>Clear</Button>
+          <button
+            style={{
+              padding: "8px 16px",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              cursor: "pointer",
+            }}
+            onClick={() => setSearchInput("")}
+          >
+            Clear
+          </button>
         </div>
-        <div className="container">
-          <Select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="saloon">Saloon</MenuItem>
-            <MenuItem value="studio">Studio</MenuItem>
-          </Select>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Inventory Name</TableCell>
-                <TableCell>Quantity</TableCell>
-                <TableCell>Price</TableCell>
-                <TableCell>Use Quantity</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredProducts.map((product) => (
-                <TableRow key={product.pid}>
-                  <TableCell>{product.pid}</TableCell>
-                  <TableCell>{product.name}</TableCell>
-                  <TableCell>{product.quantity}</TableCell>
-                  <TableCell>{product.price}</TableCell>
-                  <TableCell>{product.useQuantity}</TableCell>
-                  <TableCell>{formatDate(product.date)}</TableCell>
-                  <TableCell>
-                  <Stack spacing={2} direction="row">
-                    <Button variant="contained" color="success" onClick={handleUpdateButtonClick}>Update</Button>
-                    <Button variant="contained" color="error" onClick={() => deleteProduct(product.pid)}>Delete</Button>
-                    </Stack>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <Button variant="contained" color="primary" onClick={() => navigate("/add")}>Add</Button>
+        <div style={{ marginBottom: "20px" }}>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            style={{ padding: "8px" }}
+          >
+            <option value="All">All</option>
+            <option value="saloon">Saloon</option>
+            <option value="studio">Studio</option>
+          </select>
         </div>
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>ID</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Inventory Name</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Quantity</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Price</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Use Quantity</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Date</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredProducts.map((product) => (
+              <tr key={product.pid}>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{product.pid}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{product.name}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{product.quantity}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{product.price}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{product.useQuantity}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{formatDate(product.date)}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-around" }}>
+                  <button
+                    style={{
+                      backgroundColor: "#4CAF50",
+                      color: "white",
+                      padding: "8px 16px",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleUpdateButtonClick(product)}
+                  >
+                    Update
+                  </button>
+
+                    <button
+                      style={{
+                        backgroundColor: "#f44336",
+                        color: "white",
+                        padding: "8px 16px",
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => deleteProduct(product.pid)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button
+          style={{
+            marginTop: "20px",
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/add")}
+        >
+          Add
+        </button>
       </div>
     </div>
   );

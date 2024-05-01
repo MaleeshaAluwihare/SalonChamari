@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { 
-  FormControl, 
-  InputLabel, 
-  Select, 
-  MenuItem, 
-  TextField, 
-  Button, 
-  Container, 
-  Typography 
-} from "@mui/material";
 
 export default function AddInventory() {
   // State variables to hold form data
@@ -39,7 +29,7 @@ export default function AddInventory() {
       .post("/StudioInventory/add", newProduct)
       .then(() => {
         alert("Product Added"); // Show success message
-        navigate("/"); // Redirect to home page
+        navigate("/inventoryDashboard"); // Redirect to home page
       })
       .catch((err) => {
         console.error("Error message:", err); // Log error message to console
@@ -49,80 +39,92 @@ export default function AddInventory() {
 
   // JSX code for the component
   return (
-    <Container maxWidth="sm" sx={{ marginTop: 5 }}>
-      <Typography variant="h4" gutterBottom>
-        Add Inventory
-      </Typography>
-      <form onSubmit={sendData}> {/* Form element with onSubmit event handler */}
+    <div style={{ maxWidth: "500px", margin: "50px auto" }}>
+      <h2 style={{ textAlign: "center" }}>Add Inventory</h2>
+      <form onSubmit={sendData} style={{ padding: "20px", backgroundColor: "#f2f2f2", borderRadius: "5px" }}>
         {/* Select input for category */}
-        <FormControl fullWidth sx={{ marginBottom: 2 }}>
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            
-            labelId="category-label"
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="category" style={{ display: "block", marginBottom: "5px" }}>
+            Category
+          </label>
+          <select
             id="category"
             value={category}
             required
             onChange={(e) => setCategory(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
           >
-            {/* Menu items for different categories */}
-            <MenuItem value="">Select Category</MenuItem>
-            <MenuItem value="saloon">Saloon</MenuItem>
-            <MenuItem value="studio">Studio</MenuItem>
-          </Select>
-        </FormControl>
+            <option value="">Select Category</option>
+            <option value="saloon">Saloon</option>
+            <option value="studio">Studio</option>
+          </select>
+        </div>
 
         {/* Text field for inventory ID */}
-        <TextField
-          fullWidth
-          id="inventoryID"
-          label="Inventory ID"
-          placeholder="Enter inventory ID"
-          required
-          onChange={(e) => setID(e.target.value)}
-          sx={{ marginBottom: 2 }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="inventoryID" style={{ display: "block", marginBottom: "5px" }}>
+            Inventory ID
+          </label>
+          <input
+            type="text"
+            id="inventoryID"
+            placeholder="Enter inventory ID"
+            required
+            onChange={(e) => setID(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Text field for inventory name */}
-        <TextField
-          fullWidth
-          id="inventoryName"
-          label="Inventory Name"
-          placeholder="Enter inventory name"
-          required
-          onChange={(e) => setName(e.target.value)}
-          sx={{ marginBottom: 2 }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="inventoryName" style={{ display: "block", marginBottom: "5px" }}>
+            Inventory Name
+          </label>
+          <input
+            type="text"
+            id="inventoryName"
+            placeholder="Enter inventory name"
+            required
+            onChange={(e) => setName(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Text field for quantity */}
-        <TextField
-          fullWidth
-          type="number"
-          id="quantity"
-          label="Quantity"
-          placeholder="Enter Quantity"
-          required
-          onChange={(e) => setQuantity(e.target.value)}
-          sx={{ marginBottom: 2 }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="quantity" style={{ display: "block", marginBottom: "5px" }}>
+            Quantity
+          </label>
+          <input
+            type="number"
+            id="quantity"
+            placeholder="Enter Quantity"
+            required
+            onChange={(e) => setQuantity(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Text field for price */}
-        <TextField
-          fullWidth
-          type="number"
-          id="price"
-          label="Price"
-          placeholder="Enter Price"
-          required
-          onChange={(e) => setPrice(e.target.value)}
-          sx={{ marginBottom: 2 }}
-        />
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="price" style={{ display: "block", marginBottom: "5px" }}>
+            Price
+          </label>
+          <input
+            type="number"
+            id="price"
+            placeholder="Enter Price"
+            required
+            onChange={(e) => setPrice(e.target.value)}
+            style={{ width: "100%", padding: "10px" }}
+          />
+        </div>
 
         {/* Submit button */}
-        <Button variant="contained" type="submit">
+        <button type="submit" style={{ width: "100%", padding: "10px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
           Submit
-        </Button>
+        </button>
       </form>
-    </Container>
+    </div>
   );
 }

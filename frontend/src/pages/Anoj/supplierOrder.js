@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 
 function ItemTable() {
   // Sample data for demonstration
@@ -14,25 +13,25 @@ function ItemTable() {
   const [items, setItems] = useState(initialItems);
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>ID</TableCell>
-          <TableCell>Quantity</TableCell>
-          <TableCell>Item Type</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+    <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <thead>
+        <tr>
+          <th style={{ border: "1px solid #ddd", padding: "8px" }}>ID</th>
+          <th style={{ border: "1px solid #ddd", padding: "8px" }}>Quantity</th>
+          <th style={{ border: "1px solid #ddd", padding: "8px" }}>Item Type</th>
+        </tr>
+      </thead>
+      <tbody>
         {items.map((item) => (
-          <TableRow key={item.id}>
-            <TableCell>{item.id}</TableCell>
-            <TableCell>{item.quantity}</TableCell>
-            <TableCell>{item.itemType}</TableCell>
-          </TableRow>
+          <tr key={item.id}>
+            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.id}</td>
+            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.quantity}</td>
+            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.itemType}</td>
+          </tr>
         ))}
-      </TableBody>
-    </Table>
+      </tbody>
+    </table>
   );
 }
- 
+
 export default ItemTable;

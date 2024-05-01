@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { TextField, Button, Typography, Container } from '@mui/material';
 
 export default function UpdateInventory() {
   const navigate = useNavigate();
@@ -26,6 +25,7 @@ export default function UpdateInventory() {
       setTotalUseQuantity(productData.useQuantity || 0);
     }
   }, [location.state]);
+  
 
   const getMaxAllowedUseQuantity = () => {
     return parseInt(quantity) - totalUseQuantity;
@@ -33,92 +33,89 @@ export default function UpdateInventory() {
 
   const updateProduct = (e) => {
     e.preventDefault();
-  
     const maxAllowedUseQuantity = parseInt(quantity) - totalUseQuantity;
     const updatedUseQuantity = parseInt(useQuantity) + totalUseQuantity;
-    
     if (updatedUseQuantity > parseInt(quantity)) {
       alert("Use Quantity cannot exceed available Quantity");
-      return; 
+      return;
     }
-  
     const updatedProduct = {
       name,
       price,
       quantity,
       useQuantity: updatedUseQuantity,
-      date
+      date,
     };
-  
     axios
       .put(`/StudioInventory/update/${pid}`, updatedProduct)
       .then(() => {
         alert("Product Updated");
-        navigate("/edit");
+        navigate("/inventoryDashboard");
       })
       .catch((err) => {
         alert(err);
       });
   };
-  
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom>Update Inventory</Typography>
-      <form onSubmit={updateProduct}>
-        <TextField
-          label="Inventory ID"
+    <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
+      <h2 style={{ textAlign: "center" }}>Update Inventory</h2>
+      <form onSubmit={updateProduct} style={{ display: "flex", flexDirection: "column" }}>
+        <input
+          type="text"
           value={pid}
-          fullWidth
           disabled
-          variant="outlined"
-          margin="normal"
+          style={{ padding: "10px", marginBottom: "10px" }}
+          placeholder="Inventory ID"
         />
-        <TextField
-          label="Inventory Name"
+        <input
+          type="text"
           value={name}
-          fullWidth
           required
-          variant="outlined"
-          margin="normal"
+          style={{ padding: "10px", marginBottom: "10px" }}
+          placeholder="Inventory Name"
           onChange={(e) => setName(e.target.value)}
         />
-        <TextField
-          label="Price"
-          value={price}
-          fullWidth
-          required
+        <input
           type="number"
-          variant="outlined"
-          margin="normal"
+          value={price}
+          required
+          style={{ padding: "10px", marginBottom: "10px" }}
+          placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
-        <TextField
-          label="Quantity"
+        <input
+          type="text"
           value={quantity}
-          fullWidth
           disabled
-          variant="outlined"
-          margin="normal"
+          style={{ padding: "10px", marginBottom: "10px" }}
+          placeholder="Quantity"
         />
-        <TextField
-          label="Use Quantity"
-          value={useQuantity}
-          fullWidth
-          required
+        <input
           type="number"
-          variant="outlined"
-          margin="normal"
+          value={useQuantity}
+          required
+          style={{ padding: "10px", marginBottom: "10px" }}
+          placeholder="Use Quantity"
           max={getMaxAllowedUseQuantity()}
           onChange={(e) => setUseQuantity(e.target.value)}
         />
-        <Typography variant="body2" color="textSecondary">
+        <p style={{ marginBottom: "10px" }}>
           Maximum allowed: {getMaxAllowedUseQuantity()}
-        </Typography>
-        <Button type="submit" variant="contained" color="primary">
+        </p>
+        <button
+          type="submit"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
           Update
-        </Button>
+        </button>
       </form>
-    </Container>
+    </div>
   );
 }
