@@ -7,7 +7,7 @@ import './App.css';
 import StudioBookingForm from './components/Chavidu/studioBookingForm';
 import SalonBookingForm from './components/Chavidu/salonBookingForm';
 import StudioHome from './pages/chavidu/StudioHome';
-import Header from './components/Chavidu/Header';
+// import Header from './components/Chavidu/Header';
 // import PackageManagement from './components/Chavidu/studioPackageAdmin';
 // import PeakBookingDaysChart from './components/Chavidu/bookingDataChart';
 import StudioImageUploader from './components/Chavidu/studioImageForm';
@@ -19,7 +19,7 @@ import ViewStudioBookings from './components/Chavidu/ViewStudioBookings';
 import Booking_Dashboard from './pages/chavidu/AdminDashBoard';
 import ReservationDashboard from './pages/chavidu/ReservationDashBoard';
 // import BookingReport from './components/Chavidu/studioReport';
-import DisplayStudioPackages from './components/Chavidu/displayStudioPackage';
+// import DisplayStudioPackages from './components/Chavidu/displayStudioPackage';
 
 
 //Maleesha
@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/landpage" element={<LandingPage/>} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/salon-home" element={<SalonHome />} />
         <Route path='/hair-page' element={<HairServices/>}/>
         <Route path='/skin-page' element={<SkinServices/>}/>
@@ -60,7 +60,6 @@ function App() {
         <Route path="/Salon/booking" element={<SalonBookingForm/>} />
         <Route path="/Studio" element={<StudioHome/>} />
         <Route path="/studio/booking" element={<StudioBookingForm />} />
-        <Route path="/" element={<DisplayStudioPackages />} />
         <Route path="/admin" element={<Booking_Dashboard />} />
         <Route path="/admin/Reservation" element={<ReservationDashboard />} />
         <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />
@@ -80,6 +79,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 
