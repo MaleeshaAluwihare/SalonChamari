@@ -79,3 +79,11 @@ app.use("/services",searchRouter);
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
 app.use("/MailSend",sendMailRouter);
+
+//chavidu
+app.use("/SalonBooking",salonBookingRouter)
+app.use("/StudioBooking",studioBookingRouter)
+
+
+app.use("/SalonBooking",salonBookingRouter)
+app.use("/StudioBooking",studioBookingRouter)
