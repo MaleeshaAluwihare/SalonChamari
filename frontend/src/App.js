@@ -34,36 +34,30 @@ import Service_Dashboard from './pages/Maleesha/Dashboard';
 
 
 function App() {
-
   return (
-    <Router>
-      <div className="App">
-
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/salon-home" element={<SalonHome />} />
-          <Route path='/hair-page' element={<HairServices/>}/>
-          <Route path='/skin-page' element={<SkinServices/>}/>
-          <Route path='/nail-page' element={<NailServices/>}/>
-          <Route path='/bridal-page' element={<BridalServices/>}/>
-          <Route path='/costume-page' element={<CostumePage/>}/>
-          <Route path='/quote-page' element={<QuotationPage/>}/>
-          <Route path='/dash' element={<Service_Dashboard/>}/>
-
-        {<Header />}
-        <Routes>
-        <Route path="/Salon/booking" element={<SalonBookingForm/>} />
-        <Route path="/Studio" element={<StudioHome/>} />
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/salon-home" element={<SalonHome />} />
+        <Route path="/hair-page" element={<HairServices />} />
+        <Route path="/skin-page" element={<SkinServices />} />
+        <Route path="/nail-page" element={<NailServices />} />
+        <Route path="/bridal-page" element={<BridalServices />} />
+        <Route path="/costume-page" element={<CostumePage />} />
+        <Route path="/quote-page" element={<QuotationPage />} />
+        <Route path="/dash" element={<Service_Dashboard />} />
+        <Route path="/Salon/booking" element={<SalonBookingForm />} />
+        <Route path="/studio-home" element={<StudioHome />} />
         <Route path="/studio/booking" element={<StudioBookingForm />} />
-        <Route path="/" element={<DisplayStudioPackages />} />
         <Route path="/admin" element={<Booking_Dashboard />} />
         <Route path="/admin/Reservation" element={<ReservationDashboard />} />
         <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />
         <Route path="/admin/addImage" element={<StudioImageUploader />} />
         <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
-        </Routes>
-      </div>
-    </Router>
+      </Routes>
+    </div>
   );
 }
+
 
 export default App;

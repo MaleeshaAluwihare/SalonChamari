@@ -5,7 +5,7 @@ import 'jspdf-autotable';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faMinus, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
-import '../../css/Maleesha/Quotation.css';
+import Styles from '../../css/Maleesha/Quotation.module.css';
 import 'jspdf-autotable';
 import SalonLogo from '../../images/Maleesha/Logo.png';
 import Header from '../Maleesha/Header';
@@ -259,16 +259,16 @@ export default function QuotationPage() {
 
 
     return (
-        <div className='mainContainer'>
-            <div className='header-container'><Header/></div>
-            <div className='contentContainer'>
+        <div className={Styles.mainContainer}>
+            <div className={Styles.headercontainer}><Header/></div>
+            <div className={Styles.contentContainer}>
                 <h1>Quotation</h1>
-                <div className='headingContainer'>
+                <div className={Styles.headingContainer}>
                     <p>We prioritize your satisfaction above all else.</p>
                     <p>Let us bring your vision to life - submit your request today and experience the difference firsthand</p>
                 </div>
-                <div className='dropdownContainer'>
-                    <div className='dropdown'>
+                <div className={Styles.dropdownContainer}>
+                    <div className={Styles.dropdown}>
                         <label>Pick Category:</label>
                         <select value={selectedService} onChange={handleServiceChange}>
                             <option value="">Select</option>
@@ -277,7 +277,7 @@ export default function QuotationPage() {
                             ))}
                         </select>
                     </div>
-                    <div className='dropdown'>
+                    <div className={Styles.dropdown}>
                         <label>Pick Sub-Category:</label>
                         <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
                             <option value="">Select</option>
@@ -286,7 +286,7 @@ export default function QuotationPage() {
                             ))}
                         </select>
                     </div>
-                    <div className='dropdown'>
+                    <div className={Styles.dropdown}>
                         <label>Pick Service:</label>
                         <select value={selectedServiceItem} onChange={handleServiceItemClick}>
                             <option value="">Select</option>
@@ -296,11 +296,11 @@ export default function QuotationPage() {
                         </select>
                     </div>
                 </div>
-                <button className="addServiceBtn" onClick={handleAddService}>Add Service</button>
+                <button className={Styles.addServiceBtn} onClick={handleAddService}>Add Service</button>
                 <hr></hr>
-                <div className="selectedServicesContainer">
+                <div className={Styles.selectedServicesContainer}>
                     {selectedServices.length > 0 ? (
-                        <table className='serviceTable'>
+                        <table className={Styles.serviceTable}>
                             <thead>
                                 <tr>
                                     <th>Item No</th>
@@ -315,14 +315,14 @@ export default function QuotationPage() {
                                     <tr key={index}>
                                         <td>{service.itemNo}</td>
                                         <td>{service.itemName}</td>
-                                        <td className="quantity-adjustment">
+                                        <td className={Styles.quantityadjustment}>
                                             <button onClick={() => handleQuantityChange(index, -1)}><FontAwesomeIcon icon={faMinus}/></button>
-                                            <span className='quantity-display'>{service.quantity}</span>
+                                            <span className={Styles.quantitydisplay}>{service.quantity}</span>
                                             <button onClick={() => handleQuantityChange(index, 1)}><FontAwesomeIcon icon={faPlus}/></button>
                                         </td>
                                         <td>{service.itemPrice * service.quantity}</td>
                                         <td>
-                                            <button onClick={() => handleRemoveService(index)} className='remove-btn'><FontAwesomeIcon icon={faTrash}/> </button>
+                                            <button onClick={() => handleRemoveService(index)} className={Styles.removebtn}><FontAwesomeIcon icon={faTrash}/> </button>
                                         </td>
                                     </tr>
                                 ))}
@@ -331,25 +331,25 @@ export default function QuotationPage() {
                     ) : (
                         <h4>Your Quote is empty. Please add items to the quote</h4>
                     )}
-                    <div className="totalAmountContainer">
+                    <div className={Styles.totalAmountContainer}>
                         Total Amount: Rs.{calculateTotalAmount()}
                     </div>
                     {selectedServices.length > 0 && (
-                        <button className="downloadPDFBtn" onClick={handleDownloadPDF}>Download Quote</button>
+                        <button className={Styles.downloadPDFBtn} onClick={handleDownloadPDF}>Download Quote</button>
                     )}
                 </div>
-                <div className='floating-button' onClick={FormVisibility}>
+                <div className={Styles.floatingbutton} onClick={FormVisibility}>
                     Make Appointment
                 </div>
                 {showAppointmentForm && (
-                    <div className='modal-container'>
-                      <div className="appointmentFormContainer">
+                    <div className={Styles.modalcontainer}>
+                      <div className={Styles.appointmentFormContainer}>
                             <form onSubmit={handleAppoinment}>
-                                <button onClick={handleClose} className="close-icon">
+                                <button onClick={handleClose} className={Styles.closeicon}>
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
-                                <div className="formField">
-                                    <label htmlFor="customerName">Customer Name:</label>
+                                <div className={Styles.formField}>
+                                    <label htmlFor={Styles.customerName}>Customer Name:</label>
                                     <input
                                         type="text"
                                         id="customerName"
@@ -359,7 +359,7 @@ export default function QuotationPage() {
                                         required
                                     />
                                 </div>
-                                <div className="formField">
+                                <div className={Styles.formField}>
                                     <label htmlFor="contactNumber">Contact Number:</label>
                                     <input
                                         type="tel"
@@ -370,7 +370,7 @@ export default function QuotationPage() {
                                         required
                                     />
                                 </div>
-                                <div className="formField">
+                                <div className={Styles.formField}>
                                     <label htmlFor="pdf">Attach PDF:</label>
                                     <input
                                         type="file"
@@ -380,9 +380,9 @@ export default function QuotationPage() {
                                         accept=".pdf"
                                         required
                                     />
-                                     <p class="instructionMessage">*Please attach your generated quote PDF.</p>
+                                     <p class={Styles.instructionMessage}>*Please attach your generated quote PDF.</p>
                                 </div>
-                                <div className="formField">
+                                <div className={Styles.formField}>
                                     <label htmlFor="appointmentDate">Appointment Date:</label>
                                     <input
                                         type="date"
@@ -394,7 +394,7 @@ export default function QuotationPage() {
                                         required
                                     />
                                 </div>
-                                <div className="formField">
+                                <div className={Styles.formField}>
                                     <label htmlFor="appointmentTime">Appointment Time:</label>
                                     <input
                                         type="time"
@@ -405,7 +405,7 @@ export default function QuotationPage() {
                                         required
                                     />
                                 </div>
-                                <button type="submit" className='formSubmitBtn'>Submit</button>
+                                <button type="submit" className={Styles.formSubmitBtn}>Submit</button>
                             </form>                    
                         </div>
                     </div>

@@ -113,7 +113,7 @@ h4{
     font-size: 35px;
 }
 
-.remove-btn {
+.removebtn {
     background-color: #dc3545; /* Red color for remove button */
     color: rgb(255, 255, 255);
     border: none;
@@ -122,7 +122,7 @@ h4{
     border-radius: 10px;
 }
 
-.remove-btn:hover {
+.removebtn:hover {
     background-color: #bb2d3b; /* Darker red color on hover */
 }
 
@@ -139,7 +139,7 @@ h4{
     font-weight: bold;
 }
 
-.floating-button {
+.floatingbutton {
   position: fixed; /* Fixed position to float on the page */
   bottom: 20px; /* 20px from the bottom */
   right: 0px; /* 20px from the left */
@@ -157,15 +157,15 @@ h4{
   z-index: 1000; /* Ensure it's above other elements */
   }
   
-  .floating-button:hover {
+  .floatingbutton:hover {
     background-color: #0056b3;  }
   
-  .quantity-adjustment {
+  .quantityadjustment {
     align-items: center;
     justify-content: center;
   }
   
-  .quantity-adjustment button {
+  .quantityadjustment button {
     background-color: #5fafff;
     color: white;
     cursor: pointer;
@@ -175,15 +175,15 @@ h4{
     outline: none;
   }
 
-  .quantity-adjustment button:focus {
+  .quantityadjustment button:focus {
     outline: none; 
   }
   
-  .quantity-adjustment button:hover {
+  .quantityadjustment button:hover {
     background-color: #15b300; /* Change color on hover for visual feedback */
   }
   
-  .quantity-display {
+  .quantitydisplay {
     padding: 0 15px;
     font-size: 1.2rem; /* Adjust size as needed */
   }
@@ -191,7 +191,7 @@ h4{
   /*FORM CSS*/
   /* General form styling */
 
-  .modal-container {
+  .modalcontainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -219,7 +219,7 @@ h4{
     to { opacity: 1; transform: translateY(0); }
   }
   
-  .close-icon {
+  .closeicon {
     position: absolute;
     top: 15px; /* Adjusted positioning */
     right: 15px;
@@ -230,7 +230,7 @@ h4{
     transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
   }
   
-  .close-icon:hover {
+  .closeicon:hover {
     transform: scale(1.1); /* Slightly enlarges the icon on hover */
   }
   
@@ -282,6 +282,6 @@ h4{
     margin-top: 5px; 
 }
 
-.swal2-container {
+.swal2container {
   z-index: 9999 !important;
 }
