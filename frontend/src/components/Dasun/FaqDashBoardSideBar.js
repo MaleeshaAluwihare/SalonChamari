@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import '../../CSS/Dasun/faqDashBoardSideBar.css';
+import '../../css/Dasun/faqDashBoardSideBar.css';
 import Logo from '../../images/Dasun/Logo.png';
 
 export default function FaqDashboardSideBar({ onSelectOption }) {

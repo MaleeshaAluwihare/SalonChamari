@@ -67,7 +67,7 @@ import CustomerFaq from './pages/Dasun/FaqCustomer';
 import DeleteFeedback from './components/Dasun/deleteFeedback';
 import DeleteMessage from './components/Dasun/deleteMessage';
 import DashboardSideBar from './components/Dasun/FaqDashBoardSideBar';
-import FaqDashboard from './pages/FaqDashboard';
+import FaqDashboard from './pages/Dasun/FaqDashboard';
 
 
 

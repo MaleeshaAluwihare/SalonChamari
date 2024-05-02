@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/Dasun/allFeedbacks.css';
+import '../../css/Dasun/allFeedbacks.css';
 import { Link } from "react-router-dom";
 import {jsPDF} from "jspdf";
 import { Toast } from "bootstrap";

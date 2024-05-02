@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../CSS/Dasun/allFaqs.css';
+import '../../css/Dasun/allFaqs.css';
 import { Link } from "react-router-dom";
 
 export default function AllFaqs() {

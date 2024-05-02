@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
-import '../../CSS/Dasun/addFaqForm.css';
+import '../../css/Dasun/addFaqForm.css';
 // import {userNavigate} from 'react-router-dom';
 
 export default function AddFaq() {
