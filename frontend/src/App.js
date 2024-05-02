@@ -58,9 +58,9 @@ function App() {
         <Route path='/dash' element={<Service_Dashboard/>}/>
 
         <Route path="/Salon/booking" element={<SalonBookingForm/>} />
-        <Route path="/Studio" element={<StudioHome/>} />
+        <Route path="/Studio-home" element={<StudioHome/>} />
         <Route path="/studio/booking" element={<StudioBookingForm />} />
-        <Route path="/" element={<DisplayStudioPackages />} />
+        {/* <Route path="/" element={<DisplayStudioPackages />} /> */}
         <Route path="/admin" element={<Booking_Dashboard />} />
         <Route path="/admin/Reservation" element={<ReservationDashboard />} />
         <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />

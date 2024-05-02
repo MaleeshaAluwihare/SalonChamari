@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from '../../components/Chavidu/Header';
 import SliderSection from "../../components/Chavidu/imageSilder";
-import WordSlider1 from "../../components/Chavidu/wordslider1";
 import StudioBookingForm from "../../components/Chavidu/studioBookingForm";
-import '../../css/chavidu/studioHome.css';
+import styles from'../../css/chavidu/studioHome.module.css';
 import DisplayStudioPackages from "../../components/Chavidu/displayStudioPackage"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import video from '../../images/chavidu/video.mp4';
 
@@ -14,7 +15,11 @@ function StudioHome() {
         <div className="studio-home">
             
             <SliderSection />
-            <WordSlider1 />
+
+            <div className="StudioText">
+  <h1>Step into our world of light, shadow, and boundless creativity. Let's make memories together</h1>
+</div>
+
             <div className='fixed-background-section'>
                 <div className='about-content'>
                     <h3>Discover Beauty and Elegance</h3>
@@ -24,6 +29,44 @@ function StudioHome() {
                     <p>Embrace the Salon Chamari experience—where exceptional beauty services meet affordability and every moment is a step towards the aisle of radiance.</p>
                 </div>
             </div>
+
+            <div class="locationContainer">
+    <div class="mapContainer">
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.843688062924!2d80.39591537401498!3d8.318327291717358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afcf44e0824017d%3A0x1c10a76bc564e04!2sSalon%20Chamari!5e0!3m2!1sen!2slk!4v1712595555845!5m2!1sen!2slk"
+    width="800"
+    height="500"
+    style={{ border: "0" }} // Use object notation here
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Salon Chamari Location"
+></iframe>
+
+    </div>
+    <div class="detailContainer ">
+        <div class="contactInfo">
+            <p class="title"><FontAwesomeIcon icon={faLocationDot} class="locationIcon" size="6px" />LOCATE US</p>
+            <p>
+                Nishan Studio
+                <br />
+                523/7 DS Senanayake Mawatha
+                <br />
+                Anuradhapura
+            </p>
+        </div>
+        <div class="contactInfo">
+            <p class="title"><FontAwesomeIcon icon={faPhone} class="locationIcon" size="6px" />CONTACT US</p>
+            <p class="phone">
+                <span>Phone:</span> +94 767455431
+            </p>
+            <p class="email">
+                <span>E-mail:</span> NishanStudio.com
+            </p>
+        </div>
+    </div>
+</div>
+
             
             <DisplayStudioPackages />
       {/* <video className="background-video" autoPlay loop muted>

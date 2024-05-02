@@ -1,25 +1,13 @@
-/* .studio-home {
-  background-color: bisque;
-  background-size: cover;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; 
-} */
-   
-   /* .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; 
-} */
+.StudioText {
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
 
- /*fixed bg*/
  .fixed-background-section {
   display: flex; 
   justify-content: flex-end; 
@@ -34,18 +22,15 @@
   margin-left: 40px;
   margin-right: 40px;
 }
-.about-content {
+ .about-content {
   position: absolute;
   top: 0; 
   bottom: 0; 
   width: 37%; 
   background-color: white;
-  /* opacity:0.7 ; */
   padding: 20px;
   font-family: 'Roboto', sans-serif;
-  /* overflow: auto; Adds scrollbars if content overflows */
 }
-
 
 .about-content h3 {
   margin-bottom: 30px;
@@ -63,11 +48,11 @@ color: #333;
 font-family: 'Faralista';
 }
 
-
+/*
 .locationContainer {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* This will make the children stretch to fill the container */
+  align-items: stretch;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
@@ -80,12 +65,12 @@ font-family: 'Faralista';
   margin-left: 20px;
   flex: 1;
   margin-right: 20px;
-  overflow: hidden; /* Hide overflow to respect border-radius */
-  border-radius: 10px; /* Rounded corners for the map */
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .detailContainer {
-  width: calc(100% - 850px); /* Adjust the width by reducing the map container's width */
+  width: calc(100% - 850px); 
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
@@ -96,12 +81,12 @@ font-family: 'Faralista';
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333333; /* Darker color for better readability */
+  color: #333333; 
 }
 
 .location-icon {
   margin-right: 10px;
-  color: #363636; /* Color icon for a pop of color */
+  color: #363636; 
 }
 
 .contactInfo {
@@ -110,11 +95,11 @@ font-family: 'Faralista';
 
 .contactInfo p {
   margin: 5px 0;
-  color: #555555; /* Soft color for text */
+  color: #555555;
 }
 
 .contactInfo p span {
   font-weight: bold;
-  color: #333333; /* Darker color for important info */
+  color: #333333;
 }
-
+ */
