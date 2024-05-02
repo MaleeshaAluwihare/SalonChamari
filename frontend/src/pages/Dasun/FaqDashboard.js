@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FaqDashboardSideBar from "../../components/Dasun/FaqDashBoardSideBar";
-import '../CSS/Dasun/faqDashboard.css';
+import '../../css/Dasun/faqDashboard.css';
 import AllFaqs from "../../components/Dasun/allFaq";
 import AddFaq from "../../components/Dasun/addFaq";
 import ViewBlog from "../../components/Dasun/allBlog";

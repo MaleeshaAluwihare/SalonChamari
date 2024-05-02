@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 // import {userNavigate} from 'react-router-dom';
-import '../../CSS/Dasun/addFeebackForm.css';
+import '../../css/Dasun/addFeebackForm.css';
 
 export default function SendFeedback() {
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import '../CSS/Dasun/allFaq.css';
-import '../CSS/Dasun/faqPage.css';
-// import '../CSS/Dasun/customerFaq.css';
+import '../../css/Dasun/allFaq.css';
+import '../../css/Dasun/faqPage.css';
+// import '../css/Dasun/customerFaq.css';
 import { Link } from "react-router-dom";
 
 export default function CustomerFaq() {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../CSS/Dasun/addBlogForm.css'
+import '../../css/Dasun/addBlogForm.css'
 
 const AddBlog = () => {
   const [blogId, setBlogId] = useState('');

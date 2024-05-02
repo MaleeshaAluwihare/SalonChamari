@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../CSS/Dasun/customerBlog.css';
+import '../../css/Dasun/customerBlog.css';
 
 const ViewBlog = () => {
   const [blogs, setBlogs] = useState([]);
