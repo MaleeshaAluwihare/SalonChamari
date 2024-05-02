@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MainLayout } from './Layouts';
 
 //define style will applied to any div element wrap around <AppStyled>(in app.js)
 export const AppStyled = styled.div`
@@ -16,4 +17,6 @@ export const AppStyled = styled.div`
       width: 0;
     }
   }
+
+
 `;

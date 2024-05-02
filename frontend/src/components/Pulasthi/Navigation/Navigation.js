@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../../../images/Pulasthi/logo.png';
 import { menuItems } from '../../../utils/Pulasthi/menuItems'
+import { NavLink } from 'react-router-dom'; // Import NavLink
 
-
-function Navigation({active, setActive}) {
+function Navigation() {
 
     return (
         <NavStyled>
@@ -16,20 +16,22 @@ function Navigation({active, setActive}) {
             </div>
             <ul className="menu-items">
                 {menuItems.map((item) => {
-                    return <li
-                        key={item.id}
-                        onClick={() => setActive(item.id)} //set the active state to active item id(this id goes to app.js switch case)
-                        className={active === item.id ? 'active': ''} //this active className used to style the active item
-                    >
-                        {item.icon}
-                        <span>{item.title}</span>
-                    </li>
+                    return (
+                        <li key={item.id}>
+                            <NavLink
+                                to={item.link} // use the link from menuItem for routing
+                                className={({ isActive }) => isActive ? 'active' : undefined}
+                            >
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </NavLink>
+                        </li>
+                    );
                 })}
             </ul>
         </NavStyled>
-    )
+    );
 }
-
 
 const NavStyled = styled.nav`
    
@@ -72,19 +74,25 @@ const NavStyled = styled.nav`
         flex-direction: column;
         li{
             display: grid;
-            grid-template-columns: 40px auto;
+            grid-template-columns: 40px 1fr;/*1fr use to get enough space for text */
             align-items:center;
             margin: .6rem 0;
             font-weight: 500;
             cursor: pointer;
             transition: all .4s ease-in-out;
             color: rgba(34, 34, 96, .6);
-            padding-left: 1rem;
             position: relative;
+            padding-left: 1rem; /* Adjust padding if necessary */
             i{
                 color: rgba(34, 34, 96, 0.6);
                 font-size: 1.4rem;
                 transition: all .4s ease-in-out;
+            }
+            span {
+                white-space: nowrap; /*Keep the title in one line*/
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: rgba(34, 34, 96, 1) !important; /*color for span*/
             }
         }
     }  

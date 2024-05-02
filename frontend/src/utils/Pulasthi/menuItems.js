@@ -5,42 +5,42 @@ export const menuItems = [
         id: 1,
         title: 'Finance Dashboard',
         icon: dashboard,
-        link: '/dashboard'
+        link: '/financeDashboard'
     },
     {
         id: 2,
         title: "Budget",
         icon: budget,
-        link: "/dashboard",
+        link: "/budget",
     },
     {
         id: 3,
         title: "Incomes",
         icon: income,
-        link: "/dashboard",
+        link: "/income",
     },
     {
         id: 4,
         title: "Expenses",
         icon: expenses,
-        link: "/dashboard",
+        link: "/expenses",
     },
     {
         id: 5,
         title: "Employee Salary",
         icon: employeeSalary,
-        link: "/dashboard",
+        link: "/salary",
     },
     {
         id: 6,
         title: "Inventory Items",
         icon: inventoryItems,
-        link: "/dashboard",
+        link: "/inventory",
     },
     {
         id: 7,
         title: "Event Packages",
         icon: eventPackages,
-        link: "/dashboard",
+        link: "/packages",
     },
 ]

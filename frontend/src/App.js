@@ -1,17 +1,10 @@
 import styled from 'styled-components';
 import React, {useState} from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import bg from './images/Pulasthi/hello.png';
 import { AppStyled } from './css/Pulasthi/AppStyled'; //import AppStyled
 import { MainLayout } from './css/Pulasthi/Layouts';
 import Navigation from './components/Pulasthi/Navigation/Navigation';
-import Budget from './components/Pulasthi/Budget/Budget';
-import Income from './components/Pulasthi/Income/Income';
-import Expenses from './components/Pulasthi/Expenses/Expenses';
-import EmployeeSalary from './components/Pulasthi/EmployeeSalary/EmployeeSalary';
-import InventoryItems from './components/Pulasthi/InventoryItems/InventoryItems';
-import EventPackages from './components/Pulasthi/EventPackages/EventPackages';
-import Dashboard from './components/Pulasthi/Dashboard/Dashboard';
-import { useGlobalContext } from './context/Pulasthi/globalContext';
 
 import DashboardWrapper from './components/Pulasthi/Wrapper/DashboardWrapper';
 import BudgetWrapper from './components/Pulasthi/Wrapper/BudgetWrapper';
@@ -23,43 +16,27 @@ import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
 
 function App() {
-
-  const [active, setActive] = useState(1)
-
-  // const global=useGlobalContext()
-  // console.log(global);
-
-  const displayData = () => {
-    switch(active){
-      case 1:
-        return <DashboardWrapper/>
-      case 2:
-        return <BudgetWrapper/>
-      case 3:
-        return <IncomeWrapper/>
-      case 4: 
-        return <ExpenseWrapper/>
-      case 5:
-        return <EmployeeWrapper/>
-      case 6:
-        return <InventoryWrapper/>
-      case 7:
-        return <EventWrapper/>
-      default: 
-        return <DashboardWrapper/>
-    }
-  }
-
+  
   return (
     <div className="App">
-      <AppStyled bg={bg}>
-        <MainLayout>
-          <Navigation active={active} setActive={setActive}/>
-          <main> 
-            {displayData()}
-          </main>
-        </MainLayout>
-      </AppStyled>
+      <Router>
+        <AppStyled bg={bg}>
+          <MainLayout>
+            <Navigation/>
+            <main>
+            <Routes>
+              <Route path="/financeDashboard" element={<DashboardWrapper />} />
+              <Route path="/budget" element={<BudgetWrapper />} />
+              <Route path="/income" element={<IncomeWrapper />} />
+              <Route path="/expenses" element={<ExpenseWrapper />} />
+              <Route path="/salary" element={<EmployeeWrapper/>} />
+              <Route path="/inventory" element={<InventoryWrapper />} />
+              <Route path="/packages" element={<EventWrapper/>} />
+            </Routes>
+            </main>
+          </MainLayout>
+        </AppStyled>
+      </Router>
     </div>
   );
 }
