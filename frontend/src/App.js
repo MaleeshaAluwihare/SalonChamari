@@ -125,7 +125,6 @@ function App() {
         <Route path="/messageCustomer/add" exact Component={SendMessage} />
         <Route path="/blogCustomer" exact Component={CustomerBlog} />
         <Route path="/faqCustomer" exact Component={CustomerFaq} />
-        {/* dasun */}
 
       </Routes>
     </div>
