@@ -18,6 +18,8 @@ import BudgetWrapper from './components/Pulasthi/Wrapper/BudgetWrapper';
 import IncomeWrapper from './components/Pulasthi/Wrapper/IncomeWrapper';
 import ExpenseWrapper from './components/Pulasthi/Wrapper/ExpensesWrapper';
 import InventoryWrapper from './components/Pulasthi/Wrapper/InventoryWrapper';
+import EmployeeWrapper from './components/Pulasthi/Wrapper/EmployeeWrapper';
+import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
 
 function App() {
@@ -38,11 +40,11 @@ function App() {
       case 4: 
         return <ExpenseWrapper/>
       case 5:
-        return <EmployeeSalary/>
+        return <EmployeeWrapper/>
       case 6:
         return <InventoryWrapper/>
       case 7:
-        return <EventPackages/>
+        return <EventWrapper/>
       default: 
         return <DashboardWrapper/>
     }
