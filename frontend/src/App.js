@@ -68,7 +68,6 @@ function App() {
         <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
 
         <Route path='/inventoryDashboard' element={<InventoryDashboard />} />
-        {/* <Route path='/chart' element={<ChartComponent />} /> */}
         <Route path='/add' element={<AddInventory />} />
         <Route path='/stock' element={<StockTable/>} />
         <Route path='/reorder' element={<ReorderingPage/>} />

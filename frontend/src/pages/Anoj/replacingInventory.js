@@ -103,16 +103,16 @@ export default function InventoryReplacing() {
             <option value="studio">Studio</option>
           </select>
         </div>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table style={{ width: "100%", borderCollapse: "separate" }}>
           <thead>
             <tr>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>ID</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Inventory Name</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Quantity</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Price</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Use Quantity</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Date</th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Action</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white" }}>ID</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white"}}>Inventory Name</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white"}}>Quantity</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white"}}>Price</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white"}}>Use Quantity</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white"}}>Date & Time</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white" }}>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -133,6 +133,7 @@ export default function InventoryReplacing() {
                       padding: "8px 16px",
                       border: "none",
                       cursor: "pointer",
+                      marginRight: "10px",
                     }}
                     onClick={() => handleUpdateButtonClick(product)}
                   >

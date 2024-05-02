@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import InventoryChart from "./pieChart";
+import InventoryBarChart from "./Bar";
+import { useReactToPrint } from 'react-to-print';
+
+
 
 export default function StockTable() {
   const [products, setProducts] = useState([]);
@@ -29,70 +34,29 @@ export default function StockTable() {
       second: "2-digit",
     });
   };
- 
-  const ComponentsRef = useRef();
-  const handlePrint = () => {
-    const content = ComponentsRef.current;
-    const printWindow = window.open("", "_blank");
-    printWindow.document.open();
-    printWindow.document.write(`
-      <html>
-        <head>
-          <title>Inventory Manager Report</title>
-          <style>
-            /* CSS styles */
-            body {
-              font-family: Arial, sans-serif;
-              margin: 20px;
-            }
-            h4 {
-              margin-bottom: 10px;
-            }
-            table {
-              border-collapse: collapse;
-              width: 100%;
-            }
-            th, td {
-              padding: 8px;
-              text-align: left;
-              border-bottom: 1px solid #ddd;
-            }
-            button {
-              margin: 20px;
-              padding: 10px 20px;
-              background-color: #007bff;
-              color: #fff;
-              border-radius: 5px;
-              border: none;
-              cursor: pointer;
-            }
-          </style>
-        </head>
-        <body>
-          ${content.innerHTML}
-        </body>
-      </html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
-    printWindow.onafterprint = () => {
-      printWindow.close();
-      alert("Report Successfully Downloaded");
-    };
-  };
+
+  const ComponentsRef = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => ComponentsRef.current,
+    documentTitle: "Employee Manager Report",
+    onAfterPrint: () => alert("Report Successfully Downloaded")
+  });
+
 
   return (
     <div>
+      <div>
+      </div>
       <div ref={ComponentsRef}>
         <h4>Inventory stocks</h4>
-        <table>
+        <table style={{ width: "100%", borderCollapse: "separate" }}>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Inventory Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Add Date</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white", textAlign: "center"}}>ID</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white", textAlign: "center" }}>Inventory Name</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white", textAlign: "center" }}>Quantity</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white", textAlign: "center" }}>Price</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px",backgroundColor: "green", color: "white", textAlign: "center" }}>Add Date & Time</th>
             </tr>
           </thead>
           <tbody>
@@ -107,11 +71,36 @@ export default function StockTable() {
             ))}
           </tbody>
         </table>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ marginRight: '20px' }}>
+                <InventoryBarChart products={products} />
+          </div>     
+          <div>
+                <InventoryChart products={products} />
+          </div>
+        </div>
       </div>
-      <button onClick={handlePrint}>Download report</button>
+      <div>
+      </div>
+      <div>
+        <button
+          onClick={handlePrint}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+            marginTop: "20px"
+          }}
+        >
+          Download report
+        </button>
+      </div>
     </div>
   );
 }
+
 
 
 

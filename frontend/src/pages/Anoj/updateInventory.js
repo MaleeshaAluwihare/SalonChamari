@@ -61,13 +61,16 @@ export default function UpdateInventory() {
     <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
       <h2 style={{ textAlign: "center" }}>Update Inventory</h2>
       <form onSubmit={updateProduct} style={{ display: "flex", flexDirection: "column" }}>
+        <b>Inventory ID</b>
         <input
           type="text"
           value={pid}
           disabled
           style={{ padding: "10px", marginBottom: "10px" }}
           placeholder="Inventory ID"
+          
         />
+        <b>Inventory Name</b>
         <input
           type="text"
           value={name}
@@ -76,6 +79,7 @@ export default function UpdateInventory() {
           placeholder="Inventory Name"
           onChange={(e) => setName(e.target.value)}
         />
+        <b>Price</b>
         <input
           type="number"
           value={price}
@@ -84,6 +88,7 @@ export default function UpdateInventory() {
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
+        <b>Current Quantity</b>
         <input
           type="text"
           value={quantity}
@@ -91,6 +96,7 @@ export default function UpdateInventory() {
           style={{ padding: "10px", marginBottom: "10px" }}
           placeholder="Quantity"
         />
+        <b>Use Quantity</b>
         <input
           type="number"
           value={useQuantity}

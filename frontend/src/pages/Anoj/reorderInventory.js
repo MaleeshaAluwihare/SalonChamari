@@ -51,11 +51,11 @@ export default function ReorderingPage() {
 
   // JSX code for rendering the component
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "500px", margin: "0 auto" ,display: "flex", flexWrap: "wrap"}}>
       <h2 style={{ textAlign: "center" }}>Re-ordering Inventory Stocks</h2>
       <form onSubmit={handleSubmit} style={{ padding: "20px", backgroundColor: "#f2f2f2", borderRadius: "5px" }}>
         {/* Select category */}
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "20px",marginRight: "20px" }}>
           <label htmlFor="category" style={{ display: "block", marginBottom: "5px" }}>
             Category
           </label>
@@ -73,9 +73,9 @@ export default function ReorderingPage() {
         </div>
 
         {/* Select item ID */}
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="itemId" style={{ display: "block", marginBottom: "5px" }}>
-            Item ID
+        <div style={{ marginBottom: "20px",marginRight: "20px" }}>
+          <label htmlFor="itemId" style={{ display: "block", marginBottom: "2px" }}>
+          Inventory ID
           </label>
           <select
             id="itemId"
@@ -84,7 +84,7 @@ export default function ReorderingPage() {
             onChange={(e) => setItemId(e.target.value)}
             style={{ width: "100%", padding: "10px" }}
           >
-            <option value="">Select Item ID</option>
+            <option value=""> Inventory ID</option>
             {itemIdOptions.map((pid, index) => (
               <option key={index} value={pid}>
                 {pid}
@@ -94,8 +94,8 @@ export default function ReorderingPage() {
         </div>
 
         {/* Input field for quantity */}
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="quantity" style={{ display: "block", marginBottom: "5px" }}>
+        <div style={{ marginBottom: "20px" ,marginRight: "20px"}}>
+          <label htmlFor="quantity" style={{ display: "block", marginBottom: "2px" }}>
             Quantity
           </label>
           <input
@@ -103,35 +103,37 @@ export default function ReorderingPage() {
             id="quantity"
             value={quantity}
             required
+            placeholder = "Enter Quantity"
             onChange={(e) => setQuantity(e.target.value)}
             style={{ width: "100%", padding: "10px" }}
           />
         </div>
 
         {/* Input field for date */}
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="date" style={{ display: "block", marginBottom: "5px" }}>
+        <div style={{ marginBottom: "20px" ,marginRight: "40px",marginLeft:"-20px"}}>
+          <label htmlFor="date" style={{ display: "block", marginBottom: "2px",  padding: "2px 5px 2px"}}>
             Date
           </label>
           <input
             type="date"
             id="date"
             value={date}
-            disabled
-            style={{ width: "100%", padding: "10px" }}
+            readOnly
+            style={{ width: "100%", padding: "10px"}}
           />
         </div>
 
         {/* Input field for item type */}
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="itemType" style={{ display: "block", marginBottom: "5px" }}>
-            Item Type
+        <div style={{ marginBottom: "20px" ,marginRight: "20px"}}>
+          <label htmlFor="itemType" style={{ display: "block", marginBottom: "2px" }}>
+          Inventory Name
           </label>
           <input
             type="text"
-            id="itemType"
+            id="Inventory Name"
             value={itemType}
             required
+            placeholder = "Enter Inventory Name"
             onChange={(e) => setItemType(e.target.value)}
             style={{ width: "100%", padding: "10px" }}
           />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 export default function AddInventory() {
   // State variables to hold form data
   const [category, setCategory] = useState("");
@@ -62,7 +63,7 @@ export default function AddInventory() {
 
         {/* Text field for inventory ID */}
         <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="inventoryID" style={{ display: "block", marginBottom: "5px" }}>
+          <label htmlFor="inventoryID" style={{ display: "block", marginBottom: "5px",  }}>
             Inventory ID
           </label>
           <input
