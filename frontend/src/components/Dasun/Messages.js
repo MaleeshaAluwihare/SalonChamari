@@ -7,6 +7,8 @@ export default function Messages() {
     const [messages, setMessages] = useState([]);
     const [filteredMessages, setFilteredMessages] = useState([]);
     const [searchCustomerId, setSearchCustomerId] = useState("");
+    const [searchMessageId, setSearchMessageId] = useState("");
+    const [searchDate, setSearchDate] = useState("");
 
     useEffect(() => {
 
@@ -64,6 +66,34 @@ export default function Messages() {
     }
 
 
+    const handleSearchByMessageId = () => {
+
+        const filtered = messages.filter((message) => message.messageId === searchMessageId);
+        setFilteredMessages(filtered);
+
+    }
+
+    const handleInputChangeMessage = (e) => {
+
+        setSearchMessageId(e.target.value);
+
+    }
+
+
+    const handleSearchByDate = () => {
+
+        const filtered = messages.filter((message) => message.date === searchDate);
+        setFilteredMessages(filtered);
+
+    }
+
+    const handleInputChangeDate = (e) => {
+
+        setSearchDate(e.target.value);
+
+    }
+
+
     return(
 
         <div id="Message_page">
@@ -83,6 +113,44 @@ export default function Messages() {
                 />
 
                 <button onClick={handleSearch}>Search</button>
+
+            </div>
+
+            <br />
+
+
+            <div id="Message_page_search" >
+
+                <label id="Message_page_search_label" htmlFor="messageId">Search by Message ID: </label>
+
+                <input 
+                    type="text"
+                    id="Message_page_search_customerId"
+                    value={searchMessageId}
+                    onChange={handleInputChangeMessage}
+                    placeholder="Enter Message ID"
+                />
+
+                <button onClick={handleSearchByMessageId}>Search</button>
+
+            </div>
+
+            <br />
+
+
+            <div id="Message_page_search" >
+
+                <label id="Message_page_search_label" htmlFor="date">Search by Date: </label>
+
+                <input 
+                    type="text"
+                    id="Message_page_search_customerId"
+                    value={searchDate}
+                    onChange={handleInputChangeDate}
+                    placeholder="Enter Date"
+                />
+
+                <button onClick={handleSearchByDate}>Search</button>
 
             </div>
 

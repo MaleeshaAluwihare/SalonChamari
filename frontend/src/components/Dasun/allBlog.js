@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../../CSS/Dasun/customerBlog.css';
 
 const ViewBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -22,15 +23,15 @@ const ViewBlog = () => {
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
-    <div>
-      <h2>All Blogs</h2>
-      <div className="blog-list">
+    <div id="blog_page">
+      <h2 id="blog_page_heading" >Blog</h2>
+      <div className="blog-list" id="blog_page_blogs" >
         {blogs.map(blog => (
-          <div key={blog.blogId} className="blog-item">
-            <h3>{blog.topic}</h3>
-            <p>{blog.content}</p>
+          <div key={blog.blogId} id="blog_page_item" >
+            <h3 id="blog_page_item_topic" >{blog.topic}</h3>
+            <p id="blog_page_item_content" >{blog.content}</p>
             {blog.image && (
-              <img src={`http://localhost:8070/${blog.image}`}  style={{ maxWidth: '100%', height: 'auto' }} />
+              <img src={`http://localhost:8070/${blog.image}`}  style={{ maxWidth: '100%', height: 'auto' }} id="blog_page_item_image" />
             )}
           </div>
         ))}

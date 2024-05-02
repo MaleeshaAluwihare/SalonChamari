@@ -20,6 +20,8 @@ import CustomerBlog from './pages/BlogCustomer';
 import CustomerFaq from './pages/FaqCustomer';
 import DeleteFeedback from './components/Dasun/deleteFeedback';
 import DeleteMessage from './components/Dasun/deleteMessage';
+import DashboardSideBar from './components/Dasun/FaqDashBoardSideBar';
+import FaqDashboard from './pages/FaqDashboard';
 
 
 function App() {
@@ -27,11 +29,16 @@ function App() {
     <Router>
         <div className="App">
 
-          <Header />
+          {/* <Header /> */}
+
+          {/* <DashboardSideBar /> */}
+          <FaqDashboard />
           
           <br />
 
           <Routes>
+
+
 
             <Route path='/faq/all' exact Component={AllFaqs} /> 
             <Route path="/faq/add" exact Component={AddFaq} /> 

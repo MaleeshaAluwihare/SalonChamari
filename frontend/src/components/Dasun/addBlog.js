@@ -41,7 +41,7 @@ const AddBlog = () => {
         <input id='Add_blog_form_topic' type="text" placeholder="Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
         <textarea id='Add_blog_form_content' placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
         <input id='Add_blog_form_image' type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-        <button idAdd_blog_form_submitBtn type="submit">Add Blog</button>
+        <button id="Add_blog_form_submitBtn" type="submit">Add Blog</button>
       </form>
     </div>
   );

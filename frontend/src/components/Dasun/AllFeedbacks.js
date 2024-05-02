@@ -3,6 +3,17 @@ import '../../CSS/Dasun/allFeedbacks.css';
 import { Link } from "react-router-dom";
 import {jsPDF} from "jspdf";
 import { Toast } from "bootstrap";
+//npm install react-to-print
+//import {useToReactPrint} from "react-to-print"
+// const ComponentsRef = useRef();
+//   const handlePrint = useReactToPrint({
+//     content:() => ComponentsRef.current,
+//     documentTitle:"Finance Manager Report",
+//     onAfterPrint:()=>alert("Report Successfully Download")
+//   })
+//inside dev tag add ref={ComponentsRef}
+
+
 
 export default function Feedbacks() {
 
@@ -22,7 +33,7 @@ export default function Feedbacks() {
 
                 const response = await fetch('http://localhost:8070/Feedback/display');
                 const data = await response.json();
-                
+
 
                 setFeedbacks(data);
 
