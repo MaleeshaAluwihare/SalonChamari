@@ -1,0 +1,33 @@
+.header {
+    background-color:antiquewhite;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    margin-left: 35%;
+    padding: 0;
+    display: flex; /* Change display to flex */
+  }
+  
+  .menu li {
+    margin-right: 30px;
+  }
+  
+  .menu li:last-child {
+    margin-right: 0;
+  }
+  
+  .menu a {
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  
+  .menu a:hover {
+    background-color: #6f6f6f5f;
+  }
+  

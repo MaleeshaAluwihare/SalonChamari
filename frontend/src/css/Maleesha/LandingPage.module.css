@@ -1,0 +1,203 @@
+.mainContainer {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;  
+  }
+  
+  .contentContainer {
+    width: 80%; /* Adjust as needed */
+    max-width: 100%; /* Limit the maximum width of the content */
+    align-self: center;
+    scroll-behavior: smooth;  
+  }
+
+  .logoBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  .logoImage {
+    width: 400px; /* Adjust image size as needed */
+  }
+  
+  .logoSpace {
+    width: 20px; /* Adjust space between images */
+  }
+
+  .studiologoImage{
+    width: 700px;
+  }
+
+  .contentBox {
+    background-color: #ffffff; /* Example background color for content */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px; /* Add some space between contentBox and salonImageBox */
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+
+  }
+
+  .paragraphContainer {
+    text-align: center; /* Center the text horizontally */
+    line-height: 0.8;
+    margin-bottom: 20px;
+  }
+
+  .studioTextContainer {
+    text-align: center;
+    line-height: 0.8;
+    margin-top: 70px; /* Adjust margin-top as needed */
+    color: rgb(0, 0, 0);
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  .studiologoImageContainer{
+    margin-top: -150px;
+    margin-bottom: -220px;
+  }
+  
+  .exploreBtn {
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Additional styling for button hover state */
+  .exploreBtn:hover {
+    background-color: rgb(0, 0, 0);
+    color: #FFCF00;
+  }
+  
+  .salonImageContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /*Salon image*/
+  .salonImageBox {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    max-width: 1400px; /* Limit the maximum width of the salon image */
+    margin-bottom: 20px;
+    /* box-shadow: rgba(0,0,0,0.2) 0px 60px 40px -7px;  */
+    /* transform: translateX(400%); */
+    /* transition: transform 0.7s ease; */
+  }
+
+  /* .salonImageBox.show{
+    transform: translateX(0);
+  } */
+
+  /* .salonImageBox:nth-of-type(even){
+    transform: translateX(-400%);
+  } */
+
+.salonImageBox h3:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    margin: 0;
+} 
+
+.salonImage {
+  width: 1000px;
+  border-radius: 10px; 
+}
+
+  .backBtn{
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .backBtn:hover {
+    background-color: rgb(0, 0, 0);
+    color: #FFCF00;
+  }
+  
+  .salonText,
+  .eventText{
+    position: absolute;
+    top: 220px;
+    left: 220px;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    font-size: 30px;
+  }
+
+  .studioText{
+    position: absolute;
+    top: 240px;
+    right: 220px;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    font-size: 30px;
+  }
+
+
+.visitPageBtn1,
+.visitPageBtn3{
+    position: absolute;
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 290px;
+    margin-left: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.visitPageBtn2{
+    position: absolute;
+    background-color:  #FFCF00;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 300px;
+    margin-left: 817px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.visitPageBtn1:hover,
+.visitPageBtn2:hover,
+.visitPageBtn3:hover{
+    background-color: rgb(0, 0, 0);
+    color: #FFCF00;
+  }
+  
+

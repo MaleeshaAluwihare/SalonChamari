@@ -1,0 +1,179 @@
+/* Footer Container */
+.footer {
+  background-color: #f2f2f2;
+  max-height: 550px;
+
+}
+
+/* Footer Logo */
+.footerlogo img {
+  width: 200px; /* Adjust the size as needed */
+}
+
+/* Footer Info Text */
+.footerinfotext {
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+/* Footer Social Links */
+.footersociallink h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footersociallink ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footersociallink ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footersociallink ul li:last-child {
+  margin-right: 0;
+}
+
+.footersociallink ul li a {
+  color: #777;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.footersociallink ul li a:hover {
+  color: #007bff; /* Change to your preferred hover color */
+}
+
+/* Contact Information */
+.contactus {
+  margin-bottom: 20px;
+}
+
+.contactinfo h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.contactinfo p {
+  color: #777;
+}
+
+/* Useful Links */
+.footerwidget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerwidget ul li {
+  margin-bottom: 10px;
+}
+
+.footerwidget ul li a {
+  color: #777;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footerwidget ul li a:hover {
+  color: #007bff; /* Change to your preferred hover color */
+}
+
+/* Subscribe Section */
+.footerwidget p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.footerform {
+  display: flex;
+}
+
+.footerform input[type="email"] {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.footerform button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footerform button:hover {
+  background-color: #0056b3;
+}
+
+/* Copyright Section */
+.copyright {
+  background-color: #343a40;
+  padding: 15px 0;
+  color: #fff;
+}
+
+.copyright-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Back to Top Button */
+.backtotop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.backtotop button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.backtotop button:hover {
+  background-color: #0056b3;
+}
+
+.footerwidget ul li a,
+.footersociallink ul li a,
+.footersociallink h3 {
+text-decoration: none;
+}
+
+/* Move "Give us a call" section */
+.contactus {
+margin-top: 20px;
+}
+
+/* CSS for Copyright Menu */
+.copyrightmenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Align items horizontally */
+}
+
+.copyrightmenu ul li {
+  margin-right: 20px; /* Add spacing between items */
+}
+
+/* Hover Effect */
+.copyrightmenu ul li a {
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Default color */
+  transition: color 0.3s; /* Smooth transition */
+}
+
+/* Hover state */
+.copyrightmenu ul li a:hover {
+  color: #007bff; /* Change color on hover */
+}
