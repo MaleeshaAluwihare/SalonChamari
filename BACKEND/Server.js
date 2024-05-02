@@ -26,6 +26,13 @@ const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
+const faqsRouter = require("./Routes/Dasun/faqsRoute.js");
+const feedbacksRouter = require("./Routes/Dasun/FeedbackRoute.js");
+const customerMessageRouter = require("./Routes/Dasun/CustomerMessageRoute.js");
+const messageReplyRouter = require("./Routes/Dasun/MessageReplyRoute.js");
+const blogRouter = require("./Routes/Dasun/BlogRoute.js");
+const commentRouter = require("./Routes/Dasun/CommentRoute.js");
+
 
 require("dotenv").config();
 
@@ -81,3 +88,12 @@ app.use("/MailSend",sendMailRouter);
 
 //anoj
 app.use("/StudioInventory",studioInventory);
+
+
+//dasun
+app.use("/Faqs", faqsRouter);
+app.use("/Feedback", feedbacksRouter);
+app.use("/CustomerMessages", customerMessageRouter);
+app.use("/MessageReplies", messageReplyRouter);
+app.use("/Blogs", blogRouter);
+app.use("/Comment", commentRouter);

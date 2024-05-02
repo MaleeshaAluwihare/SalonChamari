@@ -1,0 +1,47 @@
+/* faqFormStyles.css */
+
+/* Styling for the Add FAQ page container */
+#add_Faq_page {
+    width: 95%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the labels */
+  #add_Faq_page_form_label_question,
+  #add_Faq_page_form_label_answer {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  /* Styling for the input fields */
+  #add_Faq_page_form_input_question,
+  #add_Faq_page_form_input_answer {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Styling for the submit button */
+  #add_Faq_page_form_submitBtn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the submit button */
+  #add_Faq_page_form_submitBtn:hover {
+    background-color: #0056b3;
+  }
+  
