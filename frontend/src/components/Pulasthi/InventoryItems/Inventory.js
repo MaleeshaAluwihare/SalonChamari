@@ -61,8 +61,8 @@ const InventoryStyled = styled.div`
     }
 
     .form-container {
-      min-width: 550px; /* Example fixed width */
-      min-height: 400px; /* Example fixed height */
+      min-width: 550px; 
+      min-height: 400px; 
     }
 `;
 

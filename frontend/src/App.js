@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import React, {useState} from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import bg from './images/Pulasthi/hello.png';

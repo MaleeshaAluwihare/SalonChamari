@@ -15,6 +15,7 @@ export const GlobalProvider = ({children}) => {
     const [error, setError] = useState(null)
     const [incomes, setIncomes] = useState([])
     const [items, setItems] = useState([])
+    const [employees, setEmployee] = useState([])
 
     //add Budget
     const addBudget = async (budget) => {
@@ -82,7 +83,7 @@ export const GlobalProvider = ({children}) => {
         })
         return totalIncome;
     }
-    console.log(totalIncome());
+    // console.log(totalIncome());
     //get expense
     const getExpenses = async () => {
         const response = await axios.get(`${BASE_URL}get-expenses`)
@@ -109,6 +110,13 @@ export const GlobalProvider = ({children}) => {
         console.log(response.data)
     }
 
+    //get Employee details
+    const getEmployeeDetails = async() =>{
+        const response = await axios.get(`${BASE_URL}get-empSalary`)
+        setEmployee(response.data)
+        console.log(response.data)
+    }
+
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -126,7 +134,9 @@ export const GlobalProvider = ({children}) => {
             totalExpense,
             totalProfit,
             getInvItems,
-            items
+            items,
+            getEmployeeDetails,
+            employees
         }}>
             {children}
         </GlobalContext.Provider>

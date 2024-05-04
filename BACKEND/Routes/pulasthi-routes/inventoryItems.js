@@ -35,6 +35,7 @@ router.post('/update-item-price', async (req, res) => {
   
       // Create a new expense record
       const newExpense = new ExpenseTable({
+        //LHS should be DB column name and RHS should be name of property which is coming from req.body
         expenseId: itemId,
         amount: itemPrice,
         date: date,

@@ -6,18 +6,18 @@ import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
 import Button from "../Button/Button";
 import { plus } from "../../../utils/Pulasthi/Icons";
 
-function InvItemForm() {
+function EmpSalaryForm() {
 
-    const {getInvItems}=useGlobalContext();
+    const {getEmployeeDetails}=useGlobalContext();
     //ekin ekata states hadanne nathuwa okkoma column values walata eka state hadala tma me tyenne
     const [inputState, setInputState] = useState({
-        itemId: '',
-        itemType: '',
-        quantity: '',
+        empId: '',
+        jobRole: '',
+        attendance: '',
         date: '',
     })
     //Dstructure to inputState
-    const { itemId, itemType, quantity, date, itemPrice } = inputState;
+    const { empId, jobRole, attendance, date, empSalary } = inputState;
     //...?
     const handleInput = name => e => {
         //setInputState get the whatever we typing in the input
@@ -26,30 +26,30 @@ function InvItemForm() {
     }
 
     //calculate item price
-    const handleCalculatePrice = () => {
-        let price;
-        let quan = parseInt(quantity, 10);
-        switch(itemType) {
-            case "Hair Dryer":
-                price = 500;
+    const handleCalculateSalary = () => {
+        let dailySalary;
+        let attend = parseInt(attendance, 10);
+        switch(jobRole) {
+            case "Cameraman":
+                dailySalary = 5500;
                 break;
-            case "Scissors":
-                price = 100;
+            case "Studio assistant":
+                dailySalary = 2500;
                 break;
-            case "Curling iron":
-                price = 2000;
+            case "Barber":
+                dailySalary = 2000;
                 break;
-            case "Lens":
-                price = 10000;
+            case "Hairstylist ":
+                dailySalary = 6000;
                 break;
-            case "Tripod":
-                price = 8000;
+            case "Beautician":
+                dailySalary = 8000;
                 break;
             default:
-                price = 0;
+                dailySalary = 0;
         }
-        let itemPrice = quan * price;
-        setInputState(prevState => ({ ...prevState, itemPrice })); //create a new state for itemPrice property
+        let empSalary = attend * dailySalary;
+        setInputState(prevState => ({ ...prevState, empSalary })); //create a new state for empSalary property
     };
 
     const BASE_URL = "http://localhost:8070/finance/";
@@ -59,17 +59,17 @@ function InvItemForm() {
 
         //method for update invItem price and add it into expenses
         try {
-            const response = await fetch(`${BASE_URL}update-item-price`, {
+            const response = await fetch(`${BASE_URL}update-emp-salary`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
               //Serializes the collected data into a JSON string.
               body: JSON.stringify({
-                itemId: itemId,
-                itemPrice: itemPrice,
+                empId: empId,
+                empSalary: empSalary,
                 date: date,
-                itemType: itemType
+                jobRole: jobRole
               })
             });
             const data = await response.json();
@@ -79,43 +79,43 @@ function InvItemForm() {
             console.error('Error:', error);
           }
 
-          getInvItems()
+          getEmployeeDetails()
         
     }
 
   return (
-    <InvItemFormStyled onSubmit={handleSubmit}>
+    <EmpSalaryFormStyled onSubmit={handleSubmit}>
         
         <div className="input-control">
             <input
                 type="text"
                 //value is coming from the state
-                value={itemId}
-                name={'itemId'}
-                placeholder="Item ID"
-                onChange={handleInput('itemId')}//handleInput parameter should match the name
+                value={empId}
+                name={'empId'}
+                placeholder="Employee ID"
+                onChange={handleInput('empId')}//handleInput parameter should match the name
                 required
             />
         </div>
         <div className="selects input-control">
-        <select required value={itemType} name="itemType" id="itemType" onChange={handleInput('itemType')} >
+        <select required value={jobRole} name="jobRole" id="jobRole" onChange={handleInput('jobRole')} >
                     <option value=""  disabled >Select Option</option>
-                    <option value="Hair Dryer">Hair Dryer</option>
-                    <option value="Scissors">Scissors </option>
-                    <option value="Curling iron">Curling iron</option>
-                    <option value="Lens">Lens</option>
-                    <option value="Tripod">Tripod</option>
+                    <option value="Cameraman">Cameraman</option>
+                    <option value="Studio assistant">Studio assistant </option>
+                    <option value="Barber">Barber</option>
+                    <option value="Hairstylist">Hairstylist</option>
+                    <option value="Beautician">Beautician</option>
                     
         </select>
         </div>
         <div className="input-control">
             <input
                 type="text"
-                id="qValue"
-                value={quantity}
-                name={'quantity'}
-                placeholder="Quantity"
-                onChange={handleInput('quantity')}
+                id="aValue"
+                value={attendance}
+                name={'attendance'}
+                placeholder="Attendance"
+                onChange={handleInput('attendance')}
                 required
             />
         </div>
@@ -134,23 +134,23 @@ function InvItemForm() {
         <div className="submit-btn">
             {/* import the Button component */}
             <Button 
-                name={'Calculate price'}
+                name={'Calculate Salary'}
                 icon={plus}
                 bPad={'.8rem 1.6rem'}
                 bRad={'30px'}
                 bg={'var(--color-lightYellow'}
                 color={'#fff'}
-                onClick={handleCalculatePrice}
+                onClick={handleCalculateSalary}
             />
         </div>
         <div className="price-label">
-            <label id="itemP">Item price: {itemPrice}</label>
+            <label id="empS">Employee Salary: {empSalary}</label>
         </div>
-    </InvItemFormStyled>
+    </EmpSalaryFormStyled>
   )
 };
 //form is a property of styled components
-const InvItemFormStyled = styled.form`
+const EmpSalaryFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -196,4 +196,4 @@ const InvItemFormStyled = styled.form`
         }
     }
 `;
-export default InvItemForm
+export default EmpSalaryForm
