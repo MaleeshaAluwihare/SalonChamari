@@ -4,9 +4,6 @@ const InventoryItemTable = require("../../Models/pulasthi-models/InventoryItem")
 const router = require("express").Router();
 
 
-
-
-
 //Read route - get all inventoryitem data
 router.route("/get-invItems").get((req, res) => {
 

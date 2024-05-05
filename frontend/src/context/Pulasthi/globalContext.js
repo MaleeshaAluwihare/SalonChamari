@@ -16,10 +16,11 @@ export const GlobalProvider = ({children}) => {
     const [incomes, setIncomes] = useState([])
     const [items, setItems] = useState([])
     const [employees, setEmployee] = useState([])
+    const [events, setEvent] = useState([])
 
     //add Budget
     const addBudget = async (budget) => {
-                                                                //budget(newBudget) kiyanna object eka enne addBudget form walin
+                                                                //budget(collected newBudget data) kiyanna object eka enne addBudget form walin
         const response = await axios.post(`${BASE_URL}add-budget`, budget)
             .catch((err) =>{
                 setError(err.response.data.message)
@@ -117,6 +118,13 @@ export const GlobalProvider = ({children}) => {
         console.log(response.data)
     }
 
+    //get EventDetails
+    const getEventDetails = async() =>{
+        const response = await axios.get(`${BASE_URL}get-eventPackages`)
+        setEvent(response.data)
+        console.log(response.data)
+    }
+
     return(
         <GlobalContext.Provider value={{
             addBudget,
@@ -136,7 +144,9 @@ export const GlobalProvider = ({children}) => {
             getInvItems,
             items,
             getEmployeeDetails,
-            employees
+            employees,
+            getEventDetails,
+            events
         }}>
             {children}
         </GlobalContext.Provider>

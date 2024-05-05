@@ -4,9 +4,6 @@ const ExpenseTable = require("../../Models/pulasthi-models/Expense");
 const router = require("express").Router();
 
 
-
-
-
 //Read route - get all empsalaries data
 router.route("/get-empSalary").get((req, res) => {
 
