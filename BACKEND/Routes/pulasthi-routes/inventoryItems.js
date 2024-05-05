@@ -39,7 +39,7 @@ router.post('/update-item-price', async (req, res) => {
         category: itemType
       });
       await newExpense.save();
-  
+                                  //return updatedItem and new expense
       res.status(200).json({ inventory: updatedInventoryItem, expense: newExpense });
     } catch (error) {
       res.status(400).json({ message: error.message });
