@@ -18,7 +18,7 @@ function Header() {
                 <a href="#" style={{'--i': 3}}>Blog</a>
                 <a href="/quote-page" style={{'--i': 3}}>Quotation</a>
                 <a href="#" style={{'--i': 1}}>FAQ</a>
-                <a href="#" style={{'--i': 4}}>Contact</a>
+                <a href="/profile/:email" style={{'--i': 4}}>Profile</a>
             </nav>
         </header>
     );

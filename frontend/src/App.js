@@ -133,7 +133,11 @@ function App() {
         <Route path="/blogCustomer" element={<CustomerBlog />} />
         <Route path="/faqCustomer" element={<CustomerFaq />} />
 
-        {user && <Route path="/profile/:email" exact element={<Profile />} />}
+         {/* Redirect to login if not logged in */}
+         {!user && <Route path="/profile/:email" element={<Navigate to="/login" replace />} />}
+          
+          {/* Display profile page if logged in */}
+          {user && <Route path="/profile/:email" element={<Profile />} />}
 			  <Route path="/signup" exact element={<Signup />} />
 		  	<Route path="/login" exact element={<Login />} />
         <Route path="/login" element={<Navigate replace to="/login" />} />
