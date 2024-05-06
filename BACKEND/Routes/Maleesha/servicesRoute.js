@@ -1,113 +1,129 @@
 const express = require('express')
 const app = express();
-var multer = require('multer');
+const Chart = require('chart.js');
 let Service = require("../../Models/Maleesha/ServiceModel");
-let imgSchema = require("../../Models/Maleesha/ImageUploadModel");
+let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 
+app.post("/itemsAdd", async (req, res) => {
 
-//INSERT DATA
-app.post("/itemsAdd", async (req,res) => {
-
-    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
-
-    //console.log(req.body);
+    const { serviceName, subCategoryName, itemName, itemPrice } = req.body;
 
     try {
-
+        // Check if an item with the same name already exists
         const existingItem = await Service.findOne({ itemName: itemName });
-    
+
         if (existingItem) {
-          return res.status(400).json({ message: 'Service with the provided service name already exists.' });
+            return res.status(400).json({ message: 'Service with the provided item name already exists.' });
         }
 
-         // Determine the prefix for the item ID based on the service name
+        // Determine the prefix for the item ID based on the service name
         let prefix = '';
-        switch(serviceName){
+        switch (serviceName) {
 
-            case 'Hair Care' : prefix = 'H';
+            case 'Hair Care':
+                prefix = 'H';
 
-                switch(subCategoryName){
-                    case 'Hair Cut' : prefix += 'K';
-                         break;
-                    case 'Hair Coloring' : prefix += 'C'; 
+                switch (subCategoryName) {
+                    case 'Haircut':
+                        prefix += 'K';
                         break;
-                    case 'Hair Treatment' : prefix += 'T';
+                    case 'Hair Color':
+                        prefix += 'C';
                         break;
-                    default: prefix += 'HN'
+                    case 'Hair Treatment':
+                        prefix += 'T';
+                        break;
+                    default:
+                        prefix += 'HN'
                 }
                 break;
 
-            case 'Skin Care' : prefix = 'S';
+            case 'Skin Care':
+                prefix = 'S';
 
-                switch(subCategoryName){
-                    case 'Facial | Cleanup' : prefix += 'F';
+                switch (subCategoryName) {
+                    case 'Facial | Cleanup':
+                        prefix += 'F';
                         break;
-                    default: prefix += 'SN';
+                    default:
+                        prefix += 'SN';
                 }
                 break;
 
-            case 'Nail Care' : prefix = 'N';
+            case 'Nail Care':
+                prefix = 'N';
 
-                switch(subCategoryName){
-                    case 'Manicure | Pedicure' : prefix += 'M';
+                switch (subCategoryName) {
+                    case 'Manicure | Pedicure':
+                        prefix += 'M';
                         break;
-                    case 'Nail Lacqer | Extentions' : prefix += 'N';
+                    case 'Nail Lacqer | Extentions':
+                        prefix += 'N';
                         break;
-                    default: prefix += 'NN';
+                    default:
+                        prefix += 'NN';
                 }
                 break;
 
-            case 'Bridal' : prefix = 'B';
-                
-                switch(subCategoryName){
-                    case 'Bride Dressing' : prefix += 'B';
+            case 'Bridal':
+                prefix = 'B';
+
+                switch (subCategoryName) {
+                    case 'Bride Dressing':
+                        prefix += 'B';
                         break;
-                    case 'Groom Dressing' : prefix += 'G';
+                    case 'Groom Dressing':
+                        prefix += 'G';
                         break;
-                    default: prefix += 'BN';
+                    case 'Packages':
+                        prefix += 'P';
+                        break;
+                    default:
+                        prefix += 'BN';
                 }
                 break;
 
-            default: prefix = '';
-            
+            default:
+                prefix = '';
+
         }
 
         const itemCount = await Service.countDocuments({ serviceName, subCategoryName })
-    
+
         const itemID = prefix + padNumber(itemCount + 1, 2);
 
         // Create a new service object
         const newService = new Service({
-          serviceName,
-          subCategoryName,
-          itemID,
-          itemName,
-          itemPrice,
+            serviceName,
+            subCategoryName,
+            itemID,
+            itemName,
+            itemPrice,
         });
-    
+
         await newService.save();
 
-        res.json({ message: 'Service added successfully.'});
+        res.json({ message: 'Service added successfully.' });
 
     } catch (error) {
         console.error('Error adding service:', error);
-        if (error.code === 11000) { 
-          // MongoDB duplicate key error
-          return res.status(400).json({ message: 'Duplicate itemID detected.' });
+        if (error.code === 11000) {
+            // MongoDB duplicate key error
+            return res.status(400).json({ message: 'Duplicate itemID detected.' });
         }
         res.status(500).json({ message: 'Internal server error.' });
-      }
- 
+    }
 });
 
 function padNumber(number, width) {
     return String(number).padStart(width, '0');
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //DISPLAY DATA
-//Retrives the items by service and subCategory name
+//Retrives the Service by serviceID
 app.get("/itemsGet/:itemID", async(req,res) => {
     const { itemID } = req.params;
 
@@ -135,7 +151,7 @@ app.get("/hairCut", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HK/ }); // Using a regular expression to match the prefix
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json([ ]);
         }
         res.json(hairServices);
 
@@ -151,7 +167,7 @@ app.get("/hairColor", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HC/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json( [ ] );
         }
         res.json(hairServices);
 
@@ -167,7 +183,7 @@ app.get("/hairTreatment", async (req, res) => {
         const hairServices = await Service.find({ itemID: /^HT/ });
 
         if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+            return res.status(200).json([ ]);
         }
         res.json(hairServices);
 
@@ -181,12 +197,12 @@ app.get("/hairTreatment", async (req, res) => {
 //------------------------display Skin treatments------------------------//
 app.get("/skinTreatment", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^SF/ });
+        const skinServices = await Service.find({ itemID: /^SF/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+        if(skinServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(skinServices);
 
     } catch (error) {
         console.error('Error retrieving skin services:', error);
@@ -197,12 +213,12 @@ app.get("/skinTreatment", async (req, res) => {
 //------------------------display Nail manicure------------------------//
 app.get("/nailManicure", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^NM/ });
+        const nailServices = await Service.find({ itemID: /^NM/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+        if(nailServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(nailServices);
 
     } catch (error) {
         console.error('Error retrieving nail services:', error);
@@ -213,12 +229,12 @@ app.get("/nailManicure", async (req, res) => {
 //------------------------display Nail lacqer------------------------//
 app.get("/nailLacqer", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^NN/ });
+        const nailServices = await Service.find({ itemID: /^NN/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+        if(nailServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(nailServices);
 
     } catch (error) {
         console.error('Error retrieving nail services:', error);
@@ -229,12 +245,12 @@ app.get("/nailLacqer", async (req, res) => {
 //------------------------display bridal bride------------------------//
 app.get("/bridalBride", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^BB/ });
+        const brideServices = await Service.find({ itemID: /^BB/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+        if(brideServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(brideServices);
 
     } catch (error) {
         console.error('Error retrieving bridal services:', error);
@@ -245,12 +261,12 @@ app.get("/bridalBride", async (req, res) => {
 //------------------------display bridal groom------------------------//
 app.get("/bridalGroom", async (req, res) => {
     try {
-        const hairServices = await Service.find({ itemID: /^BG/ });
+        const groomServices = await Service.find({ itemID: /^BG/ });
 
-        if(hairServices.length === 0){
-            return res.status(404).json({ message: `No items found`});
+        if(groomServices.length === 0){
+            return res.status(200).json([ ]);
         }
-        res.json(hairServices);
+        res.json(groomServices);
 
     } catch (error) {
         console.error('Error retrieving bridal services:', error);
@@ -296,7 +312,7 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
             serviceName,
             subCategoryName,
             itemName,
-            itemPrice
+            itemPrice,
         }
 
         const filter = { itemID: itemID };
@@ -321,53 +337,57 @@ app.put("/itemsUpdate/:itemID", async(req,res) => {
     }
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-//image upload
-const fs = require('fs');
-const path = require('path');
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "uploads/");
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now();
-        cb(null,uniqueSuffix + file.originalname);
-    },
+// get popular services based on bookings
+app.get("/popular-services", async (req, res) => {
+    try {
+        const popularServices = await SalonBooking.aggregate([
+            { $group: { _id: "$service", count: { $sum: 1 } } },
+            { $sort: { count: -1 } }
+        ]);
+
+        // Get the top 5 most booked services or less if there are fewer unique services
+        const topServices = popularServices.slice(0, 5);
+
+        res.json(topServices);
+        
+    } catch (err) {
+        console.error("Error with get popular services:", err.message);
+        res.status(500).send({ status: "Error with get popular services", error: err.message });
+    }
 });
 
-var upload = multer({ storage: storage });
+//pie chart
+app.get("/pie-chart-data", async (req, res) => {
+    try {
+        // Aggregate the data to get the count of items under each service name
+        const serviceData = await Service.aggregate([
+            {
+                $group: {
+                    _id: "$serviceName",
+                    itemCount: { $sum: 1 }
+                }
+            }
+        ]);
 
-app.get('/', (req, res) => {
+        // Calculate the total number of items
+        const totalItems = await Service.countDocuments();
 
-    imgSchema.find({})
-    .then((data) => {
-        res.render('imagepage', { items: data });
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-    });
+        // Calculate the percentage of items for each service name
+        const serviceDataWithPercentage = serviceData.map(service => ({
+            serviceName: service._id,
+            itemCount: service.itemCount,
+            percentage: ((service.itemCount / totalItems) * 100).toFixed(2)
+        }));
+
+        // Send data to the client
+        res.json(serviceDataWithPercentage);
+        
+    } catch (error) {
+        console.error("Error fetching service data for pie chart:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
-app.post('/imageUpload', upload.single('image'), (req, res) => {
-
-    var obj = {
-        imgId: req.body.imageId,
-        name: req.body.name,
-        image: {
-            data: fs.readFileSync(path.join(__dirname, '/uploads/', req.file.filename)),
-            contentType: 'image/png'
-        }
-    };
-    imgSchema.create(obj)
-    .then((item) => {
-        res.redirect('/');
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).send('Internal Server Error');
-    });
-});
 
 module.exports = app;       

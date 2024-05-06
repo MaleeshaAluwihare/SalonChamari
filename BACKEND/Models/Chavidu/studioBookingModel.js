@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');  // Importing mongoose for MongoDB object modeling
-const Schema = mongoose.Schema;  // Destructuring Schema class from mongoose
+const mongoose = require('mongoose');  
+const Schema = mongoose.Schema;  
 
-// Define the schema for the salon booking model
 const pbookingSchema = new Schema({
     name: {
         type: String,  
@@ -11,13 +10,23 @@ const pbookingSchema = new Schema({
         type: String,   
         required: true  
     },
+    contactNumber: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: String,   
+        //required: true  
+    },
     sid: {
+        unique: true,
         type: String,  
         required: true  
     },
-    package: {
+    StudioPackage: {
         type: String,   
-        required: true  
+        required: true , 
+        unique: true
     },
     amount: {
         type: String,   
@@ -26,12 +35,14 @@ const pbookingSchema = new Schema({
     photographer: {
         type: String,   
         required: true 
-    }  
-    }, { timestamps: true }); 
+    }//custom booking added    
+    // custom :{
+    //     type: String,
+        
+    // }  
+    //add the "add comment section"
+}, { timestamps: true }); 
 
-// Create a model named "StudioBooking" using the pbookingSchema
 const StudioBooking = mongoose.model("Studio_Booking", pbookingSchema);
-//Studio_Booking will become plural
 
-// Export the Studio_Booking model to be used elsewhere in the application
 module.exports = StudioBooking;

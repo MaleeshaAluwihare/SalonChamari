@@ -1,6 +1,3 @@
-//the data passing from the routes to DB passing through this model
-
-//import mongoose for connect to DB and assign it to mongoose variable
 const mongoose = require('mongoose');
 
 // creating the schema
@@ -24,14 +21,15 @@ const serviceSchema = new Schema({
   },
   itemName: { 
     type: String, 
-    required: true 
+    required: true,
+    unique: true
   },
   itemPrice: { 
     type: Number, 
     required: true,
     min: 0,
     default: 0
-  }
+  } 
 });
 
 //the first para is document(table) name and the second para is Schema

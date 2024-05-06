@@ -1,0 +1,48 @@
+/* studioPackageAdmin.css */
+
+.package-management {
+    padding: 20px;
+  }
+  
+  .package-list {
+    margin-top: 20px;
+  }
+  
+  .package-list h2 {
+    margin-bottom: 10px;
+  }
+  
+  .package-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .package-list th, .package-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .package-list th {
+    background-color: #f2f2f2;
+  }
+  
+  .package-list tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .package-list tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .package-list button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .package-list button:hover {
+    background-color: #d32f2f;
+  }
+  
