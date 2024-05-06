@@ -4,107 +4,121 @@ const Chart = require('chart.js');
 let Service = require("../../Models/Maleesha/ServiceModel");
 let SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 
+app.post("/itemsAdd", async (req, res) => {
 
-//INSERT DATA
-app.post("/itemsAdd", async (req,res) => {
-
-    const{ serviceName, subCategoryName, itemName, itemPrice } = req.body;
-
-    //console.log(req.body);
+    const { serviceName, subCategoryName, itemName, itemPrice } = req.body;
 
     try {
-
+        // Check if an item with the same name already exists
         const existingItem = await Service.findOne({ itemName: itemName });
-    
+
         if (existingItem) {
-          return res.status(400).json({ message: 'Service with the provided service name already exists.' });
+            return res.status(400).json({ message: 'Service with the provided item name already exists.' });
         }
 
-         // Determine the prefix for the item ID based on the service name
+        // Determine the prefix for the item ID based on the service name
         let prefix = '';
-        switch(serviceName){
+        switch (serviceName) {
 
-            case 'Hair Care' : prefix = 'H';
+            case 'Hair Care':
+                prefix = 'H';
 
-                switch(subCategoryName){
-                    case 'Haircut' : prefix += 'K';
-                         break;
-                    case 'Hair Color' : prefix += 'C'; 
+                switch (subCategoryName) {
+                    case 'Haircut':
+                        prefix += 'K';
                         break;
-                    case 'Hair Treatment' : prefix += 'T';
+                    case 'Hair Color':
+                        prefix += 'C';
                         break;
-                    default: prefix += 'HN'
+                    case 'Hair Treatment':
+                        prefix += 'T';
+                        break;
+                    default:
+                        prefix += 'HN'
                 }
                 break;
 
-            case 'Skin Care' : prefix = 'S';
+            case 'Skin Care':
+                prefix = 'S';
 
-                switch(subCategoryName){
-                    case 'Facial | Cleanup' : prefix += 'F';
+                switch (subCategoryName) {
+                    case 'Facial | Cleanup':
+                        prefix += 'F';
                         break;
-                    default: prefix += 'SN';
+                    default:
+                        prefix += 'SN';
                 }
                 break;
 
-            case 'Nail Care' : prefix = 'N';
+            case 'Nail Care':
+                prefix = 'N';
 
-                switch(subCategoryName){
-                    case 'Manicure | Pedicure' : prefix += 'M';
+                switch (subCategoryName) {
+                    case 'Manicure | Pedicure':
+                        prefix += 'M';
                         break;
-                    case 'Nail Lacqer | Extentions' : prefix += 'N';
+                    case 'Nail Lacqer | Extentions':
+                        prefix += 'N';
                         break;
-                    default: prefix += 'NN';
+                    default:
+                        prefix += 'NN';
                 }
                 break;
 
-            case 'Bridal' : prefix = 'B';
-                
-                switch(subCategoryName){
-                    case 'Bride Dressing' : prefix += 'B';
+            case 'Bridal':
+                prefix = 'B';
+
+                switch (subCategoryName) {
+                    case 'Bride Dressing':
+                        prefix += 'B';
                         break;
-                    case 'Groom Dressing' : prefix += 'G';
+                    case 'Groom Dressing':
+                        prefix += 'G';
                         break;
-                    case 'Packages' : prefix += 'P';
+                    case 'Packages':
+                        prefix += 'P';
                         break;
-                    default: prefix += 'BN';
+                    default:
+                        prefix += 'BN';
                 }
                 break;
 
-            default: prefix = '';
-            
+            default:
+                prefix = '';
+
         }
 
         const itemCount = await Service.countDocuments({ serviceName, subCategoryName })
-    
+
         const itemID = prefix + padNumber(itemCount + 1, 2);
 
         // Create a new service object
         const newService = new Service({
-          serviceName,
-          subCategoryName,
-          itemID,
-          itemName,
-          itemPrice,
+            serviceName,
+            subCategoryName,
+            itemID,
+            itemName,
+            itemPrice,
         });
-    
+
         await newService.save();
 
-        res.json({ message: 'Service added successfully.'});
+        res.json({ message: 'Service added successfully.' });
 
     } catch (error) {
         console.error('Error adding service:', error);
-        if (error.code === 11000) { 
-          // MongoDB duplicate key error
-          return res.status(400).json({ message: 'Duplicate itemID detected.' });
+        if (error.code === 11000) {
+            // MongoDB duplicate key error
+            return res.status(400).json({ message: 'Duplicate itemID detected.' });
         }
         res.status(500).json({ message: 'Internal server error.' });
-      }
- 
+    }
 });
 
 function padNumber(number, width) {
     return String(number).padStart(width, '0');
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

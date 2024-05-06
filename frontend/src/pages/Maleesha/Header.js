@@ -1,32 +1,27 @@
-import React, { useState } from 'react';
-import '../../css/Maleesha/header.css';
+import React from 'react';
+import Styles from '../../css/Maleesha/header.module.css';
 import Logo from '../../images/Maleesha/Logo.png';
 
-const Header = () => {
-    const [isChecked, setIsChecked] = useState(false);
-
+function Header() {
     return (
-        <header className="header">
-            <a href="#" className="logo">
-                <img src={Logo} alt="Logo"/>
-            </a>
-        
-            <input type="checkbox" id="check" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+        <header className={Styles.header}>
+            <a href={Logo} className={Styles.logo}>logo</a>
 
-            <label htmlFor="check" className="icons">
-                <i className='bx bx-menu' id="menu-icon" onClick={() => setIsChecked(true)}></i>
-                <i className='bx bx-x' id="close-icon" onClick={() => setIsChecked(false)}></i>
-            </label>
+            {/* <label htmlFor="check" className="icons">
+                <i className='bx bx-menu' id="menu-icon"></i>
+                <i className='bx bx-x' id="close-icon"></i>
+            </label> */}
 
-            <nav className={`navbar ${isChecked ? 'active' : ''}`}>
-                <a href="#" style={{ '--i': 0 }}>Home</a>
-                <a href="#" style={{ '--i': 2 }}>Explore</a>
-                <a href="#" style={{ '--i': 3 }}>Gallery</a>
-                <a href="#" style={{ '--i': 1 }}>About</a>
-                <a href="#" style={{ '--i': 4 }}>Contact</a>
+            <nav className={Styles.navbar}>
+                <a href="/salon-home" style={{'--i': 0}}>Home</a>
+                <a href="#" style={{'--i': 2}}>Gallery</a>
+                <a href="#" style={{'--i': 3}}>Blog</a>
+                <a href="/quote-page" style={{'--i': 3}}>Quotation</a>
+                <a href="#" style={{'--i': 1}}>FAQ</a>
+                <a href="#" style={{'--i': 4}}>Contact</a>
             </nav>
         </header>
     );
-};
+}
 
 export default Header;

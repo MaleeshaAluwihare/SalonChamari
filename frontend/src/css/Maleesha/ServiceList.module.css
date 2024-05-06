@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Vacelyn&display=swap');
+
+.ServiceRec {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-image: url('../../images/Maleesha/floral-corner-frame.jpg'); */
+  background-color: #FEE1DD;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  font-family: 'Vacelyn', sans-serif; /* Vacelyn font for a sophisticated look */
+}
+
+.ServiceRec h2 {
+  margin: 40px 0;
+  color: black;
+  font-family: 'Vacelyn', sans-serif; /* Consistent font family for headings */
+  font-size: 35px; /* Adjusted font size for visibility */
+  font-weight: 700; /* Bold font weight for emphasis */
+}
+
+.ServiceCircles {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.ServicesButton {
+  background-color: #E9C2C5;
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px;
+  font-weight: bold;
+  font-family: 'Vacelyn', sans-serif; /* Matching font family for buttons */
+}
+
+.ServicesButton:hover {
+  background-color: #CEA0AA;
+  color: white;
+}

@@ -1,23 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../css/Maleesha/ServiceList.css";
-import HairService from "../../pages/Maleesha/HairService.js";
-import SkinService from "../../pages/Maleesha/SkinService.js";
-import NailService from "../../pages/Maleesha/NailService.js";
-import BridalService from "../../pages/Maleesha/BridalService.js";
-
+import Styles from "../../css/Maleesha/ServiceList.module.css";
 
 
 export default function ServiceList() {
   return (
-    <div className="ServiceRec">
+    <div className={Styles.ServiceRec}>
       <h2>OUR SERVICES</h2>
-      <div className="ServiceCircles">
-        <Link to = {HairService} className="ServicesButton">HAIR</Link>
-        <Link to = {SkinService} className="ServicesButton">SKIN</Link>
-        <Link to = {NailService} className="ServicesButton">NAIL</Link>
-        <Link to = {BridalService} className="ServicesButton">BRIDAL</Link>
-        <Link to = "#" className="ServicesButton">Sarees & Gowns</Link>
+      <div className={Styles.ServiceCircles}>
+        <Link to = '/hair-page' className={Styles.ServicesButton}>HAIR</Link>
+        <Link to = '/skin-page' className={Styles.ServicesButton}>SKIN</Link>
+        <Link to = '/nail-page' className={Styles.ServicesButton}>NAIL</Link>
+        <Link to = '/bridal-page' className={Styles.ServicesButton}>BRIDAL</Link>
+        <Link to = '/costume-page' className={Styles.ServicesButton}>Sarees & Gowns</Link>
       </div>
     </div>
   );
