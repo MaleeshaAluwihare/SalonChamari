@@ -1,105 +1,91 @@
+// EmployeeDashboardSideBar.js
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import '../../CSS/Yasiru/EmpDashboardSideBar.css'
-// import Logo from '../../images/Maleesha/Logo.png';
+import { faHouse, faCirclePlus, faTrash, faFilePen, faEye } from '@fortawesome/free-solid-svg-icons';
+import style from'../../css/Yasiru/EmpDashboardSideBarStyle.module.css';
 
-export default function DashboardSideBar({ onSelectOption }) {
-
+export default function EmployeeDashboardSideBar({ onSelectOption }) {
   const [selectedOption, setSelectedOption] = useState('home');
 
   return (
-    <div className="dashboard-container">
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <div className="logo-container">
-            
-          </div>
-          <h1 className="salon-name">Inventory Managements</h1>
-          <div className="dashboard-title">
-            <h2 className="dashboard-heading">Service Dashboard</h2>
-            <hr className="dashboard-divider" />
+    <div className={style["dashboard-container"]}>
+      <div className={style["sidebar"]}>
+        <div className={style["sidebar-header"]}>
+          <h1 className={style["salon-name"]}>Employee Managements</h1>
+          <div className={style["dashboard-title"]}>
+            <h2 className={style["dashboard-heading"]}>Service Dashboard</h2>
+            <hr className={style["dashboard-divider"]} />
           </div>
         </div>
-        <nav className="sidebar-nav">
-          <ul className="nav-list">
-            <li className="nav-item">
+        <nav className={style["sidebar-nav"]}>
+          <ul className={style["nav-list"]}>
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "home" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "home" ? style["active"] : ""}`}
                 onClick={() => {
                   onSelectOption("home");
                   setSelectedOption("home");
                 }}
               >
-                <FontAwesomeIcon icon={faHouse} className="button-icon" />Home
+                <FontAwesomeIcon icon={faHouse} className={style["button-icon"]} />Home
               </button>
             </li>
-            <li className="nav-item">
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "employee" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "Employee" ? style["active"] : ""}`}
                 onClick={() => {
-                  onSelectOption("employee");
-                  setSelectedOption("employee");
+                  onSelectOption("Employee");
+                  setSelectedOption("Employee");
                 }}
               >
-                <FontAwesomeIcon icon={faCirclePlus} className="button-icon" /> Employee
+                <FontAwesomeIcon icon={faCirclePlus} className={style["button-icon"]} /> Employee
               </button>
             </li>
-            <li className="nav-item">
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "profileLogin" ? "active" : ""}`}
-                onClick={() => {
-                  onSelectOption("profileLogin");
-                  setSelectedOption("profileLogin");
-                }}
-              >
-                <FontAwesomeIcon icon={faTrash} className="button-icon" />Profile Login
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className={`nav-button ${selectedOption === "profileLogin" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "profileLogin" ? style["active"] : ""}`}
                 onClick={() => {
                   onSelectOption("profileLogin");
                   setSelectedOption("profileLogin");
                 }}
               >
-                <FontAwesomeIcon icon={faFilePen} className="button-icon" />profile
+                <FontAwesomeIcon icon={faTrash} className={style["button-icon"]} />Profile Login
               </button>
             </li>
-            <li className="nav-item">
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "stock-list" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "empProfile" ? style["active"] : ""}`}
                 onClick={() => {
-                  onSelectOption("stock-list");
-                  setSelectedOption("quotation-list");
+                  onSelectOption("empProfile");
+                  setSelectedOption("empProfile");
                 }}
               >
-                <FontAwesomeIcon icon={faEye} className="button-icon" />Attendance
+                <FontAwesomeIcon icon={faFilePen} className={style["button-icon"]} />profile
               </button>
             </li>
-            {/* <li className="nav-item">
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "image-upload" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "attendance" ? style["active"] : ""}`}
                 onClick={() => {
-                  onSelectOption("image-upload");
-                  setSelectedOption("image-upload");
+                  onSelectOption("attendance");
+                  setSelectedOption("attendance");
                 }}
               >
-                <FontAwesomeIcon icon={faUpload} className="button-icon" />Order
+                <FontAwesomeIcon icon={faEye} className={style["button-icon"]} />Attendance
               </button>
             </li>
-            <li className="nav-item">
+
+            <li className={style["nav-item"]}>
               <button
-                className={`nav-button ${selectedOption === "logout" ? "active" : ""}`}
+                className={`${style["nav-button"]} ${selectedOption === "Leave" ? style["active"] : ""}`}
                 onClick={() => {
-                  onSelectOption("logout");
-                  setSelectedOption("logout");
+                  onSelectOption("Leave");
+                  setSelectedOption("Leave");
                 }}
               >
-                <FontAwesomeIcon icon={faRightFromBracket} className="button-icon" />Logout
+                <FontAwesomeIcon icon={faEye} className={style["button-icon"]} />Leavedetails
               </button>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
+const session = require('express-session');
 
 const incomeRouter = require("./Routes/pulasthi-routes/incomes");
 const budgetRouter = require("./Routes/pulasthi-routes/budgets");
@@ -19,7 +20,10 @@ const salonRouter = require("./Routes/Yasiru/Saloon.js");
 // const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 const studioInventory = require("./Routes/Anoj/studioR.js");
 const EmpAttendence = require("./Routes/Yasiru/EmpAttendance.js");
-const Attendancecount = require("./Routes/Yasiru/AttendanceCount.js")
+const Attendancecount = require("./Routes/Yasiru/AttendanceCount.js") ;
+const Leave = require("./Routes/Yasiru/Leave.js");
+const sendMailRouter=require("./Routes/Yasiru/MailRoute.js")
+const ImageRoute=require("./Routes//Yasiru/ImageRoute.js")
 
 require("dotenv").config();
 
@@ -48,6 +52,12 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
 
+app.use(session({
+    secret: 12345, // Change this to a random secret key
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 
@@ -75,3 +85,7 @@ app.use("/StudioInventory",studioInventory);
 app.use("/SalonEmp",salonRouter);
 app.use("/Attendence",EmpAttendence);
 app.use("/Attendancecount",Attendancecount);
+app.use("/Leave",Leave);
+app.use("/Mailsend",sendMailRouter)
+app.use("/Image",ImageRoute)
+

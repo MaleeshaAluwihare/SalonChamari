@@ -1,21 +1,28 @@
-// EmployeeProfile.js
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import '../../CSS/Yasiru/Employeeprofile.css'
+import styles from '../../css/Yasiru/EmployeeprofileStyle.module.css'; // Import CSS module
 
 export default function EmployeeProfile() {
     const navigate = useNavigate();
-    const empid = localStorage.getItem('empId');
-    const name = localStorage.getItem('empname');
-
-    const [empDetails, setEmpDetails] = useState({});
+    const [empid,setEmpId]= useState("");
+    const [empDetails, setEmpDetails] = useState({
+        Employee_ID: '',
+        Name: '',
+        Address: '',
+        jobRole: '',
+        Salary: '',
+        Image:''
+    });
 
     useEffect(() => {
+        setEmpId(localStorage.getItem('empId'));
         if (empid) {
             axios.get(`http://localhost:8070/SalonEmp/get/${empid}`)
-                .then(res => setEmpDetails(res.data))
+                .then(res => {
+                    console.log("Fetched employee details:", res.data);
+                    setEmpDetails(res.data.Employee);
+                })
                 .catch(error => console.error("Error fetching employee details:", error));
         }
     }, [empid]);
@@ -23,35 +30,42 @@ export default function EmployeeProfile() {
     return (
         <div>
             <h3>Profile</h3>
-            <Form className="profileEmp">
-                <Form.Group>
-                    <Form.Label>Employee ID</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Employee ID" value={empDetails.Employee_ID || ''} readOnly />
-                </Form.Group>
+            <form className={styles.profileEmp}>
+                <div>
+                    <label htmlFor="employeeID">Employee ID:</label>
+                    <input type="text" id="employeeID" placeholder="Enter Employee ID" value={empDetails.Employee_ID || ''} readOnly />
+                </div>
 
-                <Form.Group>
-                    <Form.Label>Employee Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Employee Name" value={empDetails.Name || ''} readOnly />
-                </Form.Group>
+                <div>
+                    <label htmlFor="employeeName">Employee Name:</label>
+                    <input type="text" id="employeeName" placeholder="Enter Employee Name" value={empDetails.Name || ''} readOnly />
+                </div>
 
-                <Form.Group>
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="Address" value={empDetails.Address || ''} readOnly />
-                </Form.Group>
+                <div>
+                    <label htmlFor="address">Address:</label>
+                    <input type="text" id="address" placeholder="Address" value={empDetails.Address || ''} readOnly />
+                </div>
 
-                <Form.Group>
-                    <Form.Label>Job Role</Form.Label>
-                    <Form.Control type="text" placeholder="Job Role" value={empDetails.jobRole || ''} readOnly />
-                </Form.Group>
+                <div>
+                    <label htmlFor="jobRole">Job Role:</label>
+                    <input type="text" id="jobRole" placeholder="Job Role" value={empDetails.jobRole || ''} readOnly />
+                </div>
 
-                <Form.Group>
-                    <Form.Label>Daily Salary</Form.Label>
-                    <Form.Control type="text" placeholder="Daily Salary" value={empDetails.Salary || ''} readOnly />
-                </Form.Group>
+                <div>
+                    <label htmlFor="dailySalary">Daily Salary:</label>
+                    <input type="text" id="dailySalary" placeholder="Daily Salary" value={empDetails.Salary || ''} readOnly />
+                </div>
 
-                <Button type="submit" className="button">Save</Button>
-                <button className="Attendancegiven" onClick={() => navigate('/Attendacegive')}>Daily  attendance</button>
-            </Form>
+                <div>
+                    <label htmlFor="Image">Image:</label>
+                    <input type="text" id="Image" placeholder="Image" value={empDetails.Image || ''} readOnly />
+                </div>
+
+                <button type="submit" className={styles.button}>Save</button>
+                <button className={styles.Attendancegiven} onClick={() => navigate('/Attendacegive')}>Daily attendance</button>
+                <button className={styles.LeaveRequest} onClick={() => navigate(`/Leavegive`)}>Leave</button>
+
+            </form>
         </div>
     )
 }

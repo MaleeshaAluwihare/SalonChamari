@@ -1,0 +1,124 @@
+
+
+/* Search Bar */
+.SearchBar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.SearchBar input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.SearchBarbutton {
+  padding: 10px 20px;
+  background-color: #f2ff00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.SearchBar button:hover {
+  background-color: #0056b3;
+}
+
+.SearchBar button:active {
+  background-color: #004080;
+}
+
+/* Table */
+.EmployeeDetailstable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.EmployeeDetailstable th,
+.EmployeeDetailstable td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.EmployeeDetailstable th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.EmployeeDetailstable tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.EmployeeDetailstable tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Delete Button */
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+/* Add Button */
+.addSaloonButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addSaloonButton:hover {
+  background-color: #218838;
+}
+
+/* Update Button */
+.updateButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.updateButton:hover {
+  background-color: #0056b3;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import '../../CSS/Yasiru/Attendacepage.css'
+import styles from '../../css/Yasiru/AttendacepageStyle.module.css';
 
 export default function Attendancepage() {
   const [empId, setEmpId] = useState("");
@@ -41,31 +41,31 @@ export default function Attendancepage() {
   }
 
   return (
-    <div className="Attendancsubmit">
+    <div className={styles.Attendancsubmit}>
       <h3>Enter Attendance Details</h3>
-      <form onSubmit={sendData} className="Attendacepage">
-        <div className="mb-3">
+      <form onSubmit={sendData} className={styles.Attendacepage}>
+        <div className={styles.mb3}>
           <label htmlFor="name">empId</label>
-          <select className="form-control" required id="empId" value={empId} onChange={(e) => setEmpId(e.target.value)}>
+          <select className={styles.formControl} required id="empId" value={empId} onChange={(e) => setEmpId(e.target.value)}>
             <option value="">Select Employee</option>
             {employeeID.map(id => (
               <option key={id} value={id}>{id}</option>
             ))}
           </select>
         </div>
-        <div className="mb-3">
+        <div className={styles.mb3}>
           <label htmlFor="job">jobRole</label>
-          <input type="text" className="form-control" id="job" required placeholder="Enter job role" onChange={(e) => setJobRole(e.target.value)} />
+          <input type="text" className={styles.formControl} id="job" required placeholder="Enter job role" onChange={(e) => setJobRole(e.target.value)} />
         </div>
-        <div className="mb-3">
+        <div className={styles.mb3}>
           <label htmlFor="attendance">Attendance</label>
-          <input type="number" className="form-control" id="attendance" required placeholder="Enter 1 or 0" onChange={(e) => setAttendance(e.target.value)} />
+          <input type="number" className={styles.formControl} id="attendance" required placeholder="Enter 1 or 0"  onChange={(e) => setAttendance(e.target.value)} />
         </div>
-        <div className="mb-3">
+        <div className={styles.mb3}>
           <label htmlFor="date">Date</label>
-          <input type="date" className="form-control" id="date" required value={date} onChange={(e) => setDate(e.target.value)} />
+          <input type="date" className={styles.formControl} id="date" required value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
-        <button type="submit" className="Attendancesubmit">Submit</button>
+        <button type="submit" className={styles.Attendancesubmit}>Submit</button>
       </form>
     </div>
   )

@@ -6,24 +6,26 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import ServiceDetails from './components/Maleesha/SearchService';
 
 import EditEmployeeDetails from './pages/Yasiru/EditEmployeeDetails';
-import StudioEmployeeDetails from './pages/Yasiru/StudioEmployeeDetails';
-import Employeereservation from './pages/Yasiru/Employeereservation';
 import EmployeeProfile from './pages/Yasiru/EmployeeProfile'
 import DeleteEmployeedatials from './pages/Yasiru/DeleteEmployeedetails';
 import NavBars from './components/Yasiru/Navbar';
 import ProfileLoging from './pages/Yasiru/Profileloging';
 import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
-import Attendancepage from './pages/Yasiru/Attendancepage';
+import Attendancepage from './pages/Yasiru/attendancepage';
 import Attendancecount from './pages/Yasiru/Attendancecount';
-import Dashbord from './pages/Dashbord';
+import Dashboard from './pages/Yasiru/EmployeeDashboard';
+import Leave from './pages/Yasiru/Leavesgiven';
+import Leavedetails from './pages/Yasiru/Leavedetails';
+import Home from './pages/Yasiru/Home';
+
 
 
 function App() {
   return (
     <Router>
     <div className="App">
-    <NavBars/>
+    {/* <NavBars/> */}
 
     
    <Routes>
@@ -37,12 +39,19 @@ function App() {
         <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
         <Route path ='/Add' element ={<AddEmployee/>} />
         <Route path ='/Edit' element ={<EditEmployeeDetails/>} />
-        <Route path ='/StudioTable' element ={<StudioEmployeeDetails/>} />
-        <Route path ='/Reservation' element ={<Employeereservation/>} />
         <Route path ='/profile' element ={<EmployeeProfile/>} />
         <Route path ='/Deletesaloon' element ={<DeleteEmployeedatials/>} />
-      <Route path ='/Profilloging' element ={<ProfileLoging/>} />
-        <Route path='/Dash'element={<Dashbord/>}/>
+        <Route path ='/Profilloging' element ={<ProfileLoging/>} />
+        <Route path='/Dash'element={<Dashboard/>}/>
+        <Route path='/forget'element={<forgetpassword/>}/>
+        <Route path='/Leavegive'element={<Leave/>}/>
+        <Route path='/Leavedetails'element={<Leavedetails/>}/>
+        <Route path='/Home'element={<Home/>}/>
+
+
+        
+
+
 
 
 

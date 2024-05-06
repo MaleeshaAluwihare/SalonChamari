@@ -1,70 +1,83 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import AddEmployee from "./Addemployee";
-import '../../CSS/Yasiru/Employeetable.css'
-
+import style from "../../css/Yasiru/EmployeetableStyle.module.css";
 
 export default function SaloonEmployeetable() {
   const [employee, setEmployee] = useState([]);
   const [Employee_ID, setEmployee_ID] = useState(""); //delete
   const [selectedCategory, setSelectedCategory] = useState("All"); // Category state
   const [searchInput, setSearchInput] = useState("");
-
-
   const navigate = useNavigate();
 
-  useEffect(()=> {
+  useEffect(() => {
     fetchData();
-  },[selectedCategory]);
+  }, [selectedCategory]);
 
   const fetchData = () => {
     let url = "/SalonEmp/filter";
-    if(selectedCategory != "All"){
+    if (selectedCategory !== "All") {
       url += `?category=${selectedCategory}`;
     }
-    axios.get(url).then((res)=>{
-      setEmployee(res.data);
-    }).catch((err)=>{
-      alert(err.message)
-    })
-  }
-      
- 
-  const deleteEmployee = (Employee_ID) => {
-    axios.delete(`/SalonEmp/delete/${Employee_ID}`).then(res => {
-      alert('Employee deleted');
-      // Update the employee list after deletion if necessary
-    }).catch(error => {
-      alert(error.response.data.status);
-    });
+    axios
+      .get(url)
+      .then((res) => {
+        setEmployee(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
-
+  const deleteEmployee = (Employee_ID) => {
+    axios
+      .delete(`/SalonEmp/delete/${Employee_ID}`)
+      .then((res) => {
+        alert("Employee deleted");
+        // Update the employee list after deletion if necessary
+      })
+      .catch((error) => {
+        alert(error.response.data.status);
+      });
+  };
 
   const filteredEmployee = employee.filter((employee) => {
-    if (!searchInput.trim()) return true; 
+    if (!searchInput.trim()) return true;
     const searchLowerCase = searchInput.trim().toLowerCase();
-    return employee.Employee_ID.toLowerCase().includes(searchLowerCase) || employee.Name.toLowerCase().includes(searchLowerCase);
+    return (
+      employee.Employee_ID.toLowerCase().includes(searchLowerCase) ||
+      employee.Name.toLowerCase().includes(searchLowerCase)
+    );
   });
 
   return (
     <>
-        <div className="SearchBar">
-          <input type="text" placeholder="Enter ID " value={searchInput} onChange={(event) => setSearchInput(event.target.value)} />
-          <button className="btn btn-sm btn-primary mx-1" onClick={() => setSearchInput("")}>Clear</button>
-        </div>
+      <div className={style.SearchBar}>
+        <input
+          type="text"
+          placeholder="Enter ID "
+          value={searchInput}
+          onChange={(event) => setSearchInput(event.target.value)}
+        />
+        <button
+          className={`btn btn-sm btn-primary mx-1 ${style.SearchBarbutton}`}
+          onClick={() => setSearchInput("")}
+        >
+          Search
+        </button>
+      </div>
       <div>
-        {/* <h3>Saloon Employee Table</h3> */}
-
         Category dropdown
-        <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-          <option value= "All">All</option>
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="All">All</option>
           <option value="Salon">Salon</option>
           <option value="Photography">Photography</option>
         </select>
 
-        <table className="EmployeeDetailstable">
+        <table className={style.EmployeeDetailstable}>
           <thead>
             <tr>
               <th>Employee_ID</th>
@@ -73,6 +86,9 @@ export default function SaloonEmployeetable() {
               <th>Category</th>
               <th>Job role</th>
               <th>Daily Salary</th>
+              <th>Password</th>
+              <th>email</th>
+              <th>Image</th>
             </tr>
           </thead>
           <tbody>
@@ -84,19 +100,30 @@ export default function SaloonEmployeetable() {
                 <td>{employee.Category}</td>
                 <td>{employee.jobRole}</td>
                 <td>{employee.Salary}</td>
+                <td>{employee.Password}</td>
+                <td>{employee.email}</td>
+                <td>{employee.Image}</td>
+
                 <td>
-                  <button className="deletebutton" onClick={() => deleteEmployee(employee.Employee_ID)}>Delete</button>
+                  <button
+                    className={style.deleteButton}
+                    onClick={() => deleteEmployee(employee.Employee_ID)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <button className="Addsaloon" onClick={() => navigate('/Add')}>Add Employee</button>
+        <button className={style.addSaloonButton} onClick={() => navigate("/Add")}>
+          Add Employee
+        </button>
 
-        <button className='update' onClick={() => navigate(`/Edit`)}>Update</button>
-
+        <button className={style.updateButton} onClick={() => navigate(`/Edit`)}>
+          Update
+        </button>
       </div>
-      
     </>
   );
 }

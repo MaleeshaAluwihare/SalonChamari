@@ -5,12 +5,16 @@ let EmpSalary =require("../../Models/pulasthi-models/EmpSalary")
 //insert
 router.route("/add").post((req,res)=>{
     
-    const Employee_ID=req.body.Employee_ID
+    const Employee_ID=req.body.Employee_ID;
     const Name = req.body.Name;
     const Address =req.body.Address;
     const Category = req.body.Category;
     const jobRole = req.body.jobRole;
     const Salary = Number(req.body.Salary);
+    const Password=req.body.Password;
+    const email=req.body.email;
+    const Image=req.body.Image;
+
     //const Attendance = Number(req.body.Attendance);
 
  
@@ -22,6 +26,9 @@ router.route("/add").post((req,res)=>{
         Category,
         jobRole,
         Salary,
+        Password,
+        email,
+        Image
         //Attendance
     })
 
@@ -79,7 +86,7 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
 
     let Employee_ID =req.params.Employee_ID;
 
-    const{Name, Address, Category, jobRole, Salary} = req.body;
+    const{Name, Address, Category, jobRole, Salary,Password,email,Image} = req.body;
 
     try{
 
@@ -89,6 +96,10 @@ router.route("/update/:Employee_ID").put(async(req,res)=>{
             Category,
             jobRole,
             Salary,
+            Password,
+            email,
+            Image
+            
         // Attendance
         }
 
@@ -175,6 +186,32 @@ router.get("/filter", (req, res) => {
         res.status(500).json({ err: "Failed to fetch data" });
       });
   });
+
+  router.post("/login", (req, res) => {
+    const { Employee_ID, Password } = req.body;
+
+    Employee.findOne({ Employee_ID, Password })
+        .then(employee => {
+            if (employee) {
+                req.session.employee = employee; // Store employee data in session
+                res.json(employee);
+            } else {
+                res.status(404).json({ message: "User not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Internal server error" });
+        });
+});
+
+router.get("/session", (req, res) => {
+    if (req.session.employee) {
+        res.json(req.session.employee);
+    } else {
+        res.status(401).json({ message: "Session not found" });
+    }
+});
 
 
 module.exports = router;

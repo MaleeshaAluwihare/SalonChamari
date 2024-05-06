@@ -30,7 +30,7 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/").get((req, res)=>{
+router.route("/all").get((req, res)=>{
 
     Attendacecount.find().then((employees)=>{
         res.json(employees)
@@ -51,6 +51,41 @@ router.route("/delete/:empId").delete(async(req,res) =>{
         res.status(500).send({status:"Error with delete employee",error:err.message});
     })
 })
+
+router.route("/:filter").get((req, res) => {
+    const filter = req.params.filter.toLowerCase();
+    let startDate, endDate;
+  
+    if (filter === 'today') {
+      startDate = new Date();
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date();
+      endDate.setHours(23, 59, 59, 999);
+    } else if (filter === 'thisweek') {
+      const today = new Date();
+      const startOfWeek = today.getDate() - today.getDay();
+      startDate = new Date(today.setDate(startOfWeek));
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date(today.setDate(startOfWeek + 6));
+      endDate.setHours(23, 59, 59, 999);
+    } else if (filter === 'thismonth') {
+      const today = new Date();
+      startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+      endDate.setHours(23, 59, 59, 999);
+    }
+  
+    Attendacecount.countDocuments({ date: { $gte: startDate, $lte: endDate } })
+      .then(count => {
+        res.json({ count });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: 'Internal server error' });
+      });
+  });
+  
 
 /*pie chart
 app.get("/pie-chart-data", async (req, res) => {

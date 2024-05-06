@@ -34,11 +34,20 @@ const saloonSchema = new Schema({
         required:true
     },
 
-    /*Attendance:{
-        type:Number,
-        required:true
-    }*/
     
+    Password:{
+        type:String,
+        required:true
+    },
+
+    email:{
+        type:String,
+        required:true
+    },
+
+    Image:{
+        type:String
+    }
 
 })
 

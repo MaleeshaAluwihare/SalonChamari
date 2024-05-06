@@ -1,0 +1,18 @@
+.Reportbutton {
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Set the font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 4px; /* Add some rounded corners */
+    transition: background-color 0.3s ease; /* Add a transition effect */
+  }
+  
+  .Reportbutton:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  .Reportbutton:active {
+    background-color: #004a99; /* Even darker blue color when clicked */
+  }
