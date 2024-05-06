@@ -12,9 +12,13 @@ const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
 const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 
 
-const adminRouter=require("./Routes/nisalka/Admin.js");
+
 const userRoutes = require("./Routes/nisalka/users.js");
 const authRoutes = require("./Routes/nisalka/auth.js");
+const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
+const massmailRoutes = require("./Routes/nisalka/MassEmails.js")
+
+
 
 
 
@@ -60,9 +64,12 @@ app.use("/MailSend",sendMailRouter);
 
 //nisalka
 
-app.use("/AdminProfile",adminRouter);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/users",forgotRoutes);
+app.use("/api/users",massmailRoutes);
+
+
 
 
 
