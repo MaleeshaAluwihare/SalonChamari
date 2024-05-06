@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router and Routes
 import './App.css';
@@ -75,10 +74,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-
         
         <Route path="/" element={<LandingPage/>} />
-        <Route path="/salon-home" element={<SalonHome />} />
+        <Route path="/salon-home" element={<SalonHome/>} />
         <Route path='/hair-page' element={<HairServices/>}/>
         <Route path='/skin-page' element={<SkinServices/>}/>
         <Route path='/nail-page' element={<NailServices/>}/>
@@ -88,7 +86,7 @@ function App() {
         <Route path='/dash' element={<Service_Dashboard/>}/>
 
         <Route path="/Salon/booking" element={<SalonBookingForm/>} />
-        <Route path="/Studio" element={<StudioHome/>} />
+        <Route path="/studio-home" element={<StudioHome/>} />
         <Route path="/studio/booking" element={<StudioBookingForm />} />
         <Route path="/admin" element={<Booking_Dashboard />} />
         <Route path="/admin/Reservation" element={<ReservationDashboard />} />
@@ -106,7 +104,7 @@ function App() {
         <Route path='/order' element={<SupplierOrder/>} />
         <Route path='/dashboard' element={<InventoryDashboard/>}/>
 
-        <Route path='/faq-admin-dash' exact Component={<FaqDashboard />} /> 
+        <Route path='/faq-admin-dash' element Component={<FaqDashboard />} /> 
         <Route path='/faq/all' exact Component={AllFaqs} /> 
         <Route path="/faq/add" exact Component={AddFaq} /> 
         <Route path='/faq/update/:faqId' Component={UpdateFaq} />
