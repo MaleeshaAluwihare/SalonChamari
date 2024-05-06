@@ -33,7 +33,7 @@ export default function NailServices(){
     },[])
 
     return (
-        <div>
+        <div className={Styles.bodyContainer}>
             <div className={Styles.headercontainer}>
                 <Header/>
             </div>

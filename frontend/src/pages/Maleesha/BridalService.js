@@ -7,10 +7,6 @@ import Styles from  '../../css/Maleesha/Tables.module.css';
 import bride from '../../images/Maleesha/bride.png';
 import groome from '../../images/Maleesha/groom.png';
 import couple from '../../images/Maleesha/couple.png';
-import HairService from "./HairService.js";
-import SkinService from "./SkinService.js";
-import CostumeService from "./CostumePage.js";
-import NailService from "./NailService.js";
 import Header from './Header';
 import Footer from "../../components/Maleesha/Footer.js";
 
@@ -37,7 +33,7 @@ export default function BridalServices(){
     },[])
 
     return (
-        <div>
+        <div className={Styles.bodyContainer}>
             <div className={Styles.headercontainer}>
                 <Header/>
             </div>
