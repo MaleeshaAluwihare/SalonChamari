@@ -4,6 +4,7 @@
     align-items: center;
     margin-bottom: 50px;
     overflow-y: scroll;
+    background-color: white;
    scroll-behavior: smooth;
   }
   

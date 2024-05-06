@@ -22,7 +22,7 @@ export default function SkinServices(){
     },[])
 
     return (
-        <div>
+        <div className={Styles.bodyContainer}>
             <div className={Styles.headercontainer}>
                 <Header/>
             </div>
