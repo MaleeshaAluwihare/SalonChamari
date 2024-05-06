@@ -109,7 +109,7 @@ function Form() {
                 required
             />    
         </div>
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Add Budget'}
@@ -161,7 +161,7 @@ const FormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
             &:hover{

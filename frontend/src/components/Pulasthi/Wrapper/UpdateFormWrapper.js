@@ -1,7 +1,8 @@
 import React from 'react';
-import { GlobalProvider, UpdateFormProvider } from '../../../context/Pulasthi/globalContext';  
+import { GlobalProvider } from '../../../context/Pulasthi/globalContext';  
 import { GlobalStyle } from '../../../css/Pulasthi/GlobalStyle';  
 import UpdateForm from '../Form/UpdateForm';
+
 
 const UpdateFormWrapper = () => {
   return (

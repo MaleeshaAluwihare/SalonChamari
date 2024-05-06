@@ -1,7 +1,9 @@
 import React from 'react';
-import { FormProvider, GlobalProvider } from '../../../context/Pulasthi/globalContext';  
+import { GlobalProvider } from '../../../context/Pulasthi/globalContext';  
 import { GlobalStyle } from '../../../css/Pulasthi/GlobalStyle';  
 import Form from '../Form/Form';
+
+
 
 const FormWrapper = () => {
   return (

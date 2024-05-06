@@ -1,11 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router and Routes
-import React, {useState} from 'react'
-import { AppStyled } from './css/Pulasthi/AppStyled'; //import AppStyled
-import { MainLayout } from './css/Pulasthi/Layouts';
-import Navigation from './components/Pulasthi/Navigation/Navigation';
 import './App.css';
-import bg from './images/Pulasthi/hello.png';
+
 
 
 //Chavidu
@@ -87,65 +83,62 @@ function App() {
   
   return (
     <div className="App">
-      <Routes>
+      
+        
+          <Routes>
+              <Route path="/" element={<LandingPage/>} />
+              <Route path="/salon-home" element={<SalonHome />} />
+              <Route path='/hair-page' element={<HairServices/>}/>
+              <Route path='/skin-page' element={<SkinServices/>}/>
+              <Route path='/nail-page' element={<NailServices/>}/>
+              <Route path='/bridal-page' element={<BridalServices/>}/>
+              <Route path='/costume-page' element={<CostumePage/>}/>
+              <Route path='/quote-page' element={<QuotationPage/>}/>
+              <Route path='/dash' element={<Service_Dashboard/>}/>
 
-          <Route path="/" element={<LandingPage/>} />
-          <Route path="/salon-home" element={<SalonHome />} />
-          <Route path='/hair-page' element={<HairServices/>}/>
-          <Route path='/skin-page' element={<SkinServices/>}/>
-          <Route path='/nail-page' element={<NailServices/>}/>
-          <Route path='/bridal-page' element={<BridalServices/>}/>
-          <Route path='/costume-page' element={<CostumePage/>}/>
-          <Route path='/quote-page' element={<QuotationPage/>}/>
-          <Route path='/dash' element={<Service_Dashboard/>}/>
+              <Route path="/Salon/booking" element={<SalonBookingForm/>} />
+              <Route path="/Studio" element={<StudioHome/>} />
+              <Route path="/studio/booking" element={<StudioBookingForm />} />
+              <Route path="/admin" element={<Booking_Dashboard />} />
+              <Route path="/admin/Reservation" element={<ReservationDashboard />} />
+              <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />
+              <Route path="/admin/addImage" element={<StudioImageUploader />} />
+              <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
 
-          <Route path="/Salon/booking" element={<SalonBookingForm/>} />
-          <Route path="/Studio" element={<StudioHome/>} />
-          <Route path="/studio/booking" element={<StudioBookingForm />} />
-          <Route path="/admin" element={<Booking_Dashboard />} />
-          <Route path="/admin/Reservation" element={<ReservationDashboard />} />
-          <Route path="/admin/studioBookings" element={<ViewStudioBookings />} />
-          <Route path="/admin/addImage" element={<StudioImageUploader />} />
-          <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
+              <Route path='/inventoryDashboard' element={<InventoryDashboard />} />
+              {/* <Route path='/chart' element={<ChartComponent />} /> */}
+              <Route path='/add' element={<AddInventory />} />
+              <Route path='/stock' element={<StockTable/>} />
+              <Route path='/reorder' element={<ReorderingPage/>} />
+              <Route path='/update' element={<UpdateInventory />} />
+              <Route path='/edit' element={<InventoryReplacing/>} />
+              <Route path='/order' element={<SupplierOrder/>} />
+              <Route path='/dashboard' element={<InventoryDashboard/>}/>
 
-          <Route path='/inventoryDashboard' element={<InventoryDashboard />} />
-          {/* <Route path='/chart' element={<ChartComponent />} /> */}
-          <Route path='/add' element={<AddInventory />} />
-          <Route path='/stock' element={<StockTable/>} />
-          <Route path='/reorder' element={<ReorderingPage/>} />
-          <Route path='/update' element={<UpdateInventory />} />
-          <Route path='/edit' element={<InventoryReplacing/>} />
-          <Route path='/order' element={<SupplierOrder/>} />
-          <Route path='/dashboard' element={<InventoryDashboard/>}/>
+              <Route path='/faq-admin-dash' exact Component={<FaqDashboard />} /> 
+              <Route path='/faq/all' exact Component={AllFaqs} /> 
+              <Route path="/faq/add" exact Component={AddFaq} /> 
+              <Route path='/faq/update/:faqId' Component={UpdateFaq} />
+              <Route path="/faq/delete/:faqId" Component={DeleteFaq} />
+              <Route path="/CustomerMessages/all" exact Component={Messages} />
+              <Route path="/CustomerMessages/delete/:messageId" exact Component={DeleteMessage} />
+              <Route path="/feedback/all" exact Component={Feedbacks} />
+              <Route path="/feedback/delete/:feedbackId" Component={DeleteFeedback} />
+              <Route path="/ReplyMessage/add/:messageId" exact Component={ReplyMessage} />
+              <Route path="/blog/add" exact Component={AddBlog} />
+              <Route path="/blog/all" exact Component={ViewBlog} />
+              <Route path="/clientSide" exact Component={ClientHome} />
+              <Route path="/feedbackCustomer" exact Component={FeedbackCustomer} />
+              <Route path="/feedbackCustomer/add" exact Component={SendFeedback} />
+              <Route path="/messageCustomer" exact Component={MessageCustomer} />
+              <Route path="/messageCustomer/add" exact Component={SendMessage} />
+              <Route path="/blogCustomer" exact Component={CustomerBlog} />
+              <Route path="/faqCustomer" exact Component={CustomerFaq} />
 
-          <Route path='/faq-admin-dash' exact Component={<FaqDashboard />} /> 
-          <Route path='/faq/all' exact Component={AllFaqs} /> 
-          <Route path="/faq/add" exact Component={AddFaq} /> 
-          <Route path='/faq/update/:faqId' Component={UpdateFaq} />
-          <Route path="/faq/delete/:faqId" Component={DeleteFaq} />
-          <Route path="/CustomerMessages/all" exact Component={Messages} />
-          <Route path="/CustomerMessages/delete/:messageId" exact Component={DeleteMessage} />
-          <Route path="/feedback/all" exact Component={Feedbacks} />
-          <Route path="/feedback/delete/:feedbackId" Component={DeleteFeedback} />
-          <Route path="/ReplyMessage/add/:messageId" exact Component={ReplyMessage} />
-          <Route path="/blog/add" exact Component={AddBlog} />
-          <Route path="/blog/all" exact Component={ViewBlog} />
-          <Route path="/clientSide" exact Component={ClientHome} />
-          <Route path="/feedbackCustomer" exact Component={FeedbackCustomer} />
-          <Route path="/feedbackCustomer/add" exact Component={SendFeedback} />
-          <Route path="/messageCustomer" exact Component={MessageCustomer} />
-          <Route path="/messageCustomer/add" exact Component={SendMessage} />
-          <Route path="/blogCustomer" exact Component={CustomerBlog} />
-          <Route path="/faqCustomer" exact Component={CustomerFaq} />
 
-      </Routes>
 
-      <Router>
-        <AppStyled bg={bg}>
-          <MainLayout>
-            <Navigation/>
-            <main>
-            <Routes>
+
+              
               <Route path="/financeDashboard" element={<DashboardWrapper />} />
               <Route path="/budget" element={<BudgetWrapper />} />
               <Route path="/income" element={<IncomeWrapper />} />
@@ -153,11 +146,11 @@ function App() {
               <Route path="/salary" element={<EmployeeWrapper/>} />
               <Route path="/inventory" element={<InventoryWrapper />} />
               <Route path="/packages" element={<EventWrapper/>} />
-            </Routes>
-            </main>
-          </MainLayout>
-        </AppStyled>
-      </Router>
+
+          </Routes>
+           
+      
+
     </div>
 
   );
