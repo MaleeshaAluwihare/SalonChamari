@@ -104,25 +104,25 @@ function App() {
         <Route path='/order' element={<SupplierOrder/>} />
         <Route path='/dashboard' element={<InventoryDashboard/>}/>
 
-        <Route path='/faq-admin-dash' element Component={<FaqDashboard />} /> 
-        <Route path='/faq/all' exact Component={AllFaqs} /> 
-        <Route path="/faq/add" exact Component={AddFaq} /> 
-        <Route path='/faq/update/:faqId' Component={UpdateFaq} />
-        <Route path="/faq/delete/:faqId" Component={DeleteFaq} />
-        <Route path="/CustomerMessages/all" exact Component={Messages} />
-        <Route path="/CustomerMessages/delete/:messageId" exact Component={DeleteMessage} />
-        <Route path="/feedback/all" exact Component={Feedbacks} />
-        <Route path="/feedback/delete/:feedbackId" Component={DeleteFeedback} />
-        <Route path="/ReplyMessage/add/:messageId" exact Component={ReplyMessage} />
-        <Route path="/blog/add" exact Component={AddBlog} />
-        <Route path="/blog/all" exact Component={ViewBlog} />
-        <Route path="/clientSide" exact Component={ClientHome} />
-        <Route path="/feedbackCustomer" exact Component={FeedbackCustomer} />
-        <Route path="/feedbackCustomer/add" exact Component={SendFeedback} />
-        <Route path="/messageCustomer" exact Component={MessageCustomer} />
-        <Route path="/messageCustomer/add" exact Component={SendMessage} />
-        <Route path="/blogCustomer" exact Component={CustomerBlog} />
-        <Route path="/faqCustomer" exact Component={CustomerFaq} />
+        <Route path='/faq-admin-dash' element={<FaqDashboard />} /> 
+        <Route path='/faq/all' element={<AllFaqs />} /> 
+        <Route path="/faq/add" element={<AddFaq />} /> 
+        <Route path='/faq/update/:faqId' element={<UpdateFaq />} />
+        <Route path="/faq/delete/:faqId" element={<DeleteFaq />} />
+        <Route path="/CustomerMessages/all" element={<Messages />} />
+        <Route path="/CustomerMessages/delete/:messageId" element={<DeleteMessage />} />
+        <Route path="/feedback/all" element={<Feedbacks />} />
+        <Route path="/feedback/delete/:feedbackId" element={<DeleteFeedback />} />
+        <Route path="/ReplyMessage/add/:messageId" element={<ReplyMessage />} />
+        <Route path="/blog/add" element={<AddBlog />} />
+        <Route path="/blog/all" element={<ViewBlog />} />
+        <Route path="/clientSide" element={<ClientHome />} />
+        <Route path="/feedbackCustomer" element={<FeedbackCustomer />} />
+        <Route path="/feedbackCustomer/add" element={<SendFeedback />} />
+        <Route path="/messageCustomer" element={<MessageCustomer />} />
+        <Route path="/messageCustomer/add" element={<SendMessage />} />
+        <Route path="/blogCustomer" element={<CustomerBlog />} />
+        <Route path="/faqCustomer" element={<CustomerFaq />} />
 
       </Routes>
     </div>
