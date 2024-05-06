@@ -24,6 +24,11 @@ const imageUploadRouter = require("./Routes/Maleesha/imageUploadRoute.js");
 const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
 const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
 
+const userRoutes = require("./Routes/nisalka/users.js");
+const authRoutes = require("./Routes/nisalka/auth.js");
+const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
+const massmailRoutes = require("./Routes/nisalka/MassEmails.js")
+
 const studioInventory = require("./Routes/Anoj/studioR.js");
 
 const faqsRouter = require("./Routes/Dasun/faqsRoute.js");
@@ -40,7 +45,9 @@ const PORT = process.env.PORT || 8070;  /*when we import the web application to 
 to open our application. process.env.Port allow to use available port at the time we import 
 web app to server or if we know the available ports on server we can directly give port number*/
 
-app.use(cors());
+app.use(cors({
+    
+}));
 app.use(bodyParser.json());  //json format mean the key value pairs
 
 const URL = process.env.MONGODB_URL;
@@ -86,6 +93,12 @@ app.use("/services",servicesRouter)
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
 app.use("/MailSend",sendMailRouter);
+
+//nisalka
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/users",forgotRoutes);
+app.use("/api/users",massmailRoutes);
 
 //anoj
 app.use("/StudioInventory",studioInventory);
