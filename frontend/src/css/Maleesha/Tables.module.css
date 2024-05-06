@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Vacelyn&display=swap');
 
-
+.bodyContainer{
+  background-color: white;
+}
   /*Service list*/
 .ServiceRec {
   height: 300px;
@@ -98,6 +100,10 @@
   
   .table th {
     background-color: #69ffb1; 
+  }
+
+  .table td {
+    color: #000000;
   }
   
   /* different background color to odd rows

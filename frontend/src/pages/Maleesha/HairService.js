@@ -41,7 +41,7 @@ export default function HairServices(){
     
 
     return (
-        <div>
+        <div className={Styles.bodyContainer}>
             <div className={Styles.headercontainer}>
                 <Header/>
             </div>

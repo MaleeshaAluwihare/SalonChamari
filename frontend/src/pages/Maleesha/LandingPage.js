@@ -82,15 +82,15 @@ export default function LandingPage() {
                         <p>and the grandeur of our event planners, every experience is a legacy in the making.</p>
                     </div>
                     <br></br>
-                    <h1 style={{ margin: '20px 0' }}>
-                        Exceptional {' '}
+                    <h1 style={{ margin: '20px 0',color: 'black', fontSize:'40px' }}>
+                        Exceptional
                         <span style={{ fontWeight: 'bold', color: '#FFCF00' }}>
                             {text}
                         </span>
                         <span style={{ color: 'white' }}>
                             <Cursor cursorStyle='|' />
                         </span>
-                        {' '} Expertise.
+                        Expertise.
                     </h1>
                     <button className={Styles.exploreBtn} onClick={handleExploreClick}>Explore</button>
                 </div>
