@@ -39,7 +39,7 @@ export default function Appointments() {
   return (
     <div className={Styles.appointmentcontainer}>
       <h1>APPOINTMENTS</h1>
-      <table className={Styles.fadein}>
+      <table className={Styles.appTable}>
         <thead>
           <tr>
                 <th>Appointment ID</th>

@@ -5,12 +5,8 @@ import Logo from '../../images/Maleesha/Logo.png';
 function Header() {
     return (
         <header className={Styles.header}>
-            <a href={Logo} className={Styles.logo}>logo</a>
 
-            {/* <label htmlFor="check" className="icons">
-                <i className='bx bx-menu' id="menu-icon"></i>
-                <i className='bx bx-x' id="close-icon"></i>
-            </label> */}
+            <img src={Logo} alt="Salon Logo"style={{ width: '130px', height: 'auto' }}/>
 
             <nav className={Styles.navbar}>
                 <a href="/salon-home" style={{'--i': 0}}>Home</a>
