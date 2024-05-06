@@ -2,6 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router and Routes
 import './App.css';
 
+//nisalka
+import Profile from "../src/components/nisalka/Profile";
+import Signup from "../src/components/nisalka/Signup";
+import Login from "../src/components/nisalka/Login";
+import { Navigate } from "react-router-dom";
+import CMdashboard from "./components/nisalka/CMdashboard";
+import Forgot from "./components/nisalka/forgotpassword"
 
 //Chavidu
 import StudioBookingForm from './components/Chavidu/studioBookingForm';
@@ -71,8 +78,10 @@ import FaqDashboard from './pages/Dasun/FaqDashboard';
 
 
 function App() {
+  const user = localStorage.getItem("token");
   return (
     <div className="App">
+      
       <Routes>
         
         <Route path="/" element={<LandingPage/>} />
@@ -124,10 +133,22 @@ function App() {
         <Route path="/blogCustomer" element={<CustomerBlog />} />
         <Route path="/faqCustomer" element={<CustomerFaq />} />
 
+        {user && <Route path="/profile/:email" exact element={<Profile />} />}
+			  <Route path="/signup" exact element={<Signup />} />
+		  	<Route path="/login" exact element={<Login />} />
+        <Route path="/login" element={<Navigate replace to="/login" />} />
+
+	      <Route path="/cmdash" element={<CMdashboard/>}/>
+	      <Route path="/Uactivity" element={<CMdashboard/>}/>
+	      <Route path="/Memails" element={<CMdashboard/>}/>
+	      <Route path="/forgot" element={<Forgot/>}/>
+      
+
       </Routes>
     </div>
 
   );
+
 }
 
 
