@@ -1,4 +1,11 @@
 /* Dashboard Container */
+
+body {
+  background-color: white;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+}
+
 .dashboardContainer {
     display: flex;
     max-height: 100vh;

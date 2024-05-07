@@ -1,4 +1,11 @@
 /* General Table Styles */
+
+body {
+  background-color: white;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+}
+
 .fade-in {
     animation: fadeInAnimation ease 0.5s;
     animation-iteration-count: 1;
