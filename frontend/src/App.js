@@ -151,8 +151,8 @@ function App() {
               <Route path="/packages" element={<EventWrapper/>} />
 
               {user && <Route path="/profile/:email" exact element={<Profile />} />}
-			        <Route path="/signup" exact element={<Signup />} />
-			        <Route path="/login" exact element={<Login />} />
+	      <Route path="/signup" exact element={<Signup />} />
+	      <Route path="/login" exact element={<Login />} />
               <Route path="/login" element={<Navigate replace to="/login" />} />
 
               {/*  admin login */}
