@@ -102,7 +102,7 @@ export default function SaloonEmployeetable() {
                 <td>{employee.Salary}</td>
                 <td>{employee.Password}</td>
                 <td>{employee.email}</td>
-                <td>{employee.Image}</td>
+                {/* <td>{employee.Image}</td> */}
 
                 <td>
                   <button

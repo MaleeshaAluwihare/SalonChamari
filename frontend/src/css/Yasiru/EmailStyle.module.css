@@ -7,7 +7,17 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* New styles */
+  flex: 1;
+  background: rgba(252, 246, 249, 0.78);
+  border: 3px solid #FFFFFF;
+  backdrop-filter: blur(4.5px);
+  border-radius: 32px;
+  overflow-x: hidden;
 }
+
+/* Rest of your CSS */
+
 
 h2 {
   font-size: 1.5rem;

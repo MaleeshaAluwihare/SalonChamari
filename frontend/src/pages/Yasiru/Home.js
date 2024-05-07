@@ -43,7 +43,7 @@ function Home() {
   return (
     <div>
       <div ref={ComponentsRef}>
-        <div>
+        <div className="Component EmployeeAttendanceChart">
           <EmployeeAttendanceChart />
         </div>
         <div>
