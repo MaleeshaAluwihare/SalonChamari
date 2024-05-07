@@ -1,7 +1,7 @@
 import React , {useState,useEffect} from 'react';
 import Axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import styles from  "../../css/Devinda/deleteEventPackage.module.css"
+// import styles from  "../../css/Devinda/deleteEventPackage.module.css"
 
 export const DeleteEventPackage = () => {
 
