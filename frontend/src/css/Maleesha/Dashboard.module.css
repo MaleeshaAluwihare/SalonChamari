@@ -1,0 +1,28 @@
+/* Dashboard Container */
+
+body {
+  background-color: white;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+}
+
+.dashboardContainer {
+    display: flex;
+    max-height: 100vh;
+  }
+  
+  /* Sidebar */
+  .sideBar {
+    flex: 0 0 250px; /* Set sidebar width */
+  }
+  
+  /* Dashboard Content */
+  .dashboardContent {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+  .removeService{
+    margin-top: 100px;
+  }

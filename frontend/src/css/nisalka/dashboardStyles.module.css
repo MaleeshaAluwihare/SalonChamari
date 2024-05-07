@@ -1,0 +1,251 @@
+/* Styles for the dashboard container */
+.dashboardContainer1 {
+    display: flex;
+    height: 100vh; /* Make the container take the full height of the viewport */
+  }
+  
+  /* Styles for the navigation panel */
+  .navPanel1 {
+    width: 20%; /* Set width of the panel to 20% */
+    background-color: #000000; /* Background color for the panel */
+     /* Add padding inside the panel */
+  }
+  .headingNav{
+    color: #a77903;
+    font-size: 27px;
+    margin-top: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  /* Style for the navigation links */
+  .navPanel1 ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    padding: 0;
+  }
+  
+  .navPanel1 ul li {
+    margin-top: 50px;
+    margin-bottom: 30px; /* Add spacing between list items */
+    
+  }
+  .link {
+    background-color: #ae7d00;
+    color: #ffffff;
+    display: block;
+    width: 220px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+  }
+  .link:hover {
+    background-color: #ddca9a;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .activeLink {
+    background-color: #ddca9a;
+    color: #000000;
+    display: block;
+    width: 250px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+  .homesticker{
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+  }
+  /* Styles for the content container */
+  .cmDashboardContainer1 {
+    flex: 1; /* Make the content container fill remaining space */
+    padding: 20px; /* Add padding inside the content container */
+    background-color: #fff; /* Background color for the content */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+  }
+  .userActivityContainer{
+    flex: 1; /* Make the content container fill remaining space */
+    padding: 20px; /* Add padding inside the content container */
+    background-color: #fff; /* Background color for the content */
+    overflow-y: auto;
+  }
+  
+  /* Style for the dashboard heading */
+  .dashboardHeading1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Styles for the search bar */
+  .searchBar1 {
+    margin-bottom: 20px;
+  }
+  
+  .searchBar1 input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Make the input take full width of the container */
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the generate report button */
+  .generateReportBtn1 {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #ae7d00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .generateReportBtn1:hover {
+    background-color: #ddca9a;
+    color: #000000;
+  }
+  
+  /* Styles for the table container */
+  .tableContainer1 {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Styles for the user table */
+  .userTable1 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Style for the table header */
+  .tableHeader1 {
+    background-color: #2e2e2e;
+    color: white;
+    
+    border-right: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+  .tableHeader1:last-child {
+    border-right: none;
+  }
+  
+  /* Add border to table data cells */
+  .userData1 {
+    border-right: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+  
+  /* Remove border from the last table data cell */
+  .userData1:last-child {
+    border-right: none;
+  }
+  
+  /* Style for rows when hovered */
+  .userRow1:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style for user data cells */
+  .userData1 {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Style for the delete button */
+  .deleteBtn1 {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .deleteBtn1:hover {
+    background-color: #c82333;
+  }
+  
+  .econtainer {
+    flex: 1; /* Make the content container fill remaining space */
+    padding: 20px; /* Add padding inside the content container */
+    background-color: #fff; /* Background color for the content */
+    overflow-y: auto;
+  }
+  
+  .emailsContainer {
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 500px;
+    max-width: 90%;
+    align-items: center;
+    margin-left: 300px;
+    margin-top: 50px;
+  }
+  
+  .dashboardHeading1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    
+  }
+  .dashboardHeading12 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-align: center;
+    
+  }
+  
+  .emailsContainer div {
+    margin-bottom: 1rem;
+  }
+  
+  .emailsContainer label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .emailsContainer input,
+  .emailsContainer textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  
+  .emailsContainer textarea {
+    min-height: 150px;
+  }
+  
+  .emailsContainer button {
+    background-color: #ae7d00;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .emailsContainer button:hover {
+    background-color: #ddca9a;
+    color: #000000;
+  }

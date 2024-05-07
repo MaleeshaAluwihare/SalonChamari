@@ -1,0 +1,71 @@
+#Faq_page {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.theader {
+    background-color: #f5f5f5;
+}
+
+.theader th {
+    padding: 12px;
+    text-align: left;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+#Faq_page_heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #Faq_page_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  #Faq_page_table_heading th,
+  #Faq_page_table_body td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .UpdateBtn {
+    padding: 8px 16px;
+    background-color: #129e0d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+
+  .DeleteBtn {
+    padding: 8px 16px;
+    background-color: #ec2a19;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+
+  #Faq_page_table_body button:hover {
+    background-color: #20b1d2;
+  }
+
+  #Faq_page div {
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    #Faq_page {
+      width: 100%;
+      padding: 10px;
+    }
+  }
