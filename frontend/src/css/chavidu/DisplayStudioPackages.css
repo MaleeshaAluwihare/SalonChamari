@@ -1,0 +1,49 @@
+/* DisplayStudioPackages.css */
+.studio-packages-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 1000px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .package-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .package-card {
+    background-color: #d5ce00;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 0 calc(33.33% - 20px); /* Adjust according to your needs */
+    max-width: calc(33.33% - 20px); /* Adjust according to your needs */
+  }
+  
+  .package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .package-name {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .package-amount {
+    font-weight: bold;
+  }
+  
+  .package-description, .package-photographer {
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
