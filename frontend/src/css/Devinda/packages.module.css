@@ -1,0 +1,80 @@
+/* Packages.css */
+
+.packagesContainer {
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.searchContainer {
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.packageItem {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.packageName {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.packageFeature {
+  margin-bottom: 5px;
+}
+
+.packagePrice {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.purchaseLink {
+  text-decoration: none;
+}
+
+.purchaseButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.purchaseButton:hover {
+  background-color: #0056b3;
+}
+
+.customizeButtonContainer {
+  text-align: center;
+}
+
+.customizeLink {
+  text-decoration: none;
+}
+
+.customizeButton {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.customizeButton:hover {
+  background-color: #218838;
+}

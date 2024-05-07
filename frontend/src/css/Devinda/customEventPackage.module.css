@@ -1,0 +1,71 @@
+/* customEventPackage.css
+
+/* Main container */
+.EventCustomization {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  .EventCustomization h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Table styles */
+  .EventCustomization table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .EventCustomization th, .EventCustomization td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .EventCustomization th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Checkbox style */
+  .EventCustomization input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.5);
+    margin: 0;
+  }
+  
+  /* Total price display */
+  .EventCustomization p {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Proceed button */
+  .EventCustomization button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .EventCustomization button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Loading message */
+  .EventCustomization .loading {
+    font-style: italic;
+    color: #888;
+  }  
