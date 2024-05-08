@@ -100,7 +100,7 @@ function Budget() {
           else app shows BudgetItems */}
           {searchActive? (
               //properties inside the angle brackets are going to SearchBudgetItem component as props
-              <SearchBudgetItem budget={budget} onClose={handleCloseSearch}/>
+              <SearchBudgetItem budget={budget} onClose1={handleCloseSearch}/>
           ) : (
             //getbudgets
             <div className="budgets">

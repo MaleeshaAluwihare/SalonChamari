@@ -25,10 +25,17 @@ function EmpSalaryForm() {
         // setError('')
     }
 
+
     //calculate item price
     const handleCalculateSalary = () => {
         let dailySalary;
         let attend = parseInt(attendance, 10);
+        const regex = /^[0-9\b]+$/; //allow only digits
+        if (attend > 30 || attend!==regex) {
+            alert("Not a valid attendance for a month");
+            return; 
+        }
+
         switch(jobRole) {
             case "Cameraman":
                 dailySalary = 5500;
@@ -39,7 +46,7 @@ function EmpSalaryForm() {
             case "Barber":
                 dailySalary = 2000;
                 break;
-            case "Hairstylist ":
+            case "Hairstylist":
                 dailySalary = 6000;
                 break;
             case "Beautician":

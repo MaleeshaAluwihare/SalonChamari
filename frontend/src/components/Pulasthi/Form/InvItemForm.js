@@ -25,10 +25,31 @@ function InvItemForm() {
         // setError('')
     }
 
+    //validation
+    const validateItemId = (itemId) => {
+        const pattern = /^(ST|SL)\d{3}$/;
+        return pattern.test(itemId);
+    };
+
+    const validateQuantity = (quantity) =>{
+        const pattern = /^[0-9\b]+$/;
+        return pattern.test(quantity)
+    }
+
     //calculate item price
     const handleCalculatePrice = () => {
         let price;
         let quan = parseInt(quantity, 10);
+
+        if(!validateItemId(itemId)){
+            alert("Enter a valid item id")
+            return
+        }
+        if(!validateQuantity(quantity)){
+            alert("Enter a integer for quantity")
+            return
+        }
+
         switch(itemType) {
             case "Hair Dryer":
                 price = 500;
@@ -44,6 +65,9 @@ function InvItemForm() {
                 break;
             case "Tripod":
                 price = 8000;
+                break;
+            case "Camera":
+                price = 15000;
                 break;
             default:
                 price = 0;
@@ -105,6 +129,7 @@ function InvItemForm() {
                     <option value="Curling iron">Curling iron</option>
                     <option value="Lens">Lens</option>
                     <option value="Tripod">Tripod</option>
+                    <option value="Camera">Camera</option>
                     
         </select>
         </div>

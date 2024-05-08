@@ -8,7 +8,7 @@ import { close, plus, update } from "../../../utils/Pulasthi/Icons";
                 
                      //budgetToUpdate prop come from Budget componenet
 function UpdateForm({ budgetToUpdate,onClose }) {
-  const { updateBudget } = useGlobalContext();
+  const { updateBudget,budgets } = useGlobalContext();
 
   // State to manage form inputs
   const [inputState, setInputState] = useState({
@@ -44,9 +44,29 @@ function UpdateForm({ budgetToUpdate,onClose }) {
     setInputState({ ...inputState, date });
   };
 
+  //validation
+  const monthAlreadyHasBudget = (selectedMonth) => {
+    return budgets.some(budget => budget.month === selectedMonth);
+  };
+
+  const validateBudgetAmount = (amount) => {
+    const regex = /^[0-9\b]+$/; //allow only digits
+    return regex.test(amount);
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (monthAlreadyHasBudget(month)) {
+      alert('A budget for this month already exists. Please choose another month.');
+      return;
+    }
+
+    if (!validateBudgetAmount(amount)) {
+      alert('Enter only the numbers for amount');
+      return;
+    }
     // Call updateBudget method from global context
     updateBudget(budgetToUpdate?.budgetId,inputState);
     // Clear form fields after submission

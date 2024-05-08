@@ -24,8 +24,21 @@ function Form() {
         setInputState({...inputState, [name]: e.target.value})
         // setError('')
     }
+
+    //validation
     const monthAlreadyHasBudget = (selectedMonth) => {
         return budgets.some(budget => budget.month === selectedMonth);
+    };
+
+    // Function to validate budget ID using regex
+    const validateBudgetId = (id) => {
+        const pattern = /^b\d{4}$/; // regex pattern: starts with "b" followed by 4 digits
+        return pattern.test(id);
+    };
+
+    const validateBudgetAmount = (amount) => {
+        const regex = /^[0-9\b]+$/; //allow only digits
+        return regex.test(amount);
     };
 
     const handleSubmit = e => {
@@ -39,6 +52,10 @@ function Form() {
             alert('A budget for this month already exists. Please choose another month.');
             return;
         }
+        if (!validateBudgetAmount(amount)) {
+            alert('Enter only the numbers for amount');
+            return;
+        }
         //Send Entered values
         addBudget(inputState)
         getBudgets()
@@ -50,11 +67,7 @@ function Form() {
             date: '',
         })
     }
-    // Function to validate budget ID using regex
-    const validateBudgetId = (id) => {
-        const pattern = /^b\d{4}$/; // regex pattern: starts with "b" followed by 4 digits
-        return pattern.test(id);
-    };
+
 
   return (
     <FormStyled onSubmit={handleSubmit}>

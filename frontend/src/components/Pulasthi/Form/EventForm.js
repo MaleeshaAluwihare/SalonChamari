@@ -25,12 +25,23 @@ function EventForm() {
         setInputState({...inputState, [name]: e.target.value})
         // setError('')
     }
-
+    //validation
+    const validateCostAndProfit = (cost,profit) => {
+        const pattern = /^[0-9\b]+$/;
+        if(cost!==pattern || profit!== pattern){
+            return false
+        }
+    }
 
     const BASE_URL = "http://localhost:8070/finance/";
     //react event handling 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
+        if(validateCostAndProfit(cost,profit) ==  false){
+            alert("Enter intergers for cost and profit")
+            return
+        }
 
         //method for add cost and profit to expenses and incomes
         try {
