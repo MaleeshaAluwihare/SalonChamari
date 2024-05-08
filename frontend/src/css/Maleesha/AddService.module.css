@@ -30,7 +30,7 @@ form:hover {
 .formlabel {
     display: block;
     margin-bottom: 0.5rem;
-    color: #333; /* Dark grey color for text */
+    color: #000000; /* Dark grey color for text */
     font-weight: 600; /* Bold font for labels */
 }
 
@@ -49,18 +49,20 @@ form:hover {
     outline: none;
 }
 
-.btnprimary {
-    width: 100%;
+.ServiveSubmitBtn {
+    width: calc(100% - 1.5rem); /* Adjust width to match form controls, considering the padding */
     padding: 0.75rem;
+    margin: auto; /* Center the button within the form */
     border: none;
     border-radius: 0.25rem;
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #007bff;
     color: white;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
 
-.btnprimary:hover {
+
+.ServiveSubmitBtn:hover {
     background-color: #0056b3; /* Darker shade for hover effect */
 }

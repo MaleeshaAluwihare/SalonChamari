@@ -110,7 +110,7 @@ export default function AddService(){
                     <input type="number" className={Styles.formcontrol} id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} required />
                 </div>
 
-                <button type="submit" className={Styles.btnbtnprimary}>Submit</button>
+                <button type="submit" className={Styles.ServiveSubmitBtn}>Submit</button>
             </form>
         </div>
     )
