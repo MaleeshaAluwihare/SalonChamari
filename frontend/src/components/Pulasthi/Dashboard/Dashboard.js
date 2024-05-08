@@ -99,6 +99,7 @@ function Dashboard() {
 const DashboardStyled = styled.div`
    h1 {
         color: #222260;
+        font-weight:bold
       }
   .stats-con{
         display: grid;
