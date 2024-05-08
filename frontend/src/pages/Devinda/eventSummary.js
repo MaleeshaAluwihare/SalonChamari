@@ -63,12 +63,16 @@ export const EventSummary = () => {
       className="page-container"
       style={{
         fontFamily: "Arial, sans-serif",
-        backgroundColor: "#f2f2f2",
+        backgroundColor: "#ffffff", // changed background color to white
         padding: "20px",
+        minHeight: "100vh", // changed maxHeight to minHeight to allow for full-page height
+        boxSizing: "border-box", // added to include padding in the height calculation
       }}
     >
-    <h1 style={{ color: "#1175e1cc", textAlign: "center" }}>Event Summary</h1> {/* Page heading */}
-      <div className="image-grid">
+      <h1 style={{ color: "#1175e1cc", textAlign: "center" }}>
+        Event Summary
+      </h1> {/* Page heading */}
+      <div className="image-grid" style={{ maxWidth: "500px", margin: "0 auto" }}>
         <div
           key={ID}
           className="image-card"
@@ -83,7 +87,6 @@ export const EventSummary = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            
           }}
         >
           <div>
@@ -109,7 +112,6 @@ export const EventSummary = () => {
             <h2>{pPrice}</h2>
             {manager && (
               <div>
-                
                 <p style={{ marginBottom: "10px" }}>
                   <strong>Event Manager:</strong> {manager.name}
                 </p>
@@ -144,3 +146,4 @@ export const EventSummary = () => {
   );
 };
 
+export default EventSummary;

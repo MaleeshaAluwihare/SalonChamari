@@ -30,26 +30,25 @@ const FeatureList = () => {
     }
   };
 
-  
   const handleAddFeature = async () => {
-      try {
-        await axios.post(`${BackendURL}/add`, {
-          cpFeature: newFeature,
-          cpFeaturePrice: newFeaturePrice,
-        });
-        // Fetch the updated list of features after adding a new feature
-        fetchData();
-        // Clear input fields
-        setNewFeature('');
-        setNewFeaturePrice('');
-      } catch (error) {
-        console.error('Error adding feature:', error);
-      }
-    };
+    try {
+      await axios.post(`${BackendURL}/add`, {
+        cpFeature: newFeature,
+        cpFeaturePrice: newFeaturePrice,
+      });
+      // Fetch the updated list of features after adding a new feature
+      fetchData();
+      // Clear input fields
+      setNewFeature('');
+      setNewFeaturePrice('');
+    } catch (error) {
+      console.error('Error adding feature:', error);
+    }
+  };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <h2 style={{ marginBottom: '20px' }}>Feature List</h2>
+    <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: 'white', height: '100vh', padding: '20px' }}>
+      <h2 style={{ marginBottom: '20px', color: 'black' }}>Feature List</h2>
       <ul>
         {features.map((feature) => (
           <li key={feature._id} style={{ marginBottom: '10px' }}>

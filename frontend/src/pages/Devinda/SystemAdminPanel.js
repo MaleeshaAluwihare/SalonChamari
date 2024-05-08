@@ -2,6 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Assuming you're using React Router for routing
 
 const SystemAdminPanel = () => {
+  const containerStyle = {
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
   const buttonStyle = {
     width: '150px',
     height: '150px',
@@ -31,8 +41,8 @@ const SystemAdminPanel = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1 style={{ marginBottom: '20px' }}>Admin Panel</h1>
+    <div style={containerStyle}>
+      <h1 style={{ marginBottom: '20px', color: 'black',fontSize:'70px' }}>Admin Panel</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Link to="/eventDashboard" style={buttonStyle}>Event Dashboard</Link>

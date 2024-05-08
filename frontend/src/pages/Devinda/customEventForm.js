@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import image from "../../images/image03.jpg"
+import image from "../../images/image03.jpg";
 
 export const CustomEventForm = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ export const CustomEventForm = () => {
 
     const newRandomNumber = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     setRandomNumber(newRandomNumber);
-    
+
     // Reset form fields after submission
     setFormData({
       name: "",
@@ -66,13 +66,19 @@ export const CustomEventForm = () => {
     navigate("/customEventSummary");
   };
 
+  const containerStyle = {
+    backgroundColor: "white",
+    height: "100vh", // 100% of viewport height
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
   const formStyle = {
-    
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     maxWidth: "500px",
-    margin: "0 auto",
   };
 
   const inputStyle = {
@@ -98,8 +104,8 @@ export const CustomEventForm = () => {
   };
 
   return (
-    <div style={formStyle}>
-      <div>
+    <div style={containerStyle}>
+      <div style={formStyle}>
         <h2>Custom Event Registration Form</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -175,7 +181,9 @@ export const CustomEventForm = () => {
             />
           </label>
           <br />
-          <button type="submit" style={buttonStyle}>Submit</button>
+          <button type="submit" style={buttonStyle}>
+            Submit
+          </button>
         </form>
       </div>
     </div>

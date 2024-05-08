@@ -1,11 +1,13 @@
 /* eventForm.module.css */
 /* want */
-
+.all{
+  background-color: #fff;
+}
 .eventFormContainer {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: aqua;
+  background-color: rgb(245, 245, 245);
 }
 
 .formTitle {
@@ -16,6 +18,7 @@
 .formLabel {
   display: block;
   margin-bottom: 10px;
+  
 }
 
 .formInput {
@@ -40,6 +43,6 @@
 }
 
 .Eventform{
-  background-color: #347dcb;
+  background-color: #828282;
 
 }

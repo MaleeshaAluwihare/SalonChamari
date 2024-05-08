@@ -51,7 +51,7 @@ export const CustomEventSummary = () => {
   };
 
   return (
-    <div className="page-container" style={{ fontFamily: "Arial, sans-serif", background: "#f6f6f6", padding: "20px" }}>
+    <div className="page-container" style={{ fontFamily: "Arial, sans-serif", background: "#ffffff", minHeight: "100vh", padding: "20px" }}>
       <div className="image-grid">
         <div key={ID} className="image-card" id="summary" style={cardStyle}>
           <div>

@@ -33,8 +33,8 @@ export const EventManagerDashboard = () => {
     };
 
     return (
-        <div className="event-dashboard" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Event Dashboard</h1>
+        <div className="event-dashboard" style={{ padding: "20px", fontFamily: "Arial, sans-serif",backgroundColor:"white"}}>
+            <h1 style={{ textAlign: "center", marginBottom: "30px",color:"black" }}>Event Dashboard</h1>
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
                 <Link to="/addEventManager" style={{ textDecoration: "none" }}>
                     <button style={{ padding: "10px 20px", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }}>Add Manager</button>
@@ -51,7 +51,7 @@ export const EventManagerDashboard = () => {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="table-wrap">
-                                    <table id="event-table" className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
+                                    <table id="event-table" className="table" style={{ width: "100%", borderCollapse: "collapse",marginLeft:"15%" }}>
                                         <thead style={{ backgroundColor: "#007bff", color: "#fff" }}>
                                             <tr>
                                                 <th style={{ padding: "10px" }}>Manager Name</th>
