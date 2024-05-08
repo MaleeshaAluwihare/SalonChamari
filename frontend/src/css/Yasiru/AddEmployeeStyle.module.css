@@ -1,0 +1,84 @@
+/* AddEmployeeStyle.module.css */
+
+/* Container */
+.addEmployeeContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(169, 131, 131, 0.654);
+  flex: 1; /* Added */
+  background: rgba(252, 246, 249, 0.78); /* Added */
+  border: 3px solid #FFFFFF; /* Added */
+  backdrop-filter: blur(4.5px); /* Added */
+  border-radius: 32px; /* Added */
+  overflow-x: hidden; /* Added */
+  &::-webkit-scrollbar {
+    width: 0; /* Added */
+  }
+}
+
+/* Form header */
+.addName {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #070707;
+}
+
+/* Form fields */
+.addEmployee {
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.formControl {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit button */
+.addButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: auto; /* Center-align horizontally */
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+}
+
+/* Form group for file input */
+.formGroup {
+  margin-bottom: 20px;
+}
+
+/* Form label */
+.formGroup label {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Additional styles */
+.main {
+  flex: 1;
+  background: rgba(252, 246, 249, 0.78);
+  border: 3px solid #FFFFFF;
+  backdrop-filter: blur(4.5px);
+  border-radius: 32px;
+  overflow-x: hidden;
+}
+
+.main::-webkit-scrollbar {
+  width: 0;
+}

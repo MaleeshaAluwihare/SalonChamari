@@ -240,7 +240,7 @@ h4{
   }
   
   .closeicon:hover {
-    transform: scale(1.1); /* Slightly enlarges the icon on hover */
+    transform: scale(1.1); 
   }
   
   .formField {
@@ -251,6 +251,12 @@ h4{
     animation-delay: 0.3s; /* Delayed start for the animation */
     font-weight: bold;
   }
+
+  /* .formField label {
+    display: inline-block;
+    width: 150px; 
+} */
+
 
 .formField input[type="text"],
 .formField input[type="tel"],
@@ -270,7 +276,7 @@ h4{
   
   /* Button styling */
   .formSubmitBtn {
-    width: 100%;
+    /* width: 100%; */
     padding: 10px;
     border: none;
     border-radius: 4px;

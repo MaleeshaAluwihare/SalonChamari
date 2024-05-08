@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
+const session = require('express-session');
 
 
 
@@ -25,14 +26,21 @@ const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const imageUploadRouter = require("./Routes/Maleesha/imageUploadRoute.js");
 const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
-const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
+const MailRouter = require("./Routes/Maleesha/mailRoute.js");
 
-const userRoutes = require("./Routes/nisalka/users.js");
-const authRoutes = require("./Routes/nisalka/auth.js");
-const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
+// const userRoutes = require("./Routes/nisalka/users.js");
+// const authRoutes = require("./Routes/nisalka/auth.js");
+// const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
 const massmailRoutes = require("./Routes/nisalka/MassEmails.js")
 
 const studioInventory = require("./Routes/Anoj/studioR.js");
+
+const EmpAttendence = require("./Routes/Yasiru/EmpAttendance.js");
+const Attendancecount = require("./Routes/Yasiru/AttendanceCount.js") ;
+const Leave = require("./Routes/Yasiru/Leave.js");
+const sendMailRouter=require("./Routes/Yasiru/MailRoute.js");
+const ImageRoute=require("./Routes//Yasiru/ImageRoute.js");
+const salonRouter=require("./Routes/Yasiru/Saloon.js");
 
 const faqsRouter = require("./Routes/Dasun/faqsRoute.js");
 const feedbacksRouter = require("./Routes/Dasun/FeedbackRoute.js");
@@ -78,6 +86,12 @@ app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`)
 })
 
+app.use(session({
+    secret: 12345, // Change this to a random secret key
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 
@@ -110,16 +124,24 @@ app.use("/SalonBooking",salonBookingRouter)
 app.use("/services",servicesRouter)
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
-app.use("/MailSend",sendMailRouter);
+app.use("/MailSend",MailRouter);
 
 //nisalka
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/users",forgotRoutes);
+// app.use("/api/users", userRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/users",forgotRoutes);
 app.use("/api/users",massmailRoutes);
 
 //anoj
 app.use("/StudioInventory",studioInventory);
+
+//yasiru
+app.use("/SalonEmp",salonRouter);
+app.use("/Attendence",EmpAttendence);
+app.use("/Attendancecount",Attendancecount);
+app.use("/Leave",Leave);
+app.use("/EmpMailsend",sendMailRouter)
+app.use("/Image",ImageRoute)
 
 //dasun
 app.use("/Faqs", faqsRouter);
