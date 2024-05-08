@@ -113,6 +113,7 @@ function App() {
   const user = localStorage.getItem("token");
   return (
     <div className="App">
+
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/salon-home" element={<SalonHome />} />
@@ -181,7 +182,7 @@ function App() {
               <Route path="/Uactivity" element={<CMdashboard/>}/>
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
-
+              
               <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
               <Route path="/Eventpackages" element={<EventPackages />}></Route>
               <Route path="/eventForm" element={<EventForm />}></Route>
@@ -195,8 +196,6 @@ function App() {
               <Route path="/eventManagerDashboard" element={<EventManagerDashboard />}></Route>
               <Route path="/customEventForm" element={<CustomEventForm />}></Route>
               <Route path="/addEventManager" element={<AddEventManager />}></Route>
-
-
 
           </Routes>
     </div>
