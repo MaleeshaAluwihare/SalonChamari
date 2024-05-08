@@ -367,6 +367,7 @@ export default function QuotationPage() {
                                         name="contactNumber"
                                         value={contactNumber}
                                         onChange={(e) => {setContactNumber(e.target.value)}}
+                                        pattern="[0-9]{10}"
                                         required
                                     />
                                 </div>
@@ -380,7 +381,7 @@ export default function QuotationPage() {
                                         accept=".pdf"
                                         required
                                     />
-                                     <p class={Styles.instructionMessage}>*Please attach your generated quote PDF.</p>
+                                    <p class={Styles.instructionMessage}>*Please attach your generated quote PDF.</p>
                                 </div>
                                 <div className={Styles.formField}>
                                     <label htmlFor="appointmentDate">Appointment Date:</label>
@@ -402,6 +403,8 @@ export default function QuotationPage() {
                                         name="appointmentTime"
                                         value={appointmentTime}
                                         onChange={(e) => {setAppoinmentTime(e.target.value)}}
+                                        min="09:30"
+                                        max="19:00"
                                         required
                                     />
                                 </div>

@@ -1,4 +1,5 @@
 .maincontainer {
+  width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,10 +12,12 @@
   .serviceListcontainer {
     position: relative; /* Ensure this is positioned relative for z-index to work */
     z-index: 2; /* Higher z-index to stay above the fixed video */
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100%;
-    max-width: 1394px;
+    max-width: 100%;
     margin-bottom: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .productscontainer {
@@ -23,8 +26,7 @@
     grid-gap: 15px;
     padding: 20px;
     width: 100%;
-    max-width: 1200px;
-    margin-top: 30px;
+    max-width: 100%;margin-top: 0%;
   }
 
   .productcard {
@@ -154,17 +156,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../../images/Maleesha/floral-corner-frame.jpg');
+    background-color: #FEE1DD;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     z-index: -2;
     font-family: 'Vacelyn', sans-serif;
     position: relative;
+    margin-top: 50px;
+
   }
   
   .ServiceRec h2 {
-    color: rgb(255, 207, 0);
+    color: #CEA0AA;
     font-family: 'Vacelyn', sans-serif;
     font-size: 35px; 
     font-weight: 700; 
@@ -173,13 +177,16 @@
     margin-top: 40px;
   }
   
-  .serviceName {
-    color: rgb(255, 207, 0);
+  .serviceName h1{
+    color: #CEA0AA;
     font-family: 'Vacelyn', sans-serif;
     position: absolute;
     top: 55%;
-    left: 250px;
+    left: 200px;
     transform: translateY(-50%);
+    font-size: 35px; 
+    font-weight: 700; 
+
   }
   
   
@@ -193,7 +200,7 @@
   }
   
   .ServicesButton {
-    background-color: #FFCF00;
+    background-color: #E9C2C5;
     color: rgb(0, 0, 0);
     border-radius: 50%;
     width: 120px;
@@ -211,7 +218,13 @@
   }
   
   .ServicesButton:hover {
-    background-color: black;
-    color: #FFCF00;
+    background-color: #CEA0AA;
+    color: white;
+  }
+
+  .footercontainer{
+    width: 100%;
+    background-attachment: fixed;
+
   }
   
