@@ -7,6 +7,13 @@
     padding: 20px;
 }
 
+.contentContainer h1{
+  margin-top: 40px;
+  font-size: 35px;
+  color: #000000;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .contentContainer {
     margin-top: 100px;
     text-align: center; /* Center-align the content within the container */
@@ -16,7 +23,7 @@
 .headingContainer {
     margin-bottom: 20px;
     margin-top: 40px;
-    line-height: 0.8;
+    line-height: 1.5;
 }
 
 .dropdownContainer {
@@ -53,8 +60,8 @@ select:focus {
 
 
 .addServiceBtn{
-    background-color:  #FFCF00;
-    color: rgb(0, 0, 0);
+    background-color:  #E9C2C5;
+    color: white;
     border-radius: 10px;
     padding: 10px 40px;
     margin-top: 20px;
@@ -74,6 +81,7 @@ select:focus {
 .serviceTable th, .serviceTable td {
     padding: 8px;
     border: 1px solid #ddd;
+    color: #000000;
     
 }
 
@@ -83,7 +91,7 @@ select:focus {
 }
 
 .serviceTable tbody tr:nth-child(odd) {
-    background-color: #fff5c8;
+    background-color: #ffffff;
     color: black;
 }
 
@@ -127,8 +135,8 @@ h4{
 }
 
 .downloadPDFBtn{
-    background-color:  #FFCF00;
-    color: rgb(0, 0, 0);
+    background-color:  #E9C2C5;
+    color: white;
     border-radius: 10px;
     padding: 10px 40px;
     margin-top: 20px;
@@ -144,7 +152,7 @@ h4{
   bottom: 20px; /* 20px from the bottom */
   right: 0px; /* 20px from the left */
   padding: 10px 20px; /* Padding inside the button */
-  background-color: #007bff; /* Background color */
+  background-color: #E9C2C5; /* Background color */
   color: white; /* Text color */
   border-top-left-radius: 10px; /* Rounded top-left corner */
   border-bottom-left-radius: 10px; /* Rounded bottom-left corner */
@@ -169,6 +177,7 @@ h4{
     background-color: #5fafff;
     color: white;
     cursor: pointer;
+    border: none;
     padding: 5px 10px;
     border-radius: 10px;  
     transition: background-color 0.3s ease;

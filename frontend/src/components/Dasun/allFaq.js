@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../css/Dasun/allFaqs.css';
+import Styles from '../../css/Dasun/allFaqs.module.css';
 import { Link } from "react-router-dom";
 
 export default function AllFaqs() {
@@ -30,12 +30,12 @@ export default function AllFaqs() {
 
     return(
 
-        <div id="Faq_page" >
+        <div className={Styles.Faq_page} >
 
-            <h1 id="Faq_page_heading" >FAQs</h1>
+            <h1 className={Styles.Faq_page_heading} >FAQs</h1>
 
-            <table id="Faq_page_table" className="FaqTable">
-                <thead id="Faq_page_table_heading" className="theader">
+            <table className={Styles.Faq_page_table}>
+                <thead className={Styles.Faq_page_table_heading}>
                     <tr>
                         <th>FAQ ID</th>
                         <th>Question</th>
@@ -44,14 +44,14 @@ export default function AllFaqs() {
                     </tr>
                 </thead>
 
-                <tbody id="Faq_page_table_body" className="tbody">
+                <tbody className={Styles.Faq_page_table_body}>
                     {faqs.map(faqs => (
                         <tr key={faqs._faqId}>
                             <td>{faqs.faqId}</td>
                             <td>{faqs.question}</td>
                             <td>{faqs.answer}</td>
-                            <td><Link to={`/faq/update/${faqs.faqId}`}><button className="UpdateBtn">Update</button></Link>
-                            <Link to={`/faq/delete/${faqs.faqId}`}><button className="DeleteBtn">Delete</button></Link></td>
+                            <td><Link to={`/faq/update/${faqs.faqId}`}><button className={Styles.UpdateBtn}>Update</button></Link>
+                            <Link to={`/faq/delete/${faqs.faqId}`}><button className={Styles.DeleteBtn}>Delete</button></Link></td>
                         </tr>
                     ))}
                 </tbody>

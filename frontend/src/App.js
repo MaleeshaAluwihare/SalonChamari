@@ -114,7 +114,6 @@ function App() {
   return (
     <div className="App">
 
-
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/salon-home" element={<SalonHome />} />
@@ -174,8 +173,8 @@ function App() {
               <Route path="/packages" element={<EventWrapper/>} />
 
               {user && <Route path="/profile/:email" exact element={<Profile />} />}
-	      <Route path="/signup" exact element={<Signup />} />
-	      <Route path="/login" exact element={<Login />} />
+			        <Route path="/signup" exact element={<Signup />} />
+			        <Route path="/login" exact element={<Login />} />
               <Route path="/login" element={<Navigate replace to="/login" />} />
 
               {/*  admin login */}
@@ -183,27 +182,22 @@ function App() {
               <Route path="/Uactivity" element={<CMdashboard/>}/>
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
-
-
-            
               
-          <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
-          <Route path="/Eventpackages" element={<EventPackages />}></Route>
-          <Route path="/eventForm" element={<EventForm />}></Route>
-          <Route path="/eventSummary" element={<EventSummary />}></Route>
-          <Route path="/eventDashboard" element={<EventDashBoard />}></Route>
-          <Route path="/packageDashboard" element={<EventPackageDashboard />}></Route>
-          <Route path="/updateEventPackage" element={<UpdateEventPackage />}></Route>
-          <Route path="/customEventPackage" element={<EventCustomization />}></Route>
-          <Route path="/eventCustomPackageDashboard" element={<EventCustomizationDash />}></Route>
-          <Route path="/customEventSummary" element={<CustomEventSummary />}></Route>
-          <Route path="/eventManagerDashboard" element={<EventManagerDashboard />}></Route>
-          <Route path="/customEventForm" element={<CustomEventForm />}></Route>
-          <Route path="/addEventManager" element={<AddEventManager />}></Route>
-
+              <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
+              <Route path="/Eventpackages" element={<EventPackages />}></Route>
+              <Route path="/eventForm" element={<EventForm />}></Route>
+              <Route path="/eventSummary" element={<EventSummary />}></Route>
+              <Route path="/eventDashboard" element={<EventDashBoard />}></Route>
+              <Route path="/packageDashboard" element={<EventPackageDashboard />}></Route>
+              <Route path="/updateEventPackage" element={<UpdateEventPackage />}></Route>
+              <Route path="/customEventPackage" element={<EventCustomization />}></Route>
+              <Route path="/eventCustomPackageDashboard" element={<EventCustomizationDash />}></Route>
+              <Route path="/customEventSummary" element={<CustomEventSummary />}></Route>
+              <Route path="/eventManagerDashboard" element={<EventManagerDashboard />}></Route>
+              <Route path="/customEventForm" element={<CustomEventForm />}></Route>
+              <Route path="/addEventManager" element={<AddEventManager />}></Route>
 
           </Routes>
-
     </div>
 
   );

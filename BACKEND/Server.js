@@ -14,11 +14,13 @@ const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 
+
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const SalonItemTimeRouter = require("./Routes/Chavidu/salonServiceTime.js");
 const StudioPackageRouter = require("./Routes/Chavidu/studioPackage.js");
 const StudioImageHandling = require("./Routes/Chavidu/studioImages.js");
 const StudioPackageImageView = require("./Routes/Chavidu/displayPackageImage.js");
+const salonBookingRouter = require("./Routes/Chavidu/salonBooking.js");
 
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const imageUploadRouter = require("./Routes/Maleesha/imageUploadRoute.js");
@@ -102,7 +104,7 @@ app.use("/StudioBooking",studioBookingRouter);
 app.use("/StudioAdmin",StudioPackageRouter);
 app.use("/StudioAdmin",StudioImageHandling);
 app.use("/StudioAdmin",StudioPackageImageView);
-
+app.use("/SalonBooking",salonBookingRouter)
 
 //maleesha
 app.use("/services",servicesRouter)
@@ -118,7 +120,6 @@ app.use("/api/users",massmailRoutes);
 
 //anoj
 app.use("/StudioInventory",studioInventory);
-
 
 //dasun
 app.use("/Faqs", faqsRouter);
