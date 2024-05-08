@@ -23,6 +23,7 @@
 .salonName {
   font-size: 24px;
   margin-bottom: 20px;
+  color: #000;
 }
 
 /* Dashboard Title */
@@ -45,13 +46,14 @@
 
 /* Sidebar Navigation */
 .sidebarNav {
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: left;
 }
 
 .navList {
   list-style: none;
   padding: 0;
+  margin-left: 0px;
 }
 
 .navItem {
