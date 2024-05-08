@@ -23,11 +23,11 @@ const StudioPackageImageView = require("./Routes/Chavidu/displayPackageImage.js"
 const servicesRouter = require("./Routes/Maleesha/servicesRoute");
 const imageUploadRouter = require("./Routes/Maleesha/imageUploadRoute.js");
 const quotationRouter = require("./Routes/Maleesha/quotationRoute.js");
-const sendMailRouter = require("./Routes/Maleesha/mailRoute.js");
+const MailRouter = require("./Routes/Maleesha/mailRoute.js");
 
-const userRoutes = require("./Routes/nisalka/users.js");
-const authRoutes = require("./Routes/nisalka/auth.js");
-const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
+// const userRoutes = require("./Routes/nisalka/users.js");
+// const authRoutes = require("./Routes/nisalka/auth.js");
+// const forgotRoutes = require("./Routes/nisalka/ForgotPass.js")
 const massmailRoutes = require("./Routes/nisalka/MassEmails.js")
 
 const studioInventory = require("./Routes/Anoj/studioR.js");
@@ -106,12 +106,12 @@ app.use("/StudioAdmin",StudioPackageImageView);
 app.use("/services",servicesRouter)
 app.use("/imageUpload",imageUploadRouter);
 app.use("/quotation",quotationRouter);
-app.use("/MailSend",sendMailRouter);
+app.use("/MailSend",MailRouter);
 
 //nisalka
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/users",forgotRoutes);
+// app.use("/api/users", userRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/users",forgotRoutes);
 app.use("/api/users",massmailRoutes);
 
 //anoj
@@ -122,7 +122,7 @@ app.use("/SalonEmp",salonRouter);
 app.use("/Attendence",EmpAttendence);
 app.use("/Attendancecount",Attendancecount);
 app.use("/Leave",Leave);
-app.use("/Mailsend",sendMailRouter)
+app.use("/EmpMailsend",sendMailRouter)
 app.use("/Image",ImageRoute)
 
 //dasun

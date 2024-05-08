@@ -9,8 +9,8 @@ import image2 from '../../images/Maleesha/homeimg2.jpg';
 import image3 from '../../images/Maleesha/homeimg3.JPG';
 import image4 from '../../images/Maleesha/homeimg4.jpg';
 import image5 from '../../images/Maleesha/homeimg5.jpg';
-import video1 from '../../video/HomeVideo1.mp4';
-import video2 from '../../video/HomeVideo2.mp4';
+// import video1 from '../../video/HomeVideo1.mp4';
+// import video2 from '../../video/HomeVideo2.mp4';
 import openHourIcon from '../../images/Maleesha/opening-hours-icon.png';
 import experienceIcon from '../../images/Maleesha/experience-icon.png';
 import serviceCompleteIcon from '../../images/Maleesha/service-complete-icon.png';
@@ -108,12 +108,12 @@ export default function SalonHome() {
                 <ServiceList/>
             </div>
 
-            <div className={Styles.videoContainer}>
+            {/* <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video1} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> */}
 
             <div className={Styles.fixedbackgroundsection}>
                 <div className={Styles.aboutcontent}>
@@ -147,12 +147,12 @@ export default function SalonHome() {
                 </div>
             </div>
 
-            <div className={Styles.videoContainer}>
+            {/* <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video2} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> */}
 
             <div className={Styles.locationContainer}>
                 <div className={Styles.mapContainer}>

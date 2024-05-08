@@ -36,7 +36,7 @@ export default function Attendancecount() {
   return (
     <div className={styles.page}>
       <div className={styles.attendanceContainer}>
-        <label htmlFor="filter">Filter:</label>
+        <label htmlFor="filter"></label>
         <select id="filter" onChange={handleChangeFilter} value={filter}>
           <option value="Today">Today</option>
           <option value="ThisWeek">This Week</option>

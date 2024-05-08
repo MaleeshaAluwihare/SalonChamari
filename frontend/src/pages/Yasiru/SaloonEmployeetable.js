@@ -51,7 +51,8 @@ export default function SaloonEmployeetable() {
   });
 
   return (
-    <>
+    <div className={style.container}>
+    
       <div className={style.SearchBar}>
         <input
           type="text"
@@ -66,8 +67,7 @@ export default function SaloonEmployeetable() {
           Search
         </button>
       </div>
-      <div>
-        Category dropdown
+      <div className={style.Category}>
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
@@ -76,7 +76,7 @@ export default function SaloonEmployeetable() {
           <option value="Salon">Salon</option>
           <option value="Photography">Photography</option>
         </select>
-
+      <div className={style.Emptable}>
         <table className={style.EmployeeDetailstable}>
           <thead>
             <tr>
@@ -116,14 +116,15 @@ export default function SaloonEmployeetable() {
             ))}
           </tbody>
         </table>
-        <button className={style.addSaloonButton} onClick={() => navigate("/Add")}>
+        <button className={style.addSaloonButton} onClick={() => navigate("/EmpAdd")}>
           Add Employee
         </button>
 
-        <button className={style.updateButton} onClick={() => navigate(`/Edit`)}>
+        <button className={style.updateButton} onClick={() => navigate(`/EmpEdit`)}>
           Update
         </button>
       </div>
-    </>
+      </div>
+    </div>
   );
 }

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import style from "../../css/Yasiru/UpdateStyle.module.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function EditEmployeeDetails() {
+  const navigate = useNavigate();
+
+
   const [employee_id, setEmployeeID] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");

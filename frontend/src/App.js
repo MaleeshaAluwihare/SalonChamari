@@ -87,10 +87,10 @@ import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
 //yasiru
 import EditEmployeeDetails from './pages/Yasiru/EditEmployeeDetails';
-import EmployeeProfile from './pages/Yasiru/EmployeeProfile'
+import EmpProfile from './pages/Yasiru/EmpProfile'
 import DeleteEmployeedatials from './pages/Yasiru/DeleteEmployeedetails';
 import NavBars from './components/Yasiru/Navbar';
-import ProfileLoging from './pages/Yasiru/Profileloging';
+import EmpLogin from './pages/Yasiru/EmpLogin';
 import AddEmployee from './pages/Yasiru/Addemployee';
 import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
 import Attendancepage from './pages/Yasiru/attendancepage';
@@ -178,16 +178,19 @@ function App() {
               <Route path='/Attendacecount'element={<Attendancecount/>}/>
               <Route path='/Attendacegive'element={<Attendancepage/>}/>
               <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
-              <Route path ='/Add' element ={<AddEmployee/>} />
-              <Route path ='/Edit' element ={<EditEmployeeDetails/>} />
-              <Route path ='/profile' element ={<EmployeeProfile/>} />
+              <Route path ='/EmpAdd' element ={<AddEmployee/>} />
+              <Route path ='/EmpEdit' element ={<EditEmployeeDetails/>} />
+              <Route path ='/profile' element ={<EmpProfile/>} />
               <Route path ='/Deletesaloon' element ={<DeleteEmployeedatials/>} />
-              <Route path ='/Profilloging' element ={<ProfileLoging/>} />
-              <Route path='/Dash'element={<Dashboard/>}/>
+              <Route path ='/EmpLogin' element ={<EmpLogin/>} />
+              <Route path='/EmpDash'element={<Dashboard/>}/>
               <Route path='/forget'element={<forgetpassword/>}/>
               <Route path='/Leavegive'element={<Leave/>}/>
               <Route path='/Leavedetails'element={<Leavedetails/>}/>
               <Route path='/Home'element={<Home/>}/>
+
+
+              {/* <Route path='/' */}
 
 
           </Routes>
@@ -195,6 +198,7 @@ function App() {
 
   );
 
+  
 }
 
 

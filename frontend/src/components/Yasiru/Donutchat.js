@@ -54,7 +54,7 @@ const EmployeeAttendanceChart = () => {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
         <center><h3>Employee Attendance</h3></center>
-        <div style={{ width: "300px", height: "300px" }}>
+        <div style={{ width: "500px", height: "500px" }}>
           <Doughnut data={chartData} />
         </div>
       </div>

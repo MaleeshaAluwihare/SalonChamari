@@ -13,7 +13,9 @@
 .dashboardContent {
   flex: 1; /* Take up remaining space */
   padding: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .removeService{

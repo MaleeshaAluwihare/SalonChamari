@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import style from "../../css/Yasiru/AddEmployeeStyle.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddEmployee() {
+  const navigate = useNavigate();
 
     const [Employee_ID, setEmployee_ID] = useState("");
     const [Name, setName] = useState("");
@@ -68,6 +70,7 @@ export default function AddEmployee() {
         axios.post("/SalonEmp/add", newEmployee)
             .then(() => {
                 alert("Employee added");
+                navigate("/EmpDash");
             })
             .catch((err) => {
                 alert(err);
@@ -87,16 +90,17 @@ export default function AddEmployee() {
     };
   
     const handleAddressChange = (address) => {
-      // Regular expression for validating address
-      const regex = /^[a-zA-Z0-9\s,'-]*$/;
+      // Regular expression for validating address (first letter capital, alphanumeric, spaces, commas, apostrophes, hyphens)
+      const regex = /^[A-Z][a-zA-Z0-9\s,'-]*$/;
       return regex.test(address);
     };
-  
-    const handlejobRoleChange = (jobRole) => {
-      // Regular expression for validating job role
-      const regex = /^[a-zA-Z\s,'-]*$/;
-      return regex.test(jobRole);
-    };
+
+   const handlejobRoleChange = (jobRole) => {
+  // Regular expression for validating job role (first letter capital, alphabetic, spaces, commas, apostrophes, hyphens)
+  const regex = /^[A-Z][a-zA-Z\s,'-]*$/;
+  return regex.test(jobRole);
+};
+
   
     const handleSalaryChange = (salary) => {
       // Regular expression for validating salary
@@ -109,7 +113,7 @@ export default function AddEmployee() {
       const regex = /^[A-Z]\d*[!@#$%&]$/;
       return regex.test(password);
     };
-  
+    
     const handleEmailChange = (email) => {
       // Regular expression for validating email
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -11,7 +11,7 @@ const EmailForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('/Mailsend/mail', { email, subject, body });
+      await axios.post('/EmpMailsend/mail', { email, subject, body });
       setMessage('Email sent successfully!');
     } catch (error) {
       console.error('Error:', error);

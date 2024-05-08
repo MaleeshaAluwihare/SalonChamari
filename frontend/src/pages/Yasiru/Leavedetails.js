@@ -2,14 +2,13 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from "react";
 import EmailForm from '../../pages/Yasiru/EmailSend';
+import styles from "../../css/Yasiru/LeavetableStyle.module.css";
 
 export default function Leavedetails() {
   const [LeaveData, setLeavedata] = useState([]);
-  const [selectedEmployee, setSelectedEmployee] = useState(null); // New state for selected employee
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-
-
 
   useEffect(() => {
     function getLeaves() {
@@ -19,11 +18,8 @@ export default function Leavedetails() {
         })
         .catch((err) => {
           console.error("Error fetching attendance data:", err);
-          // Display an error message to the user or handle the error appropriately
         });
     }
-
-    // Fetch attendance data on component mount
     getLeaves();
   }, []);
 
@@ -31,7 +27,6 @@ export default function Leavedetails() {
     axios.delete(`/Leave/delete/${Employee_ID}`)
       .then(res => {
         alert('Employee deleted');
-        // Update the employee list after deletion if necessary
       })
       .catch(error => {
         alert(error.response.data.status);
@@ -39,11 +34,11 @@ export default function Leavedetails() {
   };
 
   const handleEmailClick = (employee) => {
-    setSelectedEmployee(employee); // Set the selected employee
+    setSelectedEmployee(employee);
   };
 
   const handleEmailClose = () => {
-    setSelectedEmployee(null); // Clear the selected employee
+    setSelectedEmployee(null);
   };
 
   const handleSubmit = async (event) => {
@@ -58,16 +53,16 @@ export default function Leavedetails() {
   };
 
   return (
-    <div>
-      <Table striped bordered hover className="attendancereport">
+    <div className={styles.container}>
+      <Table striped bordered hover className={styles.attendancereport}>
         <>
-          <thead>
+          <thead className={styles.tableHead}>
             <tr>
-              <th>Employee_ID</th>
-              <th>date</th>
-              <th>type</th>
-              <th>email</th>
-              <th>Action</th>
+              <th className={styles.tableHeader}>Employee_ID</th>
+              <th className={styles.tableHeader}>date</th>
+              <th className={styles.tableHeader}>type</th>
+              <th className={styles.tableHeader}>email</th>
+              <th className={styles.tableHeader}>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -80,28 +75,24 @@ export default function Leavedetails() {
                 <td>
                   <button
                     type="button"
-                    className='text-decoration-none btn btn-sm btn-primary mx-1'
+                    className={`${styles.btn} ${styles.primary} ${styles.mx1}`}
                     onClick={() => handleEmailClick(employee)}
                   >
                     Send Email
                   </button>
                   <button
                     type="submit"
-                    className='text-decoration-none btn btn-sm btn btn-danger mx-1'
+                    className={`${styles.btn} ${styles.danger} ${styles.mx1}`}
                     onClick={() => deleteEmployee(employee.Employee_ID)}
                   >
                     Delete
                   </button>
-                  
-                  
                 </td>
               </tr>
-              
             ))}
           </tbody>
         </>
       </Table>
-
       {selectedEmployee && (
         <EmailForm
           initialEmail={selectedEmployee.email}

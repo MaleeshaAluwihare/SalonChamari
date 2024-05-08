@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import EmployeeDashboardSideBar from "../../components/Yasiru/EmpDashboardSideBar";
 import styles from'../../css/Yasiru/EmpDashboardStyle.module.css'
 import SaloonEmployeetable from "./SaloonEmployeetable";
-import ProfileLogin from "./Profileloging";
-import EmployeeProfile from "./EmployeeProfile";
 import Attendancecount from "./Attendancecount";
 import Home from "./Home";
 import Leavedetails from "./Leavedetails";
@@ -23,12 +21,6 @@ export default function Dashboard(){
                 </div>
                 <div className={styles["Employee"]}>
                     {selectedOption === "Employee" && <SaloonEmployeetable/>}
-                </div>
-                <div className={styles["profileLogin"]}>
-                    {selectedOption === "profileLogin" && <ProfileLogin/>}
-                </div>
-                <div className={styles["empProfile"]}>
-                    {selectedOption === "empProfile" && <EmployeeProfile/>}
                 </div>
                 <div className={styles["attendance"]}>
                     {selectedOption === "attendance" && <Attendancecount/>}

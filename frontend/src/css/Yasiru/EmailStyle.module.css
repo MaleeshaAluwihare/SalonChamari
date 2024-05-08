@@ -73,3 +73,18 @@ button[type="submit"]:hover {
   font-weight: bold;
   color: #007bff;
 }
+
+.submitBtn {
+  /* Add any other styles you need for the submit button */
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px; /* Adjust margin as needed */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  align-items: center;
+}

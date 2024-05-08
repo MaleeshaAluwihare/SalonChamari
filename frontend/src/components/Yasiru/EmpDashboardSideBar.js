@@ -41,28 +41,10 @@ export default function EmployeeDashboardSideBar({ onSelectOption }) {
                 <FontAwesomeIcon icon={faCirclePlus} className={style["button-icon"]} /> Employee
               </button>
             </li>
-            <li className={style["nav-item"]}>
-              <button
-                className={`${style["nav-button"]} ${selectedOption === "profileLogin" ? style["active"] : ""}`}
-                onClick={() => {
-                  onSelectOption("profileLogin");
-                  setSelectedOption("profileLogin");
-                }}
-              >
-                <FontAwesomeIcon icon={faTrash} className={style["button-icon"]} />Profile Login
-              </button>
-            </li>
-            <li className={style["nav-item"]}>
-              <button
-                className={`${style["nav-button"]} ${selectedOption === "empProfile" ? style["active"] : ""}`}
-                onClick={() => {
-                  onSelectOption("empProfile");
-                  setSelectedOption("empProfile");
-                }}
-              >
-                <FontAwesomeIcon icon={faFilePen} className={style["button-icon"]} />profile
-              </button>
-            </li>
+
+            
+            
+            
             <li className={style["nav-item"]}>
               <button
                 className={`${style["nav-button"]} ${selectedOption === "attendance" ? style["active"] : ""}`}

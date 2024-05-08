@@ -55,7 +55,7 @@ const EmployeeAttendanceBarChart = () => {
   return (
     <div>
       {/* <h2>Employee Attendance</h2> */}
-      <div style={{ height: "300px", width: "600px", margin: "0 auto" }}>
+      <div style={{ height: "400px", width: "800px", margin: "0 auto" }}>
         <Bar
           data={chartData}
           options={{
