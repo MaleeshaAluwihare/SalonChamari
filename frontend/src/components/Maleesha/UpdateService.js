@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import '../../css/Maleesha/UpdateService.css';
+import Styles from '../../css/Maleesha/UpdateService.module.css';
 
 export default function UpdateService(){
 
@@ -123,10 +123,10 @@ export default function UpdateService(){
     }, [selectedServiceID]); // Fetch data whenever selectedServiceID changes
 
     return(
-        <div className='main-update-container'>
-            <div className='service-select-container'>
-                <form className='service-select-form'>
-                    <div className='dropdown'>
+        <div className={Styles.mainupdatecontainer}>
+            <div className={Styles.serviceselectcontainer}>
+                <form className={Styles.serviceselectform}>
+                    <div className={Styles.dropdown}>
                         <label>Pick Category:</label>
                         <select value={selectedService} onChange={handleServiceChange}>
                             <option value="">Select</option>
@@ -135,7 +135,7 @@ export default function UpdateService(){
                             ))}
                         </select>
                     </div>
-                    <div className='dropdown'>
+                    <div className={Styles.dropdown}>
                         <label>Pick Sub-Category:</label>
                         <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
                             <option value="">Select</option>
@@ -144,7 +144,7 @@ export default function UpdateService(){
                             ))}
                         </select>
                     </div>
-                    <div className='dropdown'>
+                    <div className={Styles.dropdown}>
                         <label>Pick Service:</label>
                         <select value={selectedServiceItem} onChange={handleServiceItemClick}>
                             <option value="">Select</option>
@@ -156,25 +156,25 @@ export default function UpdateService(){
                 </form>    
             </div>
             {/* Both forms are displayed here */}
-            <div className="update-service-container">
-                <form className='update-service-form'>
-                    <div className="mb-3">
-                        <label htmlFor="Category" className="form-label">Category:</label>
-                        <input type="text" className="form-control" id="Category" value= {serviceName} readOnly />
+            <div className={Styles.updateservicecontainer}>
+                <form className={Styles.updateserviceform}>
+                    <div className={Styles.mb3}>
+                        <label htmlFor="Category" className={Styles.formlabel}>Category:</label>
+                        <input type="text" className={Styles.formcontrol} id="Category" value= {serviceName} readOnly />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="SubCategory" className="form-label">Sub-Category:</label>
-                        <input type="text" className="form-control" id="SubCategory" value={subCategoryName} readOnly />
+                    <div className={Styles.mb3}>
+                        <label htmlFor="SubCategory" className={Styles.formlabel}>Sub-Category:</label>
+                        <input type="text" className={Styles.formcontrol} id="SubCategory" value={subCategoryName} readOnly />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="Service" className="form-label">Service Name:</label>
-                        <input type="text" className="form-control" id="Service" value={itemName} onChange={(e) => setItemName(e.target.value)} />
+                    <div className={Styles.mb3}>
+                        <label htmlFor="Service" className={Styles.formlabel}>Service Name:</label>
+                        <input type="text" className={Styles.formcontrol} id="Service" value={itemName} onChange={(e) => setItemName(e.target.value)} />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="Service price" className="form-label">Service Price:</label>
-                        <input type="text" className="form-control" id="Service price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
+                    <div className={Styles.mb3}>
+                        <label htmlFor="Service price" className={Styles.formlabel}>Service Price:</label>
+                        <input type="text" className={Styles.formcontrol} id="Service price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} />
                     </div>
-                    <button className='UpdateServiceBtn' onClick={handleUpdateButtonClick}>Update</button>
+                    <button className={Styles.UpdateServiceBtn} onClick={handleUpdateButtonClick}>Update</button>
                 </form>
             </div>
         </div>
