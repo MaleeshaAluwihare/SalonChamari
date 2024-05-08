@@ -43,7 +43,10 @@ function Income() {
 };
 
 const IncomeStyled = styled.div`
-   
+   h1 {
+        color: #222260;
+        font-weight:bold
+      }
     .total-income{
         display: flex;
         justify-content: center;

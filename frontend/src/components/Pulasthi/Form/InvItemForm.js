@@ -109,6 +109,10 @@ function InvItemForm() {
 
   return (
     <InvItemFormStyled onSubmit={handleSubmit}>
+
+        <div className="heading">
+            <h2>Item Price Calculator</h2>
+        </div>
         
         <div className="input-control">
             <input
@@ -156,7 +160,7 @@ function InvItemForm() {
                 required
             />    
         </div>
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Calculate price'}
@@ -179,6 +183,7 @@ const InvItemFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    
     input, select{
         font-family: inherit;
         font-size: inherit;
@@ -212,13 +217,14 @@ const InvItemFormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
             &:hover{
                 background: var(--color-DarkYellow) !important;
             }
         }
+        margin-left:100px
     }
 `;
 export default InvItemForm

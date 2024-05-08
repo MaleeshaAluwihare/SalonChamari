@@ -43,7 +43,10 @@ function Expenses() {
 };
 
 const ExpensesStyled = styled.div`
-  
+  h1 {
+        color: #222260;
+        font-weight:bold
+      }
   .total-expense{
       display: flex;
       justify-content: center;

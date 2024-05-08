@@ -50,6 +50,8 @@ const EventPackagesStyled = styled.div`
   
     h1{
         margin-bottom:2rem;
+        color: #222260;
+        font-weight:bold
     }
 
     .inv-content{

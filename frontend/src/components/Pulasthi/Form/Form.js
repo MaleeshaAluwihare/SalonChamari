@@ -71,7 +71,9 @@ function Form() {
 
   return (
     <FormStyled onSubmit={handleSubmit}>
-        {/* later do a validation to alert user to enter unique budgetId */}
+        <div className="heading">
+            <h2>Add Budget</h2>
+        </div>
         <div className="input-control">
             <input
                 type="text"

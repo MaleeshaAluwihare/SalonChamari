@@ -31,7 +31,7 @@ function EmpSalaryForm() {
         let dailySalary;
         let attend = parseInt(attendance, 10);
         const regex = /^[0-9\b]+$/; //allow only digits
-        if (attend > 30 || attend!==regex) {
+        if (attend > 30 || !regex.test(attend)) {
             alert("Not a valid attendance for a month");
             return; 
         }
@@ -92,6 +92,9 @@ function EmpSalaryForm() {
 
   return (
     <EmpSalaryFormStyled onSubmit={handleSubmit}>
+        <div className="heading">
+            <h2>Employee Salary Calculator</h2>
+        </div>
         
         <div className="input-control">
             <input
@@ -138,7 +141,7 @@ function EmpSalaryForm() {
                 required
             />    
         </div>
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Calculate Salary'}
@@ -194,13 +197,15 @@ const EmpSalaryFormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+            margin-left:100px;
             &:hover{
                 background: var(--color-DarkYellow) !important;
             }
         }
+        
     }
 `;
 export default EmpSalaryForm

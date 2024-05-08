@@ -97,7 +97,9 @@ function Dashboard() {
 }
 
 const DashboardStyled = styled.div`
-  
+   h1 {
+        color: #222260;
+      }
   .stats-con{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -150,6 +152,7 @@ const DashboardStyled = styled.div`
               /* this padding is applied inside the .btn-con container itself */
               padding: 2rem 0; /* Adds some padding around the button */
             }
+           
         }
    }
 

@@ -62,7 +62,10 @@ function Budget() {
   return (
     <BudgetStyled>
       <InnerLayout>
-        <h1>Budget</h1>
+        <div className="headerPula">
+            <h1>Budget</h1>
+        </div>
+        
           {/* search Budget */}
           <div className="search-container">
               <label htmlFor="BudgetId">Enter Budget ID:&nbsp;</label>
@@ -149,6 +152,11 @@ const BudgetStyled = styled.div`
       min-width: 550px; /* Example fixed width */
       min-height: 400px; /* Example fixed height */
     }
+    h1 {
+    color: #222260;
+    font-weight:bold
+  }
+
 
 `;
 
