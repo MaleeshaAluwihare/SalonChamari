@@ -1,37 +1,137 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from 'sweetalert2'; // Import Sweet Alert library
 
-function ItemTable() {
-  // Sample data for demonstration
-  const initialItems = [
-    { id: 1, quantity: 10, itemType: "Type A" },
-    { id: 2, quantity: 20, itemType: "Type B" },
-    { id: 3, quantity: 15, itemType: "Type C" },
-    // Add more items as needed
-  ];
+function SupplierOrder() {
+  const [itemId, setItemId] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [itemType, setItemType] = useState("");
+  const [price, setPrice] = useState("");
+  const [items, setItems] = useState([]);
 
-  // State to hold the items
-  const [items, setItems] = useState(initialItems);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  const fetchData = () => {
+    let url = "/StudioInventory/inventory-Order";
+    axios
+      .get(url)
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
+  const handleSendClick = () => {
+    Swal.fire({
+      title: 'Success!',
+      text: 'Your order has been sent successfully.',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+  };
+
+  console.log(items);
   return (
-    <table style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr>
-          <th style={{ border: "1px solid #ddd", padding: "8px" }}>ID</th>
-          <th style={{ border: "1px solid #ddd", padding: "8px" }}>Quantity</th>
-          <th style={{ border: "1px solid #ddd", padding: "8px" }}>Item Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map((item) => (
-          <tr key={item.id}>
-            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.id}</td>
-            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.quantity}</td>
-            <td style={{ border: "1px solid #ddd", padding: "8px" }}>{item.itemType}</td>
+    <div>
+      <table style={{ borderCollapse: "collapse", width: "100%" }}>
+        <thead>
+          <tr>
+            <th
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Inventory ID
+            </th>
+            <th
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Quantity
+            </th>
+            <th
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Date
+            </th>
+            <th
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Item Type
+            </th>
+            <th
+              style={{
+                border: "1px solid #ddd",
+                padding: "8px",
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Price
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {items.map((item) => (
+            <tr key={item.itemId}>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {item.itemId}
+              </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {item.quantity}
+              </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {item.date.substring(0, 10)}
+              </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {item.itemType}
+              </td>
+              <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                {item.itemPrice}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button
+        style={{
+          backgroundColor: "green",
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          marginTop: "10px",
+        }}
+        onClick={handleSendClick}
+      >
+        Send
+      </button>
+      <div></div>
+    </div>
   );
 }
 
-export default ItemTable;
+export default SupplierOrder;
