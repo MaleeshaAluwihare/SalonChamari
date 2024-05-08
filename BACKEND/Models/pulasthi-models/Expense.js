@@ -25,7 +25,8 @@ const ExpenseSchema = new Schema({
 
     },{timestamps:true})
 
-
+//TTL index to expire documents after a month(find only the expense for the month)
+ExpenseSchema.index({ createdAt: 1 }, { expireAfterSeconds: 2592000 });
 //table name is given from below code but when table name get created in mongoDB it rename the Firstletter as simple and add 's' as last letter.
 const ExpenseTable=mongoose.model("Expense",ExpenseSchema);
 //use this IncomeTable constant name when you save(),find()
