@@ -94,7 +94,7 @@ const Login = ({ history }) => {
                 </div>
             </div>
             <div>
-                <a href="">
+                <a href="/EmpLogin">
                     <img src={EngSticker} alt="engSticker" className={styles.engsticker} />
                 </a>
                 <a href="">

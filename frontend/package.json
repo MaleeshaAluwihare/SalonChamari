@@ -29,7 +29,7 @@
     "react-bootstrap": "^2.10.2",
     "react-calendar": "^4.8.0",
     "react-chartjs-2": "^5.2.0",
-    "react-datepicker": "^6.6.0",
+    "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
@@ -44,6 +44,7 @@
     "turn.js": "^1.0.5",
     "styled-components": "^6.1.9",
     "sweetalert2": "^11.10.8",
+    "regenerator-transform": "^0.15.2",
     "web-vitals": "^3.5.2"
   },
   "proxy": "http://localhost:8070",
