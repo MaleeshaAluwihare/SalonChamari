@@ -87,8 +87,6 @@ const BudgetItemStyled = styled.div`
         display:flex;
         flex-direction:column-reverse;
         gap: .8rem;
-        margin-left:3rem;
-        margin-top:-4rem
     }
     .content{
         flex: 1;

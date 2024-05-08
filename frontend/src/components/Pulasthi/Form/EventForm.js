@@ -28,7 +28,7 @@ function EventForm() {
     //validation
     const validateCostAndProfit = (cost,profit) => {
         const pattern = /^[0-9\b]+$/;
-        if(!pattern.test(cost) || !pattern.test(profit)){
+        if(cost!==pattern || profit!== pattern){
             return false
         }
     }

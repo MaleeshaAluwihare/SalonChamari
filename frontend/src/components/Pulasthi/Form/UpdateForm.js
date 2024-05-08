@@ -45,6 +45,10 @@ function UpdateForm({ budgetToUpdate,onClose }) {
   };
 
   //validation
+  const monthAlreadyHasBudget = (selectedMonth) => {
+    return budgets.some(budget => budget.month === selectedMonth);
+  };
+
   const validateBudgetAmount = (amount) => {
     const regex = /^[0-9\b]+$/; //allow only digits
     return regex.test(amount);
@@ -53,6 +57,11 @@ function UpdateForm({ budgetToUpdate,onClose }) {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (monthAlreadyHasBudget(month)) {
+      alert('A budget for this month already exists. Please choose another month.');
+      return;
+    }
 
     if (!validateBudgetAmount(amount)) {
       alert('Enter only the numbers for amount');
