@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend, BarController } from "chart.js";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+  BarController,
+} from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, BarController);
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+  BarController
+);
 
 const InventoryBarChart = () => {
   const [inventoryData, setInventoryData] = useState([]);
@@ -12,11 +27,13 @@ const InventoryBarChart = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:8070/StudioInventory/display");
-        const inventoryData = response.data.map((product) => ({
-          pid: product.pid,
-          name: product.name,
-          quantity: product.quantity,
-        }));
+        const inventoryData = response.data
+          .map((product) => ({
+            pid: product.pid,
+            name: product.name,
+            quantity: product.quantity,
+          }))
+          .filter((item) => item.pid && item.name && item.quantity !== undefined);
         setInventoryData(inventoryData);
       } catch (error) {
         console.error("Error fetching inventory data:", error);
@@ -65,7 +82,10 @@ const InventoryBarChart = () => {
         callbacks: {
           label: (context) => {
             const value = context.raw;
-            const totalQuantity = inventoryData.reduce((sum, item) => sum + item.quantity, 0);
+            const totalQuantity = inventoryData.reduce(
+              (sum, item) => sum + item.quantity,
+              0
+            );
             const percentage = ((value / totalQuantity) * 100).toFixed(2);
             return `Quantity: ${value} (${percentage}%)`;
           },
@@ -77,9 +97,13 @@ const InventoryBarChart = () => {
   return (
     <div>
       <h2>Inventory Quantities</h2>
-      <div style={{ height: "300px", width: "800px", margin: "0 auto" }}>
-        <Bar data={chartData} options={options} />
-      </div>
+      {inventoryData.length > 0 ? (
+        <div style={{ height: "300px", width: "800px", margin: "0 auto" }}>
+          <Bar data={chartData} options={options} />
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };

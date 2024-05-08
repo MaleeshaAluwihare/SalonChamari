@@ -74,7 +74,7 @@ function App() {
         <Route path='/update' element={<UpdateInventory />} />
         <Route path='/edit' element={<InventoryReplacing/>} />
         <Route path='/order' element={<SupplierOrder/>} />
-        <Route path='/dashboard' element={<InventoryDashboard/>}/>
+        
       </Routes>
     </div>
   );

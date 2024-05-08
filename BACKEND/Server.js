@@ -6,12 +6,12 @@ const dotenv = require("dotenv");
 const app = express();
 
 
-/*const incomeRouter = require("./Routes/pulasthi-routes/incomes");
-const budgetRouter = require("./Routes/pulasthi-routes/budgets");
-const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
-const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
-const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
-const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");*/
+// const incomeRouter = require("./Routes/pulasthi-routes/incomes");
+// const budgetRouter = require("./Routes/pulasthi-routes/budgets");
+// const expenseRouter = require("./Routes/pulasthi-routes/expenses.js");
+// const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
+// const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
+// const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");
 
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const SalonItemTimeRouter = require("./Routes/Chavidu/salonServiceTime.js");
@@ -58,12 +58,12 @@ app.listen(PORT, () => {
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
 
 //pulasthi
-/*app.use("/finance",incomeRouter);
-app.use("/finance",expenseRouter);
-app.use("/finance",budgetRouter);
-app.use("/finance",empSalaryRouter);
-app.use("/finance",inventoryItemRouter);
-app.use("/finance",eventPackageRouter);*/
+// app.use("/finance",incomeRouter);
+// app.use("/finance",expenseRouter);
+// app.use("/finance",budgetRouter);
+// app.use("/finance",empSalaryRouter);
+// app.use("/finance",inventoryItemRouter);
+// app.use("/finance",eventPackageRouter);
 
 //chavidu
 app.use("/SalonBooking",SalonItemTimeRouter);
