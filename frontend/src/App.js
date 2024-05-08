@@ -28,6 +28,7 @@ import Booking_Dashboard from './pages/chavidu/AdminDashBoard';
 import ReservationDashboard from './pages/chavidu/ReservationDashBoard';
 // import BookingReport from './components/Chavidu/studioReport';
 // import DisplayStudioPackages from './components/Chavidu/displayStudioPackage';
+import AdminLogin from './components/Dasun/AdminLogin';
 
 
 //Maleesha
@@ -88,6 +89,8 @@ import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
 function App() {
   
+  const user = localStorage.getItem("token");
+  
   return (
     <div className="App">
 
@@ -121,14 +124,17 @@ function App() {
               <Route path='/order' element={<SupplierOrder/>} />
               <Route path='/dashboard' element={<InventoryDashboard/>}/>
 
-              {/* Redirect to login if not logged in */}
-              {/* {!user && <Route path="/profile/:email" element={<Navigate to="/login" replace />} />} */}
-                {/* Display profile page if logged in */}
-              {/* {user && <Route path="/profile/:email" element={<Profile />} />} */}
-
-			        <Route path="/signup" exact element={<Signup />} />
-		  	      <Route path="/login" exact element={<Login />} />
+              {user && <Route path="/profile/:email" exact element={<Profile />} />}
+              <Route path="/signup" exact element={<Signup />} />
+              <Route path="/login" exact element={<Login />} />
               <Route path="/login" element={<Navigate replace to="/login" />} />
+              <Route path="/cmdash" element={<CMdashboard/>}/>
+              <Route path="/Uactivity" element={<CMdashboard/>}/>
+              <Route path="/Memails" element={<CMdashboard/>}/>
+              <Route path="/forgot" element={<Forgot/>}/>
+              
+              
+
               <Route path='/faq-admin-dash' element={<FaqDashboard />} /> 
               <Route path='/faq/all' element={<AllFaqs />} /> 
               <Route path="/faq/add" element={<AddFaq />} /> 
@@ -156,6 +162,7 @@ function App() {
               <Route path="/salary" element={<EmployeeWrapper/>} />
               <Route path="/inventory" element={<InventoryWrapper />} />
               <Route path="/packages" element={<EventWrapper/>} />
+              <Route path="/adlogin" element={<AdminLogin/>}/>
 
           </Routes>
 

@@ -8,7 +8,7 @@
 
 
 
-#faq_page_question {
+/* #faq_page_question {
   background-color: white;
   color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
@@ -51,4 +51,4 @@
 }
 .faq.active {
   border: none;
-}
+} */
