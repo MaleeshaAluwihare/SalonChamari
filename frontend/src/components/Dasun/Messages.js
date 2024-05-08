@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import '../../css/Dasun/allMessages.css';
+import Styles from '../../css/Dasun/allMessages.module.css';
 import { Link } from "react-router-dom";
 
 export default function Messages() {

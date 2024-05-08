@@ -7,6 +7,7 @@ import Styles from  '../../css/Maleesha/Tables.module.css';
 import bride from '../../images/Maleesha/bride.png';
 import groome from '../../images/Maleesha/groom.png';
 import couple from '../../images/Maleesha/couple.png';
+import heart from '../../images/Maleesha/hearts.png'
 import Header from './Header';
 import Footer from "../../components/Maleesha/Footer.js";
 
@@ -15,6 +16,7 @@ export default function BridalServices(){
 
     const [ BrideServices, setBrideServices ] = useState( [] );
     const [ GroomServices, setGroomServices ] = useState( [] );
+    const [ Packages, setPackages] = useState( [] );
     const [searchTerm, setSearchTerm] = useState("");
 
 
@@ -27,6 +29,12 @@ export default function BridalServices(){
 
         axios.get("/services/bridalGroom").then((res) => {
             setGroomServices(res.data)
+        }).catch((err) => {
+            alert(err.message);
+        });
+
+        axios.get("/services/Packages").then((res) => {
+            setPackages(res.data)
         }).catch((err) => {
             alert(err.message);
         });
@@ -122,6 +130,36 @@ export default function BridalServices(){
                                     <tr key={groomServices.id}>
                                         <td>{groomServices.itemName}</td>
                                         <td>{groomServices.itemPrice}</td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+                <div className={Styles.tablecontainer}>
+                    <table className={Styles.table}>
+                        <thead>
+                            <tr>
+                                <th scope="col">Packages<img src={heart} className={Styles.Icon} alt='Icon'/></th>
+                                <th scope="col">Standered Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Packages.length === 0 ? (
+                                <tr key="no data">
+                                    <td colSpan="2" style={{ textAlign: "center" }}>Packages will be available soon..</td>
+                                </tr>
+                            ) : (
+                                Packages.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else {
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((packages) => (
+                                    <tr key={packages.id}>
+                                        <td>{packages.itemName}</td>
+                                        <td>{packages.itemPrice}</td>
                                     </tr>
                                 ))
                             )}
