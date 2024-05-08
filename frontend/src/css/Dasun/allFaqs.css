@@ -1,4 +1,4 @@
-#Faq_page {
+/* #Faq_page {
     width: 80%;
     margin: auto;
     padding: 20px;
@@ -60,12 +60,12 @@
 
   #Faq_page div {
     margin-bottom: 20px;
-  }
+  } */
   
   /* Responsive styles */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     #Faq_page {
       width: 100%;
       padding: 10px;
     }
-  }
+  } */
