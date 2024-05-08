@@ -1,44 +1,44 @@
 /* Sidebar */
-.sidebar {
+/* .sidebar {
     width: 250px;
     background-color: #e9ecef;
     color: #000000;
     padding: 20px;
     height: 100vh;
     overflow-y: auto;
-  }
+  } */
   
   /* Logo */
-  .logo {
+  /* .logo {
     width: 100px;
-  }
+  } */
   
   /* Salon Name */
-  .salon-name {
+  /* .salon-name {
     font-size: 24px;
     margin-bottom: 20px;
-  }
+  } */
   
   /* Dashboard Title */
-  .dashboard-title {
+  /* .dashboard-title {
     margin-top: 40px;
     margin-bottom: 20px;
-  }
+  } */
   
   /* Dashboard Heading */
-  .dashboard-heading {
+  /* .dashboard-heading {
     font-size: 20px;
     text-align: left;
-  }
+  } */
   
   /* Dashboard Divider */
-  .dashboard-divider {
+  /* .dashboard-divider {
     border: 1px solid #9b9a9a;
     margin-top: 10px;
-  }
+  } */
   
   /* Sidebar Navigation */
-  .sidebar-nav {
+  /* .sidebar-nav {
     margin-top: 40px;
     text-align: left;
   }
@@ -50,37 +50,37 @@
   
   .nav-item {
     margin-bottom: 30px;
-  }
+  } */
   
   /* Nav Button */
-  .nav-button {
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Vertically center items */
-    justify-content: flex-start; /* Align items to the left */
-    gap: 10px; /* Space between icon and text */
+  /* .nav-button {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 10px; 
     background: none;
     border: none;
     color: #000000;
-    padding: 5px 10px; /* Adjust padding for visual consistency */
+    padding: 5px 10px; 
     font-size: 18px;
     width: 100%;
     cursor: pointer;
-    transition: border-color 0.3s, transform 0.3s ease; /* Smooth transitions for border and transform */
+    transition: border-color 0.3s, transform 0.3s ease; 
   }
-  
+   */
   /* Hover Effect */
-  .nav-button:hover {
+  /* .nav-button:hover {
     color: #ffcc00;
-  }
+  } */
   
   /* Active Button */
-  .nav-button.active {
+  /* .nav-button.active {
     border-radius: 10px;
     border: 1px solid #ffcc00;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-    transform: scale(1.05); /* Slightly enlarges the button */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
   }
   
   .button-icon {
-    font-size: 20px; /* Icon size */
-  }
+    font-size: 20px; 
+  } */
