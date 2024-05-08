@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket, faChartLine } from '@fortawesome/free-solid-svg-icons';
-import '../../css/chavidu/adminDashBoardSideBar.css';
-// import Logo from '../../images/Maleesha/Logo.png';
+
+import Logo from '../../images/chavidu/studioLogo.png';
 import PackageManagement from './studioPackageAdmin';
+import styles from '../../css/chavidu/adminDashBoardSideBar.module.css';
 
 export default function DashboardSideBar({ onSelectOption }) {
 
@@ -14,9 +15,9 @@ export default function DashboardSideBar({ onSelectOption }) {
       <div className="sidebar">
         <div className="sidebar-header">
           <div className="logo-container">
-            {/* <img src={Logo} alt="Salon Logo" className="logo" /> */}
+            <img src={Logo} alt="Salon Logo" className="logo" />
           </div>
-          <h1 className="salon-name">Nishan Studio Management</h1>
+          <h1 className="salon-name">Nishan Studio</h1>
           <div className="dashboard-title">
             <h2 className="dashboard-heading">Service Dashboard</h2>
             <hr className="dashboard-divider"/>
@@ -76,7 +77,7 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("list");
                 }}
               >
-                <FontAwesomeIcon icon={faTrash} className="button-icon" />View Packages
+                <FontAwesomeIcon icon={faTrash} className="button-icon" />Delete Packages
               </button>
             </li>
             <li className="nav-item">

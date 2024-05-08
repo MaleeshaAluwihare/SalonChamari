@@ -1,0 +1,45 @@
+/* studioPackageAdmin.module.css */
+
+.packageManagement {
+  margin: 20px;
+}
+
+.packageList {
+  margin-bottom: 20px;
+}
+
+.packageList h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.packageTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.packageTable th,
+.packageTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.packageTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.deleteButton {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #cc0000;
+}

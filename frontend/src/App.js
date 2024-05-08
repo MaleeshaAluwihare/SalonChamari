@@ -235,6 +235,9 @@ function App() {
               <Route path="/customEventForm" element={<CustomEventForm />}></Route>
               <Route path="/addEventManager" element={<AddEventManager />}></Route>
 
+              
+
+
           </Routes>
     </div>
   );
