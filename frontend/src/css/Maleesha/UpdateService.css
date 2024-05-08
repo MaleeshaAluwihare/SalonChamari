@@ -8,8 +8,7 @@
     overflow: auto;
     background: #f4f7f6;
     animation: fadeIn 1s ease-in-out;
-    position: relative; /* Add position relative */
-    top: -118px; /* Move the container 50px higher */
+    position: relative; 
 }
 
 @keyframes fadeIn {
