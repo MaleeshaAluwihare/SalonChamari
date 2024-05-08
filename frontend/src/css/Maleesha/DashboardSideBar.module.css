@@ -10,7 +10,7 @@
   background-color: #e9ecef;
   color: #000000;
   padding: 20px;
-  height: 100vh;
+  height:auto;
   overflow-y: auto;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .navItem {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-left: 0px;
 }
 
