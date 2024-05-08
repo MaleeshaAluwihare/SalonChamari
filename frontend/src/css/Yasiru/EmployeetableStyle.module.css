@@ -1,0 +1,190 @@
+body {
+  background-color: #ffffff;
+}
+
+.container {
+  min-height: fit-content;
+  align-items: center;
+}
+
+.Emptable {
+  min-height: 150vh;
+}
+
+/* Search Bar */
+.SearchBar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.input[type="text"] {
+  padding: 10px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  align-items: center;
+}
+
+.SearchBarbutton {
+  padding: 10px;
+  align-items: center;
+  background-color: #650fe6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.SearchBarbutton:hover {
+  background-color: #0056b3;
+}
+
+.SearchBarbutton:active {
+  background-color: #004080;
+}
+
+/* Category Dropdown */
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 20px; /* Add some spacing below the dropdown */
+}
+
+/* Table */
+.EmployeeDetailstable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.EmployeeDetailstable th,
+.EmployeeDetailstable td {
+  border: 1px solid #161414;
+  padding: 12px;
+  text-align: left;
+}
+
+.EmployeeDetailstable th {
+  background-color: #6b6c67;
+  color: #333;
+}
+
+.EmployeeDetailstable tbody tr:nth-child(even) {
+  background-color: #f7f4f4;
+}
+
+.EmployeeDetailstable tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Delete Button */
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+/* Add Button */
+.addSaloonButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addSaloonButton:hover {
+  background-color: #218838;
+}
+
+/* Update Button */
+.updateButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.updateButton:hover {
+  background-color: #0056b3;
+}
+
+/* Table Headers */
+.EmployeeDetailstable th {
+  background-color: #6b6c67;
+  color: #000; /* Change text color to black */
+  font-weight: bold; /* Make text bold */
+}
+
+/* Table Data Cells */
+.EmployeeDetailstable td {
+  border: 1px solid #161414;
+  padding: 12px;
+  text-align: left;
+  color: #000; /* Change text color to black */
+}
+
+/* Hover effect on table rows */
+.EmployeeDetailstable tbody tr:hover {
+  background-color: #f0f0f0;
+  color: #000; /* Change text color to black */
+}
+
+/* Category dropdown */
+.Category {
+  margin-bottom: 20px;
+}
+
+.Category select {
+  padding: 10px;
+  border: 1px solid #0c0b0b;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Emptable */
+.Emptable {
+  min-height: 150px; /* Adjust the height as needed */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}

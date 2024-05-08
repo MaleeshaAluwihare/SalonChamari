@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import '../../css/Maleesha/Tables.css';
+import Styles from '../../css/Maleesha/Tables.module.css';
 import HairIcon from '../../images/Maleesha/hair-cutting.png';
 import HairC from '../../images/Maleesha/hairstyle.png';
 import HairT from '../../images/Maleesha/woman.png';
@@ -11,7 +11,6 @@ import Header from './Header';
 import Footer from "../../components/Maleesha/Footer";
 
 export default function HairServices(){
-
     const [ HairCut, setHairCut ] = useState( [] );
     const [ HairColor, setHairColor ] = useState ( [] );
     const [ HairTreatment, setHairTreatment ] = useState ( [] );
@@ -42,40 +41,40 @@ export default function HairServices(){
     
 
     return (
-        <div>
-            <div className="header-container">
+        <div className={Styles.bodyContainer}>
+            <div className={Styles.headercontainer}>
                 <Header/>
             </div>
-            <div className="ServiceRec">
+            <div className={Styles.ServiceRec}>
                 <h2>OUR SERVICES</h2>
-                <div className="serviceName">
+                <div className={Styles.serviceName}>
                     <h1>Hair Care</h1>
                 </div>
-                <div className="ServiceCircles">
-                    <Link to = '/hair-page' className="ServicesBtn">HAIR</Link>
-                    <Link to = '/skin-page' className="ServicesBtn">SKIN</Link>
-                    <Link to = '/nail-page' className="ServicesBtn">NAIL</Link>
-                    <Link to = '/bridal-page' className="ServicesBtn">BRIDAL</Link>
-                    <Link to = '/costume-page' className="ServicesBtn">Sarees & Gowns</Link>
+                <div className={Styles.ServiceCircles}>
+                    <Link to='/hair-page' className={Styles.ServicesBtn}>HAIR</Link>
+                    <Link to='/skin-page' className={Styles.ServicesBtn}>SKIN</Link>
+                    <Link to='/nail-page' className={Styles.ServicesBtn}>NAIL</Link>
+                    <Link to='/bridal-page' className={Styles.ServicesBtn}>BRIDAL</Link>
+                    <Link to='/costume-page' className={Styles.ServicesBtn}>Sarees & Gowns</Link>
                 </div>
             </div>
-
-            <div className="search-bar">
-                <input type="text" placeholder="Search service.." onChange={event => {setSearchTerm(event.target.value)}}/><FontAwesomeIcon icon={faMagnifyingGlass} className="button" />
+    
+            <div className={Styles.searchbar}>
+                <input type="text" placeholder="Search service.." onChange={event => {setSearchTerm(event.target.value)}}/><FontAwesomeIcon icon={faMagnifyingGlass} className={Styles.button} />
             </div>
-
-            <div className="table-container-wrapper">
-                <div className="table-container">
-                    <table className="table">
+    
+            <div className={Styles.tablecontainerwrapper}>
+                <div className={Styles.tablecontainer}>
+                    <table className={Styles.table}>
                         <thead>
                             <tr>
-                                <th scope="col">HAIR CUT<img src={HairIcon} className='Icon' alt='Icon'/></th>
+                                <th scope="col">HAIR CUT<img src={HairIcon} className={Styles.Icon} alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             {HairCut.length === 0 ? (
-                                <tr key = "no data">
+                                <tr key="no data">
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
@@ -95,11 +94,11 @@ export default function HairServices(){
                         </tbody>
                     </table>
                 </div>
-                <div className="table-container">
-                    <table className="table">
+                <div className={Styles.tablecontainer}>
+                    <table className={Styles.table}>
                         <thead>
                             <tr>
-                                <th scope="col">HAIR COLOR<img src={HairC} className='Icon' alt='Icon'/></th>
+                                <th scope="col">HAIR COLOR<img src={HairC} className={Styles.Icon} alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
@@ -109,27 +108,27 @@ export default function HairServices(){
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
-                                    HairColor.filter((val) => {
-                                       if(searchTerm === ""){
-                                            return true;
-                                       }else{
-                                            return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
-                                       }
-                                    }).map((hairColor) => (
-                                        <tr key={hairColor.id}>
-                                            <td>{hairColor.itemName}</td>
-                                            <td>{hairColor.itemPrice}</td>
-                                        </tr>
-                                    ))
-                                )}
+                                HairColor.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else {
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((hairColor) => (
+                                    <tr key={hairColor.id}>
+                                        <td>{hairColor.itemName}</td>
+                                        <td>{hairColor.itemPrice}</td>
+                                    </tr>
+                                ))
+                            )}
                         </tbody>
                     </table>
                 </div>
-                <div className="table-container">
-                    <table className="table">
+                <div className={Styles.tablecontainer}>
+                    <table className={Styles.table}>
                         <thead>
                             <tr>
-                                <th scope="col">HAIR TREATMENTS<img src={HairT} className='Icon' alt='Icon'/></th>
+                                <th scope="col">HAIR TREATMENTS<img src={HairT} className={Styles.Icon} alt='Icon'/></th>
                                 <th scope="col">Standered Price</th>
                             </tr>
                         </thead>
@@ -139,24 +138,24 @@ export default function HairServices(){
                                     <td colSpan="2" style={{ textAlign: "center" }}>Services will be available soon..</td>
                                 </tr>
                             ) : (
-                                    HairTreatment.filter((val) => {
-                                        if(searchTerm === ""){
-                                            return true;
-                                        }else{
-                                            return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
-                                        }
-                                    }).map((hairTreatment) => (
-                                        <tr key={hairTreatment.id}>
-                                            <td>{hairTreatment.itemName}</td>
-                                            <td>{hairTreatment.itemPrice}</td>
-                                        </tr>
-                                    ))
-                                )}
+                                HairTreatment.filter((val) => {
+                                    if (searchTerm === "") {
+                                        return true;
+                                    } else {
+                                        return val.itemName.toLowerCase().includes(searchTerm.toLowerCase());
+                                    }
+                                }).map((hairTreatment) => (
+                                    <tr key={hairTreatment.id}>
+                                        <td>{hairTreatment.itemName}</td>
+                                        <td>{hairTreatment.itemPrice}</td>
+                                    </tr>
+                                ))
+                            )}
                         </tbody>
                     </table>
                 </div>
             </div> 
-            <div className="footer-container">
+            <div className={Styles.footercontainer}>
                 <Footer/>
             </div>  
         </div>

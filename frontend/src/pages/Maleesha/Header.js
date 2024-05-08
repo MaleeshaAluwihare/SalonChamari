@@ -1,26 +1,20 @@
 import React from 'react';
-import '../../css/Maleesha/header.css';
+import Styles from '../../css/Maleesha/header.module.css';
 import Logo from '../../images/Maleesha/Logo.png';
 
 function Header() {
     return (
-        <header className="header">
-            <a href={Logo} className="logo">logo</a>
+        <header className={Styles.header}>
 
-            <input type="checkbox" id="check" />
+            <img src={Logo} alt="Salon Logo"style={{ width: '130px', height: 'auto' }}/>
 
-            <label htmlFor="check" className="icons">
-                <i className='bx bx-menu' id="menu-icon"></i>
-                <i className='bx bx-x' id="close-icon"></i>
-            </label>
-
-            <nav className="navbar">
+            <nav className={Styles.navbar}>
                 <a href="/salon-home" style={{'--i': 0}}>Home</a>
                 <a href="#" style={{'--i': 2}}>Gallery</a>
                 <a href="#" style={{'--i': 3}}>Blog</a>
                 <a href="/quote-page" style={{'--i': 3}}>Quotation</a>
                 <a href="#" style={{'--i': 1}}>FAQ</a>
-                <a href="#" style={{'--i': 4}}>Contact</a>
+                <a href="/profile/:email" style={{'--i': 4}}>Profile</a>
             </nav>
         </header>
     );

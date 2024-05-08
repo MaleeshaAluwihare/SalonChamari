@@ -274,6 +274,21 @@ app.get("/bridalGroom", async (req, res) => {
     }
 });
 
+//------------------------display package---------------------------//
+app.get("/Packages", async (req, res) => {
+    try {
+        const groomServices = await Service.find({ itemID: /^BP/ });
+
+        if(groomServices.length === 0){
+            return res.status(200).json([ ]);
+        }
+        res.json(groomServices);
+
+    } catch (error) {
+        console.error('Error retrieving packages:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

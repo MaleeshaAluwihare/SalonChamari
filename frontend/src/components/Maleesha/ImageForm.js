@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import '../../css/Maleesha/ImageUploadForm.css';
+import Styles from '../../css/Maleesha/ImageUploadForm.module.css';
 
 export default function ImageUploadForm (){
 
@@ -44,10 +44,9 @@ export default function ImageUploadForm (){
   };
 
   return (
-    <div className="image-container">
-      <h2>Image Upload</h2>
+    <div className={Styles.imagecontainer}>
       <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className={Styles.formgroup}>
             <label htmlFor="category">Category:</label>
                 <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} required>
                   <option value="">Select a category</option>
@@ -57,22 +56,22 @@ export default function ImageUploadForm (){
                 </select>
           </div>
 
-        <div className="form-group">
+        <div className={Styles.formgroup}>
           <label htmlFor="itemName">Item Name:</label>
           <input type="text" id="itemName" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
         </div>
 
-        <div className="form-group">
+        <div className={Styles.formgroup}>
           <label htmlFor="itemPrice">Item Price:</label>
           <input type="number" id="itemPrice" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required />
         </div>
 
-        <div className="form-group">
+        <div className={Styles.formgroup}>
           <label htmlFor="image">Choose Image:</label>
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} required accept="image/*" />
         </div>
 
-        <button type="submit" className='submitBtn'>Upload Image</button>
+        <button type="submit" className={Styles.submitBtn}>Upload Image</button>
       </form>
     </div>
   );

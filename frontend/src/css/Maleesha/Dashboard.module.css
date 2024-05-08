@@ -1,0 +1,54 @@
+
+body {
+  background-color: white;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+}
+
+.dashboardContainer {
+    display: flex;
+    max-height:none;
+    background-color: white;
+  }
+  
+  /* Sidebar */
+  .sideBar {
+    width: 300px;
+    height: 100%;
+    background-color: white;
+  }
+
+  .home{
+    width: 100%;
+    margin-top: 50px;
+    left: 100px;
+  }
+  
+  .removeService{
+    width: 100%;
+    margin-top: 100px;
+    margin-left: 220px;
+  }
+
+.createService{
+  width: 100%;
+  margin-top: 100px;
+  margin-left: 250px;
+  justify-content: center;
+}
+
+.updateService{
+  width: 100%;
+  margin-left: 250px;
+  justify-content: center;
+}
+
+.viewQuotations{
+  margin-top: 10px;
+}
+
+.imageUpload{
+  width: 100%;
+  margin-left: 250px;
+  justify-content: center;
+}

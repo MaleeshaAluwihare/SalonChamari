@@ -1,0 +1,302 @@
+.mainContainer {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the container takes up at least the full height of the viewport */
+    padding: 20px;
+}
+
+.contentContainer h1{
+  margin-top: 40px;
+  font-size: 35px;
+  color: #000000;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contentContainer {
+    margin-top: 100px;
+    text-align: center; /* Center-align the content within the container */
+    color: rgb(0, 0, 0);
+}
+
+.headingContainer {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    line-height: 1.5;
+}
+
+.dropdownContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    margin-bottom: 20px; /* Add space between dropdowns */
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background-color: #e5e5e5;
+    color: rgb(0, 0, 0);
+}
+
+select:focus {
+    outline: none;
+}
+
+
+.addServiceBtn{
+    background-color:  #E9C2C5;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.serviceTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.serviceTable th, .serviceTable td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: #000000;
+    
+}
+
+.serviceTable th {
+    background-color: #e5e5e5;
+    color: black;
+}
+
+.serviceTable tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    color: black;
+}
+
+.serviceTable tbody tr:nth-child(even) {
+    background-color: #ffffff;
+    color:black;
+}
+
+/* Quotation.css */
+.quantityCell {
+    text-align: center;
+}
+
+.quantityButton {
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+
+h4{
+    margin-top: 40px;
+}
+
+.totalAmountContainer{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.removebtn {
+    background-color: #dc3545; /* Red color for remove button */
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.removebtn:hover {
+    background-color: #bb2d3b; /* Darker red color on hover */
+}
+
+.downloadPDFBtn{
+    background-color:  #E9C2C5;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.floatingbutton {
+  position: fixed; /* Fixed position to float on the page */
+  bottom: 20px; /* 20px from the bottom */
+  right: 0px; /* 20px from the left */
+  padding: 10px 20px; /* Padding inside the button */
+  background-color: #E9C2C5; /* Background color */
+  color: white; /* Text color */
+  border-top-left-radius: 10px; /* Rounded top-left corner */
+  border-bottom-left-radius: 10px; /* Rounded bottom-left corner */
+  border-top-right-radius: 0; /* Square top-right corner */
+  border-bottom-right-radius: 0; /* Square bottom-right corner */
+  font-size: 16px; /* Font size */
+  text-align: center; /* Center the text */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Shadow for depth */
+  z-index: 1000; /* Ensure it's above other elements */
+  }
+  
+  .floatingbutton:hover {
+    background-color: #0056b3;  }
+  
+  .quantityadjustment {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quantityadjustment button {
+    background-color: #5fafff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;  
+    transition: background-color 0.3s ease;
+    outline: none;
+  }
+
+  .quantityadjustment button:focus {
+    outline: none; 
+  }
+  
+  .quantityadjustment button:hover {
+    background-color: #15b300; /* Change color on hover for visual feedback */
+  }
+  
+  .quantitydisplay {
+    padding: 0 15px;
+    font-size: 1.2rem; /* Adjust size as needed */
+  }
+  
+  /*FORM CSS*/
+  /* General form styling */
+
+  .modalcontainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+.appointmentFormContainer {
+    max-width: 600px; /* Increased width for a larger form */
+    margin: 40px auto; /* Added more margin for better spacing */
+    background: #fff;
+    padding: 30px; /* Increased padding for a roomier layout */
+    border-radius: 10px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out; /* New animation for the form container */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .closeicon {
+    position: absolute;
+    top: 15px; /* Adjusted positioning */
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+  }
+  
+  .closeicon:hover {
+    transform: scale(1.1); 
+  }
+  
+  .formField {
+    color: #222;
+    margin-bottom: 25px; /* Increased spacing between fields */
+    opacity: 0; /* Set initial opacity for animation */
+    animation: slideIn 0.5s forwards; /* New animation for form fields */
+    animation-delay: 0.3s; /* Delayed start for the animation */
+    font-weight: bold;
+  }
+
+  /* .formField label {
+    display: inline-block;
+    width: 150px; 
+} */
+
+
+.formField input[type="text"],
+.formField input[type="tel"],
+.formField input[type="date"],
+.formField input[type="time"],
+.formField input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Button styling */
+  .formSubmitBtn {
+    /* width: 100%; */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(64, 81, 181);;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .formSubmitBtn:hover {
+    background-color: #41bd14;
+  }
+  
+  .instructionMessage {
+    color: #555;
+    font-size: 0.8em; 
+    margin-top: 5px; 
+}
+
+.swal2container {
+  z-index: 9999 !important;
+}

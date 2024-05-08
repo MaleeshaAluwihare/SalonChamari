@@ -5,7 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('../../images/Maleesha/floral-corner-frame.jpg');
+  /* background-image: url('../../images/Maleesha/floral-corner-frame.jpg'); */
+  background-color: #FEE1DD;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -15,7 +16,7 @@
 
 .ServiceRec h2 {
   margin: 40px 0;
-  color: #FFCF00;
+  color: black;
   font-family: 'Vacelyn', sans-serif; /* Consistent font family for headings */
   font-size: 35px; /* Adjusted font size for visibility */
   font-weight: 700; /* Bold font weight for emphasis */
@@ -29,7 +30,7 @@
 }
 
 .ServicesButton {
-  background-color: #FFCF00;
+  background-color: #E9C2C5;
   color: rgb(0, 0, 0);
   border-radius: 50%;
   width: 120px;
@@ -47,6 +48,6 @@
 }
 
 .ServicesButton:hover {
-  background-color: black;
-  color: #FFCF00;
+  background-color: #CEA0AA;
+  color: white;
 }
