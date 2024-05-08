@@ -91,7 +91,7 @@ function App() {
   const user = localStorage.getItem("token");
   return (
     <div className="App">
-
+    
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/salon-home" element={<SalonHome />} />
@@ -161,9 +161,7 @@ function App() {
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
 
-
           </Routes>
-
     </div>
 
   );

@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
-import '../../css/Dasun/addFaqForm.css';
+import Styles from '../../css/Dasun/addFaqForm.module.css'
 // import {userNavigate} from 'react-router-dom';
 
 export default function AddFaq() {
@@ -45,8 +45,8 @@ export default function AddFaq() {
 
     return(
 
-        <div id="add_Faq_page">
-            <form id="add_Faq_page_form" onSubmit={sendData}>
+        <div className={Styles.add_Faq_page}>
+            <form className={Styles.add_Faq_page_form} onSubmit={sendData}>
 
 
                 {/* <div class="form-group">
@@ -63,10 +63,10 @@ export default function AddFaq() {
                 <br />
 
 
-                <div class="form-group">
+                <div className={Styles.form_group}>
 
-                    <label id="add_Faq_page_form_label_question" for="question">Question</label>
-                    <input type="text" class="form-control" id="add_Faq_page_form_input_question" placeholder="Enter Question" 
+                    <label className={Styles.add_Faq_page_form_label_question} for="question">Question</label>
+                    <input type="text" class="form-control" className={Styles.add_Faq_page_form_input_question} placeholder="Enter Question" 
                     onChange={(e) => {
                         setQuestion(e.target.value);
                     }} />
@@ -77,10 +77,10 @@ export default function AddFaq() {
                 <br />
 
 
-                <div class="form-group">
+                <div className={Styles.form_group}>
 
-                    <label id="add_Faq_page_form_label_answer" for="answer">Answer</label>
-                    <input type="text" class="form-control" id="add_Faq_page_form_input_answer" placeholder="Enter Answer" 
+                    <label className={Styles.add_Faq_page_form_label_answer} for="answer">Answer</label>
+                    <input type="text" class="form-control" className={Styles.add_Faq_page_form_input_answer} placeholder="Enter Answer" 
                     onChange={(e) => {
                         setAnswer(e.target.value);
                     }} />
@@ -90,7 +90,7 @@ export default function AddFaq() {
 
                 <br />
 
-                <button id="add_Faq_page_form_submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                <button className={Styles.add_Faq_page_form_submitBtn} type="submit" class="btn btn-primary">Submit</button>
 
             </form>
         </div>
