@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export const EventManagerDashboard = () => {
     const navigation = useNavigate()
@@ -24,6 +26,12 @@ export const EventManagerDashboard = () => {
             });
     }
 
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        doc.autoTable({ html: '#event-table' });
+        doc.save('event_managers.pdf');
+    };
+
     return (
         <div className="event-dashboard" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
             <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Event Dashboard</h1>
@@ -43,7 +51,7 @@ export const EventManagerDashboard = () => {
                         <div className="row justify-content-center">
                             <div className="col-md-12">
                                 <div className="table-wrap">
-                                    <table className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
+                                    <table id="event-table" className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
                                         <thead style={{ backgroundColor: "#007bff", color: "#fff" }}>
                                             <tr>
                                                 <th style={{ padding: "10px" }}>Manager Name</th>
@@ -74,6 +82,9 @@ export const EventManagerDashboard = () => {
                         </div>
                     </div>
                 </section>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+                <button style={{ padding: "10px 20px", backgroundColor: "#28a745", color: "#fff", border: "none", borderRadius: "5px", cursor: "pointer" }} onClick={downloadPDF}>Download PDF</button>
             </div>
         </div>
     );

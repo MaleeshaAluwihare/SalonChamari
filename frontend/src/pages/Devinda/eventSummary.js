@@ -67,17 +67,23 @@ export const EventSummary = () => {
         padding: "20px",
       }}
     >
+    <h1 style={{ color: "#1175e1cc", textAlign: "center" }}>Event Summary</h1> {/* Page heading */}
       <div className="image-grid">
         <div
           key={ID}
           className="image-card"
           id="summary"
           style={{
-            background: "#fff",
+            background: "#1175e1cc",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             borderRadius: "8px",
             padding: "20px",
-            marginBottom: "20px",
+            marginBottom: "0px",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            
           }}
         >
           <div>
@@ -103,6 +109,7 @@ export const EventSummary = () => {
             <h2>{pPrice}</h2>
             {manager && (
               <div>
+                
                 <p style={{ marginBottom: "10px" }}>
                   <strong>Event Manager:</strong> {manager.name}
                 </p>

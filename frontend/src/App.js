@@ -1,10 +1,10 @@
 
-import "./css/App.css";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 //devinda
-import { Packages } from "./pages/Devinda/packages";
+import { EventPackages } from "./pages/Devinda/eventPackages";
 import { EventForm } from "./pages/Devinda/eventForm";
 import { EventSummary } from "./pages/Devinda/eventSummary";
 import { EventDashBoard } from "./pages/Devinda/eventDashBoard";
@@ -15,9 +15,10 @@ import EventCustomizationDash from './pages/Devinda/eventCustomPackageDashboard'
 import {CustomEventForm} from './pages/Devinda/customEventForm';
 import {CustomEventSummary} from './pages/Devinda/customEventSummary';
 import {EventManagerDashboard} from './pages/Devinda/eventManagerDashboard';
+import SystemAdminPanel from './pages/Devinda/SystemAdminPanel';
 import { AddEventManager } from "./pages/Devinda/addEventManager";
-import Header from "./components/devinda/Header";
-import SplitView from "./pages/Devinda/eventLanding";
+// import Header from "./components/devinda/Header";
+
 
 
 
@@ -184,10 +185,10 @@ function App() {
               <Route path="/forgot" element={<Forgot/>}/>
 
 
-              <Route path="/" element={<SplitView />}></Route>
-          
-
-          <Route path="/packages" element={<Packages />}></Route>
+            
+              
+          <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
+          <Route path="/Eventpackages" element={<EventPackages />}></Route>
           <Route path="/eventForm" element={<EventForm />}></Route>
           <Route path="/eventSummary" element={<EventSummary />}></Route>
           <Route path="/eventDashboard" element={<EventDashBoard />}></Route>

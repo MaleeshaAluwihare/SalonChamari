@@ -62,7 +62,7 @@ function EventCustomization() {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', padding: '20px',backgroundColor:'#1175e1cc' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Event Customization</h1>
       {features.length === 0 ? (
         <p style={{ textAlign: 'center' }}>Loading...</p>
@@ -70,16 +70,16 @@ function EventCustomization() {
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Feature</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Price</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Select</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px'}}>Feature</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Price</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Select</th>
             </tr>
           </thead>
           <tbody>
             {features.map((feature) => (
               <tr key={feature._id}>
-                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{feature.cpFeature}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>{feature.cpFeaturePrice}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeature}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeaturePrice}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
                   <input
                     type="checkbox"

@@ -70,7 +70,7 @@ export const EventForm = () => {
   return (
     <div className={styles.eventFormContainer}>
       <h2 className={styles.formTitle}>Event Registration Form</h2>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.Eventform} onSubmit={handleSubmit}>
         <label className={styles.formLabel}>
           Name:
           <input

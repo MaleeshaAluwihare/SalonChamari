@@ -7,7 +7,8 @@ const router = require("express").Router();
  //creating a method to call from the front end basicaly its the adress that calls 
  router.route("/add").post((req,res)=>{
     //method
-    const cpFeature = req.body.cpFeatures;
+   
+    const cpFeature = req.body.cpFeature;
     const cpFeaturePrice = req.body.cpFeaturePrice;
     
 

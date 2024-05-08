@@ -30,21 +30,22 @@ const FeatureList = () => {
     }
   };
 
+  
   const handleAddFeature = async () => {
-    try {
-      await axios.post(`${BackendURL}/add`, {
-        cpFeature: newFeature,
-        cpFeaturePrice: newFeaturePrice,
-      });
-      // Fetch the updated list of features after adding a new feature
-      fetchData();
-      // Clear input fields
-      setNewFeature('');
-      setNewFeaturePrice('');
-    } catch (error) {
-      console.error('Error adding feature:', error);
-    }
-  };
+      try {
+        await axios.post(`${BackendURL}/add`, {
+          cpFeature: newFeature,
+          cpFeaturePrice: newFeaturePrice,
+        });
+        // Fetch the updated list of features after adding a new feature
+        fetchData();
+        // Clear input fields
+        setNewFeature('');
+        setNewFeaturePrice('');
+      } catch (error) {
+        console.error('Error adding feature:', error);
+      }
+    };
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
@@ -52,7 +53,7 @@ const FeatureList = () => {
       <ul>
         {features.map((feature) => (
           <li key={feature._id} style={{ marginBottom: '10px' }}>
-            <span style={{ fontWeight: 'bold' }}>{feature.cpFeature}</span> - <span>${feature.cpFeaturePrice}</span>
+            <span style={{ fontWeight: 'bold' }}>{feature.cpFeature}</span> - <span>Rs. {feature.cpFeaturePrice}</span>
             <button
               style={{
                 marginLeft: '10px',
