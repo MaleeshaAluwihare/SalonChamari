@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../../css/Anoj/modal.module.css";
+import UpdateInventory from "./updateInventory";
 
 export default function InventoryReplacing() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchInput, setSearchInput] = useState("");
+  const [modalStyle, setModalStyle] = useState({
+    display: 'none'
+  })
+  const [selected, setSelected] = useState({});
+  const [updated,setUpdated] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, [selectedCategory]);
+  }, [selectedCategory,updated]);
 
   const fetchData = () => {
     let url = "/StudioInventory/filter";
@@ -55,20 +62,38 @@ export default function InventoryReplacing() {
 
   const filteredProducts = products.filter((product) => {
     if (!searchInput.trim()) return true;
-    const searchLowerCase = searchInput.trim().toLowerCase();
+    const searchLowerCase = searchInput.trim().toLowerCase(); 
+    const productIdLowerCase = product.pid.toString().toLowerCase();
+    const productNameLowerCase = product.name.toLowerCase(); 
     return (
-      product.pid.toString().includes(searchLowerCase) ||
-      product.name.toLowerCase().includes(searchLowerCase)
+      productIdLowerCase.includes(searchLowerCase) || 
+      productNameLowerCase.includes(searchLowerCase)
     );
   });
+  
 
   const handleUpdateButtonClick = (product) => {
-    navigate("/update", { state: product });
+    setSelected(product);
+    showModal();
   };
+
+  const showModal = () => {
+
+    setModalStyle({
+      display: 'block'
+    })
+  }
+
+  const closeModal = () => {
+    setModalStyle({
+      display: 'none'
+    })
+  }
   
 
   return (
-    <div>
+    <>
+         <div>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <h1>Inventory Report</h1>
         <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
@@ -173,5 +198,11 @@ export default function InventoryReplacing() {
         </button>
       </div>
     </div>
+
+    <div className="modal-Anoj" style={modalStyle}>
+      <UpdateInventory handleUpdate={closeModal} showUpdated={() => setUpdated(prev => !prev)} selected={selected}/>
+    </div>
+
+    </>
   );
 }

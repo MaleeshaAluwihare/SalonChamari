@@ -89,6 +89,11 @@ export default function StockTable() {
         const chartHeight = (chartWidth * canvas.height) / canvas.width;
         doc.addImage(chartImage, "PNG", 20, doc.autoTable.previous.finalY + 20, chartWidth, chartHeight);
 
+        doc.setLineWidth(1);
+        doc.rect(5, 5, doc.internal.pageSize.getWidth() - 10, doc.internal.pageSize.getHeight() - 10);
+        doc.setLineWidth(0.5);
+        doc.rect(7, 7, doc.internal.pageSize.getWidth() - 14, doc.internal.pageSize.getHeight() - 14);
+
         // Save or open PDF
         doc.save("InventoryReport.pdf");
       });

@@ -45,17 +45,6 @@ export default function DashboardSideBar({ onSelectOption }) {
             </li>
             <li className={styles.navItem}>
               <button
-                className={`${styles.navButton} ${selectedOption === "update-stock" ? styles.active : ""}`}
-                onClick={() => {
-                  onSelectOption("update-stock");
-                  setSelectedOption("update-stock");
-                }}
-              >
-                <FontAwesomeIcon icon={faPenToSquare} className={styles.buttonIcon} />Update stock
-              </button>
-            </li>
-            <li className={styles.navItem}>
-              <button
                 className={`${styles.navButton} ${selectedOption === "reorder-stock" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("reorder-stock");
@@ -95,7 +84,6 @@ export default function DashboardSideBar({ onSelectOption }) {
                   setSelectedOption("logout");
                 }}
               >
-                <FontAwesomeIcon icon={faRightFromBracket} className={styles.buttonIcon} />Logout
               </button>
             </li>
           </ul>
