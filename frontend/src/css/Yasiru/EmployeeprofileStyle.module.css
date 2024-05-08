@@ -1,0 +1,68 @@
+.profileEmp {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .profileEmp h3 {
+    text-align: center;
+  }
+  
+  .profileEmp form {
+    margin-top: 20px;
+  }
+  
+  .profileEmp label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .profileEmp input[type="text"],
+  .profileEmp input[type="email"],
+  .profileEmp textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .profileEmp button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profileEmp button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for the "Attendancegiven" button */
+  .Attendancegiven {
+    margin-top: 10px;
+    background-color: #ffc107; /* Yellow color */
+  }
+  
+  .Attendancegiven:hover {
+    background-color: #e0a800; /* Darker shade of yellow on hover */
+  }
+  
+  /* Styles for the "LeaveRequest" button */
+  .LeaveRequest {
+    margin-top: 10px;
+    background-color: #28a745; /* Green color */
+  }
+  
+  .LeaveRequest:hover {
+    background-color: #218838; /* Darker shade of green on hover */
+  }
+  

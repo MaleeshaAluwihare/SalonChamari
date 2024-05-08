@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Styles from '../../css/Maleesha/CostumePage.module.css';
-import video from '../../video/costumeVideo.mp4';
+// import video from '../../video/costumeVideo.mp4';
 import Header from './Header';
 import Footer from "../../components/Maleesha/Footer";
 
@@ -101,12 +101,12 @@ export default function ProductPage() {
             <h3>Elegance in Every Thread</h3>
             <p>Step into a world where fairy tales come true, and every bride is the star of her own enchanting story. Our wedding dress collection is a curated symphony of timeless elegance and contemporary charm, designed to make your special day truly unforgettable. With each gown crafted to perfection, we invite you to explore a haven of luxurious lace, delicate details, and silhouettes that dance with grace. Unveil your dream dress with us and let your love story begin in beauty and splendor.</p>
         </div>
-        <div className={Styles.videocontainer}>
+        {/* <div className={Styles.videocontainer}>
           <video  ref={videoRef} width="100%" autoPlay loop muted>
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
       </div>
       <div>
         <p></p>

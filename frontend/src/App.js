@@ -20,18 +20,12 @@ import { AddEventManager } from "./pages/Devinda/addEventManager";
 // import Header from "./components/devinda/Header";
 
 
-
-
-
-
-
 //nisalka
 import Profile from "../src/components/nisalka/Profile";
 import Signup from "../src/components/nisalka/Signup";
 import Login from "../src/components/nisalka/Login";
 import CMdashboard from "./components/nisalka/CMdashboard";
 import Forgot from "./components/nisalka/forgotpassword";
-
 
 //Chavidu
 import StudioBookingForm from './components/Chavidu/studioBookingForm';
@@ -107,13 +101,28 @@ import InventoryWrapper from './components/Pulasthi/Wrapper/InventoryWrapper';
 import EmployeeWrapper from './components/Pulasthi/Wrapper/EmployeeWrapper';
 import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
+//yasiru
+import EditEmployeeDetails from './pages/Yasiru/EditEmployeeDetails';
+import EmpProfile from './pages/Yasiru/EmpProfile'
+import DeleteEmployeedatials from './pages/Yasiru/DeleteEmployeedetails';
+import NavBars from './components/Yasiru/Navbar';
+import EmpLogin from './pages/Yasiru/EmpLogin';
+import AddEmployee from './pages/Yasiru/Addemployee';
+import SaloonEmployeetable from'./pages/Yasiru/SaloonEmployeetable';
+import Attendancepage from './pages/Yasiru/attendancepage';
+import Attendancecount from './pages/Yasiru/Attendancecount';
+import Dashboard from './pages/Yasiru/EmployeeDashboard';
+import Leave from './pages/Yasiru/Leavesgiven';
+import Leavedetails from './pages/Yasiru/Leavedetails';
+import Home from './pages/Yasiru/Home';
+
 
 
 function App() {
   const user = localStorage.getItem("token");
   return (
     <div className="App">
-
+   
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/salon-home" element={<SalonHome />} />
@@ -182,6 +191,20 @@ function App() {
               <Route path="/Uactivity" element={<CMdashboard/>}/>
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
+
+              <Route path='/Attendacecount'element={<Attendancecount/>}/>
+              <Route path='/Attendacegive'element={<Attendancepage/>}/>
+              <Route path='/EmployeeDetails'element={<SaloonEmployeetable/>}/>
+              <Route path ='/EmpAdd' element ={<AddEmployee/>} />
+              <Route path ='/EmpEdit' element ={<EditEmployeeDetails/>} />
+              <Route path ='/profile' element ={<EmpProfile/>} />
+              <Route path ='/Deletesaloon' element ={<DeleteEmployeedatials/>} />
+              <Route path ='/EmpLogin' element ={<EmpLogin/>} />
+              <Route path='/EmpDash'element={<Dashboard/>}/>
+              <Route path='/forget'element={<forgetpassword/>}/>
+              <Route path='/Leavegive'element={<Leave/>}/>
+              <Route path='/Leavedetails'element={<Leavedetails/>}/>
+              <Route path='/Home'element={<Home/>}/>
               
               <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
               <Route path="/Eventpackages" element={<EventPackages />}></Route>
@@ -202,6 +225,7 @@ function App() {
 
   );
 
+  
 }
 
 
