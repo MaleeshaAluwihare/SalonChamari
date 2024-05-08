@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useReactToPrint } from 'react-to-print'; 
 import styles from '../../css/chavidu/viewBooking.module.css';
 
-function ViewStudioBookings() {
+function ViewSalonBookings() {
     const [bookings, setBookings] = useState([]);
     const [filteredBookings, setFilteredBookings] = useState([]);
     const [searchDate, setSearchDate] = useState('');
@@ -14,7 +14,7 @@ function ViewStudioBookings() {
     useEffect(() => {
         // Function to fetch all bookings from the backend
         function getAllBookings() {
-            axios.get("http://localhost:8070/StudioBooking/studiobookings")
+            axios.get("http://localhost:8070/SalonBooking/salonbookings")
                 .then((res) => {
                     console.log(res.data);
                     setBookings(res.data);
@@ -58,10 +58,8 @@ function ViewStudioBookings() {
 
     return (
         <div className={styles.container}>
-
-
             <div className={styles.headerTable}>
-                <h1>Studio Bookings</h1>
+                <h1>Salon Bookings</h1>
                 <div className={styles.filterSection}>
                     <label htmlFor="dateFilter">Filter by Date: </label>
                     <input
@@ -92,8 +90,8 @@ function ViewStudioBookings() {
                 </div>
             </div>
             <button className={styles.pdf} onClick={handlePrint}>
-      Download PDF
-    </button>
+                Download PDF
+            </button>
             <table className={styles.table} ref={componentRef}> {/* Add ref to the table */}
                 <thead>
                     <tr>
@@ -101,9 +99,9 @@ function ViewStudioBookings() {
                         <th>Email</th>
                         <th>Date</th>
                         <th>Reservation ID</th>
-                        <th>Package</th>
+                        <th>Service</th>
                         <th>Amount</th>
-                        <th>Photographer</th>
+                        <th>Time</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -113,10 +111,10 @@ function ViewStudioBookings() {
                             <td>{booking.name}</td>
                             <td>{booking.email}</td>
                             <td>{booking.date}</td>
-                            <td>{booking.sid}</td>
-                            <td>{booking.StudioPackage}</td>
+                            <td>{booking.salonId}</td>
+                            <td>{booking.service}</td>
                             <td>{booking.amount}</td>
-                            <td>{booking.photographer}</td>
+                            <td>{booking.time}</td>
                             <td>
                                 <div className={`${styles.circle} ${isBookingActive(booking) ? styles.activeCircle : styles.nonActiveCircle}`}></div>
                                 {isBookingActive(booking) ? 'Active' : 'Non-Active'}
@@ -129,4 +127,4 @@ function ViewStudioBookings() {
     );
 }
 
-export default ViewStudioBookings;
+export default ViewSalonBookings;

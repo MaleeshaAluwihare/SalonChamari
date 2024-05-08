@@ -2,6 +2,13 @@ import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 import axios from "axios";
 
+const chartUrls = [
+  // Define chart URLs here
+  "https://charts.mongodb.com/charts-project-0-pohxg/embed/charts?id=6627b51d-06fe-4c98-8f32-4cea8a57b292&maxDataAge=300&theme=light&autoRefresh=true",
+  "https://charts.mongodb.com/charts-project-0-pohxg/embed/charts?id=6627dc15-3f3d-45fc-88b2-d54e184b7327&maxDataAge=1800&theme=light&autoRefresh=true",
+  "https://charts.mongodb.com/charts-project-0-pohxg/embed/charts?id=6637384e-89f7-4a45-8104-6fe5640410d8&maxDataAge=300&theme=light&autoRefresh=true",
+];
+
 const PeakBookingDaysChart = () => {
   const [bookingData, setBookingData] = useState([]);
   const chartRef = useRef(null); // Ref to store chart instance
@@ -21,15 +28,23 @@ const PeakBookingDaysChart = () => {
   }, []);
 
   useEffect(() => {
-    
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    
     const bookingCountsByDay = Object.fromEntries(daysOfWeek.map(day => [day, 0]));
-
     
     if (bookingData.length > 0) {
-      bookingData.forEach((booking) => {
+      // Get today's date
+      const today = new Date();
+      // Calculate the first day of the previous month
+      const firstDayOfPreviousMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+      
+      // Filter bookings for the past month
+      const bookingsForPastMonth = bookingData.filter(booking => {
+        const bookingDate = new Date(booking.date);
+        return bookingDate >= firstDayOfPreviousMonth && bookingDate <= today;
+      });
+
+      // Update booking counts by day for bookings in the past month
+      bookingsForPastMonth.forEach((booking) => {
         const date = new Date(booking.date);
         const dayOfWeek = date.toLocaleDateString("en-US", { weekday: "long" });
         bookingCountsByDay[dayOfWeek] = (bookingCountsByDay[dayOfWeek] || 0) + 1;
@@ -92,7 +107,34 @@ const PeakBookingDaysChart = () => {
     });
   }, [bookingData]);
 
-  return <canvas id="bookingChart" />;
+  return (
+    <div>
+      <canvas id="bookingChart" />
+      <div
+        style={{
+          display:'block',
+          gap: '20px',
+          justifyContent: 'space-between', // Equal spaces between items
+        }}
+      >
+        {chartUrls.map((url, index) => (
+          <iframe
+            key={index}
+            style={{
+              width: '40%', 
+              height: '200px',
+              border: 'none',
+              borderRadius: '2px',
+              boxShadow: '0 2px 10px 0 rgba(70, 76, 79, 0.2)',
+              margin: '20px'
+            }}
+            src={url}
+            title={`MongoDB Chart ${index}`}
+          ></iframe>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default PeakBookingDaysChart;

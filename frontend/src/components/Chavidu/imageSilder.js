@@ -3,7 +3,7 @@ import styles from '../../css/chavidu/salonImageSlider.module.css'; // Import yo
 import { Link } from 'react-router-dom';
 
 
-import Image1 from '../../images/chavidu/IMG1.jpg';
+import Image1 from '../../images/chavidu/IMG11.jpg';
 import Image2 from '../../images/chavidu/IMG2.jpg';
 import Image3 from '../../images/chavidu/IMG3.jpg';
 import Image4 from '../../images/chavidu/IMG4.jpg';
@@ -13,10 +13,10 @@ import Image7 from '../../images/chavidu/IMG7.JPG';
 import Image8 from '../../images/chavidu/IMG8.jpg';
 import Image9 from '../../images/chavidu/IMG9.jpg';
 import Image10 from '../../images/chavidu/IMG10.jpg';
-import Image11 from '../../images/chavidu/IMG11.jpg';
-import Image12 from '../../images/chavidu/IMG12.jpg';
-import Image13 from '../../images/chavidu/IMG13.JPG';
-import Image14 from '../../images/chavidu/IMG14.JPG';
+// import Image11 from '../../images/chavidu/IMG1.jpg';
+// import Image12 from '../../images/chavidu/IMG12.jpg';
+// import Image13 from '../../images/chavidu/IMG13.JPG';
+// import Image14 from '../../images/chavidu/IMG14.JPG';
 
 const images = [
   Image1,
@@ -28,11 +28,11 @@ const images = [
   Image7,
   Image8,
   Image9,
-  Image10,
-  Image11,
-  Image12,
-  Image13,
-  Image14,
+  Image10
+  // Image11,
+  // Image12,
+  // Image13,
+  // Image14,
 ];
 
 const SliderSection = () => {
@@ -55,7 +55,7 @@ const SliderSection = () => {
           </li>
         ))}
       </ul>
-      <Link to="/studio/booking" className={styles.button}>
+      <Link to="/studio/booking" className={styles.button5}>
         Book Now
       </Link>
 

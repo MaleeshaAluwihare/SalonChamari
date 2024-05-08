@@ -110,7 +110,6 @@ router.delete("/delete/:id", async (req, res) => {
     }
 });
 
-// Cancel booking (client)
 router.delete("/cancel/:id", async (req, res) => {
     const id = req.params.id;
 
@@ -127,13 +126,23 @@ router.delete("/cancel/:id", async (req, res) => {
         const timeDifference = currentDate.getTime() - creationDate.getTime();
         const daysDifference = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
 
-        // Check if the booking can be canceled (within 2 days)
+        // Check if the booking can be canceled
         if (daysDifference <= 2) {
-            // Perform cancellation (delete) logic
-            await StudioBooking.findByIdAndDelete(id);
-            return res.json("Booking canceled successfully");
+            // If within two days, cancel the booking and charge 50% to income table
+            const cancellationCharge = booking.amount * 0.5; // Calculate cancellation charge
+            const newIncomeEntry = new IncomeTable({
+                incomeId: booking.sid,
+                amount: cancellationCharge,
+                date: currentDate,
+                category: "Cancellation Charge"
+            });
+            await newIncomeEntry.save(); // Save cancellation charge to income table
+            await StudioBooking.findByIdAndDelete(id); // Delete the booking
+            return res.json("Booking canceled successfully. 50% cancellation charge applied.");
         } else {
-            return res.status(400).send("Booking cannot be canceled after 2 days");
+            // If more than two days, cancel without charge
+            await StudioBooking.findByIdAndDelete(id);
+            return res.json("Booking canceled successfully.");
         }
     } catch (err) {
         console.error(err.message);
@@ -160,6 +169,22 @@ router.get("/checkAvailability", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+
+// Route to get bookings by email
+router.get("/bookings/:email", async (req, res) => {
+    const email = req.params.email;
+
+    try {
+        // Find bookings based on the email
+        const bookings = await StudioBooking.find({ email: email });
+        res.json(bookings);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
+
+module.exports = router;
 
 
 module.exports = router;

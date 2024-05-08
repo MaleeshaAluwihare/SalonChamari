@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../css/chavidu/DisplayStudioPackages.css';
+import styles from '../../css/chavidu/DisplayStudioPackages.module.css';
+import backgroundVideo from "../../images/chavidu/video.mp4"
 
 const DisplayStudioPackages = () => {
   const [packages, setPackages] = useState([]);
@@ -19,17 +20,23 @@ const DisplayStudioPackages = () => {
   }, []);
 
   return (
-    <div className="studio-packages-container">
-      <h2 className="section-title">Studio Packages</h2>
-      <div className="package-list">
+    <div className={styles.studioPackagesContainer}>
+      <h2 className={styles.sectionTitle}>Our Packages</h2>
+      <div className={styles.videoContainer}>
+        <video autoPlay loop muted className={styles.videoBackground}>
+          <source src={backgroundVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div className={styles.packageList}>
         {packages.map((pkg) => (
-          <div key={pkg._id} className="package-card">
-            <div className="package-header">
-              <h3 className="package-name">{pkg.package}</h3>
-              <p className="package-amount">Amount: {pkg.amount}</p>
+          <div key={pkg._id} className={styles.packageCard}>
+            <div className={styles.packageHeader}>
+              <h3 className={styles.packageName}>{pkg.package}</h3>
+              <p className={styles.packageAmount}>Base: RS {pkg.amount}</p>
             </div>
-            <p className="package-description">Description: {pkg.description}</p>
-            <p className="package-photographer">Photographer: {pkg.photographer}</p>
+            <p className={styles.packageDescription}>Description: {pkg.description}</p>
+            <p className={styles.packagePhotographer}>Photographer: {pkg.photographer}</p>
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 // EditPackage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../css/chavidu/editSalonpackage.css';
+import styles from '../../css/chavidu/editSalonpackage.module.css'; // Import CSS module
 
 function EditPackage({ onClose }) {
   const [packageNames, setPackageNames] = useState([]);
@@ -65,7 +65,7 @@ function EditPackage({ onClose }) {
   };
 
   return (
-    <div className="edit-package">
+    <div className={styles.editPackage}>
       <h2>Edit Package</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -89,7 +89,7 @@ function EditPackage({ onClose }) {
           Description:
           <input type="text" name="description" value={formData.description} onChange={handleChange} />
         </label>
-        <div className="edit-package-buttons">
+        <div className={styles.editPackageButtons}>
           <button type="submit">Update</button>
           <button type="button" onClick={onClose}>Cancel</button>
         </div>

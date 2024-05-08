@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import '../../css/chavidu/salonBookingFormCSS/style.css';
-
+// import '../../css/chavidu/salonBookingFormCSS/style.css';
 
 export default function StudioBookingForm() {
     const [name, setName] = useState("");
@@ -12,16 +11,15 @@ export default function StudioBookingForm() {
     const [time, setTime] = useState("");
     const [salonId, setSalonId] = useState("");
     const [services, setServices] = useState([]);
+    const [filteredServices, setFilteredServices] = useState([]);
 
     ///////////////////////////////////////////////////////////////////
 
     function checkAvailability(event) {
         event.preventDefault(); // Prevent form submission
-    
         // Send a request to the backend to check availability for the specified date
         axios.get(`/SalonBooking/checkAvailability?date=${date}&time=${time}`)
              .then(response => {
-                 
                  if (response.data.available) {
                      alert(`Date ${date} and time ${time} is available!`);
                  } else {
@@ -34,8 +32,6 @@ export default function StudioBookingForm() {
              });            
     }
 
-    
-
     //////////////////////////////////////////////////////////////////
     useEffect(() => {
         fetchItems();
@@ -46,6 +42,7 @@ export default function StudioBookingForm() {
         try {
             const response = await axios.get("/SalonBooking/items");
             setServices(response.data);
+            setFilteredServices(response.data);
         } catch (error) {
             console.error("Error fetching items:", error);
         }
@@ -96,6 +93,12 @@ export default function StudioBookingForm() {
         }
     }, [service, services]);
 
+    const handleSearch = (event) => {
+        const searchText = event.target.value.toLowerCase();
+        const filtered = services.filter(item => item.itemName.toLowerCase().includes(searchText));
+        setFilteredServices(filtered);
+    };
+
     return (
         <div id="booking" className="section">
             <div className="section-center">
@@ -133,6 +136,7 @@ export default function StudioBookingForm() {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <span className="form-label">Service</span>
+                                            <input className="form-control" type="text" placeholder="Search service..." onChange={handleSearch} />
                                             <select className="form-control" required id="service" value={service} onChange={(e) => {
                                                 setService(e.target.value);
                                                 const selectedService = services.find(item => item.itemName === e.target.value);
@@ -141,7 +145,7 @@ export default function StudioBookingForm() {
                                                 }
                                             }}>
                                                 <option value="">Select a service</option>
-                                                {services.map((item, index) => (
+                                                {filteredServices.map((item, index) => (
                                                     <option key={index} value={item.itemName}>{item.itemName} - Rs.{item.itemPrice}</option>
                                                 ))}
                                             </select>

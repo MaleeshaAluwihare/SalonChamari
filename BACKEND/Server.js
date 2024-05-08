@@ -13,6 +13,7 @@ const empSalaryRouter = require("./Routes/pulasthi-routes/empSalaries.js");
 const inventoryItemRouter = require("./Routes/pulasthi-routes/inventoryItems.js");
 const eventPackageRouter = require("./Routes/pulasthi-routes/eventPackages.js");*/
 
+const SalonBookingRouter = require("./Routes/Chavidu/salonBooking.js")
 const studioBookingRouter = require("./Routes/Chavidu/studioBooking.js");
 const SalonItemTimeRouter = require("./Routes/Chavidu/salonServiceTime.js");
 const StudioPackageRouter = require("./Routes/Chavidu/studioPackage.js");
@@ -66,6 +67,7 @@ app.use("/finance",inventoryItemRouter);
 app.use("/finance",eventPackageRouter);*/
 
 //chavidu
+app.use("/SalonBooking",SalonBookingRouter);
 app.use("/SalonBooking",SalonItemTimeRouter);
 app.use("/StudioBooking",studioBookingRouter);
 app.use("/StudioAdmin",StudioPackageRouter);

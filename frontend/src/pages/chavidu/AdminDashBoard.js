@@ -1,44 +1,37 @@
 import React, { useState } from "react";
-
 import PackageManagement from '../../components/Chavidu/studioPackageAdmin';
 import PeakBookingDaysChart from '../../components/Chavidu/bookingDataChart';
-import StudioImageUploader from '../../components/Chavidu/studioImageForm';
-import ImageDisplay from '../../components/Chavidu/displayPackageImages';
 import PackageForm from '../../components/Chavidu/createStudioPackage';
 import EditPackage from '../../components/Chavidu/editStudioPackage';
 import SideBar from '../../components/Chavidu/AdminSideBar';
 import ViewStudioBookings from '../../components/Chavidu/ViewStudioBookings';
-
-import '../../css/chavidu/DashBoard.css';
+import styles from '../../css/chavidu/DashBoard.module.css';
 
 export default function Dashboard(){
 
     const [selectedOption, setSelectedOption] = useState('home');
 
     return(
-        <div className="dashboardContainer">
-            <div className="sideBar">
+        <div className={styles.dashboardContainer}>
+            <div className={styles.sideBar}>
                 <SideBar onSelectOption={setSelectedOption}/>
             </div>
-            <div className="dashboardContent">
-                <div className="home">
+            <div className={styles.dashboardContent}>
+                <div className={styles.home}>
                     {selectedOption === "home" && <ViewStudioBookings/>}
                 </div>
-                <div className="createService">
+                <div className={styles.createService}>
                     {selectedOption === "create-package" && <PackageForm />}
                 </div>
-                <div className="removeService">
+                <div className={styles.removeService}>
                     {selectedOption === "edit-package" && <EditPackage/>}
                 </div>
-                <div className="updateService">
+                <div className={styles.updateService}>
                     {selectedOption === "charts" && <PeakBookingDaysChart/>}
                 </div>
-                <div className="viewQuotations">
+                <div className={styles.viewQuotations}>
                     {selectedOption === "list" && <PackageManagement/>}
                 </div>
-                {/* <div className="imageUpload">
-                    {selectedOption === "image-upload" && <ImageUpload/>}  
-                </div> */}
             </div>
         </div>
     )

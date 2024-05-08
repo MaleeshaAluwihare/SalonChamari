@@ -1,20 +1,20 @@
 // PackageManagement.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../css/chavidu/studioPackageAdmin.css';
+import styles from '../../css/chavidu/studioPackageAdmin.module.css';
 
 function PackageList({ packages, onDelete }) {
   return (
-    <div className="package-list">
+    <div className={styles.packageList}>
       <h2>Packages</h2>
       <table>
         <thead>
           <tr>
-            <th>Package</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Photographer</th>
-            <th>Action</th>
+            <th className={styles.packageTableHeader}>Package</th>
+            <th className={styles.packageTableHeader}>Description</th>
+            <th className={styles.packageTableHeader}>Amount</th>
+            <th className={styles.packageTableHeader}>Photographer</th>
+            <th className={styles.packageTableHeader}>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@ function PackageList({ packages, onDelete }) {
               <td>{pkg.description}</td>
               <td>{pkg.amount}</td>
               <td>{pkg.photographer}</td>
-              <td><button onClick={() => onDelete(pkg._id)}>Delete</button></td>
+              <td><button className={styles.deleteButton} onClick={() => onDelete(pkg._id)}>Delete</button></td>
             </tr>
           ))}
         </tbody>
@@ -59,7 +59,7 @@ function PackageManagement() {
   };
 
   return (
-    <div className="package-management">
+    <div className={styles.packageManagement}>
       <h1>Package Management</h1>
       <PackageList packages={packages} onDelete={handleDeletePackage} />
     </div>
