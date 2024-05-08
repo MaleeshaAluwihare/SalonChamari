@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import '../../css/Maleesha/DeleteService.css';
+import Styles from  '../../css/Maleesha/DeleteService.module.css';
 
 export default function DeleteService(){
 
@@ -118,29 +118,29 @@ export default function DeleteService(){
     };
     
     return(
-        <div className='main-delete-container'>
-            <div className='dropdownContainer'>
-                <div className='dropdown'>
+        <div className={Styles.maindeletecontainer}>
+            <div className={Styles.dropdownContainer}>
+                <div className={Styles.dropdown}>
                     <label>Pick Category:</label>
-                    <select id = "Category" className="form-select" value={selectedService} onChange={handleServiceChange}>
+                    <select id = "Category" className={Styles.formselect} value={selectedService} onChange={handleServiceChange}>
                         <option value="">Select</option>
                         {services.map((service, index) => (
                             <option key={index} value={service}>{service}</option>
                         ))}
                     </select>
                 </div>
-                <div className='dropdown'>
+                <div className={Styles.dropdown}>
                     <label>Pick Sub-Category:</label>
-                    <select id= "Sub-Category" className="form-select" value={selectedSubcategory} onChange={handleSubcategoryChange}>
+                    <select id= "Sub-Category" className={Styles.formselect} value={selectedSubcategory} onChange={handleSubcategoryChange}>
                         <option value="">Select</option>
                         {subcategories.map((subcategory, index) => (
                             <option key={index} value={subcategory}>{subcategory}</option>
                         ))}
                     </select>
                 </div>
-                <div className='dropdown'>
+                <div className={Styles.dropdown}>
                     <label>Pick Service:</label>
-                    <select id='Service' className="form-select" value={selectedServiceItem} onChange={handleServiceItemClick}>
+                    <select id='Service' className={Styles.formselect} value={selectedServiceItem} onChange={handleServiceItemClick}>
                         <option value="">Select</option>
                         {serviceItems.map((item, index) => (
                             <option key={index} value={item.itemName}>{item.itemName}</option>
@@ -148,7 +148,7 @@ export default function DeleteService(){
                     </select>
                 </div>
             </div>
-            <button className='DeleteServiceBtn' onClick={handleRemoveButtonClick}>Remove</button>
+            <button className={Styles.DeleteServiceBtn} onClick={handleRemoveButtonClick}>Remove</button>
         </div>
     )
 }

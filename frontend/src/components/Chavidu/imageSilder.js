@@ -79,9 +79,9 @@ const SliderSection = () => {
                         <p className='title'><FontAwesomeIcon icon={faLocationDot} className='location-icon'/>LOCATE US</p>
                         <p>
                             Nishan Studio
-                            <br />
+                            <br/>
                             523/7 DS Senanayake Mawatha
-                            <br />
+                            <br/>
                             Anuradhapura
                         </p>
                     </div>
