@@ -59,7 +59,9 @@ const SystemAdminPanel = () => {
           <Link to="/cmdash" style={buttonStyle}>Client Management Dashboard</Link>
         </div>
       </div>
+      <a href='adlogin'>
       <button style={logoutButtonStyle}>Log Out</button>
+      </a>
     </div>
   );
 };

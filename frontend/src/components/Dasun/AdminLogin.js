@@ -15,8 +15,8 @@ const AdminLogin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const Username = "SalonAdmin";
-        const Password = "salon@admin";
+        const Username = "123";
+        const Password = "123";
 
         if (data.userName === Username && data.password === Password) {
             // Redirect to SystemAdminPanel if login is successful

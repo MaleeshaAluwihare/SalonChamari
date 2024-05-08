@@ -155,6 +155,7 @@ function App() {
               <Route path='/order' element={<SupplierOrder/>} />
               <Route path='/dashboard' element={<InventoryDashboard/>}/>
 
+              
               {user && <Route path="/profile/:email" exact element={<Profile />} />}
               <Route path="/signup" exact element={<Signup />} />
               <Route path="/login" exact element={<Login />} />
@@ -163,6 +164,7 @@ function App() {
               <Route path="/Uactivity" element={<CMdashboard/>}/>
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
+              
               
               
 
