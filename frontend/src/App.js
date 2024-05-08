@@ -20,11 +20,6 @@ import { AddEventManager } from "./pages/Devinda/addEventManager";
 // import Header from "./components/devinda/Header";
 
 
-
-
-
-
-
 //nisalka
 import Profile from "../src/components/nisalka/Profile";
 import Signup from "../src/components/nisalka/Signup";

@@ -112,12 +112,12 @@ export default function SalonHome() {
                 <ServiceList/>
             </div>
 
-            <div className={Styles.videoContainer}>
+             <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video1} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> 
 
             <div className={Styles.fixedbackgroundsection}>
                 <div className={Styles.aboutcontent}>
@@ -151,7 +151,7 @@ export default function SalonHome() {
                 </div>
             </div>
 
-            <div className={Styles.videoContainer}>
+             <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video2} type="video/mp4" />
                     Your browser does not support the video tag.
