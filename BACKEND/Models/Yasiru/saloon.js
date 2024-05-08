@@ -19,7 +19,12 @@ const saloonSchema = new Schema({
         required:true
     },
 
-    Qualification:{
+    Category: {
+        type: String,
+        required: true
+    },
+
+    jobRole:{
         type:String,
         required:true
     },
@@ -27,6 +32,21 @@ const saloonSchema = new Schema({
     Salary:{
         type:Number,
         required:true
+    },
+
+    
+    Password:{
+        type:String,
+        required:true
+    },
+
+    email:{
+        type:String,
+        required:true
+    },
+
+    Image:{
+        type:String
     }
 
 })

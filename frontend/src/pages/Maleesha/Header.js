@@ -12,11 +12,14 @@ function Header() {
                 <a href="/" style={{'--i': 0}}>Home</a>
                 <a href="/salon-home" style={{'--i': 2}}>Salon</a>
                 <a href="/Studio" style={{'--i': 3}}>Studio</a>
-                <a href="#" style={{'--i': 3}}>Event</a>
+                <a href="/Eventpackages" style={{'--i': 3}}>Event</a>
                 <a href="//blog/all" style={{'--i': 3}}>Blog</a>
                 <a href="/quote-page" style={{'--i': 3}}>Quotation</a>
-                <a href="/faq/all" style={{'--i': 1}}>FAQ</a>
-                <a href="#" style={{'--i': 4}}>Profile</a>
+                <a href="faq/all" style={{'--i': 1}}>FAQ</a>
+                <a href="/login" style={{'--i':5}}>Login</a>
+                <a href="/profile/:email" style={{ '--i': 4 }}>
+                    <i className="fas fa-user"></i>
+                </a>
             </nav>
         </header>
     );

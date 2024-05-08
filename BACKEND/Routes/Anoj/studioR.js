@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Studio = require("../../Models/Anoj/studioM");
-const InventoryItemTable = require("../../Models/pulasthi-models/InventoryItem");
-
+// const InventoryItemTable = require("../../Models/pulasthi-models/InventoryItem");
+const InventoryItemTable = require("../../Models/pulasthi-models/InventoryItem")
 
 //Reorder Inventory
 router.route("/reorder").post((req,res) => {
@@ -199,6 +199,31 @@ router.get("/pie-chart-data", async (req, res) => {
     }
 });
 
+//Read route - get all inventoryitem data
+// router.get("/inventory-Order",(req, res) => {
+
+//     //from this sort code order of my retrieved budget data will based on createdAt field in descending order(-1)
+//     InventoryItemTable.find().sort({createdAt: -1}).then((items) => {
+//         res.json(items)
+
+//     }).catch((err) => {
+
+//         console.log(err.message);
+//         res.status(500).send({ status: "Error with get inventoryItems", error: err.message });
+//     })
+// });
+
+// // Order
+router.get("/inventory-Order", (req, res) => {
+    InventoryItemTable.find()
+        .then((items) => {
+            res.json(items);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ error: "Failed to fetch Studios" });
+        });
+});
 
 
 

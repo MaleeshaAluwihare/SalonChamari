@@ -3,6 +3,7 @@ import axios from "axios"; // Import Axios for API requests
 import styles from "../../css/nisalka/LoginStyles.module.css"; // Import CSS styles
 import logingif from '../../videos/nisalka/Digital Conversation.gif';
 import EngSticker from '../../images/nisalka/engineer.png'
+import EmpSticker from '../../images/nisalka/employee.png'
 import back from '../../images/nisalka/back-button.png'
 
 const Login = ({ history }) => {
@@ -27,6 +28,7 @@ const Login = ({ history }) => {
                 const res = await axios.post(url, data); // Send POST request to API
                 console.log(res);
                 localStorage.setItem("token", res.data.data); // Store authentication token in localStorage
+                localStorage.setItem("email",res.data.email)
 
                 // Check if token is received and navigate to profile page
                 if (res.data.data) {
@@ -50,7 +52,7 @@ const Login = ({ history }) => {
     return (
         <div className={styles.login_container}>
             <div>
-                <a href="/your-target-page">
+                <a href="/salon-home">
                     <img src={back} alt="back" className={styles.back} />
                 </a>
             </div>
@@ -93,8 +95,11 @@ const Login = ({ history }) => {
                 </div>
             </div>
             <div>
-                <a href="/your-target-page">
-                    <img src={EngSticker} alt="engSticker" className={styles.engsticker} />
+                <a href="/EmpLogin">
+                    <img src={EmpSticker} alt="empSticker" className={styles.engsticker} />
+                </a>
+                <a href="/adlogin">
+                    <img src={EngSticker} alt="engSticker" className={styles.engsticker1} />
                 </a>
             </div>
         </div>

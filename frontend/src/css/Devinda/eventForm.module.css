@@ -1,0 +1,48 @@
+/* eventForm.module.css */
+/* want */
+.all{
+  background-color: #fff;
+}
+.eventFormContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgb(245, 245, 245);
+}
+
+.formTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+  
+}
+
+.formInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submitButton {
+  background-color: #0f55a0;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #18c669;
+}
+
+.Eventform{
+  background-color: #828282;
+
+}

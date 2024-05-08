@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Styles from '../../css/Maleesha/Homepage.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -83,6 +84,9 @@ export default function SalonHome() {
                     <p>RELAX IN STYLE, LEAVE WITH SMILE</p>
                     <h1>WELCOME TO SALON CHAMARI</h1>
                     <p>EXPERIENCE THE ULTIMATE BEAUTY TREATMENT IN A SERENE ENVIORNMENT</p>
+                    <Link to="/studio/booking">
+                        <button className={Styles.salonBookinBtn}>Book Now</button>
+                    </Link>
                 </div>
             </div>
             <div className={Styles.infromationContainer}>
@@ -108,12 +112,12 @@ export default function SalonHome() {
                 <ServiceList/>
             </div>
 
-            <div className={Styles.videoContainer}>
+             <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video1} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> 
 
             <div className={Styles.fixedbackgroundsection}>
                 <div className={Styles.aboutcontent}>
@@ -147,12 +151,12 @@ export default function SalonHome() {
                 </div>
             </div>
 
-            {/* <div className={Styles.videoContainer}>
+             <div className={Styles.videoContainer}>
                 <video  ref={videoRef} width="100%" height="auto" autoPlay loop muted>
                     <source src={video2} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div> */}
+            </div> 
 
             <div className={Styles.locationContainer}>
                 <div className={Styles.mapContainer}>

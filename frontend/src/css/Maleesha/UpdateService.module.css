@@ -1,0 +1,105 @@
+.main-update-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
+    background: #f4f7f6;
+    animation: fadeIn 1s ease-in-out;
+    position: relative; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.service-select-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.service-select-form, .update-service-form {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.service-select-form:hover, .update-service-form:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown {
+    margin: 0 1rem;
+}
+
+.update-service-container {
+    width: 80%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.update-service-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%; 
+}
+
+.update-service-form .mb-3:nth-child(odd) {
+    grid-column: 1 / 2;
+}
+
+.update-service-form .mb-3:nth-child(even) {
+    grid-column: 2 / 3;
+}
+
+.UpdateServiceBtn {
+    grid-column: 1 / -1;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    align-self: center;
+}
+
+.UpdateServiceBtn:hover {
+    background-color: #0056b3;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control, .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border 0.2s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+.form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}

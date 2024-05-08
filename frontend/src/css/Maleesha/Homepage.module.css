@@ -60,6 +60,51 @@
   }
 }
 
+.salonBookinBtn{
+  margin-top: 15px;
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #d4123c;
+  border: 1px solid transparent;
+  border-radius: 0.25rem; /* .25rem */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: 0.5625rem 1.125rem; /* calc(.875rem - 1px) calc(1.5rem - 1px) */
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.salonBookinBtn:hover,
+.salonBookinBtn:focus {
+  background-color: #f2868f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.salonBookinBtn:hover {
+  transform: translateY(-1px);
+}
+
+.salonBookinBtn:active {
+  background-color: #ff7884;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  transform: translateY(0);
+}
+
 /* Individual image styling */
 .slideimage:nth-child(1) {
   animation-delay: 0s;

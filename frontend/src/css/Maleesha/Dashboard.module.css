@@ -7,7 +7,7 @@ body {
 
 .dashboardContainer {
     display: flex;
-    max-height: 100vh;
+    max-height:none;
     background-color: white;
   }
   

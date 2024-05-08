@@ -1,0 +1,33 @@
+/* Style for the button */
+.Reportbutton {
+  background-color: #6b4caf; /* Green */
+  border: none;
+  color: #121212;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.Reportbutton:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+/* Style for the container of the components */
+.ComponentsContainer {
+  margin-bottom: 20px; /* Add some space below the components */
+}
+
+/* Style for the individual components */
+.Component {
+  margin-bottom: 20px; /* Add space between components */
+}
+
+/* Add margin between the charts */
+.EmployeeAttendanceChart {
+  margin-bottom: 20px; /* Adjust as needed */
+}
