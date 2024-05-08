@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import '../../css/Dasun/allFaq.css';
-import '../../css/Dasun/faqPage.css';
+// import Styles from '../../css/Dasun/allFaq.module.css';
+import Styles from '../../css/Dasun/faqPage.module.css';
 // import '../css/Dasun/customerFaq.css';
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ export default function CustomerFaq() {
 
                 const response = await fetch('http://localhost:8070/Faqs/display');
                 const data = await response.json();
-
+                
                 setFaqs(data);
 
             } catch(error) {
@@ -102,7 +102,7 @@ export default function CustomerFaq() {
     // )
 
     return (
-        <div className="faq-container" id="faq_page" >
+        <div className="faqcontainer" id="faq_page" >
           <h1 id="faq_page_heading" >FAQ</h1>
           <div id="faq_page_faq_list" className="faq-list">
             {faqs.map((faqs, index) => (

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../css/Dasun/addBlogForm.css'
+import Styles from '../../css/Dasun/addBlogForm.module.css'
 
 const AddBlog = () => {
   const [blogId, setBlogId] = useState('');
@@ -12,6 +12,15 @@ const AddBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    if(topic !== topic.toUpperCase()) {
+
+      alert('Topic must be in uppercase.Please re-enter.');
+      return;
+
+    }
+
 
     const formData = new FormData();
     formData.append('blogId', blogId);
@@ -34,14 +43,14 @@ const AddBlog = () => {
   };
 
   return (
-    <div id='Add_blog_page'>
-      <h2 id='Add_blog_page_Heading'>Add New Blog</h2>
-      <form id='Add_blog_form' onSubmit={handleSubmit}>
+    <div className={Styles.Add_blog_page}>
+      <h2 className={Styles.Add_blog_page_Heading}>Add New Blog</h2>
+      <form className={Styles.Add_blog_form} onSubmit={handleSubmit}>
         {/* <input type="text" placeholder="Blog ID" value={blogId} onChange={(e) => setBlogId(e.target.value)} /> */}
-        <input id='Add_blog_form_topic' type="text" placeholder="Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
-        <textarea id='Add_blog_form_content' placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
-        <input id='Add_blog_form_image' type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
-        <button id="Add_blog_form_submitBtn" type="submit">Add Blog</button>
+        <input className={Styles.Add_blog_form_topic} type="text" placeholder="Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
+        <textarea className={Styles.Add_blog_form_content} placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} />
+        <input className={Styles.Add_blog_form_image} type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+        <button className={Styles.Add_blog_form_submitBtn} type="submit">Add Blog</button>
       </form>
     </div>
   );

@@ -1,0 +1,91 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboardhome {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+  
+.popularService {
+    flex: 1;
+    margin-right: 20px; /* Adjust margin for spacing */
+    margin-right: 50px;
+}
+  
+.piechartcontainer {
+    flex: 1;
+    margin-bottom: 20px; /* Adjust margin for spacing */
+}
+
+.totalServices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.totalServices iframe {
+    width: calc(50% - 20px); /* Each chart takes 50% width with a gap of 20px */
+    height: 300px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px 0 rgba(70, 76, 79, 0.2);
+    margin-bottom: 20px; /* Adjust margin for spacing */
+}
+
+.popularService p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+  
+.popularService table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.popularService table th,
+.popularService table td {
+    padding: 10px 30px; /* Increase space between columns */
+    text-align: left;
+    color: #000;
+}
+
+.popularService table th:nth-child(2),
+.popularService table td:nth-child(2) {
+  width: 20%; 
+  text-align: center;
+}
+
+.popularService table th{
+    background-color: bisque;
+}
+
+.popularService table tr:nth-child(even) {
+    background-color: #a2ffc4;
+}
+  
+.popularService table tr:hover {
+    background-color: #ced4da; /* Add hover effect only to table rows, not the header */
+}
+
+.piechartcontainer p {
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 10px; /* Add margin for spacing */
+    text-align: center; /* Center horizontally */
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* Adjust the size of the canvas */
+#pieChart {
+    width: 400px;
+    height: 400px;
+}
+

@@ -6,34 +6,34 @@ import RemoveService from '../../components/Maleesha/DeleteService';
 import UpdateService from '../../components/Maleesha/UpdateService';
 import ImageUpload from '../../components/Maleesha/ImageForm';
 import Appointments from '../../components/Maleesha/QuotationsAppointments';
-import '../../css/Maleesha/Dashboard.css';
+import Styles from '../../css/Maleesha/Dashboard.module.css';
 
 export default function Dashboard(){
 
     const [selectedOption, setSelectedOption] = useState('home');
 
     return(
-        <div className="dashboardContainer">
-            <div className="sideBar">
+        <div className={Styles.dashboardContainer}>
+            <div className={Styles.sideBar}>
                 <SideBar onSelectOption={setSelectedOption}/>
             </div>
-            <div className="dashboardContent">
-                <div className="home">
+            <div className={Styles.dashboardContent}>
+                <div className={Styles.home}>
                     {selectedOption === "home" && <Home/>}
                 </div>
-                <div className="createService">
+                <div className={Styles.createService}>
                     {selectedOption === "create-service" && <AddService />}
                 </div>
-                <div className="removeService">
+                <div className={Styles.removeService}>
                     {selectedOption === "remove-service" && <RemoveService/>}
                 </div>
-                <div className="updateService">
+                <div className={Styles.updateService}>
                     {selectedOption === "update-service" && <UpdateService/>}
                 </div>
-                <div className="viewQuotations">
+                <div className={Styles.viewQuotations}>
                     {selectedOption === "quotation-list" && <Appointments/>}
                 </div>
-                <div className="imageUpload">
+                <div className={Styles.imageUpload}>
                     {selectedOption === "image-upload" && <ImageUpload/>}  
                 </div>
             </div>

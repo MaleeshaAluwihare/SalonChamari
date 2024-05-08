@@ -27,6 +27,7 @@ const Login = ({ history }) => {
                 const res = await axios.post(url, data); // Send POST request to API
                 console.log(res);
                 localStorage.setItem("token", res.data.data); // Store authentication token in localStorage
+                localStorage.setItem("email",res.data.email)
 
                 // Check if token is received and navigate to profile page
                 if (res.data.data) {
@@ -50,7 +51,7 @@ const Login = ({ history }) => {
     return (
         <div className={styles.login_container}>
             <div>
-                <a href="/your-target-page">
+                <a href="/salon-home">
                     <img src={back} alt="back" className={styles.back} />
                 </a>
             </div>
@@ -93,8 +94,11 @@ const Login = ({ history }) => {
                 </div>
             </div>
             <div>
-                <a href="/your-target-page">
+                <a href="/EmpLogin">
                     <img src={EngSticker} alt="engSticker" className={styles.engsticker} />
+                </a>
+                <a href="/adlogin">
+                    <img src={EngSticker} alt="engSticker" className={styles.engsticker1} />
                 </a>
             </div>
         </div>

@@ -45,7 +45,6 @@ export default function ImageUploadForm (){
 
   return (
     <div className="image-container">
-      <h2>Image Upload</h2>
       <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="category">Category:</label>

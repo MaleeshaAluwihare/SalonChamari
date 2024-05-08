@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../../css/Dasun/Header.css';
+import Styles from '../../css/Dasun/Header.module.css';
 
 
 function Header() {

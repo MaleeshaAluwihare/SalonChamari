@@ -1,0 +1,60 @@
+/* Existing styles */
+.attendancereport {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.attendancereport th,
+.attendancereport td {
+  padding: 10px;
+  text-align: center;
+}
+
+.attendancereport th {
+  background-color: #007bff;
+  color: #070709;
+}
+
+.attendancereport tbody tr:nth-child(even) {
+  background-color: #d4cd10;
+}
+
+.attendancereport tbody tr:hover {
+  background-color: #cce5ff;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #e22727;
+  color: #fff;
+}
+
+.danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.mx1 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* New style for thead */
+.tableHead {
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #007bff;
+}
+
+/* Container styles for scrolling */
+.container {
+  /* max-height: 800px; Adjust the height as needed */
+  /* overflow-y: auto; Enable vertical scrolling */
+}

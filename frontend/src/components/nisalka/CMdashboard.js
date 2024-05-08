@@ -5,6 +5,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import styles from '../../css/nisalka/dashboardStyles.module.css';
 import homeSticker from '../../images/nisalka/home-icon-silhouette.png'
+import { Colors } from 'chart.js';
 
 const CMdashboard = () => {
   const [users, setUsers] = useState([]);
@@ -93,7 +94,7 @@ const CMdashboard = () => {
       columnWidth: 'auto',
       overflowColumnsMode: 'splitPages',
       tableWidth: tableWidth,
-      tableHeight: tableHeight,
+      tableHeight: tableHeight
     });
 
     // Open PDF in a new window

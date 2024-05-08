@@ -17,7 +17,7 @@ export default function LandingPage() {
       };
     
       const handleStudioClick = () => {
-        navigate('/studio-home');
+        navigate('/Studio');
       };
     
       const handleEventClick = () => {

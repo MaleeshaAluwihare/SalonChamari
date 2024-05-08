@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 // import {userNavigate} from 'react-router-dom';
-import '../../css/Dasun/addFeebackForm.css';
+import Styles from '../../css/Dasun/addFeebackForm.module.css';
 
 export default function SendFeedback() {
 
@@ -54,8 +54,8 @@ export default function SendFeedback() {
 
     return(
 
-        <div id="add_feedback_page" >
-            <form id="add_feedback_page_form" onSubmit={sendData}>
+        <div className={Styles.add_feedback_page} >
+            <form className={Styles.add_feedback_page_form} onSubmit={sendData}>
 
 
                 {/* <div class="form-group">
@@ -86,15 +86,15 @@ export default function SendFeedback() {
                 <br /> */}
 
 
-                <div className="form-group">
+                <div className={Styles.form_group}>
 
-                    <label id="add_feedback_page_form_label_category" htmlFor="category">
+                    <label className={Styles.add_feedback_page_form_label_category} htmlFor="category">
 
                         Category
 
                         <select 
                         
-                        id= "add_feedback_page_category_filter_select"
+                        className= {Styles.add_feedback_page_category_filter_select}
 
                         value= {category}
 
@@ -104,7 +104,7 @@ export default function SendFeedback() {
 
                         }}
                         required
-                        className="form-control"
+                        // className="form-control"
 
                         >
 
@@ -120,10 +120,10 @@ export default function SendFeedback() {
 
 
 
-                <div class="form-group">
+                <div className={Styles.form_group}>
 
-                    <label id="add_feedback_page_form_label_content" for="content">Feedback</label>
-                    <input type="text" class="form-control" id="add_feedback_page_form_input_bookingId" placeholder="Enter Feedback" 
+                    <label className={Styles.add_feedback_page_form_label_content} for="content">Feedback</label>
+                    <input type="text" className={Styles.add_feedback_page_form_input_bookingId} placeholder="Enter Feedback" 
                     onChange={(e) => {
                         setContent(e.target.value);
                     }} />
@@ -135,15 +135,15 @@ export default function SendFeedback() {
 
 
 
-                <div className="form-group">
+                <div className={Styles.form_group}>
 
-                    <label id="add_feedback_page_form_label_rating" htmlFor="rating"> 
+                    <label className={Styles.add_feedback_page_form_label_rating} htmlFor="rating"> 
                     
                         Rating 
                         
                         <select 
 
-                        id= "add_feedback_page_rating_filter_select"
+                        className= {Styles.add_feedback_page_rating_filter_select}
                         
                         value= {rating}
 
@@ -154,7 +154,7 @@ export default function SendFeedback() {
 
                         }}
                         required
-                        className="form-control"
+                        // className="form-control"
 
                         >
 
@@ -176,7 +176,7 @@ export default function SendFeedback() {
 
                 <br />
 
-                <button id="add_feedback_page_form_submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                <button className={Styles.add_feedback_page_form_submitBtn} type="submit">Submit</button>
 
             </form>
         </div>

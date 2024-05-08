@@ -5,12 +5,8 @@ import Logo from '../../images/Maleesha/Logo.png';
 function Header() {
     return (
         <header className={Styles.header}>
-            <a href={Logo} className={Styles.logo}>logo</a>
 
-            {/* <label htmlFor="check" className="icons">
-                <i className='bx bx-menu' id="menu-icon"></i>
-                <i className='bx bx-x' id="close-icon"></i>
-            </label> */}
+            <img src={Logo} alt="Salon Logo"style={{ width: '130px', height: 'auto' }}/>
 
             <nav className={Styles.navbar}>
                 <a href="/salon-home" style={{'--i': 0}}>Home</a>
@@ -18,7 +14,7 @@ function Header() {
                 <a href="#" style={{'--i': 3}}>Blog</a>
                 <a href="/quote-page" style={{'--i': 3}}>Quotation</a>
                 <a href="#" style={{'--i': 1}}>FAQ</a>
-                <a href="#" style={{'--i': 4}}>Contact</a>
+                <a href="/profile/:email" style={{'--i': 4}}>Profile</a>
             </nav>
         </header>
     );
