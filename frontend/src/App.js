@@ -1,7 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter as Router and Routes
-import './App.css';
+
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
+//devinda
+import { EventPackages } from "./pages/Devinda/eventPackages";
+import { EventForm } from "./pages/Devinda/eventForm";
+import { EventSummary } from "./pages/Devinda/eventSummary";
+import { EventDashBoard } from "./pages/Devinda/eventDashBoard";
+import { EventPackageDashboard } from "./pages/Devinda/eventPackageDashboard";
+import { UpdateEventPackage } from "./pages/Devinda/updateEventPackage";
+import EventCustomization from './pages/Devinda/customEventPackage';
+import EventCustomizationDash from './pages/Devinda/eventCustomPackageDashboard';
+import {CustomEventForm} from './pages/Devinda/customEventForm';
+import {CustomEventSummary} from './pages/Devinda/customEventSummary';
+import {EventManagerDashboard} from './pages/Devinda/eventManagerDashboard';
+import SystemAdminPanel from './pages/Devinda/SystemAdminPanel';
+import { AddEventManager } from "./pages/Devinda/addEventManager";
+// import Header from "./components/devinda/Header";
+
+
+
+
+
 
 
 //nisalka
@@ -87,11 +108,12 @@ import EmployeeWrapper from './components/Pulasthi/Wrapper/EmployeeWrapper';
 import EventWrapper from './components/Pulasthi/Wrapper/EventWrapper';
 
 
+
 function App() {
   const user = localStorage.getItem("token");
   return (
     <div className="App">
-    
+
           <Routes>
               <Route path="/" element={<LandingPage/>} />
               <Route path="/salon-home" element={<SalonHome />} />
@@ -160,6 +182,20 @@ function App() {
               <Route path="/Uactivity" element={<CMdashboard/>}/>
               <Route path="/Memails" element={<CMdashboard/>}/>
               <Route path="/forgot" element={<Forgot/>}/>
+              
+              <Route path="/SystemAdminPanel" element={<SystemAdminPanel />}></Route>  
+              <Route path="/Eventpackages" element={<EventPackages />}></Route>
+              <Route path="/eventForm" element={<EventForm />}></Route>
+              <Route path="/eventSummary" element={<EventSummary />}></Route>
+              <Route path="/eventDashboard" element={<EventDashBoard />}></Route>
+              <Route path="/packageDashboard" element={<EventPackageDashboard />}></Route>
+              <Route path="/updateEventPackage" element={<UpdateEventPackage />}></Route>
+              <Route path="/customEventPackage" element={<EventCustomization />}></Route>
+              <Route path="/eventCustomPackageDashboard" element={<EventCustomizationDash />}></Route>
+              <Route path="/customEventSummary" element={<CustomEventSummary />}></Route>
+              <Route path="/eventManagerDashboard" element={<EventManagerDashboard />}></Route>
+              <Route path="/customEventForm" element={<CustomEventForm />}></Route>
+              <Route path="/addEventManager" element={<AddEventManager />}></Route>
 
           </Routes>
     </div>
