@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import '../../css/chavidu/salonBookingFormCSS/style.css';
+import styles from "../../css/chavidu/salonBookingForm.module.css";
+import refundPolicyPDF from '../../images/chavidu/Refund Eligibility.pdf'; 
 
 export default function StudioBookingForm() {
     const [name, setName] = useState("");
@@ -100,44 +101,42 @@ export default function StudioBookingForm() {
     };
 
     return (
-        <div id="booking" className="section">
-            <div className="section-center">
-                <div className="container">
-                    <div className="row">
-                        <div className="booking-form">
-                            <div className="booking-bg">
-                                <div className="form-header">
+        <div id="booking" className={styles.section}>
+            <div className={styles.sectionCenter}>
+              
+                            <div className={styles.bookingBg}>
+                                <div className={styles.formHeader}>
                                     <h2>Make your reservation</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+                                    <p>We understand that plans can change, and sometimes refunds are necessary. Please review our <a href={refundPolicyPDF} download>refund policy</a>.</p>
                                 </div>
                             </div>
                             <form onSubmit={sendData}>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Name</span>
-                                            <input className="form-control" type="text" required id="name" value={name} onChange={(e) => {setName(e.target.value)}} />
+                                <div className={styles.row}>
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Name</span>
+                                            <input className={styles.formControl} type="text" required id="name" value={name} onChange={(e) => {setName(e.target.value)}} />
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Email</span>
-                                            <input className="form-control" type="email" required id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Email</span>
+                                            <input className={styles.formControl} type="email" required id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Date</span>
-                                            <input className="form-control" type="date" required id="date" value={date} onChange={(e) => {setDate(e.target.value)}} />
+                                <div className={styles.row}>
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Date</span>
+                                            <input className={styles.formControl} type="date" required id="date" value={date} onChange={(e) => {setDate(e.target.value)}} />
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Service</span>
-                                            <input className="form-control" type="text" placeholder="Search service..." onChange={handleSearch} />
-                                            <select className="form-control" required id="service" value={service} onChange={(e) => {
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Service</span>
+                                            <input className={styles.formControl} type="text" placeholder="Search service..." onChange={handleSearch} />
+                                            <select className={styles.formControl} required id="service" value={service} onChange={(e) => {
                                                 setService(e.target.value);
                                                 const selectedService = services.find(item => item.itemName === e.target.value);
                                                 if (selectedService) {
@@ -152,33 +151,32 @@ export default function StudioBookingForm() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Amount</span>
-                                            <input className="form-control" type="text" required id="amount" value={amount} readOnly />
+                                <div className={styles.row}>
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Amount</span>
+                                            <input className={styles.formControl} type="text" required id="amount" value={amount} readOnly />
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <span className="form-label">Time</span>
-                                            <input className="form-control" type="time" required id="time" value={time} onChange={(e) => {setTime(e.target.value)}} />
+                                    <div className={styles.colMd6}>
+                                        <div className={styles.formGroup}>
+                                            <span className={styles.formLabel}>Time</span>
+                                            <input className={styles.formControl} type="time" required id="time" value={time} onChange={(e) => {setTime(e.target.value)}} />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group">
-                                    <span className="form-label">Reservation ID</span>
-                                    <input className="form-control" type="text" readOnly id="salonId" value={salonId} />
+                                <div className={styles.formGroup}>
+                                    <span className={styles.formLabel}>Reservation ID</span>
+                                    <input className={styles.formControl} type="text" readOnly id="salonId" value={salonId} />
                                 </div>
-                                <div className="form-btn">
-                                    <button type="submit" className="submit-btn">Make Booking</button>
-                                    <button onClick={checkAvailability} className="submit-btn">Check Availability</button>               
+                                <div className={styles.formBtn}>
+                                    <button type="submit" className={styles.submitBtn}>Make Booking</button>
+                                    <button onClick={checkAvailability} className={styles.submitBtn}>Check Availability</button>               
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    
                 </div>
-            </div>
-        </div>
+        
     );
 }

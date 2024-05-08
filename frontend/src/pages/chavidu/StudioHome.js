@@ -1,19 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from '../../components/Chavidu/Header';
+// import Header from '../../components/Chavidu/Header';
 import SliderSection from "../../components/Chavidu/imageSilder";
 import StudioBookingForm from "../../components/Chavidu/studioBookingForm";
 import styles from'../../css/chavidu/studioHome.module.css';
 import DisplayStudioPackages from "../../components/Chavidu/displayStudioPackage"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../pages/Maleesha/Header.js';
 
 import video from '../../images/chavidu/video.mp4';
 
 function StudioHome() {
     return (
         <div className={styles.studioHome}>
-            
+            <Header />
             <SliderSection />
 
             

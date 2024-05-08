@@ -9,21 +9,21 @@ html {
 } */
 
 /* Container Styles */
-#Faq_customer_page {
+/* #Faq_customer_page {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
+} */
 
 /* Heading Styles */
-#Faq_customer_page_heading {
+/* #Faq_customer_page_heading {
   text-align: center;
   margin-bottom: 20px;
   color: #007bff;
-}
+} */
 
 /* FAQ Table Styles */
-#Faq_customer_page_table {
+/* #Faq_customer_page_table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -43,6 +43,6 @@ html {
 
 #Faq_customer_page_table_body tr:nth-child(even) {
   background-color: #26bfe6;
-}
+} */
 
 

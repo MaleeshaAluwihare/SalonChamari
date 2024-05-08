@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useReactToPrint } from 'react-to-print'; 
 import styles from '../../css/chavidu/viewBooking.module.css';
 
+
 function ViewStudioBookings() {
     const [bookings, setBookings] = useState([]);
     const [filteredBookings, setFilteredBookings] = useState([]);

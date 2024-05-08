@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 import axios from "axios";
+import generateReport from "../../components/Chavidu/studioReport";
 
 const chartUrls = [
   // Define chart URLs here
@@ -132,6 +133,9 @@ const PeakBookingDaysChart = () => {
             title={`MongoDB Chart ${index}`}
           ></iframe>
         ))}
+      </div>
+      <div>
+        <generateReport />
       </div>
     </div>
   );
