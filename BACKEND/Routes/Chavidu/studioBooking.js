@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const StudioBooking = require("../../Models/Chavidu/studioBookingModel");
 const IncomeTable = require("../../Models/pulasthi-models/Income");
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer")
 
 // Function to send confirmation email
 async function sendConfirmationEmail(email, bookingDetails) {

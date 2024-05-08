@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import '../../css/Maleesha/QuoteAppointmentPage.css';
+import Styles from '../../css/Maleesha/QuoteAppointmentPage.module.css';
 
 export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
@@ -37,9 +37,9 @@ export default function Appointments() {
   });
 
   return (
-    <div className="appointment-container">
+    <div className={Styles.appointmentcontainer}>
       <h1>APPOINTMENTS</h1>
-      <table className="fade-in">
+      <table className={Styles.appTable}>
         <thead>
           <tr>
                 <th>Appointment ID</th>
@@ -49,7 +49,7 @@ export default function Appointments() {
                 <th>Appointment Date</th>
                 <th>Appointment Time</th>
                 <th>
-                    <div className="filter-container">
+                    <div className={Styles.filtercontainer}>
                         <label htmlFor="filter">Filter:</label>
                         <select id="filter" onChange={e => setFilter(e.target.value)}>
                         <option value="All">All</option>

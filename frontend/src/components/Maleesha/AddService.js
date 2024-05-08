@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
-import '../../css/Maleesha/AddService.css';
+import Styles from '../../css/Maleesha/AddService.module.css';
 
 const serviceSubcategories = {
     "Hair Care": ["Haircut", "Hair Color", "Hair Treatment"],
@@ -78,11 +78,11 @@ export default function AddService(){
     }
 
     return(
-        <div className="container">
+        <div className={Styles.container}>
             <form onSubmit={sendData}>
-                <div className="mb-3">
-                    <label htmlFor="service" className="form-label">Service Name:</label>
-                        <select id="service" className="form-select" onChange={handleServiceChange} required>
+                <div className={Styles.mb3}>
+                    <label htmlFor="service" className={Styles.formlabel}>Service Name:</label>
+                        <select id="service" className={Styles.formselect} onChange={handleServiceChange} required>
                             <option value="">Select Service</option>
                             {Object.keys(serviceSubcategories).map((service) => (
                                 <option key={service} value={service}>{service}</option>
@@ -90,9 +90,9 @@ export default function AddService(){
                         </select>
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="subcategory" className="form-label">Subcategory Name:</label>
-                        <select id="subcategory" className="form-select" onChange={(e) => { setSubName(e.target.value) }} required>
+                <div className={Styles.mb3}>
+                    <label htmlFor="subcategory" className={Styles.formlabel}>Subcategory Name:</label>
+                        <select id="subcategory" className={Styles.formselect} onChange={(e) => { setSubName(e.target.value) }} required>
                             <option value="">Select Subcategory</option>
                             {serviceSubcategories[serviceName] && serviceSubcategories[serviceName].map((subcategory) => (
                                 <option key={subcategory} value={subcategory}>{subcategory}</option>
@@ -100,17 +100,17 @@ export default function AddService(){
                         </select>
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="item" className="form-label">Item Name:</label>
-                    <input type="text" className="form-control" id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} required />
+                <div className={Styles.mb3}>
+                    <label htmlFor="item" className={Styles.formlabel}>Item Name:</label>
+                    <input type="text" className={Styles.formcontrol} id="item" placeholder="Enter Item Name.." onChange={(e) => { setItemName(e.target.value) }} required />
                 </div>
 
-                <div className="mb-3">
-                    <label htmlFor="price" className="form-label">Item Price:</label>
-                    <input type="number" className="form-control" id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} required />
+                <div className={Styles.mb3}>
+                    <label htmlFor="price" className={Styles.formlabel}>Item Price:</label>
+                    <input type="number" className={Styles.formcontrol} id="price" placeholder="Enter Item Price.." onChange={(e) => { setItemPrice(e.target.value) }} required />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className={Styles.ServiveSubmitBtn}>Submit</button>
             </form>
         </div>
     )

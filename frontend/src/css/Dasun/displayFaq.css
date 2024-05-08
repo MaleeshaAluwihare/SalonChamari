@@ -1,0 +1,53 @@
+/* Container styles */
+.FaqContainer {
+    margin-top: 20px;
+}
+
+/* Table styles */
+.FaqTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table header styles */
+.theader {
+    background-color: #f5f5f5;
+}
+
+.theader th {
+    padding: 12px;
+    text-align: left;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table body styles */
+.tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect for table rows */
+.tbody tr:hover {
+    background-color: gray;
+}
+
+/* Button styles */
+.UpdateBtn, .DeleteBtn {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.UpdateBtn {
+    background-color: #22ff00;
+    color: #fff;
+}
+
+.DeleteBtn {
+    background-color: #dc3545;
+    color: #fff;
+}

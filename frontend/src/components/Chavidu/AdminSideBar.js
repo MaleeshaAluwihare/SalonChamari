@@ -20,7 +20,7 @@ export default function DashboardSideBar({ onSelectOption }) {
           <h1 className="salon-name">Nishan Studio</h1>
           <div className="dashboard-title">
             <h2 className="dashboard-heading">Service Dashboard</h2>
-            <hr className="dashboard-divider" />
+            <hr className="dashboard-divider"/>
           </div>
         </div>
         <nav className="sidebar-nav">
