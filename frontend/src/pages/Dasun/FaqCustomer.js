@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 // import Styles from '../../css/Dasun/allFaq.module.css';
-import '../../css/Dasun/faqPage.css';
+import Styles from '../../css/Dasun/faqPage.module.css';
 // import '../css/Dasun/customerFaq.css';
 import { Link } from "react-router-dom";
 

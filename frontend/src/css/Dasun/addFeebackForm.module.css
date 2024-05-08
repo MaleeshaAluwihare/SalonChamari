@@ -1,4 +1,4 @@
-#add_feedback_page {
+.add_feedback_page {
     width: 80%;
     margin: auto;
     padding: 20px;
@@ -7,16 +7,16 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  #add_feedback_page_form_label_bookingId,
-  #add_feedback_page_form_label_category,
-  #add_feedback_page_form_label_content,
-  #add_feedback_page_form_label_rating {
+  .add_feedback_page_form_label_bookingId,
+  .add_feedback_page_form_label_category,
+  .add_feedback_page_form_label_content,
+  .add_feedback_page_form_label_rating {
     font-weight: bold;
     color: #333;
   }
 
-  #add_feedback_page_form_input_bookingId,
-  #add_feedback_page_form_input_content {
+  .add_feedback_page_form_input_bookingId,
+  .add_feedback_page_form_input_content {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
@@ -24,13 +24,13 @@
     border-radius: 4px;
   }
 
-  #addfeedback_page_category_filter,
-  #feedback_page_rating_filter {
+  .addfeedback_page_category_filter,
+  .feedback_page_rating_filter {
     margin-bottom: 20px;
   }
 
-  #add_feedback_page_category_filter_select,
-  #add_feedback_page_rating_filter_select {
+  .add_feedback_page_category_filter_select,
+  .add_feedback_page_rating_filter_select {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
@@ -38,7 +38,7 @@
     border-radius: 4px;
   }
 
-  #add_feedback_page_form_submitBtn {
+  .add_feedback_page_form_submitBtn {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;

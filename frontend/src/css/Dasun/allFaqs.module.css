@@ -1,4 +1,4 @@
-#Faq_page {
+.Faq_page {
     width: 80%;
     margin: auto;
     padding: 20px;
@@ -15,20 +15,20 @@
     border-bottom: 1px solid #ddd;
 }
 
-#Faq_page_heading {
+.Faq_page_heading {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
-  #Faq_page_table {
+  .Faq_page_table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
 
-  #Faq_page_table_heading th,
-  #Faq_page_table_body td {
+  .Faq_page_table_heading th,
+  .Faq_page_table_body td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -54,17 +54,17 @@
     margin-right: 8px;
   }
 
-  #Faq_page_table_body button:hover {
+  .Faq_page_table_body button:hover {
     background-color: #20b1d2;
   }
 
-  #Faq_page div {
+  .Faq_page div {
     margin-bottom: 20px;
   }
   
   /* Responsive styles */
   @media (max-width: 768px) {
-    #Faq_page {
+    .Faq_page {
       width: 100%;
       padding: 10px;
     }
