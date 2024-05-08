@@ -68,7 +68,8 @@ export const EventForm = () => {
   };
 
   return (
-    <div className={styles.eventFormContainer}>
+    <div className={styles.all}>
+        <div className={styles.eventFormContainer}>
       <h2 className={styles.formTitle}>Event Registration Form</h2>
       <form className={styles.Eventform} onSubmit={handleSubmit}>
         <label className={styles.formLabel}>
@@ -147,5 +148,7 @@ export const EventForm = () => {
         <button className={styles.submitButton} type="submit">Submit</button>
       </form>
     </div>
+    </div>
+    
   );
 };

@@ -62,39 +62,41 @@ function EventCustomization() {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', padding: '20px',backgroundColor:'#1175e1cc' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Event Customization</h1>
-      {features.length === 0 ? (
-        <p style={{ textAlign: 'center' }}>Loading...</p>
-      ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px'}}>Feature</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Price</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Select</th>
-            </tr>
-          </thead>
-          <tbody>
-            {features.map((feature) => (
-              <tr key={feature._id}>
-                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeature}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeaturePrice}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
-                  <input
-                    type="checkbox"
-                    checked={selectedFeatures.includes(feature)}
-                    onChange={() => handleCheckboxChange(feature)}
-                  />
-                </td>
+    <div style={{ fontFamily: 'Arial, sans-serif', width: '100%', height: '100vh', backgroundColor: '#ffffff' }}>
+      <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+        <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Event Customization</h1>
+        {features.length === 0 ? (
+          <p style={{ textAlign: 'center' }}>Loading...</p>
+        ) : (
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px'}}>Feature</th>
+                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Price</th>
+                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left', color: 'black', fontSize:'20px' }}>Select</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      <p style={{ textAlign: 'center', marginTop: '20px' }}>Total Price: {parseFloat(totalPrice).toFixed(2)}</p>
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <button style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={handleProceed}>Proceed</button>
+            </thead>
+            <tbody>
+              {features.map((feature) => (
+                <tr key={feature._id}>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeature}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left',color: 'black'  }}>{feature.cpFeaturePrice}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
+                    <input
+                      type="checkbox"
+                      checked={selectedFeatures.includes(feature)}
+                      onChange={() => handleCheckboxChange(feature)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <p style={{ textAlign: 'center', marginTop: '20px' }}>Total Price: {parseFloat(totalPrice).toFixed(2)}</p>
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <button style={{ padding: '10px 20px', fontSize: '16px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={handleProceed}>Proceed</button>
+        </div>
       </div>
     </div>
   );

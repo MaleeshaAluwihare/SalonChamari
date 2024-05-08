@@ -13,7 +13,8 @@ export const AddEventManager = () => {
     const formContainerStyle = {
         padding: "20px 0",
         textAlign: "center",
-        background: "linear-gradient(to bottom, #00416A, #E4E5E6)"
+        background: "linear-gradient(to bottom, #00416A, #E4E5E6)",
+        height: "100vh" // Enlarging container to fit the whole screen
     };
 
     const formStyle = {
