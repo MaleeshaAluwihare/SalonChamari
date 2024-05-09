@@ -2,6 +2,7 @@
 
 .bodyContainer{
   background-color: white;
+  overflow-x: hidden;
 }
 
 .headercontainer{
@@ -76,6 +77,7 @@
 }
 
 /*TABLE */
+/* TABLE */
 .tablecontainerwrapper {
     display: flex;
     flex-wrap: wrap;
@@ -88,51 +90,83 @@
 .tablecontainer {
     width: calc(50% - 25px); /* Set width for each table container (assuming 2 tables per row) */
     margin-bottom: 50px; /* Add some space between tables */
-    
 }
-  
+
 .table {
     width: 100%;
     border-collapse: collapse;
+    border: none; /* Remove outline */
 }
-  
-  .table th,
-  .table td {
+
+.table th,
+.table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #E9C2C5; 
-    font-family:Arial, Helvetica, sans-serif;
-  }
+}
 
-  .table td {
+.table th {
+    background-color: #E9C2C5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.table td {
     color: #000000;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight:normal;
-  }
-  
-  
-  
-  /* Set specific widths for columns */
-  .table th:nth-child(1),
-  .table td:nth-child(1) {
-    width: 70%; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    background-color: white;
+}
+
+/* Set specific widths for columns */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 70%;
     text-align: left;
-  }
-  
-  .table th:nth-child(2),
-  .table td:nth-child(2) {
-    width: 20%; 
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 20%;
     text-align: center;
-  }
-  
-  /* Add some padding to the first column */
-  .table td:first-child,
-  .table th:first-child {
+}
+
+/* Add some padding to the first column */
+.table td:first-child,
+.table th:first-child {
     padding-left: 25px;
-  }
+}
+
+/* SEARCH BAR */
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.searchbar input[type="text"] {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.searchbar input[type="text"]::placeholder {
+    color: #000000;
+}
+
+.searchbar .button {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 7%;
+    height: auto;
+}
 
 .Icon{
   width: 40px; /* Set fixed width for the icon */
@@ -140,37 +174,4 @@
   margin-left: 10px;
   margin-top: 0%;
   margin-bottom: 0%;
-}
-
-/*Search Bar*/
-.searchbar {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center horizontally */
-  background-color: #ffffff;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Adjust width as needed */
-  margin: 0 auto; /* Center the entire search bar container */
-  margin-top: 40px;
-}
-
-.searchbar input[type="text"] {
-  border: none;
-  outline: none;
-  flex: 1;
-  padding: 5px;
-  font-size: 14px;
-}
-
-.searchbar input[type="text"]::placeholder {
-  color: #000000;
-}
-
-.searchbar .button {
-  margin-right: 10px; /* Adjust the margin for spacing */
-  cursor: pointer;
-  width: 7%;
-  height: auto;
 }

@@ -3,8 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../images/Maleesha/Logo.png';
 import Styles from '../../css/Maleesha/DashboardSideBar.module.css';
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardSideBar({ onSelectOption }) {
+
+  const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState('home');
 
@@ -91,11 +94,8 @@ export default function DashboardSideBar({ onSelectOption }) {
             </li>
             <li className={Styles.navItem}>
               <button
-                className={`${Styles.navButton} ${selectedOption === "logout" ? Styles.active : ""}`}
-                onClick={() => {
-                  onSelectOption("logout");
-                  setSelectedOption("logout");
-                }}
+                className={`${Styles.navButton}`}
+                onClick={() => navigate("/SystemAdminPanel")}
               >
                 <FontAwesomeIcon icon={faRightFromBracket} className={Styles.buttonIcon} />Logout
               </button>
