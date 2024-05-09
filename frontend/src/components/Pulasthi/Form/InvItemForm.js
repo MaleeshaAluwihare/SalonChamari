@@ -127,7 +127,7 @@ function InvItemForm() {
         </div>
         <div className="selects input-control">
         <select required value={itemType} name="itemType" id="itemType" onChange={handleInput('itemType')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Item</option>
                     <option value="Hair Dryer">Hair Dryer</option>
                     <option value="Scissors">Scissors </option>
                     <option value="Curling iron">Curling iron</option>

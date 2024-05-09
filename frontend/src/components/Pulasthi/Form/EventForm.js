@@ -89,7 +89,7 @@ function EventForm() {
         </div>
         <div className="selects input-control">
         <select required value={packageType} name="packageType" id="packageType" onChange={handleInput('packageType')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Package</option>
                     <option value="Platinum">Platinum</option>
                     <option value="Gold">Gold </option>
                     <option value="Silver">Silver</option>

@@ -109,7 +109,7 @@ function EmpSalaryForm() {
         </div>
         <div className="selects input-control">
         <select required value={jobRole} name="jobRole" id="jobRole" onChange={handleInput('jobRole')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Job Role</option>
                     <option value="Cameraman">Cameraman</option>
                     <option value="Studio assistant">Studio assistant </option>
                     <option value="Barber">Barber</option>
