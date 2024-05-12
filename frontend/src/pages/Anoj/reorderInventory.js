@@ -78,10 +78,10 @@ export default function ReorderingPage() {
   return (
     <div style={{ maxWidth: "500px", margin: "0 auto", display: "flex", flexWrap: "wrap" }}>
       <h2 style={{ textAlign: "center" }}>Re-ordering Inventory Stocks</h2>
-      <form onSubmit={handleSubmit} style={{ padding: "20px", backgroundColor: "#f2f2f2", borderRadius: "-20px" }}>
+      <form onSubmit={handleSubmit} style={{ padding: "20px", backgroundColor: "#f2f2f2", borderRadius: "20px" }}>
         {/* Select category */}
         <div style={{ marginBottom: "20px", marginRight: "20px" }}>
-          <label htmlFor="category" style={{ display: "block", marginBottom: "-20px" }}>
+          <label htmlFor="category" style={{ display: "block", marginBottom: "2px" }}>
             Category
           </label>
           <select
@@ -99,7 +99,7 @@ export default function ReorderingPage() {
 
         {/* Select item ID */}
         <div style={{ marginBottom: "20px", marginRight: "20px" }}>
-          <label htmlFor="itemId" style={{ display: "block", marginBottom: "-20px" }}>
+          <label htmlFor="itemId" style={{ display: "block", marginBottom: "2px" }}>
             Inventory ID
           </label>
           <select

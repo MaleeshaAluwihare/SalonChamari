@@ -7,78 +7,78 @@ export default function DashboardSideBar({ onSelectOption }) {
   const [selectedOption, setSelectedOption] = useState('home');
 
   return (
-    <div className={styles.dashboardContainer}>
-      <div className={styles.sidebar}>
+    <div className={styles.dashboardContainer1}>
+      <div className={styles.sidebar1}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logoContainer}>
             {/* Logo goes here */}
           </div>
-          <h1 className={styles.salonName}>Inventory Managements</h1>
-          <div className={styles.dashboardTitle}>
-            <h2 className={styles.dashboardHeading}>Inventory Dashboard</h2>
-            <hr className={styles.dashboardDivider} />
+          <h1 className={styles.salonName1}>Inventory Managements</h1>
+          <div className={styles.dashboardTitle1}>
+            <h2 className={styles.dashboardHeading1}>Inventory Dashboard</h2>
+            <hr className={styles.dashboardDivider1} />
           </div>
         </div>
-        <nav className={styles.sidebarNav}>
-          <ul className={styles.navList}>
-            <li className={styles.navItem}>
+        <nav className={styles.sidebarNav1}>
+          <ul className={styles.navList1}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "home" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "home" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("home");
                   setSelectedOption("home");
                 }}
               >
-                <FontAwesomeIcon icon={faHouse} className={styles.buttonIcon} />Home
+                <FontAwesomeIcon icon={faHouse} className={styles.buttonIcon1} />Home
               </button>
             </li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "create-stock" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "create-stock" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("create-stock");
                   setSelectedOption("create-stock");
                 }}
               >
-                <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} /> Add stock
+                <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon1} /> Add stock
               </button>
             </li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "reorder-stock" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "reorder-stock" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("reorder-stock");
                   setSelectedOption("reorder-stock");
                 }}
               >
-                <FontAwesomeIcon icon={faFilePen} className={styles.buttonIcon} />Re-Order Stock
+                <FontAwesomeIcon icon={faFilePen} className={styles.buttonIcon1} />Re-Order Stock
               </button>
             </li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "stock-list" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "stock-list" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("stock-list");
                   setSelectedOption("quotation-list");
                 }}
               >
-                <FontAwesomeIcon icon={faBoxesStacked} className={styles.buttonIcon} />Stocks
+                <FontAwesomeIcon icon={faBoxesStacked} className={styles.buttonIcon1} />Stocks
               </button>
             </li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "stock-order" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "stock-order" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("stock-order");
                   setSelectedOption("stock-order");
                 }}
               >
-                <FontAwesomeIcon icon={faUpload} className={styles.buttonIcon} />Order
+                <FontAwesomeIcon icon={faUpload} className={styles.buttonIcon1} />Order
               </button>
             </li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem1}>
               <button
-                className={`${styles.navButton} ${selectedOption === "logout" ? styles.active : ""}`}
+                className={`${styles.navButton1} ${selectedOption === "logout" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("logout");
                   setSelectedOption("logout");

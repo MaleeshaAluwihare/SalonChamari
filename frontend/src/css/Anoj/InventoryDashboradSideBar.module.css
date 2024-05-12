@@ -1,5 +1,5 @@
 /* Sidebar */
-.sidebar {
+.sidebar1 {
   width: 250px;
   background-color: #e9ecef;
   color: #000000;
@@ -9,51 +9,53 @@
 }
 
 /* Logo */
-.logo {
+.logo1{
   width: 100px;
 }
 
 /* Salon Name */
-.salonName {
+.salonName1{
   font-size: 24px;
   margin-bottom: 20px;
 }
 
 /* Dashboard Title */
-.dashboardTitle {
+.dashboardTitle1 {
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
 /* Dashboard Heading */
-.dashboardHeading {
+.dashboardHeading1 {
   font-size: 20px;
   text-align: left;
 }
 
 /* Dashboard Divider */
-.dashboardDivider {
+.dashboardDivider4 {
   border: 1px solid #9b9a9a;
   margin-top: 10px;
 }
 
 /* Sidebar Navigation */
-.sidebarNav {
+.sidebarNav1 {
   margin-top: 40px;
   text-align: left;
 }
 
-.navList {
+.navList1 {
   list-style: none;
   padding: 0;
+  margin-left: 0px;
 }
 
-.navItem {
+.navItem1 {
   margin-bottom: 30px;
+  margin-left: 0px;
 }
 
 /* Nav Button */
-.navButton {
+.navButton1 {
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Vertically center items */
   justify-content: flex-start; /* Align items to the left */
@@ -69,18 +71,18 @@
 }
 
 /* Hover Effect */
-.navbutton:hover {
+.navbutton1:hover {
   color: #ffcc00;
 }
 
 /* Active Button */
-.navbutton.active {
+.navbutton1.active {
   border-radius: 10px;
   border: 1px solid #ffcc00;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
   transform: scale(1.05); /* Slightly enlarges the button */
 }
 
-.buttonicon {
+.buttonicon1 {
   font-size: 20px; /* Icon size */
 }

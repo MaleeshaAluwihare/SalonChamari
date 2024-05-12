@@ -99,7 +99,7 @@ export default function AddInventory() {
       >
         {/* Select input for category */}
         <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="category" style={{ display: "block", marginBottom: "-20px" }}>
+          <label htmlFor="category" style={{ display: "block", marginBottom: "5px" }}>
             Category
           </label>
           <select
