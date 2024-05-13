@@ -165,8 +165,6 @@ function App() {
               <Route path="/forgot" element={<Forgot/>}/>
               
               
-              
-
               <Route path='/faq-admin-dash' element={<FaqDashboard />} /> 
               <Route path='/faq/all' element={<AllFaqs />} /> 
               <Route path="/faq/add" element={<AddFaq />} /> 

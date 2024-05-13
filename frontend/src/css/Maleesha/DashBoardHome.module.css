@@ -55,6 +55,7 @@
     padding: 10px 30px; /* Increase space between columns */
     text-align: left;
     color: #000;
+    background-color: white;
 }
 
 .popularService table th:nth-child(2),
