@@ -116,7 +116,7 @@ function EventForm() {
                 id="pValue"
                 value={profit}
                 name={'profit'}
-                placeholder="Profit for the package"
+                placeholder="Profit of the package"
                 onChange={handleInput('profit')}
                 required
             />
@@ -128,7 +128,7 @@ function EventForm() {
                 id="cValue"
                 value={cost}
                 name={'cost'}
-                placeholder="Cost for the package"
+                placeholder="Cost of the package"
                 onChange={handleInput('cost')}
                 required
             />

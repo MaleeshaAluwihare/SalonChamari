@@ -30,8 +30,9 @@ function EmpSalaryForm() {
     const handleCalculateSalary = () => {
         let dailySalary;
         let attend = parseInt(attendance, 10);
-        const regex = /^[0-9\b]+$/; //allow only digits
-        if (attend > 30 || !regex.test(attend)) {
+        
+        const regex = /^[0-9\b]+$/;//allow only digits
+        if (attend > 30 || !regex.test(attendance)) {
             alert("Not a valid attendance for a month");
             return; 
         }
