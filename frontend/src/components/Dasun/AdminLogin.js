@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate,Link } from 'react-router-dom'
 import back from '../../images/nisalka/back-button.png';
 import logingif from '../../videos/nisalka/Digital Conversation.gif';
 import styles from '../../css/nisalka/LoginStyles.module.css';
@@ -8,22 +9,39 @@ const AdminLogin = () => {
         userName: "",
         password: ""
     });
+    //*
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        const Username = "Salon@admin";
-        const Password = "admin123";
 
-        if (data.userName === Username && data.password === Password) {
-            // Redirect to SystemAdminPanel if login is successful
-            window.location.href = "/SystemAdminPanel";
-        } else {
-            // Display error message or handle invalid login
-            console.log("Invalid username or password");
+        try{
+            const response = await fetch('/api/admin/login',{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                },
+                body: JSON.stringify(data),
+                credentials : 'include',
+            });
+            const result = await response.json();
+
+            if(response.ok){
+                navigate('/SystemAdminPanel');
+            }
+            else{
+                console.log("Error navigating to panel")
+                setError(result.message);
+            }
+
+        }catch(error){
+            console.log("Error navigating to panel")
+            setError('An error occurred.')
         }
     };
 

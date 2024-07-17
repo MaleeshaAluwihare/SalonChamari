@@ -1,7 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router for routing
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Assuming you're using React Router for routing
 
 const SystemAdminPanel = () => {
+
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () =>{
+      try{
+          const response = await fetch('/api/admin/check-auth',{
+
+          credentials:'include',
+        });
+        if(response.ok){
+          setIsAuthenticated(true)
+        }else{
+          //console.log('checkAuth error')
+          navigate('/adlogin');
+        }
+      }catch(error){
+        //console.log('checkAuth error2')
+        navigate('/adlogin');
+      }
+    }
+
+    checkAuth();
+  },[navigate]);
+
+  const handleLogout = async () =>{
+    try{
+      const response = await fetch('/api/admin/logout',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        credentials:'include',
+      })
+      if(response.ok){
+        navigate('/adlogin');
+      }
+    }catch(error){
+      console.error('Logout failed',error);
+    }
+  };
+
+  if(!isAuthenticated){
+    return <div>Loading...</div>;
+  }
+
+
+
   const containerStyle = {
     width: '100vw',
     height: '100vh',
@@ -59,9 +108,9 @@ const SystemAdminPanel = () => {
           <Link to="/cmdash" style={buttonStyle}>Client Management Dashboard</Link>
         </div>
       </div>
-      <a href='adlogin'>
-      <button style={logoutButtonStyle}>Log Out</button>
-      </a>
+      
+      <button style={logoutButtonStyle} onClick={handleLogout}>Log Out</button>
+      
     </div>
   );
 };
