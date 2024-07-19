@@ -25,10 +25,18 @@ function EmpSalaryForm() {
         // setError('')
     }
 
+
     //calculate item price
     const handleCalculateSalary = () => {
         let dailySalary;
         let attend = parseInt(attendance, 10);
+        
+        const regex = /^[0-9\b]+$/;//allow only digits
+        if (attend > 30 || !regex.test(attendance)) {
+            alert("Not a valid attendance for a month");
+            return; 
+        }
+
         switch(jobRole) {
             case "Cameraman":
                 dailySalary = 5500;
@@ -39,7 +47,7 @@ function EmpSalaryForm() {
             case "Barber":
                 dailySalary = 2000;
                 break;
-            case "Hairstylist ":
+            case "Hairstylist":
                 dailySalary = 6000;
                 break;
             case "Beautician":
@@ -85,6 +93,9 @@ function EmpSalaryForm() {
 
   return (
     <EmpSalaryFormStyled onSubmit={handleSubmit}>
+        <div className="heading">
+            <h2>Employee Salary Calculator</h2>
+        </div>
         
         <div className="input-control">
             <input
@@ -99,7 +110,7 @@ function EmpSalaryForm() {
         </div>
         <div className="selects input-control">
         <select required value={jobRole} name="jobRole" id="jobRole" onChange={handleInput('jobRole')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Job Role</option>
                     <option value="Cameraman">Cameraman</option>
                     <option value="Studio assistant">Studio assistant </option>
                     <option value="Barber">Barber</option>
@@ -131,7 +142,7 @@ function EmpSalaryForm() {
                 required
             />    
         </div>
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Calculate Salary'}
@@ -187,13 +198,15 @@ const EmpSalaryFormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+            margin-left:100px;
             &:hover{
                 background: var(--color-DarkYellow) !important;
             }
         }
+        
     }
 `;
 export default EmpSalaryForm

@@ -25,10 +25,31 @@ function InvItemForm() {
         // setError('')
     }
 
+    //validation
+    const validateItemId = (itemId) => {
+        const pattern = /^(ST|SL)\d{3}$/;
+        return pattern.test(itemId);
+    };
+
+    const validateQuantity = (quantity) =>{
+        const pattern = /^[0-9\b]+$/;
+        return pattern.test(quantity)
+    }
+
     //calculate item price
     const handleCalculatePrice = () => {
         let price;
         let quan = parseInt(quantity, 10);
+
+        if(!validateItemId(itemId)){
+            alert("Enter a valid item id")
+            return
+        }
+        if(!validateQuantity(quantity)){
+            alert("Enter a integer for quantity")
+            return
+        }
+
         switch(itemType) {
             case "Hair Dryer":
                 price = 500;
@@ -44,6 +65,9 @@ function InvItemForm() {
                 break;
             case "Tripod":
                 price = 8000;
+                break;
+            case "Camera":
+                price = 15000;
                 break;
             default:
                 price = 0;
@@ -85,6 +109,10 @@ function InvItemForm() {
 
   return (
     <InvItemFormStyled onSubmit={handleSubmit}>
+
+        <div className="heading">
+            <h2>Item Price Calculator</h2>
+        </div>
         
         <div className="input-control">
             <input
@@ -99,12 +127,13 @@ function InvItemForm() {
         </div>
         <div className="selects input-control">
         <select required value={itemType} name="itemType" id="itemType" onChange={handleInput('itemType')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Item</option>
                     <option value="Hair Dryer">Hair Dryer</option>
                     <option value="Scissors">Scissors </option>
                     <option value="Curling iron">Curling iron</option>
                     <option value="Lens">Lens</option>
                     <option value="Tripod">Tripod</option>
+                    <option value="Camera">Camera</option>
                     
         </select>
         </div>
@@ -131,7 +160,7 @@ function InvItemForm() {
                 required
             />    
         </div>
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Calculate price'}
@@ -154,6 +183,7 @@ const InvItemFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    
     input, select{
         font-family: inherit;
         font-size: inherit;
@@ -187,13 +217,14 @@ const InvItemFormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
             &:hover{
                 background: var(--color-DarkYellow) !important;
             }
         }
+        margin-left:100px
     }
 `;
 export default InvItemForm

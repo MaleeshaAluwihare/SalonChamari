@@ -25,12 +25,23 @@ function EventForm() {
         setInputState({...inputState, [name]: e.target.value})
         // setError('')
     }
-
+    //validation
+    const validateCostAndProfit = (cost,profit) => {
+        const pattern = /^[0-9\b]+$/;
+        if(!pattern.test(cost) || !pattern.test(profit)){
+            return false
+        }
+    }
 
     const BASE_URL = "http://localhost:8070/finance/";
     //react event handling 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
+        if(validateCostAndProfit(cost,profit) ==  false){
+            alert("Enter intergers for cost and profit")
+            return
+        }
 
         //method for add cost and profit to expenses and incomes
         try {
@@ -62,7 +73,9 @@ function EventForm() {
 
   return (
     <EventFormStyled onSubmit={handleSubmit}>
-        
+        <div className="heading">
+            <h2>Event Form</h2>
+        </div>
         <div className="input-control">
             <input
                 type="text"
@@ -76,7 +89,7 @@ function EventForm() {
         </div>
         <div className="selects input-control">
         <select required value={packageType} name="packageType" id="packageType" onChange={handleInput('packageType')} >
-                    <option value=""  disabled >Select Option</option>
+                    <option value=""  disabled >Select Package</option>
                     <option value="Platinum">Platinum</option>
                     <option value="Gold">Gold </option>
                     <option value="Silver">Silver</option>
@@ -103,7 +116,7 @@ function EventForm() {
                 id="pValue"
                 value={profit}
                 name={'profit'}
-                placeholder="Profit for the package"
+                placeholder="Profit of the package"
                 onChange={handleInput('profit')}
                 required
             />
@@ -115,13 +128,13 @@ function EventForm() {
                 id="cValue"
                 value={cost}
                 name={'cost'}
-                placeholder="Cost for the package"
+                placeholder="Cost of the package"
                 onChange={handleInput('cost')}
                 required
             />
         </div>
 
-        <div className="submit-btn">
+        <div className="submit-btnhto">
             {/* import the Button component */}
             <Button 
                 name={'Submit'}
@@ -174,13 +187,14 @@ const EventFormStyled = styled.form`
         }
     }
 
-    .submit-btn{
+    .submit-btnhto{
         button{
             box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
             &:hover{
                 background: var(--color-DarkYellow) !important;
             }
         }
+        margin-left:130px
     }
 `;
 export default EventForm

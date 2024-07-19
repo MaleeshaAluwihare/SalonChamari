@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { InnerLayout } from "../../../css/Pulasthi/Layouts";
 import ExpenseItem from "./ExpenseItem";
 import { useGlobalContext } from "../../../context/Pulasthi/globalContext";
+import { dollar } from "../../../utils/Pulasthi/Icons";
 
 function Expenses() {
 
@@ -16,7 +17,7 @@ function Expenses() {
     <ExpensesStyled>
       <h1>Expenses</h1>
 
-      <h2 className="total-expense">Total Expense:<span>${totalExpense()}</span></h2>
+      <h2 className="total-expense">Total Expense:<span>{dollar}.{totalExpense()}</span></h2>
 
       <div className="income-content">
           
@@ -42,7 +43,10 @@ function Expenses() {
 };
 
 const ExpensesStyled = styled.div`
-  
+  h1 {
+        color: #222260;
+        font-weight:bold
+      }
   .total-expense{
       display: flex;
       justify-content: center;

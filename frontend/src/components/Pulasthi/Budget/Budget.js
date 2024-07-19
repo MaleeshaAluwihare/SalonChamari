@@ -62,7 +62,10 @@ function Budget() {
   return (
     <BudgetStyled>
       <InnerLayout>
-        <h1>Budget</h1>
+        <div className="headerPula">
+            <h1>Budget</h1>
+        </div>
+        
           {/* search Budget */}
           <div className="search-container">
               <label htmlFor="BudgetId">Enter Budget ID:&nbsp;</label>
@@ -100,7 +103,7 @@ function Budget() {
           else app shows BudgetItems */}
           {searchActive? (
               //properties inside the angle brackets are going to SearchBudgetItem component as props
-              <SearchBudgetItem budget={budget} onClose={handleCloseSearch}/>
+              <SearchBudgetItem budget={budget} onClose1={handleCloseSearch}/>
           ) : (
             //getbudgets
             <div className="budgets">
@@ -149,6 +152,11 @@ const BudgetStyled = styled.div`
       min-width: 550px; /* Example fixed width */
       min-height: 400px; /* Example fixed height */
     }
+    h1 {
+    color: #222260;
+    font-weight:bold
+  }
+
 
 `;
 

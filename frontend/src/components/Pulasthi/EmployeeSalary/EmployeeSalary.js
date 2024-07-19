@@ -51,6 +51,8 @@ const EmployeeSalaryStyled = styled.div`
   overflow: auto; */
     h1{
         margin-bottom:2rem;
+        color: #222260;
+        font-weight:bold
     }
 
     /* put form content and emp item contents into one horizontal flex box */

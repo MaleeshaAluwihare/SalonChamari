@@ -8,7 +8,7 @@ import { close, plus, update } from "../../../utils/Pulasthi/Icons";
                 
                      //budgetToUpdate prop come from Budget componenet
 function UpdateForm({ budgetToUpdate,onClose }) {
-  const { updateBudget } = useGlobalContext();
+  const { updateBudget,budgets } = useGlobalContext();
 
   // State to manage form inputs
   const [inputState, setInputState] = useState({
@@ -44,9 +44,20 @@ function UpdateForm({ budgetToUpdate,onClose }) {
     setInputState({ ...inputState, date });
   };
 
+  //validation
+  const validateBudgetAmount = (amount) => {
+    const regex = /^[0-9\b]+$/; //allow only digits
+    return regex.test(amount);
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!validateBudgetAmount(amount)) {
+      alert('Enter only the numbers for amount');
+      return;
+    }
     // Call updateBudget method from global context
     updateBudget(budgetToUpdate?.budgetId,inputState);
     // Clear form fields after submission
@@ -114,7 +125,7 @@ function UpdateForm({ budgetToUpdate,onClose }) {
         />
       </div>
       <div className="button-container">
-        <div className="submit-btn">
+        <div className="submit-btnhto">
           <Button
             name="Save" 
             icon={update}
@@ -189,7 +200,7 @@ const FormStyled = styled.form`
     justify-content: space-around;  /*Distributes space evenly around items */
    }
 
-  .submit-btn {
+  .submit-btnhto {
     button {
       box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
       &:hover {

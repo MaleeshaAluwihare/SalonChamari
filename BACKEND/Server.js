@@ -5,6 +5,7 @@ const cors  = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 const session = require('express-session');
+const MongoStore = require('connect-mongo')
 
 
 
@@ -64,9 +65,10 @@ web app to server or if we know the available ports on server we can directly gi
 app.use(cors()); 
 
 app.use(cors({
-    
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    credentials: true,
 }));
-
+// Middleware to parse JSON bodies
 app.use(bodyParser.json());  //json format mean the key value pairs
 
 const URL = process.env.MONGODB_URL; //mongodb url config 
@@ -88,10 +90,59 @@ app.listen(PORT, () => {
 })
 
 app.use(session({
-    secret: 12345, // Change this to a random secret key
+    //secret value must be a string(This value determine how strong our session id is)
+    secret: 'some_secret', // Change this to a random secret key
+    cookie:{
+        maxAge: 1000 * 60 * 60 * 24,
+    },
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl:URL,
+        collectionName: 'sessions'
+    }),
 }));
+
+app.get('/api/test', (req, res) => {
+  res.status(200).json({ message: 'Server is running' });
+});
+
+
+// Admin login route
+app.post('/api/admin/login', (req, res) => {
+    const { userName, password } = req.body;
+    const Username = 'Salon@admin';
+    const Password = 'admin123';
+  
+    if (userName === Username && password === Password) {
+      req.session.user = userName;
+      console.log('Session created:', req.session);
+      res.status(200).json({ message: 'Login successful' });
+    } else {
+      res.status(401).json({ message: 'Invalid username or password' });
+    }
+  });
+  
+// Route to check session
+app.get('/api/admin/check-auth', (req, res) => {
+  console.log('Checking session:', req.session); // Add this line
+  if (req.session.user) {
+    res.status(200).json({ message: 'Authenticated' });
+  } else {
+    res.status(401).json({ message: 'Unauthorized' });
+  }
+});
+
+// Route to handle logout
+app.post('/api/admin/logout', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ message: 'Logout failed' });
+      }
+      res.clearCookie('connect.sid'); //clear the session cookie from the client side
+      res.status(200).json({ message: 'Logout successful' });
+    });
+  });
 
 
 //when data passing to frontend to backend its calling a url (http://localhost:8070/service) then the services.js in routes will be loaded.
