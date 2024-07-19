@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const SalonBooking = require("../../Models/Chavidu/salonBookingModel");
 const IncomeTable = require("../../Models/pulasthi-models/Income")
+
 let Studio = require("../../Models/Chavidu/studioBookingModel");
 const nodemailer = require("nodemailer");
 

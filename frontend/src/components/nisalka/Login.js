@@ -3,6 +3,7 @@ import axios from "axios"; // Import Axios for API requests
 import styles from "../../css/nisalka/LoginStyles.module.css"; // Import CSS styles
 import logingif from '../../videos/nisalka/Digital Conversation.gif';
 import EngSticker from '../../images/nisalka/engineer.png'
+import EmpSticker from '../../images/nisalka/employee.png'
 import back from '../../images/nisalka/back-button.png'
 
 const Login = ({ history }) => {
@@ -95,7 +96,7 @@ const Login = ({ history }) => {
             </div>
             <div>
                 <a href="/EmpLogin">
-                    <img src={EngSticker} alt="engSticker" className={styles.engsticker} />
+                    <img src={EmpSticker} alt="empSticker" className={styles.engsticker} />
                 </a>
                 <a href="/adlogin">
                     <img src={EngSticker} alt="engSticker" className={styles.engsticker1} />

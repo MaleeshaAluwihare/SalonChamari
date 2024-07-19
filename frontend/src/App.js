@@ -146,7 +146,6 @@ function App() {
               <Route path="/admin/viewPackageImage" element={<ImageDisplay />} />
 
               <Route path='/inventoryDashboard' element={<InventoryDashboard />} />
-              {/* <Route path='/chart' element={<ChartComponent />} /> */}
               <Route path='/add' element={<AddInventory />} />
               <Route path='/stock' element={<StockTable/>} />
               <Route path='/reorder' element={<ReorderingPage/>} />
@@ -166,8 +165,6 @@ function App() {
               <Route path="/forgot" element={<Forgot/>}/>
               
               
-              
-
               <Route path='/faq-admin-dash' element={<FaqDashboard />} /> 
               <Route path='/faq/all' element={<AllFaqs />} /> 
               <Route path="/faq/add" element={<AddFaq />} /> 
@@ -235,6 +232,9 @@ function App() {
               <Route path="/eventManagerDashboard" element={<EventManagerDashboard />}></Route>
               <Route path="/customEventForm" element={<CustomEventForm />}></Route>
               <Route path="/addEventManager" element={<AddEventManager />}></Route>
+
+              
+
 
           </Routes>
     </div>

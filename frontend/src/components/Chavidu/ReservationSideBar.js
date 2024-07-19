@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket, faChartLine } from '@fortawesome/free-solid-svg-icons';
-import '../../css/chavidu/adminDashBoardSideBar.css';
+import styles from '../../css/chavidu/adminDashBoardSideBar.module.css';
 // import Logo from '../../images/Maleesha/Logo.png';
 import PackageManagement from './studioPackageAdmin';
 

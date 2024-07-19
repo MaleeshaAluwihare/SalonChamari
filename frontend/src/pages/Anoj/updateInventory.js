@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
-export default function UpdateInventory() {
+export default function UpdateInventory(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const [pid, setProductID] = useState("");
@@ -14,7 +15,7 @@ export default function UpdateInventory() {
   const [totalUseQuantity, setTotalUseQuantity] = useState(0);
 
   useEffect(() => {
-    const productData = location.state;
+    const productData = props.selected;
     if (productData) {
       setProductID(productData.pid);
       setName(productData.name);
@@ -24,7 +25,7 @@ export default function UpdateInventory() {
       setDate(productData.date);
       setTotalUseQuantity(productData.useQuantity || 0);
     }
-  }, [location.state]);
+  }, [props.selected]);
   
 
   const getMaxAllowedUseQuantity = () => {
@@ -36,7 +37,11 @@ export default function UpdateInventory() {
     const maxAllowedUseQuantity = parseInt(quantity) - totalUseQuantity;
     const updatedUseQuantity = parseInt(useQuantity) + totalUseQuantity;
     if (updatedUseQuantity > parseInt(quantity)) {
-      alert("Use Quantity cannot exceed available Quantity");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Use Quantity cannot exceed available Quantity',
+      });
       return;
     }
     const updatedProduct = {
@@ -49,33 +54,47 @@ export default function UpdateInventory() {
     axios
       .put(`/StudioInventory/update/${pid}`, updatedProduct)
       .then(() => {
-        alert("Product Updated");
-        navigate("/inventoryDashboard");
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Product Updated',
+        });
+        props.handleUpdate();
+        props.showUpdated();
       })
       .catch((err) => {
-        alert(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.message,
+        });
       });
   };
+  
 
   return (
     <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
-      <h2 style={{ textAlign: "center" }}>Update Inventory</h2>
+      <h2 style={{ textAlign: "center" ,color:"white"}}>Update Inventory</h2>
       <form onSubmit={updateProduct} style={{ display: "flex", flexDirection: "column" }}>
+        <b>Inventory ID</b>
         <input
           type="text"
           value={pid}
           disabled
           style={{ padding: "10px", marginBottom: "10px" }}
           placeholder="Inventory ID"
+          
         />
+        <b>Inventory Name</b>
         <input
           type="text"
           value={name}
-          required
+          disabled
           style={{ padding: "10px", marginBottom: "10px" }}
           placeholder="Inventory Name"
           onChange={(e) => setName(e.target.value)}
         />
+        <b>Price</b>
         <input
           type="number"
           value={price}
@@ -84,6 +103,7 @@ export default function UpdateInventory() {
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
         />
+        <b>Current Quantity</b>
         <input
           type="text"
           value={quantity}
@@ -91,6 +111,7 @@ export default function UpdateInventory() {
           style={{ padding: "10px", marginBottom: "10px" }}
           placeholder="Quantity"
         />
+        <b>Use Quantity</b>
         <input
           type="number"
           value={useQuantity}
@@ -103,7 +124,7 @@ export default function UpdateInventory() {
         <p style={{ marginBottom: "10px" }}>
           Maximum allowed: {getMaxAllowedUseQuantity()}
         </p>
-        <button
+        <button 
           type="submit"
           style={{
             padding: "10px 20px",
@@ -114,6 +135,19 @@ export default function UpdateInventory() {
           }}
         >
           Update
+        </button>
+        <button 
+          type="button"
+          onClick={() => props.handleUpdate()}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#FF0000",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Cancel
         </button>
       </form>
     </div>

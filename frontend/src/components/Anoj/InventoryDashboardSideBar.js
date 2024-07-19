@@ -1,105 +1,89 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload ,faHouse, faCirclePlus, faTrash, faFilePen, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import '../../css/Anoj/InventoryDashboradSideBar.css';
-// import Logo from '../../images/Maleesha/Logo.png'; 
-
-
+import { faUpload, faHouse, faCartPlus, faPenToSquare, faFilePen, faBoxesStacked, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import styles from '../../css/Anoj/InventoryDashboradSideBar.module.css';
 
 export default function DashboardSideBar({ onSelectOption }) {
-
   const [selectedOption, setSelectedOption] = useState('home');
 
   return (
-    <div className="dashboard-container">
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <div className="logo-container">
-            
+    <div className={styles.dashboardContainer}>
+      <div className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <div className={styles.logoContainer}>
+            {/* Logo goes here */}
           </div>
-          <h1 className="salon-name">Inventory Managements</h1>
-          <div className="dashboard-title">
-            <h2 className="dashboard-heading">Inventory Dashboard</h2>
-            <hr className="dashboard-divider" />
+          <h1 className={styles.salonName}>Inventory Managements</h1>
+          <div className={styles.dashboardTitle}>
+            <h2 className={styles.dashboardHeading}>Inventory Dashboard</h2>
+            <hr className={styles.dashboardDivider} />
           </div>
         </div>
-        <nav className="sidebar-nav">
-          <ul className="nav-list">
-            <li className="nav-item">
+        <nav className={styles.sidebarNav}>
+          <ul className={styles.navList}>
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "home" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "home" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("home");
                   setSelectedOption("home");
                 }}
               >
-                <FontAwesomeIcon icon={faHouse} className="button-icon" />Home
+                <FontAwesomeIcon icon={faHouse} className={styles.buttonIcon} />Home
               </button>
             </li>
-            <li className="nav-item">
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "create-stock" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "create-stock" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("create-stock");
                   setSelectedOption("create-stock");
                 }}
               >
-                <FontAwesomeIcon icon={faCirclePlus} className="button-icon" /> Add stock
+                <FontAwesomeIcon icon={faCartPlus} className={styles.buttonIcon} /> Add stock
               </button>
             </li>
-            <li className="nav-item">
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "update-stock" ? "active" : ""}`}
-                onClick={() => {
-                  onSelectOption("update-stock");
-                  setSelectedOption("update-stock");
-                }}
-              >
-                <FontAwesomeIcon icon={faTrash} className="button-icon" />Update stock
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className={`nav-button ${selectedOption === "reorder-stock" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "reorder-stock" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("reorder-stock");
                   setSelectedOption("reorder-stock");
                 }}
               >
-                <FontAwesomeIcon icon={faFilePen} className="button-icon" />Re-Order Stock
+                <FontAwesomeIcon icon={faFilePen} className={styles.buttonIcon} />Re-Order Stock
               </button>
             </li>
-            <li className="nav-item">
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "stock-list" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "stock-list" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("stock-list");
                   setSelectedOption("quotation-list");
                 }}
               >
-                <FontAwesomeIcon icon={faEye} className="button-icon" />Stocks
+                <FontAwesomeIcon icon={faBoxesStacked} className={styles.buttonIcon} />Stocks
               </button>
             </li>
-            <li className="nav-item">
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "image-upload" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "stock-order" ? styles.active : ""}`}
                 onClick={() => {
-                  onSelectOption("image-upload");
-                  setSelectedOption("image-upload");
+                  onSelectOption("stock-order");
+                  setSelectedOption("stock-order");
                 }}
               >
-                <FontAwesomeIcon icon={faUpload} className="button-icon" />Order
+                <FontAwesomeIcon icon={faUpload} className={styles.buttonIcon} />Order
               </button>
             </li>
-            <li className="nav-item">
+            <li className={styles.navItem}>
               <button
-                className={`nav-button ${selectedOption === "logout" ? "active" : ""}`}
+                className={`${styles.navButton} ${selectedOption === "logout" ? styles.active : ""}`}
                 onClick={() => {
                   onSelectOption("logout");
                   setSelectedOption("logout");
                 }}
               >
-                <FontAwesomeIcon icon={faRightFromBracket} className="button-icon" />Logout
               </button>
             </li>
           </ul>

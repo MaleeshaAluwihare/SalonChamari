@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useReactToPrint } from 'react-to-print'; 
-import '../../css/chavidu/viewBooking.css';
+import styles from '../../css/chavidu/viewBooking.module.css';
+
 
 function ViewStudioBookings() {
     const [bookings, setBookings] = useState([]);
@@ -57,10 +58,12 @@ function ViewStudioBookings() {
     });
 
     return (
-        <div className="container">
-            <div className="headerTable">
+        <div className={styles.container}>
+
+
+            <div className={styles.headerTable}>
                 <h1>Studio Bookings</h1>
-                <div className="filter-section">
+                <div className={styles.filterSection}>
                     <label htmlFor="dateFilter">Filter by Date: </label>
                     <input
                         type="date"
@@ -70,7 +73,7 @@ function ViewStudioBookings() {
                     />
                     <button onClick={handleFilter}>Filter</button>
                 </div>
-                <div className="checkbox-section">
+                <div className={styles.checkboxSection}>
                     <label>
                         <input
                             type="checkbox"
@@ -89,8 +92,10 @@ function ViewStudioBookings() {
                     </label>
                 </div>
             </div>
-            <button onClick={handlePrint}>Download PDF</button> {/* Button to PDF generation */}
-            <table className="table" ref={componentRef}> {/* Add ref to the table */}
+            <button className={styles.pdf} onClick={handlePrint}>
+      Download PDF
+    </button>
+            <table className={styles.table} ref={componentRef}> {/* Add ref to the table */}
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -114,7 +119,7 @@ function ViewStudioBookings() {
                             <td>{booking.amount}</td>
                             <td>{booking.photographer}</td>
                             <td>
-                                <div className={`circle ${isBookingActive(booking) ? 'active-circle' : 'non-active-circle'}`}></div>
+                                <div className={`${styles.circle} ${isBookingActive(booking) ? styles.activeCircle : styles.nonActiveCircle}`}></div>
                                 {isBookingActive(booking) ? 'Active' : 'Non-Active'}
                             </td>
                         </tr>

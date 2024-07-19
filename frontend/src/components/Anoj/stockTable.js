@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import InventoryChart from "./pieChart";
+import InventoryBarChart from "./Bar";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import html2canvas from "html2canvas";
+import SalonLogo from '../../images/Maleesha/Logo.png';
 
 export default function StockTable() {
   const [products, setProducts] = useState([]);
+  const chartsRef = React.createRef();
 
   useEffect(() => {
     function getProducts() {
@@ -29,70 +36,133 @@ export default function StockTable() {
       second: "2-digit",
     });
   };
- 
-  const ComponentsRef = useRef();
-  const handlePrint = () => {
-    const content = ComponentsRef.current;
-    const printWindow = window.open("", "_blank");
-    printWindow.document.open();
-    printWindow.document.write(`
-      <html>
-        <head>
-          <title>Inventory Manager Report</title>
-          <style>
-            /* CSS styles */
-            body {
-              font-family: Arial, sans-serif;
-              margin: 20px;
-            }
-            h4 {
-              margin-bottom: 10px;
-            }
-            table {
-              border-collapse: collapse;
-              width: 100%;
-            }
-            th, td {
-              padding: 8px;
-              text-align: left;
-              border-bottom: 1px solid #ddd;
-            }
-            button {
-              margin: 20px;
-              padding: 10px 20px;
-              background-color: #007bff;
-              color: #fff;
-              border-radius: 5px;
-              border: none;
-              cursor: pointer;
-            }
-          </style>
-        </head>
-        <body>
-          ${content.innerHTML}
-        </body>
-      </html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
-    printWindow.onafterprint = () => {
-      printWindow.close();
-      alert("Report Successfully Downloaded");
+
+  const handleGenerateUserActivityReport = async () => {
+    const doc = new jsPDF();
+    const logo = new Image();
+
+    logo.src = SalonLogo;
+    logo.onload = function() {
+      doc.addImage(logo, 'PNG', 70, 5, 60, 40);
+
+      // Add a title to the PDF with underline
+      doc.setFontSize(22);
+      doc.setFont('times', 'bold');
+      doc.text('Inventory Report', 105, 55, { align: 'center' }); 
+      doc.setDrawColor(0, 0, 0); 
+      doc.line(80, 57, 130, 57);
+      doc.line(80, 58, 130, 58); 
+
+      // Salon address on the left side above the table
+      doc.setFontSize(12);
+      doc.setFont('times', 'normal');
+      doc.setTextColor(100); 
+      doc.text('Salon Chamari\n523/7 DS Senanayake Mawatha,\nAnuradhapura', 14, 70); 
+
+      // array to hold table data
+      let tableData = [];
+
+      // Push each product as a row to the table data
+      products.forEach(product => {
+          tableData.push([
+              product.pid,
+              product.name,
+              product.quantity,
+              product.price,
+              formatDate(product.date)
+          ]);
+      });
+
+      // Generate the table
+      doc.autoTable({
+          head: [['ID', 'Inventory Name', 'Quantity', 'Price', 'Add Date & Time']],
+          body: tableData,
+          startY: 100, // Adjusted to make space for the address
+          theme: 'grid',
+          styles: { halign: 'center', font: 'helvetica' }
+      });
+
+      // Add charts to PDF
+      html2canvas(chartsRef.current).then((canvas) => {
+        const chartImage = canvas.toDataURL("image/png");
+        const chartWidth = doc.internal.pageSize.getWidth() - 40;
+        const chartHeight = (chartWidth * canvas.height) / canvas.width;
+        doc.addImage(chartImage, "PNG", 20, doc.autoTable.previous.finalY + 20, chartWidth, chartHeight);
+
+        doc.setLineWidth(1);
+        doc.rect(5, 5, doc.internal.pageSize.getWidth() - 10, doc.internal.pageSize.getHeight() - 10);
+        doc.setLineWidth(0.5);
+        doc.rect(7, 7, doc.internal.pageSize.getWidth() - 14, doc.internal.pageSize.getHeight() - 14);
+
+        // Save or open PDF
+        doc.save("InventoryReport.pdf");
+      });
     };
   };
 
   return (
     <div>
-      <div ref={ComponentsRef}>
-        <h4>Inventory stocks</h4>
-        <table>
+      <div></div>
+      <div>
+        <h2>Inventory Report</h2>
+        <table style={{ width: "100%", borderCollapse: "separate" }}>
           <thead>
-            <tr>
-              <th>ID</th>
-              <th>Inventory Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Add Date</th>
+            <tr style={{ backgroundColor: "green", color: "white" }}>
+              <th
+                style={{
+                  border: "1px solid #ddd",
+                  padding: "8px",
+                  backgroundColor: "green",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                ID
+              </th>
+              <th
+                style={{
+                  border: "1px solid #ddd",
+                  padding: "8px",
+                  backgroundColor: "green",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                Inventory Name
+              </th>
+              <th
+                style={{
+                  border: "1px solid #ddd",
+                  padding: "8px",
+                  backgroundColor: "green",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                Quantity
+              </th>
+              <th
+                style={{
+                  border: "1px solid #ddd",
+                  padding: "8px",
+                  backgroundColor: "green",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                Price
+              </th>
+              <th
+                style={{
+                  border: "1px solid #ddd",
+                  padding: "8px",
+                  backgroundColor: "green",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
+                Add Date & Time
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -107,11 +177,39 @@ export default function StockTable() {
             ))}
           </tbody>
         </table>
+        <div ref={chartsRef}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div style={{ marginRight: "20px" }}>
+              <InventoryBarChart products={products} />
+            </div>
+            <div>
+              <InventoryChart products={products} />
+            </div>
+          </div>
+        </div>
       </div>
-      <button onClick={handlePrint}>Download report</button>
+      <div></div>
+      <div>
+        <button
+          onClick={handleGenerateUserActivityReport}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+            marginTop: "20px",
+          }}
+        >
+          Download report
+        </button>
+      </div>
     </div>
   );
 }
-
-
-

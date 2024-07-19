@@ -156,7 +156,7 @@ export default function SalonHome() {
                     <source src={video2} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> 
 
             <div className={Styles.locationContainer}>
                 <div className={Styles.mapContainer}>

@@ -1,19 +1,30 @@
-// PackageForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../../css/chavidu/createSalonPackage.css';
+import styles from '../../css/chavidu/createSalonPackage.module.css'; // Import CSS module
 
 function PackageForm() {
   const [formData, setFormData] = useState({
     package: '',
-    description: '', // Added description field
+    description: '',
     amount: '',
     photographer: ''
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let newValue = value;
+
+    // Validate photographer name to not include numbers
+    if (name === 'photographer') {
+      newValue = value.replace(/[0-9]/g, ''); // Remove any numbers
+    }
+
+    // // Validate package name to only contain letters or numbers
+    // if (name === 'package') {
+    //   newValue = value.replace(/[^a-zA-Z0-9]/g, ''); // Remove any characters other than letters or numbers
+    // }
+
+    setFormData({ ...formData, [name]: newValue });
   };
 
   const handleSubmit = async (e) => {
@@ -23,7 +34,7 @@ function PackageForm() {
       console.log("Package added successfully:", formData);
       setFormData({
         package: '',
-        description: '', // Reset description field
+        description: '',
         amount: '',
         photographer: ''
       });
@@ -33,8 +44,8 @@ function PackageForm() {
   };
 
   return (
-    <div className="package-form-container">
-      <div className="package-form">
+    <div className={styles.packageFormContainer}>
+      <div className={styles.packageForm}>
         <h2>Create New Package</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -42,8 +53,8 @@ function PackageForm() {
             <input type="text" name="package" value={formData.package} onChange={handleChange} />
           </label>
           <label>
-            Description: {/* Added description input */}
-            <input type="text" name="description" value={formData.description} onChange={handleChange} />
+            Description:
+            <textarea name="description" value={formData.description} onChange={handleChange} />
           </label>
           <label>
             Amount:
@@ -53,7 +64,7 @@ function PackageForm() {
             Photographer:
             <input type="text" name="photographer" value={formData.photographer} onChange={handleChange} />
           </label>
-          <button type="submit">Submit</button>
+          <button type="submit" className={styles.button24}>Submit</button>
         </form>
       </div>
     </div>

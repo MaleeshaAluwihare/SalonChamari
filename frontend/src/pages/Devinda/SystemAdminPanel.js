@@ -104,7 +104,7 @@ const SystemAdminPanel = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Link to="/inventoryDashboard" style={buttonStyle}>Inventory Dashboard</Link>
           <Link to="/dash" style={buttonStyle}>Salon Dashboard</Link>
-          <Link to="/employeeDashboard" style={buttonStyle}>Employee Management Dashboard</Link>
+          <Link to="/EmpDash" style={buttonStyle}>Employee Management Dashboard</Link>
           <Link to="/cmdash" style={buttonStyle}>Client Management Dashboard</Link>
         </div>
       </div>
